@@ -877,6 +877,7 @@ def _run_qc_stage(questions, data, args, provider, api_key, base_url,
     """
     qc_provider = getattr(args, "qc_provider", "") or provider
     qc_model = getattr(args, "qc_model", "") or args.model
+    qc_subject = getattr(args, "subject", "") or "Physics"
     qc_key = os.environ.get("QBG_MOD_QC_API_KEY", "").strip() or (
         api_key if qc_provider == provider else "")
     qc_base = base_url if qc_provider == provider else None
@@ -888,7 +889,8 @@ def _run_qc_stage(questions, data, args, provider, api_key, base_url,
     _progress.emit("qc", "Quality-checking %d question(s) before the push…" % len(questions),
                    done=0, total=len(questions))
     questions, qc_results = _qcfix.qc_and_fix(
-        questions, data["figdir"], qc_provider, qc_key, qc_model, base_url=qc_base)
+        questions, data["figdir"], qc_provider, qc_key, qc_model, base_url=qc_base,
+        subject=qc_subject)
 
     # A figure QC asked to change is redrawn now, so the push carries the fixed
     # picture rather than a note about it.
@@ -1513,6 +1515,12 @@ def main() -> int:
                         "Its key comes from QBG_MOD_QC_API_KEY when it differs.")
     r.add_argument("--qc-model", default="",
                    help="Model id for the QC pass (default: the reframe model)")
+    r.add_argument("--subject", default="",
+                   help="Paper-level subject for --qc's persona/trap-sweep: 'Physics' "
+                        "(default) or 'Chemistry'. A question dict carrying its own "
+                        "'subject' field (from AI tagging) overrides this per question, "
+                        "so a combined PCM paper is still audited correctly question by "
+                        "question — set this as the paper's best single-value default.")
     r.add_argument("--no-fig-check", action="store_true",
                    help="With --regen-diagrams: do NOT read each redrawn figure back to check it "
                         "against the question. The check costs one vision call per redrawn figure "
@@ -1580,6 +1588,10 @@ def main() -> int:
                         "Its key comes from QBG_MOD_QC_API_KEY when it differs.")
     q.add_argument("--qc-model", default="",
                    help="Model id for the QC pass (default: the reframe model)")
+    q.add_argument("--subject", default="",
+                   help="Paper-level subject for --qc's persona/trap-sweep: 'Physics' "
+                        "(default) or 'Chemistry'. A question dict carrying its own "
+                        "'subject' field (from AI tagging) overrides this per question.")
     q.add_argument("--no-fig-check", action="store_true",
                    help="With --regen-diagrams: do NOT read each redrawn figure back to check it "
                         "against the question. The check costs one vision call per redrawn figure "

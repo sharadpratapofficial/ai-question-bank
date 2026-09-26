@@ -32,6 +32,20 @@ defects). The audit-only machinery — paper-level balance, answer-key
 distribution, duplicate clusters, timing — belongs to Agentic QC, which runs over
 a whole paper; this runs per question, inside the push pipeline.
 
+SUBJECT AWARENESS (2026-09-27): this used to be Physics-only — every question,
+regardless of its actual subject, was audited by a "senior JEE/NEET physics
+examiner" persona with no structure/stereochemistry/mechanism checks at all. A
+Chemistry question shipped through here got dimensional-analysis-flavoured
+scrutiny and nothing that would catch a valence violation, an invalid curved
+arrow, or a wrong R/S assignment. `subject` now selects the persona and adds a
+domain trap-sweep on top of the shared rules (proof rule, devil's-advocate rule,
+figure protocol, etc., which apply unchanged either way). Chemistry's trap sweep
+is condensed from the user's "Elite Chemistry QC & Audit Engine" (C1-C8): structure
+validity, name<->structure agreement, stereochemistry, reaction/mechanism
+validity, resonance/aromaticity/rankings, inorganic diagrams, equation balance,
+and physical-chemistry numeric traps. Unset/unknown subject defaults to Physics
+(previous behaviour, unchanged) so existing callers are not affected.
+
 Nothing here is silent: every change is returned with the before and the after,
 so a run can be inspected to see whether QC actually did anything.
 """
@@ -52,21 +66,39 @@ _LET = "ABCDEF"
 # pass that could restructure a question would be a second author, not a checker.
 _FIXABLE = ("stem", "options", "answer", "solution", "fig_edit")
 
-_SYSTEM = (
-    "You are a senior JEE/NEET physics examiner running quality control on a single "
-    "exam question, and you are also the editor who repairs it. You solve the question "
-    "yourself before looking at its printed answer. You report only defects you can "
-    "prove from what is in front of you, and you change only what is actually wrong. "
-    "You output ONLY one valid JSON object matching the schema you are given — no "
-    "markdown, no commentary. Escape every backslash in LaTeX as \\\\."
-)
+_SYSTEM_BY_SUBJECT = {
+    "physics": (
+        "You are a senior JEE/NEET physics examiner running quality control on a single "
+        "exam question, and you are also the editor who repairs it. You solve the question "
+        "yourself before looking at its printed answer. You report only defects you can "
+        "prove from what is in front of you, and you change only what is actually wrong. "
+        "You output ONLY one valid JSON object matching the schema you are given — no "
+        "markdown, no commentary. Escape every backslash in LaTeX as \\\\."
+    ),
+    "chemistry": (
+        "You are a senior JEE/NEET chemistry examiner running quality control on a single "
+        "exam question — Physical, Organic or Inorganic — and you are also the editor who "
+        "repairs it. You solve the question yourself before looking at its printed answer. "
+        "For any structure, reaction scheme or mechanism you transcribe what is actually "
+        "drawn (atoms, bonds, charges, wedges/hashes, arrows) before reasoning from it — "
+        "never solve from what the name or stem implies the structure should be. You report "
+        "only defects you can prove from what is in front of you, and you change only what "
+        "is actually wrong. You output ONLY one valid JSON object matching the schema you "
+        "are given — no markdown, no commentary. Escape every backslash in LaTeX as \\\\."
+    ),
+}
+
+
+def _system_for(subject):
+    return _SYSTEM_BY_SUBJECT.get((subject or "").strip().lower(), _SYSTEM_BY_SUBJECT["physics"])
+
 
 _SCHEMA = '''{
   "verdict": "PASS | MINOR | MODERATE | MAJOR",
   "confidence": 0-100,
   "solved": {"answer": "the answer YOU derived", "working": "one or two lines of your own working"},
   "defects": [
-    {"category": "KEY|OPT|SOL|FIG|DAT|PHY|PAT|LNG",
+    {"category": "KEY|OPT|SOL|FIG|DAT|PHY|PAT|LNG (physics) or KEY|OPT|SOL|FIG|DAT|STR|STE|MEC|EQN|LNG (chemistry)",
      "severity": "MINOR|MODERATE|MAJOR",
      "evidence": "the exact text, value or figure label that proves it",
      "fix": "what you changed, in one line"}
@@ -127,37 +159,91 @@ def _question_block(q):
     return "\n".join(L)
 
 
-def _rules(has_fig, numerical_range):
+# Condensed C1-C8 trap sweep, distilled from the user's "Elite Chemistry QC &
+# Audit Engine" for a per-question repair pass (not the full paper-level audit
+# — that stays a separate, report-only tool; see Chemistry_QC_Audit_Engine.md).
+_CHEM_TRAP_SWEEP = [
+    "   - STRUCTURE VALIDITY: count bonds at every atom against its valid valence "
+    "(neutral C=4, carbocation 3(+), carbanion 3+lone pair, neutral N=3/ammonium 4(+), "
+    "neutral O=2/oxonium 3(+)/alkoxide 1(-)). Recompute implicit H. Count ring members "
+    "vertex by vertex. A valence violation or a dangling/ambiguous bond is a MAJOR STR defect.",
+    "   - NAME <-> STRUCTURE: if a name and a drawing both appear, derive the name from "
+    "the drawing and the drawing from the name independently; they must agree with each "
+    "other and with what is printed. A mismatch is a MAJOR STR defect.",
+    "   - STEREOCHEMISTRY: for every stereocentre, list the four substituents and their CIP "
+    "priorities explicitly — never assert R/S without deriving it. An ambiguous wedge/hash "
+    "where the answer depends on configuration is a MAJOR STE defect. Verify E/Z by CIP, not "
+    "by 'same side'. Do not add stereochemistry the source does not state.",
+    "   - REACTION / MECHANISM: curved arrows start at an actual electron source (a specific "
+    "bond or lone pair), never at a bare + sign; a full arrow moves 2 electrons, a fishhook "
+    "moves 1. Recompute formal charges after every step. Check for an unaddressed carbocation "
+    "rearrangement (1,2-H/alkyl shift). Track carbon count across a multi-step scheme — any "
+    "unexplained gain/loss is a MAJOR MEC defect (carbon-count discontinuity).",
+    "   - RESONANCE / AROMATICITY / RANKINGS: resonance moves only electrons, never atoms; "
+    "aromaticity needs cyclic+planar+fully conjugated+4n+2 pi electrons (state the count). "
+    "For an ordering question (acidity/basicity/stability/...), verify every ADJACENT pair "
+    "in the printed order, not just the extremes — known exceptions (ortho effect, steric "
+    "inhibition of resonance, solvation on amine basicity) are common traps.",
+    "   - INORGANIC: VSEPR/hybridisation from an explicit valence-electron count; coordination "
+    "geometry, d-electron count, high/low spin and magnetism must be mutually consistent; "
+    "unit-cell site counts (corner 1/8, edge 1/4, face 1/2, body 1) verified arithmetically.",
+    "   - EQUATIONS: balanced by atoms of every element AND by charge; for redox, electrons "
+    "lost = electrons gained. A balanced-looking equation can still be chemically wrong "
+    "(wrong product for the stated conditions) — an EQN defect either way.",
+    "   - PHYSICAL-CHEMISTRY NUMERIC TRAPS: equilibrium expressions exclude pure solids/"
+    "liquids; very dilute strong-acid/base pH must include water autoionisation; check the "
+    "regime (strong/weak, buffer/hydrolysis/equivalence) is the one the data actually supports.",
+]
+
+
+def _rules(has_fig, numerical_range, subject="physics"):
+    is_chem = (subject or "").strip().lower() == "chemistry"
     L = [
         "",
         "HOW TO AUDIT — in this order:",
         "1. SOLVE IT YOURSELF FIRST, from the stem and the figure alone, before you read the "
         "printed answer or solution. Put your result in \"solved\".",
         "2. Compare your result with the printed answer. If they differ, find out which is "
-        "wrong before deciding anything — re-check your own arithmetic first.",
+        "wrong before deciding anything — re-check your own reasoning first.",
         "3. Check the answer FORMAT: an SCQ must have exactly one correct option; an MCQ at "
         "least one and every option judged on its own; a Numerical answer must be "
         + numerical_range + ".",
-        "4. Check the OPTIONS: all present, distinct after simplification and unit conversion, "
-        "dimensionally consistent, and only one defensible reading of which is correct.",
+        "4. Check the OPTIONS: all present, distinct after simplification"
+        + (" and unit conversion, dimensionally consistent," if not is_chem
+           else " (not the same molecule/ion redrawn, rotated, or resonance-shifted),")
+        + " and only one defensible reading of which is correct.",
         "5. Check the SOLUTION line by line: every step must follow from the previous one and "
         "use only data the stem states. A correct final answer does not excuse a wrong step, "
         "and a value that appears in the working but not in the question is a defect.",
         "6. Check DATA SUFFICIENCY: everything needed is given, nothing contradicts, the "
-        "quantity asked for and its unit are unambiguous.",
+        "quantity asked for" + (" and its unit are unambiguous." if not is_chem else
+        " is unambiguous (reagent, condition, solvent, temperature all stated where the "
+        "chemistry depends on them)."),
     ]
-    if has_fig:
+    if is_chem:
         L += [
-            "7. CHECK THE FIGURE — this is the most common failure, so do it carefully:",
-            "   a. Read every number, label, arrow, direction and connection actually drawn in "
-            "the attached image. Report what you see, not what you expect.",
-            "   b. Compare each of those against the stem and against the solution. A value the "
-            "figure shows that the question does not state (or states differently) is a MAJOR "
-            "FIG defect — this is the single most common error in these papers.",
+            "7. RUN THE CHEMISTRY TRAP SWEEP on every structure, equation, scheme and diagram "
+            "in the question AND the solution — no sampling, every failed check is its own "
+            "defect (do not compress distinct defects into one line):",
+        ] + _CHEM_TRAP_SWEEP
+    if has_fig:
+        n = "8" if is_chem else "7"
+        L += [
+            n + ". CHECK THE FIGURE — this is the most common failure, so do it carefully:",
+            "   a. " + ("Transcribe every atom, bond (incl. bond order and wedge/hash), charge, "
+            "lone pair and label actually drawn in the attached image before reasoning from it. "
+            "Report what you see, not what the name or stem implies it should be."
+            if is_chem else
+            "Read every number, label, arrow, direction and connection actually drawn in "
+            "the attached image. Report what you see, not what you expect."),
+            "   b. Compare each of those against the stem and against the solution. A value or "
+            "feature the figure shows that the question does not state (or states differently) "
+            "is a MAJOR FIG defect — this is the single most common error in these papers.",
             "   c. Decide WHICH side is wrong and say so in the evidence. Normally the TEXT is "
             "authoritative and the picture must be redrawn to match it: put a precise redraw "
-            "instruction in \"fig_edit\" naming the exact old label and the exact new one. Only "
-            "change the text instead when the figure is clearly right and the text has a typo.",
+            "instruction in \"fig_edit\" naming the exact old label/feature and the exact new "
+            "one. Only change the text instead when the figure is clearly right and the text "
+            "has a typo.",
             "   d. If the figure is illegible or missing something the question refers to, say "
             "so as a FIG defect and leave fig_edit null.",
         ]
@@ -165,12 +251,16 @@ def _rules(has_fig, numerical_range):
         "",
         "WHAT COUNTS AS A DEFECT:",
         "- PROOF RULE: every defect must quote the exact text, value or figure label that proves "
-        "it, or show the calculation. Never report a defect you cannot point at.",
+        "it, or show the calculation/derivation. Never report a defect you cannot point at.",
         "- DEVIL'S ADVOCATE: before you call something MAJOR, argue the other side — is it "
-        "defensible under some accepted convention (g = 9.8 vs 10, magnitude vs signed value, "
-        "rounding at a different step)? If it is defensible, it is not a defect.",
+        "defensible under some accepted convention (" + ("g = 9.8 vs 10, magnitude vs signed "
+        "value, rounding at a different step" if not is_chem else
+        "NCERT vs a stricter reference for a borderline fact, an accepted alternate stereo-"
+        "descriptor convention, gas-phase vs aqueous-phase ordering") + ")? If it is "
+        "defensible, it is not a defect.",
         "- NO OVER-FLAGGING: house style, spacing, a synonym, a differently formatted but "
-        "unambiguous unit — none of these are defects. Do not report them and do not 'fix' them.",
+        "unambiguous unit or abbreviation (Me/Et/Ph etc.) — none of these are defects. Do not "
+        "report them and do not 'fix' them.",
         "- A question can be solvable and still defective; report the defect anyway.",
         "",
         "WHAT TO CHANGE:",
@@ -194,10 +284,10 @@ def _rules(has_fig, numerical_range):
     return L
 
 
-def _build_prompt(q, numerical_range):
+def _build_prompt(q, numerical_range, subject="physics"):
     L = ["Audit and, where necessary, repair this exam question.", ""]
     L.append(_question_block(q))
-    L.extend(_rules(bool(q.get("fig")), numerical_range))
+    L.extend(_rules(bool(q.get("fig")), numerical_range, subject=subject))
     return "\n".join(L)
 
 
@@ -262,8 +352,16 @@ def _diff_fields(before, after):
 
 
 def qc_and_fix(questions, figdir, provider, api_key, model, base_url=None,
-               numerical_range="a whole number from 0 to 99", timeout=180):
+               numerical_range="a whole number from 0 to 99", timeout=180,
+               subject="Physics"):
     """Audit every question, apply the corrections, and report what changed.
+
+    `subject` is the paper-level default persona/trap-sweep ("Physics" or
+    "Chemistry"; anything else falls back to Physics, matching the previous
+    behaviour before subject-awareness existed). A question dict's own
+    "subject" field, when present (set by extract.py's per-question tagging),
+    overrides the paper-level default for THAT question — so a combined PCM
+    paper gets the right persona per question instead of one guess for all.
 
     Returns (questions, results). Each result carries the verdict, the defects,
     the fields changed, and the BEFORE/AFTER of each changed field — so a run can
@@ -279,12 +377,14 @@ def qc_and_fix(questions, figdir, provider, api_key, model, base_url=None,
     for i, q in enumerate(questions, 1):
         q = dict(q)
         num = q.get("num", i)
+        q_subject = (q.get("subject") or subject or "Physics")
         _progress.emit("qc", "QC checking Q%s (%d/%d)…" % (num, i, total), done=i, total=total)
         before = copy.deepcopy({k: q.get(k) for k in _FIXABLE})
         images = _image_for(q, figdir)
         try:
-            res = _llm.generate(provider, api_key, model, _build_prompt(q, numerical_range),
-                                images=images, system=_SYSTEM, base_url=base_url,
+            res = _llm.generate(provider, api_key, model,
+                                _build_prompt(q, numerical_range, subject=q_subject),
+                                images=images, system=_system_for(q_subject), base_url=base_url,
                                 timeout=timeout, max_tokens=6000)
         except Exception as e:
             log.exception("qc failed for Q%s", num)
@@ -334,6 +434,7 @@ def qc_and_fix(questions, figdir, provider, api_key, model, base_url=None,
         defects = [d for d in (res.get("defects") or []) if isinstance(d, dict)]
         entry = {
             "num": num,
+            "subject": q_subject,
             "status": "changed" if changed else "clean",
             "verdict": str(res.get("verdict") or ("MAJOR" if changed else "PASS"))[:20],
             "confidence": res.get("confidence"),

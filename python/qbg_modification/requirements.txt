@@ -6,3 +6,10 @@ Pillow>=10.0
 requests>=2.31
 # HTML ingestion (html_ingest.py) — parses a QBG-ready HTML paper with no AI.
 beautifulsoup4>=4.12
+# Chemistry structure resolution/rendering (IUPAC_STRUCTURE_DIAGRAM prompt,
+# HC-4/HC-5 two-channel name->structure verification). Not wired into any
+# .py module yet — added so the environment is ready when that pipeline step
+# is built. Without these, chemistry structures can only resolve to Level B
+# (independent-derivation-only) or be kept as text (HC-8), never Level A.
+rdkit>=2024.3
+py2opsin>=2.0.0
