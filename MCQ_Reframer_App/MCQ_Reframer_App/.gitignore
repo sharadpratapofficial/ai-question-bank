@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+
+# Virtual envs
+venv/
+.venv/
+env/
+
+# Streamlit
+.streamlit/secrets.toml
+
+# App working dirs / generated output
+mcq_*/
+mcq_out_*/
+*.zip
+media/
+figures/
+logs/
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+*.swp

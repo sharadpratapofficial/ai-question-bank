@@ -1,0 +1,12 @@
+[
+ {
+  "id": "bold_num/paren_num",
+  "q_style": "bold_num",
+  "opt_style": "paren_num",
+  "score": 1.0,
+  "learned_from": "RTS_Test-8",
+  "learned_at": "2026-07-12 23:39",
+  "seen": 2,
+  "last_source": "question"
+ }
+]

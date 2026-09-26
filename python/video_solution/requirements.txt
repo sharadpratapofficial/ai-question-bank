@@ -1,0 +1,21 @@
+# Video Solution pipeline — Python deps.
+# Install with:
+#     python -m pip install -r python/video_solution/requirements.txt
+#
+# Plus system binaries:
+#   - ffmpeg   must be on PATH (apt install ffmpeg / brew install ffmpeg /
+#              winget install Gyan.FFmpeg) — used by generate_videos.py.
+#   - soffice  (LibreOffice) must be on PATH, or point QBG_SOFFICE at the
+#              binary — used by docx_to_pptx.py to render .docx/.doc question
+#              papers (apt install libreoffice / brew install --cask
+#              libreoffice / winget install TheDocumentFoundation.LibreOffice).
+
+anthropic>=0.34
+edge-tts>=6.1
+PyMuPDF>=1.24
+Pillow>=10.2
+python-pptx>=1.0
+python-docx>=1.1
+matplotlib>=3.8
+requests>=2.31
+pypandoc_binary>=1.13

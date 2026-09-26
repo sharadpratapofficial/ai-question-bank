@@ -1,0 +1,8 @@
+# QBG modification (MCQ reframer) sidecar — invoked by the Next.js API route.
+# Ported from MCQ_Reframer_App; Streamlit is intentionally NOT required here.
+latex2mathml>=3.77
+pypandoc_binary>=1.13
+Pillow>=10.0
+requests>=2.31
+# HTML ingestion (html_ingest.py) — parses a QBG-ready HTML paper with no AI.
+beautifulsoup4>=4.12

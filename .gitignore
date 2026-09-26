@@ -1,0 +1,44 @@
+node_modules/
+*.log
+.next/
+.next-dev/
+out/
+.playwright-cli/
+.DS_Store
+*.tsbuildinfo
+next-env.d.ts
+.env*.local
+
+# Video solution Python sidecar runtime artifacts
+python/**/__pycache__/
+python/video_solution/_jobs/
+python/video_solution/_uploads/
+python/video_solution/_outputs/
+_smoke_output.docx
+
+# App runtime logs & local data dumps
+_applocal.log
+_applocal.err.log
+_broken_questions_backup.json
+_deleted_reports_backup.json
+_maths_unify_backup.json
+
+# OS / archive artifacts & sidecar runtime
+__MACOSX/
+**/__MACOSX/
+MCQ_Reframer_App/**/__pycache__/
+MCQ_Reframer_App/**/logs/
+
+# QBG modification sidecar runtime
+python/qbg_modification/logs/
+python/qbg_modification/_jobs/
+python/qbg_modification/_out/
+
+# Large generated reference data dumps (not source; regenerable / already
+# imported into the DB) — QBG_data.csv is 191MB and QBG_data2.csv 170MB, both
+# over GitHub's 100MB push limit.
+/QBG_data*.csv
+/qbg_tagging_table.csv
+
+# Ad-hoc local test uploads for QBG Ingestion — not repo fixtures.
+/qbg injestion sample file*

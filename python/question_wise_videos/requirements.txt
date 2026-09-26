@@ -1,0 +1,22 @@
+# Question Wise Videos pipeline — Python deps.
+# Install with:
+#     python -m pip install -r python/question_wise_videos/requirements.txt
+#
+# Plus system binaries:
+#   - ffmpeg      must be on PATH — used for both frame extraction (detection)
+#                 and clip cropping (winget install Gyan.FFmpeg / apt install
+#                 ffmpeg / brew install ffmpeg).
+#   - tesseract   OCR engine used by the primary (numbered-slide) detection
+#                 path — see detect_boundaries.py's module docstring.
+#                 Windows: winget install --id UB-Mannheim.TesseractOCR
+#                 (installs to "C:\Program Files\Tesseract-OCR\tesseract.exe",
+#                 auto-detected — or set TESSERACT_CMD to override).
+#                 Linux: apt install tesseract-ocr. Mac: brew install tesseract.
+#                 If tesseract isn't found, detection silently falls back to
+#                 the visual-diff method (no numbered-slide requirement).
+
+opencv-python-headless>=4.9
+numpy>=1.26
+requests>=2.31
+pytesseract>=0.3.10
+Pillow>=10.0

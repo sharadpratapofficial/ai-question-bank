@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>AI-based Question Bank — Email</title>
+</head>
+<body style="margin:0; padding:24px; background:#ffffff;">
+
+<!-- ===== COPY EVERYTHING INSIDE THIS BOX INTO GMAIL ===== -->
+<div style="max-width:660px; margin:0 auto; font-family:Arial, Helvetica, sans-serif; color:#2b2b2b; font-size:14px; line-height:1.65;">
+
+  <p style="margin:0 0 16px;">Hi [Name],</p>
+
+  <p style="margin:0 0 18px;">
+    Sharing a short storyline on the <strong>AI-based Question Bank</strong> our team
+    (Team&nbsp;1 &ndash; AI Content Wallah) has built, and the impact it delivers versus our
+    current <strong>QBG</strong> software.
+  </p>
+
+  <!-- SECTION 1 -->
+  <h3 style="color:#1E2761; font-size:17px; font-weight:bold; margin:26px 0 6px;">
+    1. The challenges with our current QBG software
+  </h3>
+  <p style="margin:0 0 8px;">Building a single test paper today is manual, expert-dependent and slow:</p>
+  <ul style="margin:8px 0 16px; padding-left:22px;">
+    <li style="margin-bottom:7px;"><strong>Test creation is tedious.</strong> To assemble one full-syllabus JEE&nbsp;Mains paper, a faculty must create a bucket, open each chapter of the syllabus in separate tabs, and hand-pick questions one by one &mdash; hours per paper.</li>
+    <li style="margin-bottom:7px;"><strong>It relies on memory of exam patterns.</strong> The faculty must remember exactly how many questions of each type a given exam needs (e.g.&nbsp;JEE&nbsp;Advanced&nbsp;2020 Paper&nbsp;1 vs Paper&nbsp;2 differ per year). This is error-prone, and QC faculty can pick the wrong mix.</li>
+    <li style="margin-bottom:7px;"><strong>QC is a 3-hour manual grind per paper.</strong> Every question is solved by hand to verify the answer key, check repeated options, language, diagrams, duplicates across the paper, and syllabus balance.</li>
+    <li style="margin-bottom:7px;"><strong>Video solutions are recorded one question at a time</strong> &mdash; roughly 3&nbsp;hours per paper.</li>
+    <li style="margin-bottom:7px;"><strong>Modifications and translations are fully manual</strong> &mdash; ~3&nbsp;hours to modify a paper, and Hindi/regional versions are redone by hand.</li>
+    <li style="margin-bottom:7px;"><strong>Ingesting outside/competition papers is a full DTP day</strong> &mdash; typing a PDF/Word paper into QBG takes a DTP resource an entire 8-hour day.</li>
+    <li style="margin-bottom:7px;"><strong>No memory of a batch&rsquo;s past papers.</strong> QBG can&rsquo;t track which questions a batch has already been given, so it can&rsquo;t automatically exclude them from new papers &mdash; the same question can reach the same students again unless faculty cross-check every paper by hand.</li>
+    <li style="margin-bottom:0;"><strong>Key question types aren&rsquo;t filterable.</strong> Important formats such as integer and single-digit integer answers have no dedicated filter &mdash; faculty must pull all numerical questions and then manually sift out the integer ones, which is slow and error-prone.</li>
+  </ul>
+  <p style="margin:0 0 8px; color:#555; font-style:italic;">Net effect: faculty-heavy, error-prone, and impossible to scale across batches and verticals.</p>
+
+  <!-- SECTION 2 -->
+  <h3 style="color:#1E2761; font-size:17px; font-weight:bold; margin:26px 0 6px;">
+    2. How our AI-based Question Bank solves it &mdash; and its key features
+  </h3>
+  <ul style="margin:8px 0 16px; padding-left:22px;">
+    <li style="margin-bottom:7px;"><strong>One-to-two-click test generation.</strong> The app stores presets for most major exams (pattern, question-type mix, difficulty, syllabus balance), so a complete paper is generated in a couple of clicks &mdash; no bucket-building, no tab-by-tab picking, no remembering per-year patterns.</li>
+    <li style="margin-bottom:7px;"><strong>Agentic AI QC.</strong> Multiple AI agents verify the paper end to end &mdash; answer-key correctness, repeated options, language, diagrams, duplicates and syllabus balancing. <strong style="color:#0F766E;">~80% of questions are auto-cleared</strong>; only the ~20% flagged need a human, taking ~30&nbsp;min instead of ~3&nbsp;hours.</li>
+    <li style="margin-bottom:7px;"><strong>Automated video solutions.</strong> The tool generates narrated video solutions for a whole paper, replacing ~3&nbsp;hours of manual recording.</li>
+    <li style="margin-bottom:7px;"><strong>In-app modification &amp; translation.</strong> Questions can be edited in the tool and papers translated into Hindi and other languages, instead of being redone manually.</li>
+    <li style="margin-bottom:7px;"><strong>Direct PDF/Word ingestion.</strong> Competition papers (questions&nbsp;+&nbsp;solutions) are injected straight into the database. Instead of a full DTP day of typing, a resource just verifies the ingestion in ~1&nbsp;hour.</li>
+    <li style="margin-bottom:0;"><strong>Built to scale.</strong> Model-agnostic (10+ AI providers), role-based access, across JEE/NEET/Foundation verticals and online/offline batches.</li>
+  </ul>
+
+  <!-- SECTION 3 -->
+  <h3 style="color:#1E2761; font-size:17px; font-weight:bold; margin:26px 0 10px;">
+    3. Time saved per paper (content team)
+  </h3>
+  <table style="border-collapse:collapse; width:100%; margin:0 0 18px; font-size:13px;">
+    <thead>
+      <tr>
+        <th style="background:#1E2761; color:#ffffff; text-align:left; padding:10px 12px; border:1px solid #1E2761;">Task</th>
+        <th style="background:#1E2761; color:#ffffff; text-align:left; padding:10px 12px; border:1px solid #1E2761;">Current QBG (manual)</th>
+        <th style="background:#1E2761; color:#ffffff; text-align:left; padding:10px 12px; border:1px solid #1E2761;">AI Question Bank</th>
+        <th style="background:#1E2761; color:#ffffff; text-align:left; padding:10px 12px; border:1px solid #1E2761;">Saved / paper</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="padding:9px 12px; border:1px solid #dcdcdc;">Test paper generation</td>
+        <td style="padding:9px 12px; border:1px solid #dcdcdc;">Hours (bucket + chapter-by-chapter picking + pattern recall)</td>
+        <td style="padding:9px 12px; border:1px solid #dcdcdc;">1&ndash;2 clicks (preset-driven)</td>
+        <td style="padding:9px 12px; border:1px solid #dcdcdc; font-weight:bold; color:#0F766E;">Hours &rarr; minutes</td>
+      </tr>
+      <tr style="background:#F3F5FA;">
+        <td style="padding:9px 12px; border:1px solid #dcdcdc;">Quality check (QC)</td>
+        <td style="padding:9px 12px; border:1px solid #dcdcdc;">~3 hrs</td>
+        <td style="padding:9px 12px; border:1px solid #dcdcdc;">~30 min (AI clears ~80%; human reviews ~20%)</td>
+        <td style="padding:9px 12px; border:1px solid #dcdcdc; font-weight:bold; color:#0F766E;">~2.5 hrs</td>
+      </tr>
+      <tr>
+        <td style="padding:9px 12px; border:1px solid #dcdcdc;">Video solutions</td>
+        <td style="padding:9px 12px; border:1px solid #dcdcdc;">~3 hrs</td>
+        <td style="padding:9px 12px; border:1px solid #dcdcdc;">Auto-generated</td>
+        <td style="padding:9px 12px; border:1px solid #dcdcdc; font-weight:bold; color:#0F766E;">~3 hrs</td>
+      </tr>
+      <tr style="background:#F3F5FA;">
+        <td style="padding:9px 12px; border:1px solid #dcdcdc;">Ingesting outside papers (PDF/Word)</td>
+        <td style="padding:9px 12px; border:1px solid #dcdcdc;">~8 hrs (DTP typing)</td>
+        <td style="padding:9px 12px; border:1px solid #dcdcdc;">~1 hr (verify AI ingestion)</td>
+        <td style="padding:9px 12px; border:1px solid #dcdcdc; font-weight:bold; color:#0F766E;">~7 hrs</td>
+      </tr>
+      <tr>
+        <td style="padding:9px 12px; border:1px solid #dcdcdc;">Modification / translation</td>
+        <td style="padding:9px 12px; border:1px solid #dcdcdc;">~3 hrs</td>
+        <td style="padding:9px 12px; border:1px solid #dcdcdc;">Assisted in-app (incl. Hindi)</td>
+        <td style="padding:9px 12px; border:1px solid #dcdcdc; font-weight:bold; color:#0F766E;">Significant</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- SECTION 4 -->
+  <h3 style="color:#1E2761; font-size:17px; font-weight:bold; margin:26px 0 10px;">
+    4. Costing &amp; impact <span style="font-weight:normal; font-size:13px; color:#777;">(at full deployment, INR)</span>
+  </h3>
+
+  <!-- stat cards -->
+  <table style="border-collapse:separate; border-spacing:8px 0; width:100%; margin:0 0 16px; table-layout:fixed;">
+    <tr>
+      <td style="background:#1E2761; padding:14px 8px; text-align:center; border-radius:8px;">
+        <div style="color:#ffffff; font-size:22px; font-weight:bold;">&#8377;22.18 Cr</div>
+        <div style="color:#CADCFC; font-size:11px; margin-top:3px;">Net annual impact</div>
+      </td>
+      <td style="background:#0F766E; padding:14px 8px; text-align:center; border-radius:8px;">
+        <div style="color:#ffffff; font-size:22px; font-weight:bold;">~786%</div>
+        <div style="color:#CFF3EC; font-size:11px; margin-top:3px;">Year-1 ROI</div>
+      </td>
+      <td style="background:#0F766E; padding:14px 8px; text-align:center; border-radius:8px;">
+        <div style="color:#ffffff; font-size:22px; font-weight:bold;">~5 days</div>
+        <div style="color:#CFF3EC; font-size:11px; margin-top:3px;">Payback</div>
+      </td>
+      <td style="background:#1E2761; padding:14px 8px; text-align:center; border-radius:8px;">
+        <div style="color:#ffffff; font-size:22px; font-weight:bold;">3.23 L</div>
+        <div style="color:#CADCFC; font-size:11px; margin-top:3px;">Hours saved / yr</div>
+      </td>
+    </tr>
+  </table>
+
+  <table style="border-collapse:collapse; width:100%; margin:0 0 14px; font-size:13.5px;">
+    <tbody>
+      <tr>
+        <td style="padding:9px 12px; border:1px solid #dcdcdc;">Total annual benefit</td>
+        <td style="padding:9px 12px; border:1px solid #dcdcdc; text-align:right;"><strong>&#8377;24.64 Cr</strong> <span style="color:#777;">(&#8377;22.64 Cr time saved + &#8377;2.0 Cr new revenue)</span></td>
+      </tr>
+      <tr style="background:#F3F5FA;">
+        <td style="padding:9px 12px; border:1px solid #dcdcdc;">Annual running cost</td>
+        <td style="padding:9px 12px; border:1px solid #dcdcdc; text-align:right;">&#8377;2.47 Cr</td>
+      </tr>
+      <tr>
+        <td style="padding:9px 12px; border:1px solid #dcdcdc;">One-time build investment</td>
+        <td style="padding:9px 12px; border:1px solid #dcdcdc; text-align:right;">&#8377;31.55 L</td>
+      </tr>
+      <tr style="background:#FFF4CC;">
+        <td style="padding:9px 12px; border:1px solid #E8D48A;"><strong>Net annual impact</strong></td>
+        <td style="padding:9px 12px; border:1px solid #E8D48A; text-align:right;"><strong>&#8377;22.18 Cr</strong></td>
+      </tr>
+      <tr>
+        <td style="padding:9px 12px; border:1px solid #dcdcdc;">Staff impacted (full deployment)</td>
+        <td style="padding:9px 12px; border:1px solid #dcdcdc; text-align:right;">235</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="margin:0 0 18px; color:#555;">
+    The largest cost line is SME time to review the ~20% of questions the AI flags &mdash; a deliberate
+    human-in-the-loop safeguard. Beyond internal savings, the platform can be licensed to external
+    coaching institutes as a new revenue stream (~&#8377;2.0&nbsp;Cr/yr margin).
+  </p>
+
+  <!-- SECTION 5 : METHODOLOGY -->
+  <h3 style="color:#1E2761; font-size:17px; font-weight:bold; margin:28px 0 8px;">
+    5. How the numbers are calculated (methodology)
+  </h3>
+  <p style="margin:0 0 14px;">
+    Every figure below is modelled <strong>at full deployment</strong> (the tool is used by every
+    relevant resource) and expressed in INR. The whole model rests on three inputs: a
+    <strong>working year</strong>, a <strong>fully-loaded hourly rate</strong> per role, and the
+    <strong>time saved per task</strong>.
+  </p>
+
+  <!-- 5.1 basis -->
+  <p style="margin:16px 0 6px; color:#1E2761; font-weight:bold; font-size:14.5px;">
+    Step&nbsp;1 &nbsp;&middot;&nbsp; The rate basis
+  </p>
+  <ul style="margin:6px 0 12px; padding-left:22px;">
+    <li style="margin-bottom:6px;"><strong>Working year</strong> = 240 working days &times; 8 hrs = <strong>1,920 hours</strong> per person per year.</li>
+    <li style="margin-bottom:6px;"><strong>Fully-loaded hourly rate</strong> = annual CTC (salary + benefits + overhead) &divide; 1,920 hrs. This is what one hour of that person&rsquo;s time actually costs the company.</li>
+  </ul>
+  <table style="border-collapse:collapse; width:100%; margin:0 0 16px; font-size:13px;">
+    <thead>
+      <tr>
+        <th style="background:#1E2761; color:#fff; text-align:left; padding:8px 12px; border:1px solid #1E2761;">Role</th>
+        <th style="background:#1E2761; color:#fff; text-align:right; padding:8px 12px; border:1px solid #1E2761;">Annual CTC (&#8377;)</th>
+        <th style="background:#1E2761; color:#fff; text-align:center; padding:8px 12px; border:1px solid #1E2761;">&divide; 1,920 hrs</th>
+        <th style="background:#1E2761; color:#fff; text-align:right; padding:8px 12px; border:1px solid #1E2761;">Loaded rate (&#8377;/hr)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td style="padding:8px 12px; border:1px solid #dcdcdc;">Subject Head</td><td style="padding:8px 12px; border:1px solid #dcdcdc; text-align:right;">35,00,000</td><td style="padding:8px 12px; border:1px solid #dcdcdc; text-align:center; color:#777;">&rarr;</td><td style="padding:8px 12px; border:1px solid #dcdcdc; text-align:right;"><strong>1,823</strong></td></tr>
+      <tr style="background:#F3F5FA;"><td style="padding:8px 12px; border:1px solid #dcdcdc;">Content Faculty</td><td style="padding:8px 12px; border:1px solid #dcdcdc; text-align:right;">15,00,000</td><td style="padding:8px 12px; border:1px solid #dcdcdc; text-align:center; color:#777;">&rarr;</td><td style="padding:8px 12px; border:1px solid #dcdcdc; text-align:right;"><strong>781</strong></td></tr>
+      <tr><td style="padding:8px 12px; border:1px solid #dcdcdc;">Project Coordinator</td><td style="padding:8px 12px; border:1px solid #dcdcdc; text-align:right;">8,00,000</td><td style="padding:8px 12px; border:1px solid #dcdcdc; text-align:center; color:#777;">&rarr;</td><td style="padding:8px 12px; border:1px solid #dcdcdc; text-align:right;"><strong>417</strong></td></tr>
+      <tr style="background:#F3F5FA;"><td style="padding:8px 12px; border:1px solid #dcdcdc;">DTP</td><td style="padding:8px 12px; border:1px solid #dcdcdc; text-align:right;">5,00,000</td><td style="padding:8px 12px; border:1px solid #dcdcdc; text-align:center; color:#777;">&rarr;</td><td style="padding:8px 12px; border:1px solid #dcdcdc; text-align:right;"><strong>260</strong></td></tr>
+    </tbody>
+  </table>
+
+  <!-- 5.2 time saved -->
+  <p style="margin:16px 0 6px; color:#1E2761; font-weight:bold; font-size:14.5px;">
+    Step&nbsp;2 &nbsp;&middot;&nbsp; Benefit A &mdash; time saved &rarr; cost saved
+  </p>
+  <p style="margin:0 0 8px;">
+    For each role we estimate the hours saved on a typical working day, annualise over 240 days, and
+    multiply by the loaded rate:
+  </p>
+  <p style="margin:0 0 12px; padding:8px 12px; background:#F0F7F6; border:1px solid #CFE6E2; border-radius:6px; font-size:13px;">
+    <strong>Annual &#8377; saved</strong> = Head-count &times; Hours saved / day &times; 240 days &times; Loaded rate (&#8377;/hr)
+  </p>
+  <table style="border-collapse:collapse; width:100%; margin:0 0 8px; font-size:12.5px;">
+    <thead>
+      <tr>
+        <th style="background:#1E2761; color:#fff; text-align:left; padding:8px 10px; border:1px solid #1E2761;">Role (task)</th>
+        <th style="background:#1E2761; color:#fff; text-align:right; padding:8px 10px; border:1px solid #1E2761;">Head-count</th>
+        <th style="background:#1E2761; color:#fff; text-align:right; padding:8px 10px; border:1px solid #1E2761;">Hrs saved / day</th>
+        <th style="background:#1E2761; color:#fff; text-align:right; padding:8px 10px; border:1px solid #1E2761;">Annual hrs (&times;240)</th>
+        <th style="background:#1E2761; color:#fff; text-align:right; padding:8px 10px; border:1px solid #1E2761;">&#8377;/hr</th>
+        <th style="background:#1E2761; color:#fff; text-align:right; padding:8px 10px; border:1px solid #1E2761;">Annual &#8377; saved</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="padding:8px 10px; border:1px solid #dcdcdc;">Subject Head (QC)</td>
+        <td style="padding:8px 10px; border:1px solid #dcdcdc; text-align:right;">30</td>
+        <td style="padding:8px 10px; border:1px solid #dcdcdc; text-align:right;">6.4</td>
+        <td style="padding:8px 10px; border:1px solid #dcdcdc; text-align:right;">46,080</td>
+        <td style="padding:8px 10px; border:1px solid #dcdcdc; text-align:right;">1,823</td>
+        <td style="padding:8px 10px; border:1px solid #dcdcdc; text-align:right;">&#8377;8.40 Cr</td>
+      </tr>
+      <tr style="background:#F3F5FA;">
+        <td style="padding:8px 10px; border:1px solid #dcdcdc;">Content Faculty (video solutions)</td>
+        <td style="padding:8px 10px; border:1px solid #dcdcdc; text-align:right;">90</td>
+        <td style="padding:8px 10px; border:1px solid #dcdcdc; text-align:right;">6.0</td>
+        <td style="padding:8px 10px; border:1px solid #dcdcdc; text-align:right;">1,29,600</td>
+        <td style="padding:8px 10px; border:1px solid #dcdcdc; text-align:right;">781</td>
+        <td style="padding:8px 10px; border:1px solid #dcdcdc; text-align:right;">&#8377;10.12 Cr</td>
+      </tr>
+      <tr>
+        <td style="padding:8px 10px; border:1px solid #dcdcdc;">Project Coordinator (coordination)</td>
+        <td style="padding:8px 10px; border:1px solid #dcdcdc; text-align:right;">25</td>
+        <td style="padding:8px 10px; border:1px solid #dcdcdc; text-align:right;">3.0</td>
+        <td style="padding:8px 10px; border:1px solid #dcdcdc; text-align:right;">18,000</td>
+        <td style="padding:8px 10px; border:1px solid #dcdcdc; text-align:right;">417</td>
+        <td style="padding:8px 10px; border:1px solid #dcdcdc; text-align:right;">&#8377;0.75 Cr</td>
+      </tr>
+      <tr style="background:#F3F5FA;">
+        <td style="padding:8px 10px; border:1px solid #dcdcdc;">DTP (typing / ingestion)</td>
+        <td style="padding:8px 10px; border:1px solid #dcdcdc; text-align:right;">90</td>
+        <td style="padding:8px 10px; border:1px solid #dcdcdc; text-align:right;">6.0</td>
+        <td style="padding:8px 10px; border:1px solid #dcdcdc; text-align:right;">1,29,600</td>
+        <td style="padding:8px 10px; border:1px solid #dcdcdc; text-align:right;">260</td>
+        <td style="padding:8px 10px; border:1px solid #dcdcdc; text-align:right;">&#8377;3.37 Cr</td>
+      </tr>
+      <tr style="background:#1E2761; color:#fff;">
+        <td style="padding:9px 10px; border:1px solid #1E2761;"><strong>Total</strong></td>
+        <td style="padding:9px 10px; border:1px solid #1E2761; text-align:right;"><strong>235</strong></td>
+        <td style="padding:9px 10px; border:1px solid #1E2761; text-align:right;">&mdash;</td>
+        <td style="padding:9px 10px; border:1px solid #1E2761; text-align:right;"><strong>3,23,280</strong></td>
+        <td style="padding:9px 10px; border:1px solid #1E2761; text-align:right;">&mdash;</td>
+        <td style="padding:9px 10px; border:1px solid #1E2761; text-align:right;"><strong>&#8377;22.64 Cr</strong></td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="margin:0 0 6px; font-size:12.5px; color:#555;"><strong>What drives &ldquo;hours saved / day&rdquo; &mdash; the manual&nbsp;&rarr;&nbsp;AI basis:</strong></p>
+  <ul style="margin:0 0 16px; padding-left:22px; font-size:12.5px; color:#555;">
+    <li style="margin-bottom:5px;"><strong>QC:</strong> ~3 hrs/paper &rarr; ~30 min/paper (AI clears ~80% of questions; a Subject Head runs several papers a day &rarr; ~6.4 hrs/day recovered).</li>
+    <li style="margin-bottom:5px;"><strong>Video solutions:</strong> 1 day (8 hrs) per 100 questions &rarr; ~30 min per 100 questions.</li>
+    <li style="margin-bottom:5px;"><strong>Typing / ingestion:</strong> ~6 hrs/paper of DTP typing &rarr; ~2 min/paper via bulk PDF/Word extraction.</li>
+    <li style="margin-bottom:0;"><strong>Coordination:</strong> ~3 hrs/day of manual chasing &amp; assembly removed by automation.</li>
+  </ul>
+
+  <!-- 5.3 revenue -->
+  <p style="margin:16px 0 6px; color:#1E2761; font-weight:bold; font-size:14.5px;">
+    Step&nbsp;3 &nbsp;&middot;&nbsp; Benefit B &mdash; new revenue (margin only)
+  </p>
+  <p style="margin:0 0 14px;">
+    Licensing the QC platform to external coaching institutes:
+    <strong>1,000 institutes &times; 50 papers/yr &times; &#8377;500/paper = &#8377;2.50&nbsp;Cr</strong> gross revenue.
+    We count only the <strong>80% margin = &#8377;2.00&nbsp;Cr</strong> as the benefit (so it is comparable to a cost saving, and nothing is double-counted with time saved).
+  </p>
+  <p style="margin:0 0 16px; padding:10px 12px; background:#FFF4CC; border:1px solid #E8D48A; border-radius:6px;">
+    <strong>Total annual benefit</strong> = &#8377;22.64&nbsp;Cr (time saved) + &#8377;2.00&nbsp;Cr (revenue margin) = <strong>&#8377;24.64&nbsp;Cr</strong>
+  </p>
+
+  <!-- 5.4 costs -->
+  <p style="margin:16px 0 6px; color:#1E2761; font-weight:bold; font-size:14.5px;">
+    Step&nbsp;4 &nbsp;&middot;&nbsp; The costs
+  </p>
+  <p style="margin:0 0 6px;"><strong>One-time build investment &mdash; &#8377;31.55&nbsp;L</strong></p>
+  <ul style="margin:0 0 12px; padding-left:22px; font-size:13px;">
+    <li style="margin-bottom:5px;"><strong>Fixed (&#8377;30.42&nbsp;L):</strong> solution design, build &amp; QA (employee time) &#8377;30.00&nbsp;L + Claude&nbsp;Code &#8377;23,000 + ElevenLabs &#8377;19,356.</li>
+    <li style="margin-bottom:0;"><strong>Variable (&#8377;1.13&nbsp;L):</strong> AI-API app testing &#8377;20,000 + onboarding (55 staff &times; &#8377;781) &#8377;42,955 + initial content/metadata setup &#8377;50,000.</li>
+  </ul>
+  <p style="margin:0 0 6px;"><strong>Annual running cost &mdash; &#8377;2.47&nbsp;Cr</strong></p>
+  <ul style="margin:0 0 14px; padding-left:22px; font-size:13px;">
+    <li style="margin-bottom:5px;"><strong>Fixed (&#8377;1.25&nbsp;L):</strong> Supabase &#8377;30,000 + Wiris&nbsp;MathType &#8377;30,000 + Vercel &#8377;23,000 + Claude&nbsp;Code &#8377;23,000 + ElevenLabs &#8377;19,356 (annual subscriptions).</li>
+    <li style="margin-bottom:0;"><strong>Variable (&#8377;2.46&nbsp;Cr):</strong> SME manual QC of AI-flagged questions
+      <span style="color:#555;">(30 SMEs &times; 1,920 hrs &times; &#8377;417 = &#8377;2.40&nbsp;Cr)</span>
+      + LLM API tokens <span style="color:#555;">(50,00,000 questions &times; &#8377;0.10 = &#8377;5.00&nbsp;L)</span>
+      + storage <span style="color:#555;">(1,000&nbsp;GB &times; &#8377;20 = &#8377;20,000)</span>.</li>
+  </ul>
+
+  <!-- 5.5 headline formulas -->
+  <p style="margin:16px 0 6px; color:#1E2761; font-weight:bold; font-size:14.5px;">
+    Step&nbsp;5 &nbsp;&middot;&nbsp; The headline metrics
+  </p>
+  <table style="border-collapse:collapse; width:100%; margin:0 0 8px; font-size:13px;">
+    <tbody>
+      <tr>
+        <td style="padding:9px 12px; border:1px solid #dcdcdc; width:34%;"><strong>Net annual impact</strong></td>
+        <td style="padding:9px 12px; border:1px solid #dcdcdc;">Benefit &minus; running cost = &#8377;24.64&nbsp;Cr &minus; &#8377;2.47&nbsp;Cr = <strong>&#8377;22.18&nbsp;Cr</strong></td>
+      </tr>
+      <tr style="background:#F3F5FA;">
+        <td style="padding:9px 12px; border:1px solid #dcdcdc;"><strong>Year-1 ROI</strong></td>
+        <td style="padding:9px 12px; border:1px solid #dcdcdc;">(Benefit &minus; running &minus; build) &divide; (running + build) = &#8377;21.86&nbsp;Cr &divide; &#8377;2.78&nbsp;Cr = <strong>~786%</strong></td>
+      </tr>
+      <tr>
+        <td style="padding:9px 12px; border:1px solid #dcdcdc;"><strong>Payback period</strong></td>
+        <td style="padding:9px 12px; border:1px solid #dcdcdc;">Build &divide; net monthly benefit = &#8377;31.55&nbsp;L &divide; &#8377;1.85&nbsp;Cr = 0.17 month &asymp; <strong>~5 days</strong></td>
+      </tr>
+      <tr style="background:#F3F5FA;">
+        <td style="padding:9px 12px; border:1px solid #dcdcdc;"><strong>Annual hours saved</strong></td>
+        <td style="padding:9px 12px; border:1px solid #dcdcdc;">Sum of the time-saved table = <strong>3,23,280 hrs</strong> across <strong>235</strong> staff</td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="margin:0 0 20px; font-size:12.5px; color:#777; font-style:italic;">
+    Note: all inputs (head-counts, per-task times, rates, unit costs) live in the shared
+    &ldquo;AI Initiative Impact&rdquo; workbook &mdash; change any input there and every headline number
+    recalculates automatically.
+  </p>
+
+  <!-- TRY IT BOX -->
+  <table style="border-collapse:collapse; width:100%; margin:8px 0 20px;">
+    <tr>
+      <td style="background:#F0F7F6; border:1px solid #CFE6E2; border-radius:8px; padding:14px 16px;">
+        <div style="color:#1E2761; font-weight:bold; font-size:14px; margin-bottom:6px;">Try it yourself</div>
+        <div style="font-size:13.5px; line-height:1.8;">
+          <strong>URL:</strong> <a href="https://aiqb.loveemittal.online" style="color:#0F766E;">https://aiqb.loveemittal.online</a><br>
+          <strong>Username:</strong> <span style="font-family:Consolas,'Courier New',monospace;">mittallovee@gmail.com</span><br>
+          <strong>Password:</strong> <span style="font-family:Consolas,'Courier New',monospace;">lovee@123</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+
+  <p style="margin:0 0 16px;">Happy to walk you through a live demo.</p>
+
+  <p style="margin:0; line-height:1.5;">
+    Best regards,<br>
+    <strong>Lovee Mittal</strong><br>
+    <span style="color:#777; font-size:13px;">Team 1 &ndash; AI Content Wallah</span>
+  </p>
+
+</div>
+<!-- ===== END OF EMAIL BODY ===== -->
+
+</body>
+</html>

@@ -1,0 +1,101 @@
+"use client";
+
+import { useRef, useState } from "react";
+import { Battery, ChevronDown, CircleHelp, Code2, Download, MousePointer2, Move, Plus, Redo2, RotateCcw, Settings2, Undo2, Zap } from "lucide-react";
+
+type Point = { x: number; y: number };
+type NodeName = "A" | "P" | "B" | "Q";
+type Nodes = Record<NodeName, Point>;
+type ResistorName = "AP" | "PB" | "AQ" | "QB" | "PQ";
+
+const initialNodes: Nodes = { A: { x: 150, y: 294 }, P: { x: 376, y: 142 }, B: { x: 602, y: 294 }, Q: { x: 376, y: 446 } };
+const initialResistors: Record<ResistorName, number> = { AP: 3, PB: 6, AQ: 6, QB: 3, PQ: 4 };
+const sourceCode = [
+    "\\documentclass[border=6pt]{standalone}", "\\usepackage[american]{circuitikz}", "\\begin{document}", "\\begin{circuitikz}[line width=0.8pt]",
+    "\\coordinate (A) at (0,0);", "\\coordinate (P) at (2,1.7);", "\\coordinate (B) at (4,0);", "\\coordinate (Q) at (2,-1.7);",
+    "\\draw (A) to[R,l=$3,\\Omega$] (P)", "to[R,l=$6,\\Omega$] (B);", "\\draw (A) to[R,l=$6,\\Omega$] (Q)", "to[R,l=$3,\\Omega$] (B);",
+    "\\draw (P) to[R,l=$4,\\Omega$] (Q);", "\\draw (A) -- (-0.5,0) -- (-0.5,-2.6)", "to[battery1,l=$12,\\mathrm{V}$]", "(4.5,-2.6) -- (4.5,0) -- (B);",
+    "\\node[left] at (A) {$A$};", "\\node[right] at (B) {$B$};", "\\node[above] at (P) {$P$};", "\\node[below] at (Q) {$Q$};", "\\end{circuitikz}", "\\end{document}",
+].join("\n");
+const latexCoords: Record<NodeName, Point> = { A: { x: 0, y: 0 }, P: { x: 2, y: 1.7 }, B: { x: 4, y: 0 }, Q: { x: 2, y: -1.7 } };
+const componentKeys: ResistorName[] = ["AP", "PB", "AQ", "QB", "PQ"];
+const screenPoint = (x: number, y: number) => ({ x: 150 + x * 113, y: 294 - y * 89 });
+
+function buildLatex(values: Record<ResistorName, number>) {
+    const source = { A: "(0,0)", P: "(2,1.7)", B: "(4,0)", Q: "(2,-1.7)" };
+    const defaults = [3, 6, 6, 3, 4];
+    let result = sourceCode;
+    (Object.keys(latexCoords) as NodeName[]).forEach((name) => { result = result.replace(source[name], "(" + latexCoords[name].x.toFixed(2) + "," + latexCoords[name].y.toFixed(2) + ")"); });
+    return componentKeys.reduce((text, key, index) => text.replace("$" + defaults[index] + ",\\Omega$", "$" + values[key] + ",\\Omega$"), result);
+}
+
+function parseSource(source: string, nodes: Nodes, values: Record<ResistorName, number>) {
+    const nextNodes = { ...nodes };
+    (["A", "P", "B", "Q"] as NodeName[]).forEach((name) => {
+        const match = source.match(new RegExp("\\\\coordinate\\\\s*\\\\(" + name + "\\\\)\\\\s*at\\\\s*\\\\((-?[\\\\d.]+),\\\\s*(-?[\\\\d.]+)\\\\)"));
+        if (!match) return;
+        const x = Number(match[1]); const y = Number(match[2]); latexCoords[name] = { x, y }; nextNodes[name] = screenPoint(x, y);
+    });
+    const found = [...source.matchAll(/to\[R,l=\$(\d+(?:\.\d+)?),\\Omega\$\]/g)].map((match) => Number(match[1]));
+    const nextValues = { ...values };
+    found.slice(0, 5).forEach((value, index) => { nextValues[componentKeys[index]] = value; });
+    return { nextNodes, nextValues };
+}
+
+function Resistor({ from, to, value, active, onClick }: { from: Point; to: Point; value: number; active: boolean; onClick: () => void }) {
+    const distance = Math.hypot(to.x - from.x, to.y - from.y);
+    const deg = Math.atan2(to.y - from.y, to.x - from.x) * 180 / Math.PI;
+    const centerX = (from.x + to.x) / 2; const centerY = (from.y + to.y) / 2;
+    return <g className="resistor" transform={"translate(" + centerX + " " + centerY + ") rotate(" + deg + ")"} onClick={onClick}>
+        <line x1={-distance / 2} x2={-43} className="wire" /><line x1="43" x2={distance / 2} className="wire" />
+        {active && <rect x="-51" y="-22" width="102" height="44" rx="8" className="selection-halo" />}
+        <polyline points="-43,0 -35,-12 -26,12 -17,-12 -8,12 1,-12 10,12 19,-12 28,12 37,-12 43,0" className="resistor-zigzag" />
+        <g transform={"rotate(" + -deg + ")"}><rect x="-30" y="-37" width="60" height="25" rx="12" className="label-bg" /><text x="0" y="-20" textAnchor="middle" className="resistor-value">{value} Ω</text></g>
+    </g>;
+}
+
+export default function CircuitStudio() {
+    const [nodes, setNodes] = useState<Nodes>(initialNodes);
+    const [resistors, setResistors] = useState(initialResistors);
+    const [code, setCode] = useState(sourceCode);
+    const [tab, setTab] = useState<"code" | "properties">("code");
+    const [selected, setSelected] = useState<ResistorName | "battery" | null>(null);
+    const [dragging, setDragging] = useState<NodeName | null>(null);
+    const [saved, setSaved] = useState(true);
+    const svgRef = useRef<SVGSVGElement>(null);
+    const lines: Array<{ key: ResistorName; from: NodeName; to: NodeName }> = [{ key: "AP", from: "A", to: "P" }, { key: "PB", from: "P", to: "B" }, { key: "AQ", from: "A", to: "Q" }, { key: "QB", from: "Q", to: "B" }, { key: "PQ", from: "P", to: "Q" }];
+    const syncCanvas = () => { setCode(buildLatex(resistors)); setSaved(false); };
+    const moveNode = (event: React.PointerEvent<SVGSVGElement>) => {
+        if (!dragging || !svgRef.current) return;
+        const bounds = svgRef.current.getBoundingClientRect();
+        const x = Math.max(95, Math.min(658, (event.clientX - bounds.left) * 760 / bounds.width));
+        const y = Math.max(94, Math.min(490, (event.clientY - bounds.top) * 588 / bounds.height));
+        latexCoords[dragging] = { x: (x - 150) / 113, y: (294 - y) / 89 };
+        setNodes((old) => ({ ...old, [dragging]: { x, y } })); syncCanvas();
+    };
+    const changeResistance = (value: number) => {
+        if (!selected || selected === "battery") return;
+        const next = { ...resistors, [selected]: value }; setResistors(next); setCode(buildLatex(next)); setSaved(false);
+    };
+    const changeCode = (value: string) => { setCode(value); const parsed = parseSource(value, nodes, resistors); setNodes(parsed.nextNodes); setResistors(parsed.nextValues); setSaved(false); };
+    const reset = () => { setNodes(initialNodes); setResistors(initialResistors); setCode(sourceCode); setSelected(null); setSaved(true); Object.assign(latexCoords, { A: { x: 0, y: 0 }, P: { x: 2, y: 1.7 }, B: { x: 4, y: 0 }, Q: { x: 2, y: -1.7 } }); };
+    const exportPng = () => {
+        if (!svgRef.current) return;
+        const copy = svgRef.current.cloneNode(true) as SVGSVGElement; copy.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+        const url = URL.createObjectURL(new Blob([new XMLSerializer().serializeToString(copy)], { type: "image/svg+xml" })); const image = new Image();
+        image.onload = () => { const canvas = document.createElement("canvas"); canvas.width = 1520; canvas.height = 1176; const context = canvas.getContext("2d"); if (!context) return; context.fillStyle = "#ffffff"; context.fillRect(0, 0, canvas.width, canvas.height); context.drawImage(image, 0, 0, canvas.width, canvas.height); const link = document.createElement("a"); link.download = "bridge-circuit.png"; link.href = canvas.toDataURL("image/png"); link.click(); URL.revokeObjectURL(url); };
+        image.src = url;
+    };
+    return <main className="studio-shell">
+        <header className="studio-header"><div className="brand"><div className="brand-mark"><Zap size={19} fill="currentColor" /></div><span>Circuit<span>Studio</span></span><small>BETA</small></div><div className="file-pill"><span className="status-dot" /><span>bridge_circuit.tex</span><span className={saved ? "saved" : "unsaved"}>{saved ? "Saved" : "Unsaved"}</span><ChevronDown size={15} /></div><div className="header-actions"><button className="icon-button"><Undo2 size={18} /></button><button className="icon-button"><Redo2 size={18} /></button><span className="header-divider" /><button className="help-button"><CircleHelp size={17} /> Help</button><button className="avatar">AM</button></div></header>
+        <section className="toolbar"><div className="tool-group"><button className="tool active"><MousePointer2 size={17} /> Select</button><button className="tool"><Move size={17} /> Pan</button></div><div className="tool-separator" /><div className="tool-group"><button className="tool"><Plus size={17} /> Add component</button><button className="tool"><Settings2 size={17} /> Grid</button></div><div className="toolbar-right"><span className="hint"><Move size={14} /> Drag a node to update its LaTeX coordinates</span><button className="reset-button" onClick={reset}><RotateCcw size={15} /> Reset</button><button className="download-button" onClick={exportPng}><Download size={16} /> Download PNG</button></div></section>
+        <section className="workspace">
+            <aside className="code-panel"><div className="panel-tabs"><button onClick={() => setTab("code")} className={tab === "code" ? "tab active" : "tab"}><Code2 size={16} /> LaTeX source</button><button onClick={() => setTab("properties")} className={tab === "properties" ? "tab active" : "tab"}><Settings2 size={16} /> Properties</button></div>{tab === "code" ? <div className="editor-wrap"><div className="line-numbers">{code.split("\n").map((_, index) => <span key={index}>{index + 1}</span>)}</div><textarea aria-label="LaTeX source" spellCheck={false} value={code} onChange={(event) => changeCode(event.target.value)} /></div> : <div className="properties"><div className="property-title">{selected && selected !== "battery" ? "Resistor " + selected : "Diagram properties"}</div>{selected && selected !== "battery" ? <><label>Resistance</label><div className="value-field"><input type="number" value={resistors[selected]} onChange={(event) => changeResistance(Number(event.target.value))} /><span>Ω</span></div><p>Change this value and its CircuitikZ label updates automatically.</p></> : <><p>Select a resistor in the canvas to edit its component properties.</p><div className="info-card"><Battery size={19} /><span>Supply voltage: <strong>12 V</strong></span></div></>}</div>}<div className="panel-footer"><span><span className="green-dot" /> Live sync on</span><span>Ln {code.split("\n").length}, Col 1</span></div></aside>
+            <div className="canvas-area"><div className="canvas-topline"><div><span className="canvas-title">DIAGRAM PREVIEW</span><span className="canvas-subtitle">Interactive SVG canvas</span></div><div className="zoom-control"><button>−</button><span>100%</span><button>+</button></div></div><div className="canvas-card"><svg ref={svgRef} viewBox="0 0 760 588" className="circuit-canvas" onPointerMove={moveNode} onPointerUp={() => setDragging(null)} onPointerLeave={() => setDragging(null)}><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="1.4" cy="1.4" r="1.1" fill="#cfd3e6" /></pattern></defs><rect width="760" height="588" fill="#fafbff" /><rect width="760" height="588" fill="url(#dots)" opacity=".62" />{lines.map((item) => <Resistor key={item.key} from={nodes[item.from]} to={nodes[item.to]} value={resistors[item.key]} active={selected === item.key} onClick={() => setSelected(item.key)} />)}<path d={"M " + nodes.A.x + " " + nodes.A.y + " H 76 V 520 H 684 V " + nodes.B.y + " H " + nodes.B.x} className="wire" /><g className="battery-shape" onClick={() => setSelected("battery")} transform="translate(380 520)"><line x1="-44" x2="-12" className="wire" /><line x1="12" x2="44" className="wire" /><line x1="-12" y1="-20" y2="20" className="battery-line long" /><line x1="12" y1="-12" y2="12" className="battery-line" /><text x="0" y="45" textAnchor="middle" className="battery-label">12 V</text></g>{(Object.keys(nodes) as NodeName[]).map((name) => <g key={name} className="node" transform={"translate(" + nodes[name].x + " " + nodes[name].y + ")"} onPointerDown={(event) => { event.stopPropagation(); (event.currentTarget as SVGGElement).setPointerCapture(event.pointerId); setDragging(name); }}><circle r="15" className="node-hit" /><circle r="6.5" className="node-dot" /><text x={name === "A" ? -26 : name === "B" ? 26 : 0} y={name === "P" ? -22 : name === "Q" ? 31 : 6} textAnchor={name === "A" ? "end" : name === "B" ? "start" : "middle"} className="node-label">{name}</text></g>)}</svg><div className="canvas-tip"><MousePointer2 size={15} /> Click a resistor to edit it · Drag blue nodes to reposition</div></div></div>
+        </section>
+        <footer className="studio-footer"><span><span className="green-dot" /> Circuit compiled successfully</span><span>Last synced just now</span><span>Canvas: 760 × 588 px</span></footer>
+        <style jsx>{`
+            .studio-shell{min-height:100vh;background:#f5f6fa;color:#1a2140;font-family:Inter,Arial,sans-serif;display:flex;flex-direction:column}.studio-header{height:68px;padding:0 28px;background:#fff;border-bottom:1px solid #e5e7f0;display:flex;align-items:center;justify-content:space-between}.brand{display:flex;gap:9px;align-items:center;font-weight:800;letter-spacing:-.4px;font-size:20px}.brand>span>span{color:#5d56dd}.brand-mark{display:grid;place-items:center;width:33px;height:33px;border-radius:10px;background:linear-gradient(135deg,#6259e8,#9289ff);color:#fff;box-shadow:0 4px 10px #7971dd42}.brand small{font-size:9px;letter-spacing:.9px;font-weight:800;color:#645ee3;background:#eeedff;padding:3px 5px;border-radius:5px}.file-pill{position:absolute;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:8px;border:1px solid #e6e7ef;border-radius:9px;padding:8px 11px;font-size:13px;font-weight:650;color:#4d5671}.status-dot,.green-dot{width:7px;height:7px;background:#2ecb86;border-radius:50%;display:inline-block}.saved{color:#249567;font-size:11px;border-left:1px solid #dce0eb;padding-left:8px}.unsaved{color:#d17a2e;font-size:11px;border-left:1px solid #dce0eb;padding-left:8px}.header-actions,.toolbar-right,.tool-group{display:flex;align-items:center;gap:8px}.icon-button,.help-button,.avatar,.tool,.reset-button,.download-button,.zoom-control button{border:0;background:transparent;color:#65708b;font:inherit;cursor:pointer}.icon-button{padding:7px}.header-divider,.tool-separator{height:24px;width:1px;background:#e1e4ed;margin:0 5px}.help-button{display:flex;gap:6px;align-items:center;font-size:13px}.avatar{width:32px;height:32px;border-radius:50%;background:#e6e4ff;color:#554fc5;font-size:11px;font-weight:800;margin-left:7px}.toolbar{height:56px;padding:0 28px;display:flex;align-items:center;gap:14px;background:#fff;border-bottom:1px solid #e5e7f0}.tool{display:flex;align-items:center;gap:7px;padding:8px 10px;border-radius:7px;font-size:13px;font-weight:650}.tool.active{color:#534bc9;background:#eeedff}.toolbar-right{margin-left:auto}.hint{font-size:12px;color:#8991a7;display:flex;align-items:center;gap:5px;margin-right:11px}.reset-button{display:flex;gap:6px;align-items:center;border:1px solid #e1e3ec;border-radius:7px;padding:8px 11px;font-size:12px;font-weight:700}.download-button{display:flex;align-items:center;gap:7px;color:#fff;background:#5e56db;padding:9px 13px;border-radius:7px;font-size:12px;font-weight:750;box-shadow:0 3px 7px #5e56db36}.workspace{flex:1;display:grid;grid-template-columns:400px 1fr;min-height:0}.code-panel{background:#fff;border-right:1px solid #e3e6ee;display:flex;flex-direction:column;min-width:0}.panel-tabs{display:flex;border-bottom:1px solid #e7e9ef;padding:0 15px;gap:17px}.tab{background:transparent;border:0;padding:15px 3px 12px;display:flex;align-items:center;gap:7px;color:#8d94a8;font-size:13px;font-weight:700;cursor:pointer;border-bottom:2px solid transparent}.tab.active{color:#5149c7;border-color:#5e56df}.editor-wrap{display:flex;flex:1;min-height:0;background:#fbfcff;padding:16px 0}.line-numbers{width:46px;display:flex;flex-direction:column;align-items:flex-end;padding:1px 13px 0 0;color:#b2b8c8;font:12px/21px "JetBrains Mono",monospace;user-select:none}.editor-wrap textarea{flex:1;border:0;outline:0;resize:none;padding:0 16px 18px 0;background:transparent;color:#33405d;font:12px/21px "JetBrains Mono",monospace;white-space:pre;tab-size:2}.panel-footer{height:38px;border-top:1px solid #e8eaf0;padding:0 15px;display:flex;align-items:center;justify-content:space-between;color:#9aa1b3;font-size:11px}.panel-footer>span:first-child{color:#508d73;display:flex;align-items:center;gap:5px}.properties{padding:26px 24px;color:#68718b;font-size:13px;line-height:1.6}.property-title{font-size:16px;color:#28304d;font-weight:800;margin-bottom:22px}.properties label{display:block;color:#7b8399;font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:7px}.value-field{border:1px solid #dfe2ec;border-radius:8px;display:flex;align-items:center;padding:0 10px;margin-bottom:15px}.value-field input{border:0;outline:none;padding:10px 0;flex:1;font-weight:700;font-size:14px;color:#3a4160}.value-field span{color:#8c93a5}.info-card{display:flex;gap:10px;align-items:center;padding:13px;background:#f4f3ff;border:1px solid #e3e0ff;border-radius:9px;color:#5d58bd}.canvas-area{background:#f5f6fa;padding:22px 28px;display:flex;flex-direction:column;min-width:0}.canvas-topline{display:flex;justify-content:space-between;align-items:center;margin:0 0 14px}.canvas-title{font-size:11px;font-weight:800;letter-spacing:1px;color:#68718b}.canvas-subtitle{font-size:12px;color:#a3a9b9;margin-left:11px}.zoom-control{display:flex;align-items:center;gap:8px;border:1px solid #e0e3ea;background:#fff;border-radius:7px;padding:3px 5px;color:#6d7691;font-size:11px;font-weight:700}.zoom-control button{font-size:17px;padding:0 3px}.canvas-card{position:relative;flex:1;min-height:440px;background:#fff;border:1px solid #e1e4eb;border-radius:12px;box-shadow:0 7px 22px #2930500c;overflow:hidden}.circuit-canvas{display:block;width:100%;height:100%;touch-action:none}.wire{stroke:#3d4560;stroke-width:2.4;fill:none;stroke-linecap:round}.resistor{cursor:pointer}.resistor:hover .resistor-zigzag{stroke:#5d55da}.resistor-zigzag{stroke:#3d4560;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round}.selection-halo{fill:#665eee12;stroke:#665eee;stroke-width:1.5;stroke-dasharray:4 3}.label-bg{fill:#fff;stroke:#e4e6ed}.resistor-value{font:700 13px Inter,Arial,sans-serif;fill:#38415c}.node{cursor:grab}.node:active{cursor:grabbing}.node-hit{fill:#5d56df0e}.node-dot{fill:#665ee4;stroke:#fff;stroke-width:3}.node-label{font:800 14px Inter,Arial,sans-serif;fill:#2c3551}.battery-shape{cursor:pointer}.battery-line{stroke:#3d4560;stroke-width:2.3}.battery-line.long{stroke-width:3.4}.battery-label{font:700 13px Inter,Arial,sans-serif;fill:#505973}.canvas-tip{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);padding:8px 12px;background:#fff;border:1px solid #e6e8ef;border-radius:8px;box-shadow:0 4px 12px #1f29421a;color:#75809a;font-size:11px;white-space:nowrap;display:flex;align-items:center;gap:6px}.studio-footer{height:36px;padding:0 28px;border-top:1px solid #e5e7ef;background:#fff;color:#8890a5;font-size:11px;display:flex;align-items:center;gap:24px}.studio-footer span:first-child{color:#4d9075;display:flex;align-items:center;gap:5px}@media(max-width:900px){.workspace{grid-template-columns:330px 1fr}.file-pill{display:none}.hint{display:none}.canvas-area{padding:18px}.studio-header,.toolbar{padding-left:16px;padding-right:16px}}@media(max-width:700px){.workspace{grid-template-columns:1fr}.code-panel{height:310px;border-right:0;border-bottom:1px solid #e3e6ee}.canvas-area{min-height:500px}.toolbar{overflow:auto}.tool-separator,.tool:nth-child(n+2){display:none}.studio-footer{gap:12px;padding:0 14px}.studio-footer span:nth-child(n+2){display:none}.help-button{display:none}}
+        `}</style>
+    </main>;
+}
