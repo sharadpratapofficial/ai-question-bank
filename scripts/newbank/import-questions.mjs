@@ -8,6 +8,14 @@
  *        [--check-db --confirm-project=<ref>]                            dry run + read-only DB lookups
  *        [--apply --confirm-project=<ref> (--limit=N | --only=... | --all)]
  *        [--update-existing] [--as-user=<auth user uuid>] [--batch-size=100]
+ *        [--media-dir=<folder>] [--keep-inline-images]
+ *
+ * IMAGES (private bucket question-media, see src/lib/questionMedia/core.ts)
+ *   <img src="media:figs/q12.png"> refers to a file under --media-dir; inline data:image URLs
+ *   are converted too unless --keep-inline-images. Every image is read and validated locally
+ *   (PNG/JPEG/GIF/WebP by content, max 10 MB) and given a deterministic path
+ *   newbank/<question_id>/<name>-<sha256 prefix>.<ext>; the question HTML gets
+ *   /api/question-media/<path>. Nothing is uploaded except with --apply, and never overwritten.
  *
  * SAFETY
  *   - Dry run by default. Without --check-db/--apply the database is never contacted.
@@ -28,6 +36,7 @@ import crypto from "node:crypto";
 import { fileURLToPath } from "node:url";
 import { parseInput, buildPlan, selectUnits, classify, applyDecisions } from "./lib/plan.mjs";
 import { supabaseTarget, projectRefFromUrl } from "./lib/target.mjs";
+import { createMediaResolver } from "./lib/media.mjs";
 
 const NEWBANK_PROJECT_REF = "ljkpcqllqdamdatesbfe";
 const REPO_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", "..");
@@ -35,7 +44,7 @@ const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/
 const PREVIEW_CAP = 50;
 
 function parseArgs(argv) {
-    const a = { input: null, apply: false, dryRun: false, checkDb: false, all: false, updateExisting: false, limit: null, only: null, confirmProject: null, asUser: null, batchSize: 100 };
+    const a = { input: null, apply: false, dryRun: false, checkDb: false, all: false, updateExisting: false, limit: null, only: null, confirmProject: null, asUser: null, batchSize: 100, mediaDir: null, keepInline: false };
     for (const x of argv) {
         const [k, v] = x.includes("=") ? [x.slice(0, x.indexOf("=")), x.slice(x.indexOf("=") + 1)] : [x, null];
         if (k === "--input") a.input = v;
@@ -49,6 +58,8 @@ function parseArgs(argv) {
         else if (k === "--confirm-project") a.confirmProject = v;
         else if (k === "--as-user") a.asUser = v;
         else if (k === "--batch-size") a.batchSize = Math.max(1, Number(v) || 100);
+        else if (k === "--media-dir") a.mediaDir = v;
+        else if (k === "--keep-inline-images") a.keepInline = true;
         else if (!k.startsWith("--") && !a.input) a.input = x;
         else throw new Error(`unknown argument ${x}`);
     }
@@ -68,6 +79,13 @@ function connectConfig(args) {
     const ref = projectRefFromUrl(url);
     if (ref !== args.confirmProject) throw new Error(`--confirm-project=${args.confirmProject} does not match the project in SUPABASE_URL (${ref ?? "unrecognised URL"})`);
     return { url, key };
+}
+
+function mediaSummary(units) {
+    const items = [];
+    for (const v of units.flat()) for (const m of v.row.raw_data[0]._newbank.media) items.push({ source_key: v.meta.source_key, ...m });
+    const objects = new Map(units.flat().flatMap((v) => v.meta.media.map((m) => [m.storage_path, m.bytes])));
+    return { references: items.length, objects: objects.size, bytes: [...objects.values()].reduce((a, b) => a + b, 0), items };
 }
 
 function previewMarkdown(units, decisions) {
@@ -96,7 +114,9 @@ async function main() {
     const sourceSha256 = crypto.createHash("sha256").update(buf).digest("hex");
     const sourceFile = path.basename(inputPath);
 
-    const plan = buildPlan(parseInput(buf.toString("utf8"), inputPath), { sourceFile, sourceSha256 });
+    // local only: reads and validates image files, never uploads
+    const resolveMedia = createMediaResolver({ mediaDir: args.mediaDir, keepInline: args.keepInline });
+    const plan = buildPlan(parseInput(buf.toString("utf8"), inputPath), { sourceFile, sourceSha256, resolveMedia });
     const units = selectUnits(plan.units, { only: args.only, limit: args.limit });
     const mode = args.apply ? "apply" : args.checkDb ? "check-db" : "dry-run";
 
@@ -116,6 +136,7 @@ async function main() {
         ...plan.stats,
         selection: { limit: args.limit, only: args.only, units: units.length, rows: units.flat().length },
         decisions: decisions ? tally(() => true) : "database not checked (offline dry run)",
+        media: mediaSummary(units),
         possible_content_duplicates: plan.possibleDuplicates,
         warnings: plan.warnings,
         selected: units.flat().map((v) => ({ source_key: v.meta.source_key, question_id: v.row.question_id, question_type: v.row.question_type, decision: decisions?.get(v.row.question_id)?.action ?? null, reason: decisions?.get(v.row.question_id)?.reason ?? null })),
@@ -128,6 +149,7 @@ async function main() {
     console.log(`[newbank] ${mode.toUpperCase()}  input ${sourceFile} (sha256 ${sourceSha256.slice(0, 12)}…)`);
     console.log(`  records ${plan.stats.records_read} | valid ${plan.stats.valid} | rejected ${plan.stats.rejected} | units ${plan.stats.units}`);
     console.log(`  selected ${units.length} unit(s) = ${units.flat().length} row(s)${args.limit ? ` (--limit=${args.limit})` : ""}${args.only ? ` (--only ${args.only.length} key(s))` : ""}`);
+    if (planOut.media.objects) console.log(`  images: ${planOut.media.objects} object(s), ${planOut.media.bytes} bytes, validated locally${args.apply ? "" : " (nothing uploaded)"}`);
     if (plan.possibleDuplicates.length) console.log(`  possible content duplicates: ${plan.possibleDuplicates.length} group(s) (reported, not rejected)`);
     if (decisions) for (const [k, n] of Object.entries(planOut.decisions)) console.log(`  ${k}: ${n}`);
     else console.log("  database not contacted");
@@ -135,9 +157,10 @@ async function main() {
     if (args.apply) {
         const log = (ev) => fs.appendFileSync(path.join(runDir, "apply.log.jsonl"), JSON.stringify({ at: new Date().toISOString(), ...ev }) + "\n");
         const result = await applyDecisions(decisions, target, { asUser: args.asUser, batchSize: args.batchSize, log });
-        const counts = { inserted: result.inserted, updated: result.updated, skipped: tally((d) => d.action === "skip"), rejected_in_file: plan.stats.rejected, rejected_against_db: [...decisions.values()].filter((d) => d.action === "reject").length, failed: result.failed.length };
+        const counts = { inserted: result.inserted, updated: result.updated, skipped: tally((d) => d.action === "skip"), rejected_in_file: plan.stats.rejected, rejected_against_db: [...decisions.values()].filter((d) => d.action === "reject").length, failed: result.failed.length, media_uploaded: result.media.uploaded, media_already_present: result.media.already_present, media_failed: result.media.failed };
         fs.writeFileSync(path.join(runDir, "result.json"), JSON.stringify({ counts, failed: result.failed, read_back: result.read_back }, null, 2) + "\n");
         console.log(`  inserted ${counts.inserted} | updated ${counts.updated} | failed ${counts.failed} | read-back ok ${result.read_back.ok}/${result.read_back.checked}`);
+        console.log(`  images: uploaded ${counts.media_uploaded} | already present ${counts.media_already_present} | failed ${counts.media_failed}`);
         if (result.failed.length || result.read_back.mismatches.length) { console.log(`  PROBLEMS - see ${rel}/result.json`); process.exitCode = 2; }
     }
     console.log(`  report: ${rel}/`);

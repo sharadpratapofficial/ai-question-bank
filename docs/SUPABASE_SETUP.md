@@ -92,7 +92,7 @@ Edit history attribution: session writes record `auth.uid()`. Server-key writes 
 
 - **Downloads** use short-lived signed URLs created server-side.
 - **Question diagrams** extracted from PDFs are embedded in `question_text` as data URLs (existing behaviour).
-- **New-bank question images** belong in `question-media`. Question HTML stores only the storage path, behind an app route (`/api/question-media/<path>`, not built yet) that checks the session and redirects to a short-lived signed URL.
+- **New-bank question images** belong in `question-media`. Question HTML stores only the storage path, behind the app route `GET /api/question-media/<path>`, which checks the session and redirects to a short-lived signed URL. Uploads go through `POST /api/question-media` or the new-bank importer (`--media-dir`). Rules: `src/lib/questionMedia/core.ts`.
 - **No bucket size limit is set:** the project's global limit applies (50 MB on the Free plan). Video ZIPs may exceed it.
 
 ---

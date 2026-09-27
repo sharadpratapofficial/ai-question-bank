@@ -1,7 +1,9 @@
 /**
- * Database access for the NEW question-bank importer. Only these five calls touch
+ * Database + storage access for the NEW question-bank importer. Only these calls touch
  * Supabase. supabase-js is loaded lazily so an offline dry run never imports it.
  */
+import { QUESTION_MEDIA_BUCKET } from "../../../src/lib/questionMedia/core.ts";
+
 const SELECT_COLUMNS = "question_id,qbg_id,question_text,options,answer_key,solution_text,question_type,subject,chapter,topic,subtopic,source,difficutly_level,class_level,exam,parent_question_id,child_order,raw_data,status";
 const CHUNK = 100;
 
@@ -46,5 +48,25 @@ export async function supabaseTarget({ url, key }) {
             const { error } = await db.from("qbg_questions").update(patch).eq("question_id", questionId);
             if (error) throw new Error(error.message);
         },
+        /** Never overwrites (upsert: false). Resolves "uploaded" or "exists". */
+        async uploadMedia(storagePath, bytes, mime) {
+            const { error } = await db.storage.from(QUESTION_MEDIA_BUCKET).upload(storagePath, bytes, { contentType: mime, upsert: false, cacheControl: "31536000" });
+            if (!error) return "uploaded";
+            if (isAlreadyExists(error)) return "exists";
+            throw new Error(`upload ${storagePath}: ${error.message}`);
+        },
+        /** Buffer, or null when there is no object at the path. */
+        async downloadMedia(storagePath) {
+            const { data, error } = await db.storage.from(QUESTION_MEDIA_BUCKET).download(storagePath);
+            if (error) {
+                if (isNotFound(error)) return null;
+                throw new Error(`download ${storagePath}: ${error.message}`);
+            }
+            return Buffer.from(await data.arrayBuffer());
+        },
     };
 }
+
+const statusOf = (e) => String(e?.statusCode ?? e?.status ?? "");
+const isNotFound = (e) => statusOf(e) === "404" || /not.?found|does not exist/i.test(e?.message ?? "");
+const isAlreadyExists = (e) => statusOf(e) === "409" || /already exists|duplicate/i.test(e?.message ?? "");

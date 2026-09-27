@@ -125,11 +125,13 @@ Example SCQ row:
 
 - Text fields are rendered with `dangerouslySetInnerHTML` (`MathContent.tsx`). The importer therefore **rejects** `<script>`, `<iframe>`, `<object>`, `<embed>`, `<form>`, `<link>`, `<meta>`, `<base>`, `on…=` handlers and `javascript:` URLs.
 - Maths should be written as LaTeX inside `\( … \)` or `\[ … \]`, which KaTeX renders. MathML is passed through unchanged.
-- **Images (current importer behaviour):**
-  - `<img src="data:image/...;base64,…">` is accepted (this is what the app's PDF import writes, `upload/save/route.ts:24-30`).
-  - `https://` URLs are accepted with a warning.
-  - Relative paths such as `image1.png`, and `<img>` without `src`, are **rejected**, because they would render as broken images.
-  - Inline base64 is only a fallback. The **intended** design is private Supabase Storage with stable references; see §9, G5. It is not built yet because it needs one new app route (approval pending).
+- **Images** go to the private `question-media` bucket (rules: `src/lib/questionMedia/core.ts`; see §9, G5):
+  - **`<img src="media:figs/q12.png">`** refers to a file under `--media-dir`. This is the preferred form.
+  - **`<img src="data:image/...;base64,…">`** inline images are **moved to storage** as well (named `inline-1`, `inline-2`, …), unless `--keep-inline-images` is given.
+  - **Validation happens locally, by content:** PNG, JPEG, GIF or WebP; not empty; at most 10 MB; the extension must match the content. SVG is refused. Paths must stay inside `--media-dir` (no `..` and no absolute paths).
+  - **Deterministic object path:** `newbank/<question_id>/<source name>-<first 12 hex of SHA-256>.<ext>`. The same bytes always get the same path; changed bytes get a new one, so nothing is overwritten.
+  - **The stored HTML** gets `src="/api/question-media/<path>"`: a stable app route, never a public or signed URL. `raw_data[0]._newbank.media` records each reference: `field`, `source`, `original_name`, `file_name`, `storage_path`, `sha256`, `bytes`, `mime`.
+  - **`https://` URLs** are accepted with a warning. Relative paths without `media:`, and `<img>` without `src`, are **rejected**.
 
 ---
 
@@ -185,6 +187,7 @@ children: any non-parent type, with parent_source_key = parent's source_key
 node scripts/newbank/import-questions.mjs --input=data/newbank/in/source.jsonl
 node scripts/newbank/import-questions.mjs --input=... --limit=10            # trial selection
 node scripts/newbank/import-questions.mjs --input=... --only=KEY1,KEY2      # exact trial set
+node scripts/newbank/import-questions.mjs --input=... --media-dir=data/newbank/in/images   # resolve media:<file> images (still local only)
 
 # 2. dry run with read-only DB checks (existing rows, legacy-id conflicts)
 node --env-file=.env.local scripts/newbank/import-questions.mjs --input=... --only=... \
@@ -218,10 +221,10 @@ The DB client uses the secret key, which bypasses RLS. It is read only from the 
 | # | Gap | Status |
 |---|---|---|
 | G1 | No `created_at` on `qbg_questions` | open, optional |
-| G2 | No order for comprehension children | **migration written:** `scripts/sql/003_new_question_bank_support.sql` §1–2 (not applied) |
+| G2 | No order for comprehension children | **done:** `scripts/sql/003_new_question_bank_support.sql` §1–2 (applied to the live project) + app/importer |
 | G3 | `parent_question_id` has no foreign key | open, optional hardening |
 | G4 | No numeric range/tolerance answers | open; only if the source needs it |
-| G5 | No question-image workflow | **bucket written:** `003` §3 (not applied); app route + importer upload still to build |
+| G5 | No question-image workflow | **done:** `003` §3 bucket (applied) + `/api/question-media` read/upload routes + importer image upload |
 | G6 | Word export ignores imported questions | open (app change) |
 | G7 | App vocabulary drift | open (cleanup) |
 | R1 | Recovery importer could write to the new-bank project | **fixed** in `scripts/data/import/lib/importer.mjs` |
@@ -254,13 +257,26 @@ Covered by `003`; see §10.
   - there is no update or delete policy, so objects are immutable to users;
   - no policy names anon.
 - **Reference in the question record:** the question stores only the storage path, wrapped in an app route: `<img src="/api/question-media/newbank/<question_id>/<filename>">`. There are no public or signed URLs in the data, and no secret key in the browser.
-- **Still to build (next step, needs approval):**
-  1. The route `GET /api/question-media/[...path]`. It checks the session and the read permission, runs as the **user's** Supabase client (RLS applies), allows only the `newbank/` prefix, and returns a 302 to a short-lived signed URL.
-  2. Importer support:
-     - the input uses `<img src="media:<file>">` plus `--media-dir`;
-     - a dry run checks the files exist, hashes them and reports sizes;
-     - `--apply` uploads to `newbank/<question_id>/<filename>` (skipping an identical existing object; refusing a different one with the same name) and rewrites `src`;
-     - provenance goes in `raw_data[0]._newbank.media`.
+- **Built.** All rules live in `src/lib/questionMedia/core.ts`, and a test keeps them identical to the `003` policies.
+  1. **Read:** `GET /api/question-media/newbank/<question_id>/<file>`.
+     - Returns 401 without a session, and 403 without a read permission.
+     - Returns 400 for any path outside the policy's pattern, and 404 when the object is missing or not visible.
+     - Otherwise it returns a **302 to a 5-minute signed URL** (`Cache-Control: private, max-age=240`).
+  2. **Upload:** `POST /api/question-media`, multipart with `question_id` and `file`.
+     - Needs `manual_question_entry`, `upload_pdf` or `edit_metadata`, and is refused **before** the body is read otherwise.
+     - Validates the bytes (type, size, extension and declared MIME), and the question must exist.
+     - Stores at the deterministic path with `upsert: false`, and returns `{ path, src, file_name, original_name, sha256, bytes, mime }`.
+     - Same bytes again: `200 already_exists`. A different object at the path: `409`, never overwritten.
+  3. **Clients:**
+     - A real session uses the **user's own** Supabase client, so storage RLS applies on top of the route check.
+     - Only the dev-auth bypass (never in production) uses the server-only client after the permission check.
+     - Nothing in the browser holds a key.
+  4. **Importer:** `--media-dir` / `--keep-inline-images`; see §5 and §8.
+     - A dry run and `--check-db` validate locally and **upload nothing**.
+     - With `--apply`, a question's images are uploaded **before** its row is written, and a failed image holds back its whole passage group.
+     - An object already present is reused only if its SHA-256 matches, and never overwritten.
+     - Read-back re-hashes every stored image.
+- **Not yet:** there is no editor UI button that calls the upload route (the TinyMCE image hook is a later step), and the Word export still ignores these images (G6).
 - `docx-media` is **not** used for the new bank.
 - **Blocks:** trial only if the trial questions have images; production if the source has images.
 

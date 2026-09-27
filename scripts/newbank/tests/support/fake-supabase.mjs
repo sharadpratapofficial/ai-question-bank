@@ -40,6 +40,36 @@ class Query {
     }
 }
 
+/** Buckets as created by 003 (the importer uses the secret key, so only bucket rules apply). */
+const BUCKETS = { "question-media": { limit: 10 * 1024 * 1024, mime: ["image/png", "image/jpeg", "image/gif", "image/webp"] } };
+
+function storageBucket(bucket) {
+    return {
+        async upload(path, bytes, opts = {}) {
+            const s = load();
+            const rules = BUCKETS[bucket];
+            if (!rules) return { error: { message: "Bucket not found", statusCode: "404" } };
+            const buf = Buffer.from(bytes);
+            if (buf.length > rules.limit) return { error: { message: "The object exceeded the maximum allowed size", statusCode: "413" } };
+            if (!rules.mime.includes(opts.contentType)) return { error: { message: `mime type ${opts.contentType} is not supported`, statusCode: "415" } };
+            const objects = ((s.storage ??= {})[bucket] ??= {});
+            if (objects[path] && !opts.upsert) return { error: { message: "The resource already exists", statusCode: "409" } };
+            objects[path] = { data: buf.toString("base64"), contentType: opts.contentType };
+            s.storageWrites = (s.storageWrites ?? 0) + 1;
+            save(s);
+            return { data: { path }, error: null };
+        },
+        async download(path) {
+            const s = load();
+            s.storageReads = (s.storageReads ?? 0) + 1; save(s);
+            const o = s.storage?.[bucket]?.[path];
+            if (!o) return { data: null, error: { message: "Object not found", statusCode: "404" } };
+            const buf = Buffer.from(o.data, "base64");
+            return { data: { arrayBuffer: async () => buf.buffer.slice(buf.byteOffset, buf.byteOffset + buf.length) }, error: null };
+        },
+    };
+}
+
 export function createClient() {
-    return { from: (table) => new Query(table) };
+    return { from: (table) => new Query(table), storage: { from: (bucket) => storageBucket(bucket) } };
 }

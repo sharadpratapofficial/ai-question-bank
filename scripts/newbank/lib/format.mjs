@@ -111,24 +111,36 @@ const IMG_SRC_RE = /<img\b[^>]*?\ssrc\s*=\s*("([^"]*)"|'([^']*)'|([^\s>]+))/gi;
 const IMG_TAG_RE = /<img\b[^>]*>/gi;
 const MAX_DATA_URL_BYTES = 2 * 1024 * 1024;
 
-function checkHtml(field, html, errors, warnings, stats) {
+function checkHtml(field, html, errors, warnings, stats, mediaEnabled) {
     for (const [re, what] of UNSAFE_HTML) if (re.test(html)) errors.push(`${field}: contains ${what}`);
     const tags = html.match(IMG_TAG_RE) || [];
     let withSrc = 0;
     for (const m of html.matchAll(IMG_SRC_RE)) {
         withSrc++;
         const src = (m[2] ?? m[3] ?? m[4] ?? "").trim();
-        if (/^data:image\/(png|jpe?g|gif|webp|svg\+xml);base64,/i.test(src)) {
+        if (/^media:/i.test(src)) {
+            // resolved (read + validated locally) by the media resolver; see lib/media.mjs
+            stats.images++;
+            if (!mediaEnabled) errors.push(`${field}: ${src.slice(0, 80)} needs the importer's media support (--media-dir)`);
+        } else if (/^data:image\/(png|jpe?g|gif|webp|svg\+xml);base64,/i.test(src)) {
             stats.images++;
             if (src.length * 0.75 > MAX_DATA_URL_BYTES) warnings.push(`${field}: embedded image larger than 2 MB`);
         } else if (/^https:\/\//i.test(src)) {
             stats.images++;
             warnings.push(`${field}: image hosted externally (${src.slice(0, 80)}) - it must stay reachable`);
         } else {
-            errors.push(`${field}: image src is not embeddable (${src.slice(0, 80) || "empty"}); use a data:image/...;base64 URL or https URL`);
+            errors.push(`${field}: image src is not embeddable (${src.slice(0, 80) || "empty"}); use media:<file> with --media-dir (preferred), a data:image/...;base64 URL, or an https URL`);
         }
     }
     if (tags.length > withSrc) errors.push(`${field}: <img> without src`);
+}
+
+/** Replace each <img src> for which resolveSrc(field, src) returns a new value; everything else is untouched. */
+function rewriteImageSrcs(field, html, resolveSrc) {
+    return html.replace(IMG_SRC_RE, (whole, token, dq, sq, bare) => {
+        const next = resolveSrc(field, (dq ?? sq ?? bare ?? "").trim());
+        return next === null ? whole : whole.slice(0, whole.length - token.length) + `"${next}"`;
+    });
 }
 
 // ---------------------------------------------------------------------------
@@ -316,9 +328,31 @@ export function mapRecord(rec, ctx = {}) {
         if (present(rec.answer)) errors.push("a passage parent must not have an answer (answers belong to its child questions)");
     }
 
-    for (const [f, v] of [["question_text", questionText], ["solution_text", solutionText]]) if (v) checkHtml(f, v, errors, warnings, stats);
-    if (Array.isArray(rec.options)) rec.options.forEach((o, i) => isStr(o) && checkHtml(`options[${i}]`, o, errors, warnings, stats));
+    const mediaEnabled = typeof ctx.resolveMedia === "function";
+    for (const [f, v] of [["question_text", questionText], ["solution_text", solutionText]]) if (v) checkHtml(f, v, errors, warnings, stats, mediaEnabled);
+    if (Array.isArray(rec.options)) rec.options.forEach((o, i) => isStr(o) && checkHtml(`options[${i}]`, o, errors, warnings, stats, mediaEnabled));
     if (!solutionText && spec && spec.kind !== "parent") warnings.push("no solution_text");
+
+    // Images -> question-media paths. Deterministic (path = question id + name + content hash),
+    // so the rewritten HTML and the content hash are the same on every run.
+    const media = [];
+    const uploads = new Map(); // storage_path -> upload job (deduplicated within the question)
+    let questionTextOut = questionText, solutionTextOut = solutionText;
+    if (!errors.length && mediaEnabled) {
+        const qid = questionIdFor(sourceKey);
+        let inline = 0;
+        const resolveSrc = (field, src) => {
+            const r = ctx.resolveMedia(src, { questionId: qid, field, inlineIndex: /^data:/i.test(src) ? ++inline : 0 });
+            if (r.kind === "error") { errors.push(r.error); return null; }
+            if (r.kind !== "media") return null;
+            media.push(r.record);
+            uploads.set(r.upload.storage_path, r.upload);
+            return r.src;
+        };
+        questionTextOut = rewriteImageSrcs("question_text", questionText, resolveSrc);
+        if (solutionText) solutionTextOut = rewriteImageSrcs("solution_text", solutionText, resolveSrc);
+        if (spec?.kind === "option") options = options.map((o, i) => ({ ...o, text: rewriteImageSrcs(`options[${i}]`, o.text, resolveSrc) }));
+    }
 
     if (errors.length) return { ok: false, errors, warnings, row: null, meta: { source_key: isStr(sourceKey) ? sourceKey : null } };
 
@@ -328,10 +362,10 @@ export function mapRecord(rec, ctx = {}) {
         // App convention (every writer in src/) is qbg_id = question_id; a genuinely known
         // legacy QBG id takes its place. The detail page displays it; the API forbids editing it.
         qbg_id: legacyQbgId ?? questionId,
-        question_text: questionText,
+        question_text: questionTextOut,
         options,
         answer_key: answerKey,
-        solution_text: solutionText,
+        solution_text: solutionTextOut,
         question_type: questionType,
         subject,
         chapter,
@@ -363,6 +397,8 @@ export function mapRecord(rec, ctx = {}) {
             source_file_sha256: ctx.sourceSha256 ?? null,
             record_number: ctx.recordNumber ?? null,
             provenance: present(rec.provenance) ? rec.provenance : null,
+            // one entry per image reference: where it came from and where it is stored
+            media,
         },
     }];
     return {
@@ -370,6 +406,7 @@ export function mapRecord(rec, ctx = {}) {
         meta: {
             source_key: sourceKey, kind: spec.kind, parent_source_key: present(parentSourceKey) ? parentSourceKey : null,
             child_order: childOrder, legacy_qbg_id: legacyQbgId, images: stats.images, content_hash: hash,
+            media: [...uploads.values()],
             fingerprint: fingerprintText(questionText) + "\u0000" + options.map((o) => fingerprintText(o.text)).join("\u0001"),
         },
     };

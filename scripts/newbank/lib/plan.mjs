@@ -4,6 +4,7 @@
  * (lib/target.mjs, or an in-memory fake in tests).
  */
 import { mapRecord, contentHash } from "./format.mjs";
+import { sha256 } from "./media.mjs";
 
 /** Parse .jsonl (one object per line) or .json (array of objects). Parse errors become per-record entries. */
 export function parseInput(text, filename) {
@@ -41,7 +42,7 @@ export function buildPlan(entries, ctx = {}) {
 
     for (const e of entries) {
         if (e.parseError) { reject(e.recordNumber, null, [`invalid JSON: ${e.parseError}`]); continue; }
-        const r = mapRecord(e.value, { sourceFile: ctx.sourceFile, sourceSha256: ctx.sourceSha256, recordNumber: e.recordNumber });
+        const r = mapRecord(e.value, { sourceFile: ctx.sourceFile, sourceSha256: ctx.sourceSha256, recordNumber: e.recordNumber, resolveMedia: ctx.resolveMedia });
         const key = r.meta.source_key ?? (typeof e.value?.source_key === "string" ? e.value.source_key.trim() : null);
         if (key) allByKey.set(key, [...(allByKey.get(key) || []), e.recordNumber]);
         const pk = typeof e.value?.parent_source_key === "string" ? e.value.parent_source_key.trim() : null;
@@ -135,6 +136,9 @@ export function selectUnits(units, { only = null, limit = null } = {}) {
  */
 export async function classify(units, target, { updateExisting = false } = {}) {
     const rows = units.flat().map((v) => v.row);
+    // per row: its unit (a passage group moves together) and its image upload jobs
+    const unitOf = new Map(), mediaOf = new Map();
+    for (const u of units) for (const v of u) { unitOf.set(v.row.question_id, u[0].row.question_id); mediaOf.set(v.row.question_id, v.meta.media ?? []); }
     const existing = await target.fetchByIds(rows.map((r) => r.question_id));
     const legacyIds = rows.map((r) => r.raw_data[0]._newbank.legacy_qbg_id).filter(Boolean);
     const legacyHolders = legacyIds.length ? await target.fetchByQbgIds(legacyIds) : [];
@@ -156,7 +160,7 @@ export async function classify(units, target, { updateExisting = false } = {}) {
             else if (ex.status !== "verification_pending") d = { action: "skip", reason: `already reviewed (status ${ex.status}); not overwritten` };
             else d = { action: "update" };
         }
-        decisions.set(row.question_id, { ...d, row, existing: ex ?? null });
+        decisions.set(row.question_id, { ...d, row, existing: ex ?? null, unit: unitOf.get(row.question_id), media: mediaOf.get(row.question_id) });
     }
     // A passage group moves together: if any member is rejected, reject the rest of the group.
     for (const u of units) {
@@ -173,23 +177,57 @@ export async function classify(units, target, { updateExisting = false } = {}) {
 const CONTENT_COLUMNS = ["qbg_id", "question_text", "options", "answer_key", "solution_text", "question_type", "subject", "chapter", "topic", "subtopic", "source", "difficutly_level", "class_level", "exam", "parent_question_id", "child_order"];
 
 /**
- * Write the decided inserts/updates, then read every written row back and compare content hashes.
+ * Upload each written question's images, then write the rows, then read everything back.
+ *   - Images go first: a row is only written once all of its images are stored, so the
+ *     database never references a missing object. A failed image holds back its whole unit.
+ *   - Uploads never overwrite. An object already at the path is accepted only when its bytes
+ *     hash to the same SHA-256 (a retry); anything else is a conflict and the unit is not written.
+ *   - Read-back compares every written row's content hash and every image's SHA-256.
  * opts: { asUser: uuid|null, now: ISO string, batchSize }
  */
 export async function applyDecisions(decisions, target, { asUser = null, now = new Date().toISOString(), batchSize = 100, log = () => {} } = {}) {
     const stamp = (row) => ({ ...row, raw_data: [{ ...row.raw_data[0], _newbank: { ...row.raw_data[0]._newbank, imported_at: now } }] });
-    const inserts = [], updates = [];
-    for (const d of decisions.values()) {
-        if (d.action === "insert") inserts.push({ ...stamp(d.row), created_by: asUser, last_modified_by: asUser, last_modified_at: now });
-        if (d.action === "update") updates.push(d);
+    const result = { inserted: 0, updated: 0, failed: [], media: { uploaded: 0, already_present: 0, failed: 0 } };
+    const toWrite = [...decisions.values()].filter((d) => d.action === "insert" || d.action === "update");
+
+    // 1. images
+    const failedUnits = new Map(); // unit -> reason
+    const uploaded = new Map(); // storage_path -> sha256 (one upload per path per run)
+    for (const d of toWrite) {
+        if (failedUnits.has(d.unit)) continue;
+        for (const m of d.media ?? []) {
+            if (uploaded.get(m.storage_path) === m.sha256) continue;
+            try {
+                const r = await target.uploadMedia(m.storage_path, m.load(), m.mime);
+                if (r === "uploaded") { result.media.uploaded++; log({ event: "media_uploaded", path: m.storage_path }); }
+                else {
+                    const got = await target.downloadMedia(m.storage_path);
+                    if (!got || sha256(got) !== m.sha256) throw new Error(`a different object already exists at ${m.storage_path}; it is never overwritten`);
+                    result.media.already_present++;
+                    log({ event: "media_already_present", path: m.storage_path });
+                }
+                uploaded.set(m.storage_path, m.sha256);
+            } catch (e) {
+                result.media.failed++;
+                failedUnits.set(d.unit, e.message);
+                log({ event: "media_failed", path: m.storage_path, error: e.message });
+                break;
+            }
+        }
     }
-    const result = { inserted: 0, updated: 0, failed: [] };
+    for (const d of toWrite) {
+        if (failedUnits.has(d.unit)) result.failed.push({ stage: "media", question_ids: [d.row.question_id], error: failedUnits.get(d.unit) });
+    }
+    const ready = toWrite.filter((d) => !failedUnits.has(d.unit));
+
+    // 2. rows
+    const inserts = ready.filter((d) => d.action === "insert").map((d) => ({ ...stamp(d.row), created_by: asUser, last_modified_by: asUser, last_modified_at: now }));
     for (let i = 0; i < inserts.length; i += batchSize) {
         const batch = inserts.slice(i, i + batchSize);
         try { await target.insert(batch); result.inserted += batch.length; log({ event: "insert_batch", rows: batch.length }); }
         catch (e) { result.failed.push({ stage: "insert", question_ids: batch.map((r) => r.question_id), error: e.message }); log({ event: "insert_failed", error: e.message }); }
     }
-    for (const d of updates) {
+    for (const d of ready.filter((x) => x.action === "update")) {
         const s = stamp(d.row);
         const patch = Object.fromEntries(CONTENT_COLUMNS.map((c) => [c, s[c]]));
         // keep whatever the app added to raw_data (e.g. ai_metadata); only replace our own block
@@ -201,15 +239,21 @@ export async function applyDecisions(decisions, target, { asUser = null, now = n
         catch (e) { result.failed.push({ stage: "update", question_ids: [d.row.question_id], error: e.message }); }
     }
 
-    // Read-back verification.
-    const written = [...decisions.values()].filter((d) => d.action === "insert" || d.action === "update").map((d) => d.row);
-    const back = await target.fetchByIds(written.map((r) => r.question_id));
+    // 3. read-back: rows written in this run (including failed attempts, which must be absent or unchanged)
+    const failedIds = new Set(result.failed.flatMap((f) => f.question_ids));
+    const written = ready.filter((d) => !failedIds.has(d.row.question_id));
+    const back = await target.fetchByIds(written.map((d) => d.row.question_id));
     const mismatches = [];
-    for (const r of written) {
-        const got = back.get(r.question_id);
-        if (!got) mismatches.push({ question_id: r.question_id, problem: "not found on read-back" });
-        else if (contentHash(got) !== r.raw_data[0]._newbank.content_hash) mismatches.push({ question_id: r.question_id, problem: "content differs on read-back" });
+    for (const d of written) {
+        const got = back.get(d.row.question_id);
+        if (!got) mismatches.push({ question_id: d.row.question_id, problem: "not found on read-back" });
+        else if (contentHash(got) !== d.row.raw_data[0]._newbank.content_hash) mismatches.push({ question_id: d.row.question_id, problem: "content differs on read-back" });
+        for (const m of d.media ?? []) {
+            const bytes = await target.downloadMedia(m.storage_path);
+            if (!bytes) mismatches.push({ question_id: d.row.question_id, problem: `image missing: ${m.storage_path}` });
+            else if (sha256(bytes) !== m.sha256) mismatches.push({ question_id: d.row.question_id, problem: `image differs: ${m.storage_path}` });
+        }
     }
-    result.read_back = { checked: written.length, ok: written.length - mismatches.length, mismatches };
+    result.read_back = { checked: written.length, ok: written.length - new Set(mismatches.map((x) => x.question_id)).size, mismatches };
     return result;
 }
