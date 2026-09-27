@@ -72,7 +72,9 @@ sub-step ordering, called out below):
 CREATE TABLE IF NOT EXISTS public.qbg_questions (
     question_id         uuid PRIMARY KEY DEFAULT gen_random_uuid(),
     qbg_id               text UNIQUE,              -- external QBG system id
-    question_text        text NOT NULL,             -- HTML, may contain MathML/<img>
+    question_text        text,                     -- HTML, may contain MathML/<img>. Nullable here (not NOT NULL
+                                                    -- as originally assumed) because §3's reseed path has no real
+                                                    -- question content to put here -- see §3.
     options              jsonb NOT NULL DEFAULT '[]'::jsonb, -- QuestionOption[]: {text, isCorrect}
     answer_key           jsonb,                    -- number | number[] (mixed: [1] SCQ, [1,3] MCQ, 243 Integer)
     solution_text        text,                     -- HTML, may contain MathML
@@ -89,6 +91,14 @@ CREATE TABLE IF NOT EXISTS public.qbg_questions (
     exam                 text[],                    -- e.g. ["JEE Mains", "NEET"] — added by migrate-extract-raw-data.mjs
     class_level          text,                     -- "11" / "12" — added by migrate-extract-raw-data.mjs
     source_docx          jsonb,                    -- added by add_source_docx_and_docx_media_bucket.sql
+    -- Not part of the original app's schema (not referenced anywhere in
+    -- src/ or scripts/sql/) -- added here specifically so the §3 metadata
+    -- reseed has somewhere queryable to put these, instead of burying them
+    -- in raw_data. Drop them if/when real content import supersedes them.
+    question_file_link   text,
+    solution_file_link   text,
+    content_imported      boolean NOT NULL DEFAULT false, -- false = metadata-only row from the §3 reseed;
+                                                           -- true once real question_text/options/solution_text exist
     created_at           timestamptz NOT NULL DEFAULT now(),
     updated_at           timestamptz NOT NULL DEFAULT now()
     -- status / created_by / last_modified_by / last_modified_at are added
@@ -142,6 +152,13 @@ Uncertain points to sanity-check once you're actually seeding data:
 `subject` isn't a column in ChemBank since it's 100% Chemistry already —
 set it as a constant on insert.
 
-This reshaping (answer_key, options) is real work, not a straight column
-copy — flag if/when you want me to write the actual import script once a
-Supabase project exists to point it at.
+This reshaping is done by `scripts/reseed_chem_question_bank.mjs` — see that
+file's header for exactly what it does (and does not) populate, and usage:
+
+```
+SUPABASE_URL=... SUPABASE_SERVICE_ROLE_KEY=... \
+  node scripts/reseed_chem_question_bank.mjs path/to/Chem_Question_Bank.xlsx
+```
+
+Run with `--dry-run` first (no env vars needed) to preview the transformed
+rows before writing anything.
