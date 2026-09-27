@@ -1,19 +1,13 @@
-import { createClient } from "@supabase/supabase-js";
+import type { createClient } from "@supabase/supabase-js";
 import type { Question, QuestionOption, FilterState, MetadataHierarchy } from "@/types";
 import { TABLE_NAME, DEFAULT_PAGE_SIZE, SUPABASE_MAX_ROWS } from "@/lib/constants";
 import { sortChaptersForSubject } from "@/lib/chapterOrder";
+import { getSupabaseAdmin } from "@/lib/supabase/admin";
 
 // Singleton client for API routes / server usage
-let supabaseInstance: ReturnType<typeof createClient> | null = null;
 
 function getSupabase(): any {
-    if (!supabaseInstance) {
-        supabaseInstance = createClient(
-            process.env.NEXT_PUBLIC_SUPABASE_URL!,
-            process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-        );
-    }
-    return supabaseInstance;
+        return getSupabaseAdmin(); // itself a process-wide singleton
 }
 
 // ==================== QUESTIONS ====================

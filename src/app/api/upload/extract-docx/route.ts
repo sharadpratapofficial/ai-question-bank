@@ -14,6 +14,7 @@
  *      row (document_type='docx'). The review UI lets the user check + edit
  *      metadata and commit selected rows to qbg_questions.
  */
+import { hasDevAuthCookie } from "@/lib/auth/devAuth";
 import { NextRequest, NextResponse } from "next/server";
 import type {
     DocxExtractedQuestion,
@@ -71,7 +72,7 @@ export async function POST(request: NextRequest) {
             } = await supabase.auth.getUser();
             if (user) {
                 resolvedApiKey = sanitizeUserApiKeys(user.user_metadata?.api_keys)[body.provider] || "";
-            } else if (request.cookies.get("qbg_dev_auth")?.value === "1") {
+            } else if (hasDevAuthCookie(request.cookies)) {
                 resolvedApiKey = request.headers.get("x-dev-api-key")?.trim() || "";
             }
         }

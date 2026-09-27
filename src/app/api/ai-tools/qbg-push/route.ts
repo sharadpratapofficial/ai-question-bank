@@ -13,6 +13,7 @@
  *
  * QBG (PenPencil) credentials come from the caller's saved "qbg" vault key.
  */
+import { hasDevAuthCookie } from "@/lib/auth/devAuth";
 import { NextRequest, NextResponse } from "next/server";
 import { createClient as createServerClient } from "@/lib/supabase/server";
 import { sanitizeUserApiKeys, parseQbgProviderConfig } from "@/lib/userApiKeys";
@@ -116,7 +117,7 @@ export async function POST(req: NextRequest) {
         let creds: QbgCreds | undefined;
         const supabase = await createServerClient();
         const { data: { user } } = await supabase.auth.getUser();
-        const isDev = req.cookies.get("qbg_dev_auth")?.value === "1";
+        const isDev = hasDevAuthCookie(req.cookies);
         if (user) {
             creds = parseQbgProviderConfig(sanitizeUserApiKeys(user.user_metadata?.api_keys).qbg);
         } else if (isDev) {

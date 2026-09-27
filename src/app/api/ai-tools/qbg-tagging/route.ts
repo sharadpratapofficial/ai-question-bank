@@ -19,6 +19,7 @@
  *
  * QBG (PenPencil) credentials are read from the caller's saved "qbg" vault key.
  */
+import { hasDevAuthCookie } from "@/lib/auth/devAuth";
 import { NextRequest, NextResponse } from "next/server";
 import { createClient as createServerClient } from "@/lib/supabase/server";
 import { createClient as createAnonClient } from "@supabase/supabase-js";
@@ -35,6 +36,7 @@ import { checkPermission, getCurrentUserWithRole } from "@/lib/auth/serverAuth";
 import { createTask, completeTask, failTask, startHeartbeat } from "@/lib/api/qbgTaskStore";
 import { type QbgCreds } from "@/lib/api/qbgModification";
 import { QBG_TAG_PROVIDERS, type QbgTagProvider } from "@/lib/api/qbgTagging";
+import { getSupabaseUrl, getSupabasePublishableKey } from "@/lib/supabase/env";
 import {
     enqueueTagJob,
     getJob,
@@ -72,8 +74,8 @@ async function persistReport(
     if (!accessToken || !userId) return;
     try {
         const db = createAnonClient(
-            process.env.NEXT_PUBLIC_SUPABASE_URL!,
-            process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+            getSupabaseUrl(),
+            getSupabasePublishableKey(),
             {
                 auth: { persistSession: false, autoRefreshToken: false },
                 global: { headers: { Authorization: `Bearer ${accessToken}` } },
@@ -128,7 +130,7 @@ export async function POST(req: NextRequest) {
         let qbgCreds: QbgCreds | undefined;
         const supabase = await createServerClient();
         const { data: { user } } = await supabase.auth.getUser();
-        const isDev = req.cookies.get("qbg_dev_auth")?.value === "1";
+        const isDev = hasDevAuthCookie(req.cookies);
         let accessToken = "";
         const userId = user?.id || "";
         if (user) {

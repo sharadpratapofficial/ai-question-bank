@@ -14,8 +14,8 @@
  * Returns: { success, counts: number[] } — aligned with the input slots.
  */
 import { NextRequest, NextResponse } from "next/server";
-import { createClient } from "@supabase/supabase-js";
 import { checkPermission } from "@/lib/auth/serverAuth";
+import { getSupabaseAdmin } from "@/lib/supabase/admin";
 
 export const runtime = "nodejs";
 
@@ -42,11 +42,7 @@ interface Body {
 }
 
 function db() {
-    return createClient(
-        process.env.NEXT_PUBLIC_SUPABASE_URL!,
-        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-        { auth: { persistSession: false, autoRefreshToken: false } }
-    );
+    return getSupabaseAdmin();
 }
 
 /**

@@ -3,13 +3,16 @@ import {
     deleteFinalizedTestHistory,
     getFinalizedTestHistoryDetail,
 } from "@/lib/api/testHistory";
-import { checkPermission } from "@/lib/auth/serverAuth";
+import { checkPermission, checkAnyPermission } from "@/lib/auth/serverAuth";
 
 type RouteContext = {
     params: Promise<{ id: string }>;
 };
 
 export async function GET(_req: NextRequest, context: RouteContext) {
+    // Reads through the server-only client, so this route is the access check.
+    const forbid = await checkAnyPermission(["generate_tests"]);
+    if (forbid) return forbid;
     try {
         const { id } = await context.params;
         const detail = await getFinalizedTestHistoryDetail(id);

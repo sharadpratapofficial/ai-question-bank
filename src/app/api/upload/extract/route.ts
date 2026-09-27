@@ -5,6 +5,7 @@
  * result is now ALSO persisted to public.pdf_extraction_reports so the user
  * can navigate away mid-extraction and come back to the report later.
  */
+import { hasDevAuthCookie } from "@/lib/auth/devAuth";
 import { NextRequest, NextResponse } from "next/server";
 import { extractQuestionsFromPDF } from "@/lib/api/aiAdapters";
 import type { ExtractionRequest, ExtractionResponse } from "@/types/extraction";
@@ -73,7 +74,7 @@ export async function POST(request: NextRequest) {
 
             if (user) {
                 resolvedApiKey = sanitizeUserApiKeys(user.user_metadata?.api_keys)[body.provider] || "";
-            } else if (request.cookies.get("qbg_dev_auth")?.value === "1") {
+            } else if (hasDevAuthCookie(request.cookies)) {
                 resolvedApiKey = request.headers.get("x-dev-api-key")?.trim() || "";
             }
         }

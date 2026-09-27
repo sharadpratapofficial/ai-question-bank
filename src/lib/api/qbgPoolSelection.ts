@@ -13,9 +13,10 @@
  * `generateTests()` itself is NOT modified — the existing Tests feature stays
  * fully decoupled from this table.
  */
-import { createClient, type SupabaseClient } from "@supabase/supabase-js";
+import type { SupabaseClient } from "@supabase/supabase-js";
 import { SUPABASE_MAX_ROWS } from "@/lib/constants";
 import { compareChaptersBySubject } from "@/lib/chapterOrder";
+import { getSupabaseAdmin } from "@/lib/supabase/admin";
 import {
     resolvePlanRequirements,
     subjectAliases,
@@ -30,16 +31,8 @@ import {
     type SubjectRequirement,
 } from "@/types";
 
-let _db: SupabaseClient | null = null;
 function db(): SupabaseClient {
-    if (!_db) {
-        _db = createClient(
-            process.env.NEXT_PUBLIC_SUPABASE_URL!,
-            process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-            { auth: { persistSession: false, autoRefreshToken: false } }
-        );
-    }
-    return _db;
+        return getSupabaseAdmin(); // itself a process-wide singleton
 }
 
 const POOL_TABLE = "qbg_question_pool";

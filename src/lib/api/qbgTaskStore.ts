@@ -15,7 +15,8 @@
  * submitted, from any tab/browser, regardless of auth mode (dev-auth users get
  * user_id "dev").
  */
-import { createClient, type SupabaseClient } from "@supabase/supabase-js";
+import type { SupabaseClient } from "@supabase/supabase-js";
+import { getSupabaseAdmin } from "@/lib/supabase/admin";
 
 const TABLE = "qbg_tasks";
 
@@ -44,16 +45,8 @@ export interface QbgTaskRow {
     updated_at: string;
 }
 
-let _db: SupabaseClient | null = null;
 function db(): SupabaseClient {
-    if (!_db) {
-        _db = createClient(
-            process.env.NEXT_PUBLIC_SUPABASE_URL!,
-            process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-            { auth: { persistSession: false, autoRefreshToken: false } }
-        );
-    }
-    return _db;
+        return getSupabaseAdmin(); // itself a process-wide singleton
 }
 
 /** Insert the task row at submit time (status "running"). Best-effort: history must

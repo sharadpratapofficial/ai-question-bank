@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createClient } from "@supabase/supabase-js";
 import type { GeneratedTest } from "@/types";
 import { checkPermission } from "@/lib/auth/serverAuth";
+import { getSupabaseAdmin } from "@/lib/supabase/admin";
 
 const TESTS_TABLE = "qbg_generated_tests";
 
@@ -13,10 +13,7 @@ interface SavePayload {
 }
 
 function getSupabase() {
-    return createClient(
-        process.env.NEXT_PUBLIC_SUPABASE_URL!,
-        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-    );
+    return getSupabaseAdmin();
 }
 
 /**

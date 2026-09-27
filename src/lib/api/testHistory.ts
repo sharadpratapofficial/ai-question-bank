@@ -1,4 +1,4 @@
-import { createClient } from "@supabase/supabase-js";
+import type { createClient } from "@supabase/supabase-js";
 import { TABLE_NAME } from "@/lib/constants";
 import type {
     BatchOption,
@@ -14,13 +14,16 @@ import type {
 } from "@/types";
 import { getQuestionTypeLabel } from "@/types";
 import { fetchDefaultTranslations } from "@/lib/api/translations";
+import { getSupabaseAdmin } from "@/lib/supabase/admin";
+import { registerServerTranslationsClient } from "@/lib/api/translations";
+
+registerServerTranslationsClient(getSupabaseAdmin);
 
 const BATCHES_TABLE = "qbg_batches";
 const TESTS_TABLE = "qbg_generated_tests";
 const TEST_QUESTIONS_TABLE = "qbg_generated_test_questions";
 const FINALIZED_STATUS = "FINALIZED";
 
-let supabaseInstance: ReturnType<typeof createClient> | null = null;
 
 interface BatchRow {
     id: string | number;
@@ -77,13 +80,7 @@ interface BatchQuestionUsageResult {
 }
 
 function getSupabase(): any {
-    if (!supabaseInstance) {
-        supabaseInstance = createClient(
-            process.env.NEXT_PUBLIC_SUPABASE_URL!,
-            process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-        );
-    }
-    return supabaseInstance;
+        return getSupabaseAdmin(); // itself a process-wide singleton
 }
 
 function asErrorMessage(error: unknown): string {

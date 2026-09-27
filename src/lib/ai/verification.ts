@@ -1,3 +1,4 @@
+import { hasDevAuthCookie } from "@/lib/auth/devAuth";
 import type { NextRequest } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import {
@@ -58,7 +59,7 @@ export async function resolveAiProviderApiKey(
         return getProviderApiCredential(provider, stored);
     }
 
-    if (req.cookies.get("qbg_dev_auth")?.value === "1") {
+    if (hasDevAuthCookie(req.cookies)) {
         const stored = req.headers.get("x-dev-api-key")?.trim() || "";
         if (provider === "custom_openai") return stored;
         return getProviderApiCredential(provider, stored);

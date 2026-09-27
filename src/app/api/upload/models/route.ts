@@ -1,3 +1,4 @@
+import { hasDevAuthCookie } from "@/lib/auth/devAuth";
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import type { AIModelProvider, ModelOption } from "@/types/extraction";
@@ -233,7 +234,7 @@ export async function GET(request: NextRequest) {
             data: { user },
         } = await supabase.auth.getUser();
 
-        const hasDevAuth = request.cookies.get("qbg_dev_auth")?.value === "1";
+        const hasDevAuth = hasDevAuthCookie(request.cookies);
         const devApiKey = hasDevAuth ? request.headers.get("x-dev-api-key") : null;
         const { apiKey, baseUrl } = pickProviderSettings(providerParam, user?.user_metadata?.api_keys, devApiKey);
 

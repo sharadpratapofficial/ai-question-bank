@@ -1,18 +1,37 @@
-import { createClient } from "@supabase/supabase-js";
+import { createClient as createBrowserSessionClient } from "@/lib/supabase/client";
 import type { QuestionTranslation } from "@/types";
 
 const TABLE = "question_translations";
 
-let supabaseInstance: ReturnType<typeof createClient> | null = null;
+/**
+ * This module runs in two places:
+ *   - the browser (QuestionEditModal, tests page): uses the signed-in user's
+ *     cookie session, so Row Level Security applies to that user;
+ *   - the server (test generation / history): uses the client registered via
+ *     registerServerTranslationsClient() by those server modules (the
+ *     server-only admin client). It is injected rather than imported so this
+ *     browser-reachable module never references the secret-key module.
+ */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+let serverClientFactory: (() => any) | null = null;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+let browserClient: any = null;
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function registerServerTranslationsClient(factory: () => any): void {
+    serverClientFactory = factory;
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function getSupabase(): any {
-    if (!supabaseInstance) {
-        supabaseInstance = createClient(
-            process.env.NEXT_PUBLIC_SUPABASE_URL!,
-            process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-        );
+    if (typeof window !== "undefined") {
+        if (!browserClient) browserClient = createBrowserSessionClient();
+        return browserClient;
     }
-    return supabaseInstance;
+    if (!serverClientFactory) {
+        throw new Error("translations: no server client registered (call registerServerTranslationsClient from a server module).");
+    }
+    return serverClientFactory();
 }
 
 function normaliseLanguage(value: string): string {

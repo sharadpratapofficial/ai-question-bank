@@ -22,6 +22,7 @@ import { tmpdir } from "node:os";
 import { spawn } from "node:child_process";
 import { createClient as createSupabaseClient, type SupabaseClient } from "@supabase/supabase-js";
 import { resolvePythonBin } from "@/lib/pythonBin";
+import { getSupabaseUrl, getSupabasePublishableKey } from "@/lib/supabase/env";
 
 const ARTIFACT_BUCKET = "question-video-artifacts";
 const JOBS_TABLE = "question_video_jobs";
@@ -59,8 +60,8 @@ export function looksLikeDriveUrl(value: string): boolean {
 }
 
 function supabaseForToken(token?: string): SupabaseClient | null {
-    const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
-    const anon = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+    const url = getSupabaseUrl();
+    const anon = getSupabasePublishableKey();
     if (!url || !anon) return null;
     return createSupabaseClient(url, anon, {
         auth: { persistSession: false, autoRefreshToken: false },

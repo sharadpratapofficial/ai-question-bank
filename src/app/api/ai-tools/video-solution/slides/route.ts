@@ -17,6 +17,7 @@
  *
  * Synchronous and quick (~5-10 s for a 25-question paper).
  */
+import { hasDevAuthCookie } from "@/lib/auth/devAuth";
 import { NextRequest, NextResponse } from "next/server";
 import { checkAnyPermission } from "@/lib/auth/serverAuth";
 import { createClient as createServerClient } from "@/lib/supabase/server";
@@ -33,7 +34,7 @@ async function resolveQbgCreds(request: NextRequest): Promise<QbgCreds | undefin
         const keys = sanitizeUserApiKeys(user.user_metadata?.api_keys);
         return parseQbgProviderConfig(keys.qbg);
     }
-    const isDev = request.cookies.get("qbg_dev_auth")?.value === "1";
+    const isDev = hasDevAuthCookie(request.cookies);
     if (isDev) {
         const rawQbg = request.headers.get("x-dev-qbg")?.trim();
         if (rawQbg) return parseQbgProviderConfig(rawQbg);

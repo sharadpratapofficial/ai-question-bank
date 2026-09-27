@@ -1,16 +1,16 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createClient as createAnonClient } from "@supabase/supabase-js";
 import { createClient as createServerClient } from "@/lib/supabase/server";
 import { checkPermission } from "@/lib/auth/serverAuth";
+import { getSupabaseAdmin } from "@/lib/supabase/admin";
 import { isValidRole } from "@/lib/auth/permissions";
 
 const TABLE = "user_profiles";
 
+// user_profiles RLS only lets an admin read or update other users' rows, so
+// these queries must run as the caller (cookie session), not as a
+// session-less anon client that RLS sees as nobody.
 function getSupabase() {
-    return createAnonClient(
-        process.env.NEXT_PUBLIC_SUPABASE_URL!,
-        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-    );
+    return createServerClient();
 }
 
 /**
@@ -20,7 +20,7 @@ export async function GET() {
     const forbid = await checkPermission("manage_users");
     if (forbid) return forbid;
 
-    const supabase = getSupabase();
+    const supabase = await getSupabase();
     const { data, error } = await supabase
         .from(TABLE)
         .select("user_id, email, role, extra_permissions, display_name, created_at, updated_at")
@@ -37,10 +37,12 @@ export async function GET() {
 
 /**
  * Admin-only: create a new auth user + assign role.
- * Delegates to the SECURITY DEFINER Postgres function admin_create_user_with_role,
- * which writes into auth.users / auth.identities and re-checks the admin role
- * server-side. We must call it through the *user-session* client (not the bare
- * anon client) so auth.uid() inside the function returns the calling admin's id.
+ * Uses Supabase Auth's supported admin API (auth.admin.createUser) through the
+ * server-only secret-key client, instead of writing auth.users / auth.identities
+ * directly from SQL (the former admin_create_user_with_role function), which
+ * breaks when Supabase changes its auth schema. checkPermission("manage_users")
+ * above is the authorization; the auth.users trigger then creates the profile,
+ * whose role is set here.
  */
 export async function POST(req: NextRequest) {
     const forbid = await checkPermission("manage_users");
@@ -86,37 +88,35 @@ export async function POST(req: NextRequest) {
         );
     }
 
-    // Must use the cookie-aware client so auth.uid() is set inside the RPC.
-    const supabase = await createServerClient();
-    const { data: newUserId, error } = await supabase.rpc(
-        "admin_create_user_with_role",
-        {
-            p_email: email,
-            p_password: password,
-            p_role: role,
-            p_display_name: displayName,
-        }
-    );
+    const admin = getSupabaseAdmin();
+    const { data: created, error } = await admin.auth.admin.createUser({
+        email: email.toLowerCase(),
+        password,
+        email_confirm: true,
+        user_metadata: displayName ? { full_name: displayName } : {},
+    });
 
-    if (error) {
-        // 23505 = duplicate email, 42501 = permission, 22023 = bad input
-        const status =
-            error.code === "23505" ? 409 :
-            error.code === "42501" ? 403 :
-            error.code === "22023" ? 400 :
-            500;
+    if (error || !created?.user) {
+        const msg = error?.message || "Failed to create user.";
+        const status = /already|registered|exists/i.test(msg) ? 409 : error?.status && error.status < 500 ? 400 : 500;
+        return NextResponse.json({ success: false, error: msg }, { status });
+    }
+    const newUserId = created.user.id;
+
+    // The auth.users trigger created the profile with the default role; apply the requested one.
+    const { data: profile, error: profileError } = await admin
+        .from(TABLE)
+        .update({ role, display_name: displayName })
+        .eq("user_id", newUserId)
+        .select("user_id, email, role, extra_permissions, display_name, created_at, updated_at")
+        .maybeSingle();
+
+    if (profileError || !profile) {
         return NextResponse.json(
-            { success: false, error: error.message || "Failed to create user." },
-            { status }
+            { success: false, error: `User created, but assigning the role failed: ${profileError?.message ?? "profile row not found"}. Set it from the user list.`, user_id: newUserId },
+            { status: 500 }
         );
     }
-
-    // Fetch the new profile row to return to the client.
-    const { data: profile } = await getSupabase()
-        .from(TABLE)
-        .select("user_id, email, role, extra_permissions, display_name, created_at, updated_at")
-        .eq("user_id", newUserId as string)
-        .maybeSingle();
 
     return NextResponse.json({ success: true, user: profile, user_id: newUserId });
 }

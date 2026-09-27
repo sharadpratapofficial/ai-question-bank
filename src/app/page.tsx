@@ -112,19 +112,13 @@ export default function LandingPage() {
         let mounted = true;
 
         async function checkSession() {
-            if (document.cookie.includes("qbg_dev_auth=1")) {
-                router.replace(nextPath);
-                return;
-            }
-
             const {
                 data: { session },
             } = await supabase.auth.getSession();
 
             if (!mounted) return;
 
-            if (session) {
-                markLocalAuth();
+            if (session) {                
                 router.replace(nextPath);
                 return;
             }
@@ -137,8 +131,7 @@ export default function LandingPage() {
         const {
             data: { subscription },
         } = supabase.auth.onAuthStateChange((_event, session) => {
-            if (session) {
-                markLocalAuth();
+            if (session) {                
                 router.replace(nextPath);
             }
         });
@@ -192,8 +185,7 @@ export default function LandingPage() {
 
                 if (!data.session) {
                     setMessage("Account created. Please verify your email before signing in.");
-                } else {
-                    markLocalAuth();
+                } else {                    
                     router.replace(nextPath);
                 }
             } else {
@@ -201,8 +193,7 @@ export default function LandingPage() {
                     email: email.trim(),
                     password,
                 });
-                if (signInError) throw signInError;
-                markLocalAuth();
+                if (signInError) throw signInError;                
                 router.replace(nextPath);
             }
         } catch (err) {

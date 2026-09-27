@@ -4,7 +4,7 @@ import {
     deleteBatchOption,
     listBatchOptions,
 } from "@/lib/api/testHistory";
-import { checkPermission } from "@/lib/auth/serverAuth";
+import { checkPermission, checkAnyPermission } from "@/lib/auth/serverAuth";
 
 function isMissingHistoryTablesError(error: unknown): boolean {
     const msg =
@@ -15,6 +15,9 @@ function isMissingHistoryTablesError(error: unknown): boolean {
 }
 
 export async function GET() {
+    // Reads through the server-only client, so this route is the access check.
+    const forbid = await checkAnyPermission(["generate_tests", "create_batch"]);
+    if (forbid) return forbid;
     try {
         const batches = await listBatchOptions();
         return NextResponse.json({ success: true, batches });

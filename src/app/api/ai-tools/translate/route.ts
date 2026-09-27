@@ -1,3 +1,4 @@
+import { hasDevAuthCookie } from "@/lib/auth/devAuth";
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import {
@@ -238,7 +239,7 @@ export async function POST(req: NextRequest) {
 
             if (user) {
                 resolvedApiKey = sanitizeUserApiKeys(user.user_metadata?.api_keys)[provider as keyof ReturnType<typeof sanitizeUserApiKeys>] || "";
-            } else if (req.cookies.get("qbg_dev_auth")?.value === "1") {
+            } else if (hasDevAuthCookie(req.cookies)) {
                 resolvedApiKey = req.headers.get("x-dev-api-key")?.trim() || "";
             }
 
