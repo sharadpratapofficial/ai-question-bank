@@ -6,6 +6,7 @@
  */
 import path from "node:path";
 import { CANONICAL_DIR, streamJsonl } from "./common.mjs";
+import { coverageFor } from "./qc.mjs";
 
 const F = (f) => path.join(CANONICAL_DIR, f);
 
@@ -62,9 +63,34 @@ export function renderLineage(l) {
     const ans = l.metadata?.fields?.answer;
     lines.push(`Answer:\n${ind(`answer_key = ${JSON.stringify(r.answer_key)}`)}${ans ? "\n" + ans.candidates.map((c) => ind(`${JSON.stringify(c.value)} <- ${c.sources.map((s) => `${s.source} (${s.location}, raw ${JSON.stringify(s.raw)})`).join("; ")}`)).join("\n") + "\n" + ind(`status = ${ans.status === "SINGLE" ? "SINGLE SOURCE" : ans.status === "AGREE" ? "CONSISTENT" : ans.status}`) : r.answer_sources_agree !== undefined ? "\n" + ind(`answer key vs solution line: ${r.answer_sources_agree ? "CONSISTENT" : "CONFLICT"}`) : ""}`);
     lines.push(`Content:\n${ind(`question_text: ${r.question_text ? "present" + (r.extraction_status === "NEEDS_REVIEW" ? " (NEEDS_REVIEW: " + r.extraction_issues.join("; ") + ")" : "") : "NOT RECOVERED"}; solution_text: ${r.solution_text ? "present" : "NOT RECOVERED"}; options: ${Array.isArray(r.options) ? r.options.length : r.options_status ?? "none"}`)}`);
+    // ---- status matrix: every field, present or not, with where it came from
+    const localDocIds = new Set(l.documents.filter((d) => /^LOCAL/.test(d.availability || "")).map((d) => d.document_id));
+    const cov = coverageFor(r, { localDocIds });
+    const cp = r.content_provenance || {};
+    const at = (p) => {
+        if (!p) return "";
+        const where = [p.file, p.row_number ? `row ${p.row_number}` : null, p.paragraph !== undefined && p.paragraph !== null ? `para ${p.paragraph}` : null, p.locations ? p.locations.join("; ") : null].filter(Boolean).join(" ");
+        return ` <- ${p.source}${where ? ` (${where})` : ""}`;
+    };
+    const yn = (b) => (b ? "YES" : "no ");
+    const partial = (n) => (n ? ` [PARTIAL: ${n} unconverted equation placeholder(s)]` : "");
+    const docCount = [...(r.documents?.question_documents || []), ...(r.documents?.solution_documents || [])].length;
+    lines.push(`Status matrix:\n${[
+        ind(`question text     ${yn(cov.has_question_text)}${at(cp.question_text)}${partial(r.equation_placeholders?.question)}`),
+        ind(`options           ${yn(cov.has_options)}${at(cp.options)}${!cov.has_options && r.options_status ? ` [${r.options_status}]` : ""}`),
+        ind(`answer            ${yn(cov.has_answer)}${at(cp.answer)}`),
+        ind(`solution          ${yn(cov.has_solution)}${at(cp.solution_text)}${partial(r.equation_placeholders?.solution)}`),
+        ind(`metadata          ${yn(cov.has_metadata)}`),
+        ind(`source documents  ${yn(cov.has_any_source_document_ref)}${docCount ? ` (${docCount} referenced; ${localDocIds.size ? `${localDocIds.size} present locally` : "none present locally"})` : ""}`),
+        ind(`test usage        ${yn(cov.has_test_usage)}${r.test_usage ? ` (${r.test_usage.occurrence_count} occurrences)` : ""}`),
+        ind(`conflicts         ${cov.has_conflicts ? (cov.has_blocking_conflict ? "BLOCKING" : "open") : "none"}${l.conflicts.length ? ` [${[...new Set(l.conflicts.map((c) => c.analysis?.category || c.conflict_type))].join(", ")}]` : ""}`),
+        ind(`duplicate status  ${l.duplicates.length ? [...new Set(l.duplicates.map((d) => d.analysis?.category || d.duplicate_type))].join(", ") : "none"}`),
+        ind(`content source    ${r.content_source?.status ?? "n/a"}`),
+    ].join("\n")}`);
+    lines.push(`Still missing:\n${ind(cov.missing.length ? cov.missing.join(", ") : "nothing")}${cov.requires_external_source ? "\n" + ind("needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md") : cov.potentially_recoverable_locally ? "\n" + ind("a referenced document is present locally (not yet extracted)") : ""}`);
     lines.push(`Taxonomy:\n${ind(`${r.subject ?? "?"} > ${r.chapter ?? "?"} > ${r.topic ?? "?"} > ${r.subtopic ?? "?"} | type ${r.question_type ?? "?"} | difficulty ${r.difficulty_level ?? "?"} | class ${r.class_level ?? "?"}`)}`);
-    if (l.conflicts.length) lines.push(`Conflicts (${l.conflicts.length}):\n${l.conflicts.slice(0, 6).map((c) => ind(`${c.conflict_id} ${c.severity} ${c.conflict_type}: ${c.values.map((v) => JSON.stringify(v.value ?? v.raw)).join(" vs ")}`)).join("\n")}`);
-    if (l.duplicates.length) lines.push(`Duplicate groups:\n${l.duplicates.map((d) => ind(`${d.duplicate_group_id} ${d.duplicate_type} (${d.confidence}) ${d.detail ?? ""}`)).join("\n")}`);
+    if (l.conflicts.length) lines.push(`Conflicts (${l.conflicts.length}, all UNRESOLVED):\n${l.conflicts.slice(0, 6).map((c) => ind(`${c.conflict_id} ${c.severity} ${c.conflict_type} [${c.analysis?.category ?? "-"}]: ${c.values.map((v) => JSON.stringify(v.value ?? v.raw)).join(" vs ")}${c.analysis?.evidence_suggestion ? ` (evidence suggests ${c.analysis.evidence_suggestion.value}: ${c.analysis.evidence_suggestion.basis}; NOT applied)` : ""}`)).join("\n")}`);
+    if (l.duplicates.length) lines.push(`Duplicate groups:\n${l.duplicates.map((d) => ind(`${d.duplicate_group_id} ${d.analysis?.category ?? d.duplicate_type} [${d.analysis?.relationship_status ?? d.confidence}] ${d.detail ?? ""}`)).join("\n")}`);
     lines.push(`Confidence:\n${ind(Object.entries(r.confidence).map(([k, v]) => `${k}=${v}`).join(", "))}`);
     lines.push(`Final status:\n${ind(`${r.recovery_class} (${r.recovery_reasons.join("; ") || "all criteria met"})`)}\n${ind(`import: ${r.import_readiness}${r.import_reasons.length ? " - " + r.import_reasons.join("; ") : ""}`)}`);
     return lines.join("\n\n");

@@ -42,7 +42,7 @@ if (args[0] === "--test") {
     for await (const r of streamJsonl(path.join(CANONICAL_DIR, "rankup_provenance.jsonl"))) if (!id || r.rankup_question_id === id) prov.push(r);
     for await (const r of streamJsonl(path.join(CANONICAL_DIR, "rankup_qc.jsonl"))) if (!id || r.rankup_question_id === id) qc.push(r);
     if (!q.length) {
-        console.log(`RankUp status: ${status.status}. ${status.status === "UNAVAILABLE" ? `No RankUp files in ${status.drop_dir}/ - see docs/data_recovery/RANKUP_INGESTION_SPEC.md.` : `No generated question with id ${id}.`}`);
+        console.log(`RankUp status: ${status.status} (${status.presence ?? (status.status === "UNAVAILABLE" ? "NOT_PRESENT" : "PRESENT")}). ${status.status === "UNAVAILABLE" ? `No RankUp files in ${status.drop_dir}/ - see docs/data_recovery/RANKUP_INGESTION_SPEC.md.` : `No generated question with id ${id}.`}`);
         process.exit(status.status === "UNAVAILABLE" ? 0 : 1);
     }
     const out = q.map((r) => ({ rankup_question_id: r.rankup_question_id, fusion: r.fusion, trap: r.trap, qbg_file_id: r.qbg_file_id, provenance: prov.filter((p) => p.rankup_question_id === r.rankup_question_id), qc: qc.filter((c) => c.rankup_question_id === r.rankup_question_id) }));

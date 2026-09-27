@@ -4,6 +4,45 @@ Date 2026-09-27 · branch `fix/supabase-auth` · **no commit, no push**.
 Scope: the repository folder only (per user instruction). **No remote service was contacted**: not QBG, not Google Drive, not Supabase (old or new).
 Reproduce everything with `node scripts/data/recovery/run_all.mjs`. Detailed answers to questions A–K are in [DATA_RECOVERY_REPORT.md](DATA_RECOVERY_REPORT.md).
 
+## Revision 2 (after commit f577b75): work possible without the QBG export
+
+**`QBG_data.csv` is still not available, and neither are the RankUp files. Historical QBG question bodies remain missing. No missing content has been fabricated.** Sections 1–20 below describe the first pass. Where a figure changed, the change is noted here.
+
+- **Optional QBG export support.** Stage `03b_qbg_export.mjs` and `lib/qbg_export.mjs`:
+  - input: CSV (streamed), JSON or JSONL, joined on the normalised `unique_id`; `QBGFileId` is never used as an id
+  - rules taken from `import_pool.py` and `qbg.py`, not assumed
+  - differing duplicate rows yield no value
+  - unmatched ids go to a review queue
+  - status today: **`QBG export status = NOT_PRESENT`**; every QBG classification is unchanged
+  - tested with synthetic fixtures; an end-to-end smoke run with synthetic rows was checked and then removed
+- **Metadata QC.** Every conflict now carries an `analysis`: a category, why it is open, and any independent evidence. Nothing was auto-resolved. The 1,480 conflicts break down as:
+  - 630 same column on different rows (e.g. one question used in a class-11 and a class-12 Onepass test)
+  - 259 AutoCuration current vs original type
+  - 181 numeric-type granularity (Integer / Numerical)
+  - 155 cross-source
+  - 117 option-vs-value type (the HIGH ones)
+  - 63 same test position with different ids
+  - 41 name variants
+  - 18 duplicate workbook rows disagreeing
+  - 15 label vs taxonomy id in the same row
+  - 1 answer
+
+  The tagging table's chapter → class mapping was checked as evidence for the class conflicts. It applies to 0 of them, because those records have no chapter id. Taxonomy path issues now carry names and a category. The CSV also no longer drops `chapter_id` on half the rows (a pre-existing column bug).
+- **Duplicates** are categorised:
+  - 47 same id on several workbook rows (the same question curated twice)
+  - 140 passage-parent reuse, INFERRED from consecutive positions only
+  - 1 unexplained repeat
+
+  The 63 same-position anomalies are in `data/review/same_position_anomalies.csv`. `parent_child_relationships.csv` (replacing `parent_child_conflicts.csv`) lists 143 relationships, all INFERRED, with 1 ANOMALY (a question listed as its own parent). `parent_question_id` stays null (validated).
+- **DOCX.** Q59's options (1) and (2) sat inside the stem paragraph. They are now split by an exact-layout rule, and Q59 has 4/4 options (options recovered: 59 → 60). All 330 MathType equations and 3 unmapped symbols are listed in `data/review/docx_equation_placeholders.csv`, with OLE part, SHA-256 and MTEF-stream check (330/330 carry MTEF, so MT6.dll alone would convert them). Still nothing is guessed.
+- **Lineage.** `query.mjs <qbg_id>` prints:
+  - a status matrix: question / options / answer / solution / metadata / documents / test usage / conflicts / duplicate status / content source, each with its source file and row or paragraph
+  - a "Still missing" line
+  - "[PARTIAL]" where equations are unconverted
+- **Coverage and gaps.** Stage `10_coverage.mjs` writes `data/reports/qbg_id_coverage.csv` and [SOURCE_RECOVERY_GAP_REPORT.md](SOURCE_RECOVERY_GAP_REPORT.md). Of the 38,033 ids: 0 have question text, 678 an answer, 2,296 a document reference, 23,024 test usage; **38,033 need an external source**.
+- **Intake.** [SOURCE_INTAKE.md](SOURCE_INTAKE.md) documents the drop folders `data/raw/{qbg,documents,rankup,other}/`. Documents are matched to the registry by exact file name or Drive id and registered, not extracted. Stage 01 now inventories `data/raw/` and streams large CSVs.
+- **Validation** has 9 new checks (e.g. QBG content only from a matched export row, field-level provenance for every present field, `parent_question_id` null, metadata-only never import-ready). Current result: **41/43, 0 errors**, the same 2 data warnings. Tests: **47/47**.
+
 ## Success criterion
 
 **"Given a QBG ID, where did it come from, what content can we recover, where was it used, what is its answer/solution, how confident are we, and can we safely import it?"**
@@ -123,7 +162,8 @@ Also: 1,637 taxonomy-name variants and 224 unknown taxonomy paths.
 - The app's deterministic converter (`python/qbg_modification/mtef.py`) needs **MathType's MT6.dll**, which is **not installed**.
 - No equation was guessed or OCR-ed. Each is a `<span class="unconverted-equation" data-ole-object=… data-preview=…>` placeholder.
 - 406 media files were copied out (330 WMF, 69 EMF, 7 PNG/JPEG). WMF/EMF do not render in browsers.
-- 54/75 questions are NEEDS_REVIEW. Q59 has only 2 of its 4 options parsed. 3 symbols (MT Extra / Wingdings) are unmapped.
+- 54/75 questions are NEEDS_REVIEW. 3 symbols (MT Extra / Wingdings) are unmapped.
+- *Revision 2:* Q59's options are now 4/4 (options (1)–(2) were inside the stem paragraph). The placeholder queue is `data/review/docx_equation_placeholders.csv`.
 
 ## 14. RankUp material unavailable
 
@@ -150,7 +190,7 @@ Fields and record shapes are in [CANONICAL_DATA_MODEL.md](CANONICAL_DATA_MODEL.m
   - taxonomy_nodes.jsonl, identifier_registry.json, sources.json
   - pyq_register / concept_register / archetype_register / reference_book_register / rankup_questions / rankup_provenance / rankup_qc (.jsonl, empty) + rankup_status.json
 - **`data/reports/`:** recovery_summary.{json,csv}, recovery_by_{subject,chapter,source,exam,test,question_type,difficulty,origin}.csv, qbg_overlap_report.csv, validation_report.json, output_hashes.json
-- **`data/review/`:** missing_content, answer_conflicts, option_conflicts, metadata_conflicts, duplicate_candidates, broken_links, low_confidence_records, parent_child_conflicts, taxonomy_name_conflicts, taxonomy_path_issues, unresolved_records (.csv)
+- **`data/review/`:** missing_content, answer_conflicts, option_conflicts, metadata_conflicts, duplicate_candidates, broken_links, low_confidence_records, parent_child_relationships (was parent_child_conflicts), taxonomy_name_conflicts, taxonomy_path_issues, unresolved_records, same_position_anomalies, docx_equation_placeholders, local_documents, qbg_export_unmatched_ids, qbg_export_row_issues (.csv)
 - **`data/staging/`, `data/extracted/`:** intermediates and docx media
 - **`data/import_plans/`:** dry-run plans
 
@@ -201,7 +241,7 @@ Also for review:
 
 **For QBG content (needs your authorisation; not done):**
 
-4. Provide a fresh QBG export (the `QBG_data.csv` format read by `python/qbg_pool_import/import_pool.py`), **or** authorise read-only `get-bulk-questions` calls for the ids in `data/review/missing_content.csv`. Either one fills question/options/solutions for all 38,033 ids and lets them reach A/B.
+4. Provide an authorized QBG export (`QBG_data.csv` or equivalent) in `data/raw/qbg/`. Format and handling: [SOURCE_INTAKE.md](SOURCE_INTAKE.md). Or authorise read-only `get-bulk-questions` calls for the ids in `data/review/missing_content.csv`. *Correction (revision 2):* this could supply question/options/solutions **only for the ids the export actually contains**. Every known id is a valid join key, but whether an export covers all 38,033 cannot be known until one is inspected. Rows also pass the checks in SOURCE_INTAKE.md first.
 5. Optionally, grant access to the 58 question-paper and 66 solution Drive files, or install MathType on a machine to convert the docx equations.
 
 **For Supabase (later, after review):**
@@ -209,6 +249,8 @@ Also for review:
 6. Apply the proposed side tables to a new project, then run the importers with `--apply --confirm-project=<ref>`.
 
 ## 20. Git status
+
+*(As of the first pass, before commit f577b75. It is not updated for revision 2.)*
 
 ```
  M src/app/api/admin/chapters/route.ts               (pre-existing, from the schema-rebuild work)

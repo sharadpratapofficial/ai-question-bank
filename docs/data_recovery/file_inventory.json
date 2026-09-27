@@ -526,12 +526,12 @@
       "filename": "CANONICAL_DATA_MODEL.md",
       "likely_purpose": "Not a question-bank data source (presentation, doc, config or asset)",
       "path": "docs/data_recovery/CANONICAL_DATA_MODEL.md",
-      "sha256": "db3e9035939a86ed775d0f8c285cf6109e866a00826e2935d2fe2d63ab429669",
-      "size_bytes": 9799,
+      "sha256": "5af02c137fc0019dfcd2e9e196dda856f776623e7577983ee2a213927683c4b6",
+      "size_bytes": 11914,
       "source_category": "UNKNOWN",
       "source_key": null,
       "status": "PRESENT",
-      "text_chars": 9637
+      "text_chars": 11752
     },
     {
       "extension": ".md",
@@ -556,6 +556,18 @@
       "source_key": null,
       "status": "PRESENT",
       "text_chars": 9613
+    },
+    {
+      "extension": ".md",
+      "filename": "FINAL_RECOVERY_REPORT.md",
+      "likely_purpose": "Not a question-bank data source (presentation, doc, config or asset)",
+      "path": "docs/data_recovery/FINAL_RECOVERY_REPORT.md",
+      "sha256": "2f3a3d294faee0a4d082ee8ea173523ac1e4950ed7888cdf7e32c3328ab29d54",
+      "size_bytes": 18031,
+      "source_category": "UNKNOWN",
+      "source_key": null,
+      "status": "PRESENT",
+      "text_chars": 17998
     },
     {
       "extension": ".md",
@@ -586,24 +598,36 @@
       "filename": "LINEAGE_SAMPLE.md",
       "likely_purpose": "Not a question-bank data source (presentation, doc, config or asset)",
       "path": "docs/data_recovery/LINEAGE_SAMPLE.md",
-      "sha256": "4be0c7dc3179a8fa07a72be37a2b6a5c6a5bc300279721f0802547d6b15f4134",
-      "size_bytes": 108894,
+      "sha256": "592cf53c6f33b64c532825dd1c874f1be724c9b663c5703bbdcdeefd24faebe5",
+      "size_bytes": 161758,
       "source_category": "UNKNOWN",
       "source_key": null,
       "status": "PRESENT",
-      "text_chars": 108894
+      "text_chars": 161758
     },
     {
       "extension": ".md",
       "filename": "RANKUP_INGESTION_SPEC.md",
       "likely_purpose": "Not a question-bank data source (presentation, doc, config or asset)",
       "path": "docs/data_recovery/RANKUP_INGESTION_SPEC.md",
-      "sha256": "4d7a2e7d8b7714ed209cdf4b145f4e74a23b01f6cf6d0b63484838eb0d720573",
-      "size_bytes": 4226,
+      "sha256": "fcab59c19edba50c9c373c7e9571e780ef746c01cc1302450e211d8a7c1a738f",
+      "size_bytes": 4377,
       "source_category": "UNKNOWN",
       "source_key": null,
       "status": "PRESENT",
-      "text_chars": 4214
+      "text_chars": 4365
+    },
+    {
+      "extension": ".md",
+      "filename": "README.md",
+      "likely_purpose": "Not a question-bank data source (presentation, doc, config or asset)",
+      "path": "docs/data_recovery/README.md",
+      "sha256": "0740db063e7c22deb0f447f5632f7aae84d10fb50e2d062dc862a09b09af6e81",
+      "size_bytes": 6298,
+      "source_category": "UNKNOWN",
+      "source_key": null,
+      "status": "PRESENT",
+      "text_chars": 6290
     },
     {
       "extension": ".md",
@@ -619,15 +643,39 @@
     },
     {
       "extension": ".md",
-      "filename": "VALIDATION_REPORT.md",
+      "filename": "SOURCE_INTAKE.md",
       "likely_purpose": "Not a question-bank data source (presentation, doc, config or asset)",
-      "path": "docs/data_recovery/VALIDATION_REPORT.md",
-      "sha256": "8dc57f3efc148b2c8ff9cf53fefba6b972791015a7d1a57dafb18f10d437457b",
-      "size_bytes": 3297,
+      "path": "docs/data_recovery/SOURCE_INTAKE.md",
+      "sha256": "e06ff8c1e675f75cd096c2fdded3e6d098668f60ba8a0fbf2653f20553c82adb",
+      "size_bytes": 9266,
       "source_category": "UNKNOWN",
       "source_key": null,
       "status": "PRESENT",
-      "text_chars": 3297
+      "text_chars": 9260
+    },
+    {
+      "extension": ".md",
+      "filename": "SOURCE_RECOVERY_GAP_REPORT.md",
+      "likely_purpose": "Not a question-bank data source (presentation, doc, config or asset)",
+      "path": "docs/data_recovery/SOURCE_RECOVERY_GAP_REPORT.md",
+      "sha256": "a68cb5f48266670deb7fce795cb709bb3d53726961106efc1eac8bbbec21dfe3",
+      "size_bytes": 6715,
+      "source_category": "UNKNOWN",
+      "source_key": null,
+      "status": "PRESENT",
+      "text_chars": 6707
+    },
+    {
+      "extension": ".md",
+      "filename": "VALIDATION_REPORT.md",
+      "likely_purpose": "Not a question-bank data source (presentation, doc, config or asset)",
+      "path": "docs/data_recovery/VALIDATION_REPORT.md",
+      "sha256": "22a71965749210352dafb99aae67cbaead7776b2b4e464c2a4af444599a7d9ae",
+      "size_bytes": 4120,
+      "source_category": "UNKNOWN",
+      "source_key": null,
+      "status": "PRESENT",
+      "text_chars": 4120
     },
     {
       "extension": ".md",
@@ -679,15 +727,27 @@
     },
     {
       "extension": ".md",
-      "filename": "file_inventory.md",
+      "filename": "08_final.md",
       "likely_purpose": "Not a question-bank data source (presentation, doc, config or asset)",
-      "path": "docs/data_recovery/file_inventory.md",
-      "sha256": "a7303bbef869f324d09a116cafd98335d8aec6674cd38170e12c8376219503fb",
-      "size_bytes": 9227,
+      "path": "docs/data_recovery/checkpoints/08_final.md",
+      "sha256": "c95fecbc32095041cd89b16e51617ca3aafa0fc34438400f961eace7f99f1952",
+      "size_bytes": 1229,
       "source_category": "UNKNOWN",
       "source_key": null,
       "status": "PRESENT",
-      "text_chars": 9227
+      "text_chars": 1227
+    },
+    {
+      "extension": ".md",
+      "filename": "file_inventory.md",
+      "likely_purpose": "Not a question-bank data source (presentation, doc, config or asset)",
+      "path": "docs/data_recovery/file_inventory.md",
+      "sha256": "be44f303a584fb56ff5616a919b0a48b2b357f0bfd28585bde2780c9bbf41ea9",
+      "size_bytes": 10362,
+      "source_category": "UNKNOWN",
+      "source_key": null,
+      "status": "PRESENT",
+      "text_chars": 10362
     },
     {
       "extension": ".md",
@@ -706,24 +766,24 @@
       "filename": "autocuration.md",
       "likely_purpose": "Not a question-bank data source (presentation, doc, config or asset)",
       "path": "docs/data_recovery/source_profiles/autocuration.md",
-      "sha256": "121c57d12f090c65b3ef722d9aa7b3804a22ca72a5f0c0d8a497ac0cdd6ade02",
-      "size_bytes": 23468,
+      "sha256": "ee7980c4bf24a014ef81ec6738eff21028dc533ed6b3064dc9fbed90eb044af5",
+      "size_bytes": 23460,
       "source_category": "UNKNOWN",
       "source_key": null,
       "status": "PRESENT",
-      "text_chars": 23468
+      "text_chars": 23460
     },
     {
       "extension": ".md",
       "filename": "important_ids.md",
       "likely_purpose": "Not a question-bank data source (presentation, doc, config or asset)",
       "path": "docs/data_recovery/source_profiles/important_ids.md",
-      "sha256": "45e1675d890c10cc3496fc330a99af5d73786281aef0be364efae4eda515f33e",
-      "size_bytes": 21271,
+      "sha256": "b217d77ac8acc64c6dfada5772e79a0ac690ed741f9c936176f216670370cf70",
+      "size_bytes": 21238,
       "source_category": "UNKNOWN",
       "source_key": null,
       "status": "PRESENT",
-      "text_chars": 21271
+      "text_chars": 21238
     },
     {
       "extension": ".md",
@@ -3974,5 +4034,5 @@
     "files": [],
     "path": "data/raw/rankup"
   },
-  "scope": "Repository folder only (S:\\Projects\\ai-question-bank), per user instruction. node_modules/.git/.next/.next-dev/data/ excluded."
+  "scope": "Repository folder only (S:\\Projects\\ai-question-bank), per user instruction. node_modules/.git/.next/.next-dev/data/ excluded, except data/raw/ (supplied inputs)."
 }

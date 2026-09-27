@@ -47,6 +47,21 @@ Answer:
 Content:
     question_text: present; solution_text: present; options: 4
 
+Status matrix:
+    question text     YES <- local_docx (AITS_Test-03_12th_JEE_15-12-2024_Question.docx)
+    options           YES <- local_docx (AITS_Test-03_12th_JEE_15-12-2024_Question.docx)
+    answer            YES <- local_docx answer key (AITS_Test-03_12th_JEE_15-12-2024_Solutions.docx para 58)
+    solution          YES <- local_docx (AITS_Test-03_12th_JEE_15-12-2024_Solutions.docx)
+    metadata          YES
+    source documents  no 
+    test usage        no 
+    conflicts         none
+    duplicate status  none
+    content source    LOCAL_DOCX
+
+Still missing:
+    chapter
+
 Taxonomy:
     Chemistry > ? > ? > ? | type Single_Choice(SCQ) | difficulty ? | class 12
 
@@ -89,6 +104,21 @@ Answer:
 
 Content:
     question_text: present; solution_text: present; options: 4
+
+Status matrix:
+    question text     YES <- local_docx (AITS_Test-03_12th_JEE_15-12-2024_Question.docx)
+    options           YES <- local_docx (AITS_Test-03_12th_JEE_15-12-2024_Question.docx)
+    answer            YES <- local_docx answer key (AITS_Test-03_12th_JEE_15-12-2024_Solutions.docx para 47)
+    solution          YES <- local_docx (AITS_Test-03_12th_JEE_15-12-2024_Solutions.docx)
+    metadata          YES
+    source documents  no 
+    test usage        no 
+    conflicts         none
+    duplicate status  none
+    content source    LOCAL_DOCX
+
+Still missing:
+    chapter
 
 Taxonomy:
     Chemistry > ? > ? > ? | type Single_Choice(SCQ) | difficulty ? | class 12
@@ -133,6 +163,21 @@ Answer:
 Content:
     question_text: present; solution_text: present; options: 4
 
+Status matrix:
+    question text     YES <- local_docx (AITS_Test-03_12th_JEE_15-12-2024_Question.docx)
+    options           YES <- local_docx (AITS_Test-03_12th_JEE_15-12-2024_Question.docx)
+    answer            YES <- local_docx answer key (AITS_Test-03_12th_JEE_15-12-2024_Solutions.docx para 46)
+    solution          YES <- local_docx (AITS_Test-03_12th_JEE_15-12-2024_Solutions.docx)
+    metadata          YES
+    source documents  no 
+    test usage        no 
+    conflicts         none
+    duplicate status  none
+    content source    LOCAL_DOCX
+
+Still missing:
+    chapter
+
 Taxonomy:
     Chemistry > ? > ? > ? | type Single_Choice(SCQ) | difficulty ? | class 12
 
@@ -175,6 +220,21 @@ Answer:
 
 Content:
     question_text: present; solution_text: present; options: 0
+
+Status matrix:
+    question text     YES <- local_docx (AITS_Test-03_12th_JEE_15-12-2024_Question.docx)
+    options           no 
+    answer            YES <- local_docx answer key (AITS_Test-03_12th_JEE_15-12-2024_Solutions.docx para 38)
+    solution          YES <- local_docx (AITS_Test-03_12th_JEE_15-12-2024_Solutions.docx)
+    metadata          YES
+    source documents  no 
+    test usage        no 
+    conflicts         none
+    duplicate status  none
+    content source    LOCAL_DOCX
+
+Still missing:
+    chapter
 
 Taxonomy:
     Physics > ? > ? > ? | type Integer | difficulty ? | class 12
@@ -219,6 +279,21 @@ Answer:
 Content:
     question_text: present (NEEDS_REVIEW: SOLUTION_HAS_1_UNCONVERTED_OLE_EQUATIONS); solution_text: present; options: 4
 
+Status matrix:
+    question text     YES <- local_docx (AITS_Test-03_12th_JEE_15-12-2024_Question.docx)
+    options           YES <- local_docx (AITS_Test-03_12th_JEE_15-12-2024_Question.docx)
+    answer            YES <- local_docx answer key (AITS_Test-03_12th_JEE_15-12-2024_Solutions.docx para 18)
+    solution          YES <- local_docx (AITS_Test-03_12th_JEE_15-12-2024_Solutions.docx) [PARTIAL: 1 unconverted equation placeholder(s)]
+    metadata          YES
+    source documents  no 
+    test usage        no 
+    conflicts         none
+    duplicate status  none
+    content source    LOCAL_DOCX
+
+Still missing:
+    chapter
+
 Taxonomy:
     Physics > ? > ? > ? | type Single_Choice(SCQ) | difficulty ? | class 12
 
@@ -261,6 +336,21 @@ Answer:
 
 Content:
     question_text: present (NEEDS_REVIEW: SOLUTION_HAS_9_UNCONVERTED_OLE_EQUATIONS); solution_text: present; options: 4
+
+Status matrix:
+    question text     YES <- local_docx (AITS_Test-03_12th_JEE_15-12-2024_Question.docx)
+    options           YES <- local_docx (AITS_Test-03_12th_JEE_15-12-2024_Question.docx)
+    answer            YES <- local_docx answer key (AITS_Test-03_12th_JEE_15-12-2024_Solutions.docx para 27)
+    solution          YES <- local_docx (AITS_Test-03_12th_JEE_15-12-2024_Solutions.docx) [PARTIAL: 9 unconverted equation placeholder(s)]
+    metadata          YES
+    source documents  no 
+    test usage        no 
+    conflicts         none
+    duplicate status  none
+    content source    LOCAL_DOCX
+
+Still missing:
+    chapter
 
 Taxonomy:
     Physics > ? > ? > ? | type Single_Choice(SCQ) | difficulty ? | class 12
@@ -305,6 +395,21 @@ Answer:
 Content:
     question_text: present (NEEDS_REVIEW: SOLUTION_HAS_2_UNCONVERTED_OLE_EQUATIONS); solution_text: present; options: 0
 
+Status matrix:
+    question text     YES <- local_docx (AITS_Test-03_12th_JEE_15-12-2024_Question.docx)
+    options           no 
+    answer            YES <- local_docx answer key (AITS_Test-03_12th_JEE_15-12-2024_Solutions.docx para 39)
+    solution          YES <- local_docx (AITS_Test-03_12th_JEE_15-12-2024_Solutions.docx) [PARTIAL: 2 unconverted equation placeholder(s)]
+    metadata          YES
+    source documents  no 
+    test usage        no 
+    conflicts         none
+    duplicate status  none
+    content source    LOCAL_DOCX
+
+Still missing:
+    chapter
+
 Taxonomy:
     Physics > ? > ? > ? | type Integer | difficulty ? | class 12
 
@@ -344,6 +449,22 @@ Answer:
 
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: MISSING
+
+Status matrix:
+    question text     no 
+    options           no  [MISSING]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  YES (1 referenced; none present locally)
+    test usage        no  (0 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_APPLICABLE
+
+Still missing:
+    question_text, options, answer, solution
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
 
 Taxonomy:
     Maths > Three Dimensional Geometry > Equation of a Line in Space > Foot of Perpendicular of a Point on Line | type Single_Choice(SCQ) | difficulty Hard | class ?
@@ -385,6 +506,22 @@ Answer:
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: MISSING
 
+Status matrix:
+    question text     no 
+    options           no  [MISSING]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  YES (1 referenced; none present locally)
+    test usage        no  (0 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_APPLICABLE
+
+Still missing:
+    question_text, options, answer, solution
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
+
 Taxonomy:
     Chemistry > Chemistry in Everyday Life > Therapeutic Action of Different Classes of Drugs > Antiseptic | type Single_Choice(SCQ) | difficulty Easy | class ?
 
@@ -424,6 +561,22 @@ Answer:
 
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: MISSING
+
+Status matrix:
+    question text     no 
+    options           no  [MISSING]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  YES (1 referenced; none present locally)
+    test usage        no  (0 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_APPLICABLE
+
+Still missing:
+    question_text, options, answer, solution
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
 
 Taxonomy:
     Chemistry > Coordination Compounds > Bonding in Coordination Compounds > Colour in Coordination Compounds | type Single_Choice(SCQ) | difficulty Medium | class ?
@@ -465,6 +618,22 @@ Answer:
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: MISSING
 
+Status matrix:
+    question text     no 
+    options           no  [MISSING]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  YES (1 referenced; none present locally)
+    test usage        no  (0 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_APPLICABLE
+
+Still missing:
+    question_text, options, answer, solution
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
+
 Taxonomy:
     Physics > Atoms > The Line Spectra of the Hydrogen Atom, Hydrogen Spectrum > The Line Spectra of the Hydrogen Atom | type Single_Choice(SCQ) | difficulty Easy | class 12
 
@@ -504,6 +673,22 @@ Answer:
 
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: MISSING
+
+Status matrix:
+    question text     no 
+    options           no  [MISSING]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  YES (1 referenced; none present locally)
+    test usage        no  (0 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_APPLICABLE
+
+Still missing:
+    question_text, options, answer, solution
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
 
 Taxonomy:
     Physics > Electromagnetic Induction > Mutual Inductance of Coaxial Solenoids > Coefficient of Coupling | type Single_Choice(SCQ) | difficulty Medium | class 12
@@ -545,6 +730,22 @@ Answer:
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: MISSING
 
+Status matrix:
+    question text     no 
+    options           no  [MISSING]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  YES (1 referenced; none present locally)
+    test usage        no  (0 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_APPLICABLE
+
+Still missing:
+    question_text, options, answer, solution
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
+
 Taxonomy:
     Chemistry > Biomolecules > Glucose > Mutarotation | type Single_Choice(SCQ) | difficulty Medium | class ?
 
@@ -584,6 +785,22 @@ Answer:
 
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: MISSING
+
+Status matrix:
+    question text     no 
+    options           no  [MISSING]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  YES (1 referenced; none present locally)
+    test usage        no  (0 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_APPLICABLE
+
+Still missing:
+    question_text, options, answer, solution
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
 
 Taxonomy:
     Physics > Electric Charges and Fields > Electric Dipole > For Points on the Axis | type Single_Choice(SCQ) | difficulty Medium | class 12
@@ -625,6 +842,22 @@ Answer:
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: MISSING
 
+Status matrix:
+    question text     no 
+    options           no  [MISSING]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  YES (1 referenced; none present locally)
+    test usage        no  (0 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_APPLICABLE
+
+Still missing:
+    question_text, options, answer, solution
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
+
 Taxonomy:
     Physics > Kinetic Theory > Behaviour of Gases > Ideal Gas Equation | type Single_Choice(SCQ) | difficulty Medium | class 11
 
@@ -664,6 +897,22 @@ Answer:
 
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: MISSING
+
+Status matrix:
+    question text     no 
+    options           no  [MISSING]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  YES (1 referenced; none present locally)
+    test usage        no  (0 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_APPLICABLE
+
+Still missing:
+    question_text, options, answer, solution
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
 
 Taxonomy:
     Chemistry > Hydrogen > Heavy Water (D2O) > Uses of Heavy Water | type Multi_Choice(MCQ) | difficulty Medium | class ?
@@ -705,6 +954,22 @@ Answer:
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: MISSING
 
+Status matrix:
+    question text     no 
+    options           no  [MISSING]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  YES (1 referenced; none present locally)
+    test usage        no  (0 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_APPLICABLE
+
+Still missing:
+    question_text, options, answer, solution
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
+
 Taxonomy:
     Chemistry > Thermodynamics > Thermodynamic Processes > Cyclic Process | type Comprehension(COMP) | difficulty Medium | class 11
 
@@ -744,6 +1009,22 @@ Answer:
 
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: MISSING
+
+Status matrix:
+    question text     no 
+    options           no  [MISSING]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  YES (1 referenced; none present locally)
+    test usage        no  (0 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_APPLICABLE
+
+Still missing:
+    question_text, options, answer, solution
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
 
 Taxonomy:
     Chemistry > The s-Block Elements > Group - 2 Elements: Alkaline Earth Metals > Chemical Properties | type Multi_Choice(MCQ) | difficulty Medium | class ?
@@ -785,6 +1066,22 @@ Answer:
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: MISSING
 
+Status matrix:
+    question text     no 
+    options           no  [MISSING]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  YES (1 referenced; none present locally)
+    test usage        no  (0 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_APPLICABLE
+
+Still missing:
+    question_text, options, answer, solution
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
+
 Taxonomy:
     Maths > Three Dimensional Geometry > Equation of a Line in Space > Foot of Perpendicular of a Point on Line | type Single_Choice(SCQ) | difficulty Hard | class ?
 
@@ -824,6 +1121,22 @@ Answer:
 
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: MISSING
+
+Status matrix:
+    question text     no 
+    options           no  [MISSING]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  YES (1 referenced; none present locally)
+    test usage        no  (0 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_APPLICABLE
+
+Still missing:
+    question_text, options, answer, solution
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
 
 Taxonomy:
     Physics > Nuclei > Radioactivity > Q-Value in Radioactive Decays | type Multi_Choice(MCQ) | difficulty Medium | class 12
@@ -865,6 +1178,22 @@ Answer:
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: MISSING
 
+Status matrix:
+    question text     no 
+    options           no  [MISSING]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  YES (1 referenced; none present locally)
+    test usage        no  (0 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_APPLICABLE
+
+Still missing:
+    question_text, options, answer, solution
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
+
 Taxonomy:
     Maths > Statistics > Mean Deviation > Mean Deviation of Ungrouped Data | type Single_Choice(SCQ) | difficulty Medium | class ?
 
@@ -904,6 +1233,22 @@ Answer:
 
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: NOT_APPLICABLE
+
+Status matrix:
+    question text     no 
+    options           no  [NOT_APPLICABLE]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  YES (1 referenced; none present locally)
+    test usage        no  (0 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_APPLICABLE
+
+Still missing:
+    question_text, answer, solution
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
 
 Taxonomy:
     Chemistry > Aldehydes, Ketones and Carboxylic Acids > Chemical Reactions of Aldehydes and Ketones > Nucleophilic Addition Reactions | type Numerical | difficulty Hard | class ?
@@ -945,6 +1290,22 @@ Answer:
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: MISSING
 
+Status matrix:
+    question text     no 
+    options           no  [MISSING]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  YES (1 referenced; none present locally)
+    test usage        no  (0 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_APPLICABLE
+
+Still missing:
+    question_text, options, answer, solution
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
+
 Taxonomy:
     Chemistry > Structure of Atom > Quantum Mechanical Model of the Atom > Radial and Angular Nodes | type Comprehension(COMP) | difficulty Hard | class ?
 
@@ -984,6 +1345,22 @@ Answer:
 
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: MISSING
+
+Status matrix:
+    question text     no 
+    options           no  [MISSING]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  YES (1 referenced; none present locally)
+    test usage        no  (0 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_APPLICABLE
+
+Still missing:
+    question_text, options, answer, solution
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
 
 Taxonomy:
     Physics > Rotational Motion > Shifting of Normal Reaction and Toppling > Shifting of Normal Reaction and Toppling | type Single_Choice(SCQ) | difficulty Hard | class 11
@@ -1025,6 +1402,22 @@ Answer:
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: MISSING
 
+Status matrix:
+    question text     no 
+    options           no  [MISSING]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  YES (1 referenced; none present locally)
+    test usage        no  (0 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_APPLICABLE
+
+Still missing:
+    question_text, options, answer, solution
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
+
 Taxonomy:
     Physics > Circular Motion > Dynamics of Circular Motion > Circular Motion | type Comprehension(COMP) | difficulty Hard | class 11
 
@@ -1064,6 +1457,22 @@ Answer:
 
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: MISSING
+
+Status matrix:
+    question text     no 
+    options           no  [MISSING]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  YES (1 referenced; none present locally)
+    test usage        no  (0 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_APPLICABLE
+
+Still missing:
+    question_text, options, answer, solution
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
 
 Taxonomy:
     Physics > Current Electricity > Ammeter > Conversion of Galvanometer into Ammeter | type Multi_Choice(MCQ) | difficulty Medium | class 12
@@ -1105,6 +1514,22 @@ Answer:
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: MISSING
 
+Status matrix:
+    question text     no 
+    options           no  [MISSING]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  YES (1 referenced; none present locally)
+    test usage        no  (0 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_APPLICABLE
+
+Still missing:
+    question_text, options, answer, solution
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
+
 Taxonomy:
     Physics > Oscillations > Simple Harmonic Motion > Definition and Conditions of SHM | type Single_Choice(SCQ) | difficulty Medium | class 11
 
@@ -1144,6 +1569,22 @@ Answer:
 
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: MISSING
+
+Status matrix:
+    question text     no 
+    options           no  [MISSING]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  YES (1 referenced; none present locally)
+    test usage        no  (0 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_APPLICABLE
+
+Still missing:
+    question_text, options, answer, solution
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
 
 Taxonomy:
     Physics > Electrostatic Potential and Capacitance > Complex Circuit in Capacitor > Solving Complex Circuits in Capacitors | type Single_Choice(SCQ) | difficulty Hard | class 12
@@ -1185,6 +1626,22 @@ Answer:
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: MISSING
 
+Status matrix:
+    question text     no 
+    options           no  [MISSING]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  YES (1 referenced; none present locally)
+    test usage        no  (0 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_APPLICABLE
+
+Still missing:
+    question_text, options, answer, solution
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
+
 Taxonomy:
     Chemistry > Chemical Equilibrium > Relative Vapour Density and Degree of Dissociation > Relative Vapour Density and Degree of Dissociation | type Multi_Choice(MCQ) | difficulty Hard | class ?
 
@@ -1224,6 +1681,22 @@ Answer:
 
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: NOT_APPLICABLE
+
+Status matrix:
+    question text     no 
+    options           no  [NOT_APPLICABLE]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  YES (1 referenced; none present locally)
+    test usage        no  (0 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_APPLICABLE
+
+Still missing:
+    question_text, answer, solution
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
 
 Taxonomy:
     Physics > Circular Motion > Dynamics of Circular Motion > Circular Motion | type Numerical | difficulty Hard | class 11
@@ -1265,6 +1738,22 @@ Answer:
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: MISSING
 
+Status matrix:
+    question text     no 
+    options           no  [MISSING]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  YES (1 referenced; none present locally)
+    test usage        no  (0 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_APPLICABLE
+
+Still missing:
+    question_text, options, answer, solution
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
+
 Taxonomy:
     Physics > Center of Mass and System of Particles > Collisions > Coefficient of Restitution | type Single_Choice(SCQ) | difficulty Easy | class 11
 
@@ -1304,6 +1793,22 @@ Answer:
 
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: MISSING
+
+Status matrix:
+    question text     no 
+    options           no  [MISSING]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  YES (1 referenced; none present locally)
+    test usage        no  (0 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_APPLICABLE
+
+Still missing:
+    question_text, options, answer, solution
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
 
 Taxonomy:
     Maths > Probability > Definition of Probability > Computation of Probability based on Construction of Sample Space | type Single_Choice(SCQ) | difficulty Medium | class ?
@@ -1345,6 +1850,22 @@ Answer:
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: MISSING
 
+Status matrix:
+    question text     no 
+    options           no  [MISSING]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  YES (1 referenced; none present locally)
+    test usage        no  (0 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_APPLICABLE
+
+Still missing:
+    question_text, options, answer, solution
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
+
 Taxonomy:
     Maths > Permutations and Combinations > Permutations > Permutations of Things when All Things are Distinct | type Single_Choice(SCQ) | difficulty Medium | class ?
 
@@ -1384,6 +1905,22 @@ Answer:
 
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: MISSING
+
+Status matrix:
+    question text     no 
+    options           no  [MISSING]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  YES (1 referenced; none present locally)
+    test usage        no  (0 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_APPLICABLE
+
+Still missing:
+    question_text, options, answer, solution
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
 
 Taxonomy:
     Maths > Continuity and Differentiability > Differentiability > Derivative of Different Types of Funtions | type Matching_List(ML) | difficulty Medium | class ?
@@ -1425,6 +1962,22 @@ Answer:
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: MISSING
 
+Status matrix:
+    question text     no 
+    options           no  [MISSING]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  YES (1 referenced; none present locally)
+    test usage        no  (0 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_APPLICABLE
+
+Still missing:
+    question_text, options, answer, solution
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
+
 Taxonomy:
     Maths > Continuity and Differentiability > Continuity > Continuity of Composite Functions | type Matching_List(ML) | difficulty Medium | class ?
 
@@ -1464,6 +2017,22 @@ Answer:
 
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: MISSING
+
+Status matrix:
+    question text     no 
+    options           no  [MISSING]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  YES (1 referenced; none present locally)
+    test usage        no  (0 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_APPLICABLE
+
+Still missing:
+    question_text, options, answer, solution
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
 
 Taxonomy:
     Maths > Continuity and Differentiability > Differentiability > Differentiability at a Point | type Matching_List(ML) | difficulty Medium | class ?
@@ -1506,6 +2075,22 @@ Answer:
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: MISSING
 
+Status matrix:
+    question text     no 
+    options           no  [MISSING]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  YES (1 referenced; none present locally)
+    test usage        YES (1 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_PRESENT
+
+Still missing:
+    question_text, options, answer, solution
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
+
 Taxonomy:
     Physics > Gravitation > Kepler's Laws > Law of Periods | type Single_Choice(SCQ) | difficulty Medium | class 11
 
@@ -1546,6 +2131,22 @@ Answer:
 
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: MISSING
+
+Status matrix:
+    question text     no 
+    options           no  [MISSING]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  YES (1 referenced; none present locally)
+    test usage        YES (1 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_PRESENT
+
+Still missing:
+    question_text, options, answer, solution
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
 
 Taxonomy:
     Physics > Laws of Motion > Newton's Second Law of Motion > Unbalanced Force | type Single_Choice(SCQ) | difficulty Medium | class 11
@@ -1588,6 +2189,22 @@ Answer:
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: MISSING
 
+Status matrix:
+    question text     no 
+    options           no  [MISSING]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  YES (1 referenced; none present locally)
+    test usage        YES (1 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_PRESENT
+
+Still missing:
+    question_text, options, answer, solution
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
+
 Taxonomy:
     Physics > Laws of Motion > Newton's First Law of Motion > Force | type Single_Choice(SCQ) | difficulty Medium | class 11
 
@@ -1628,6 +2245,22 @@ Answer:
 
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: NOT_APPLICABLE
+
+Status matrix:
+    question text     no 
+    options           no  [NOT_APPLICABLE]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  YES (1 referenced; none present locally)
+    test usage        YES (1 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_PRESENT
+
+Still missing:
+    question_text, answer, solution
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
 
 Taxonomy:
     Physics > Wave Optics > Thin Film Interference > Thin Film Interference | type Numerical | difficulty Easy | class 12
@@ -1672,6 +2305,22 @@ Answer:
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: NOT_APPLICABLE
 
+Status matrix:
+    question text     no 
+    options           no  [NOT_APPLICABLE]
+    answer            YES <- autocuration.Answer* (AutoCuration data row 33965)
+    solution          no 
+    metadata          YES
+    source documents  YES (2 referenced; none present locally)
+    test usage        no  (0 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_PRESENT
+
+Still missing:
+    question_text, solution
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
+
 Taxonomy:
     Physics > Kinetic Theory > Concept For Mixture of Gases > Internal Energy of the Mixture | type Numerical | difficulty ? | class 11
 
@@ -1714,6 +2363,22 @@ Answer:
 
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: OPTION_LABELS_ONLY
+
+Status matrix:
+    question text     no 
+    options           no  [OPTION_LABELS_ONLY]
+    answer            YES <- autocuration.Answer* (AutoCuration data row 356)
+    solution          no 
+    metadata          YES
+    source documents  YES (2 referenced; none present locally)
+    test usage        no  (0 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_PRESENT
+
+Still missing:
+    question_text, options, solution
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
 
 Taxonomy:
     Physics > Motion in a Straight Line > Motion under Gravity (Free Fall Motion) > ? | type Multi_Choice(MCQ) | difficulty Medium | class 11
@@ -1758,6 +2423,22 @@ Answer:
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: OPTION_LABELS_ONLY
 
+Status matrix:
+    question text     no 
+    options           no  [OPTION_LABELS_ONLY]
+    answer            YES <- autocuration.Answer* (AutoCuration data row 291)
+    solution          no 
+    metadata          YES
+    source documents  YES (2 referenced; none present locally)
+    test usage        no  (0 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_PRESENT
+
+Still missing:
+    question_text, options, solution
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
+
 Taxonomy:
     Maths > Sets > Logarithm > Logarithm Equation | type Multi_Choice(MCQ) | difficulty Hard | class ?
 
@@ -1800,6 +2481,22 @@ Answer:
 
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: OPTION_LABELS_ONLY
+
+Status matrix:
+    question text     no 
+    options           no  [OPTION_LABELS_ONLY]
+    answer            YES <- autocuration.Answer* (AutoCuration data row 211)
+    solution          no 
+    metadata          YES
+    source documents  YES (2 referenced; none present locally)
+    test usage        no  (0 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_PRESENT
+
+Still missing:
+    question_text, options, solution
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
 
 Taxonomy:
     Physics > Motion in a Plane > Projectile Motion > ? | type Multi_Choice(MCQ) | difficulty Medium | class 11
@@ -1845,6 +2542,22 @@ Answer:
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: MISSING
 
+Status matrix:
+    question text     no 
+    options           no  [MISSING]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  no 
+    test usage        YES (1 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_PRESENT
+
+Still missing:
+    question_text, options, answer, solution, chapter, question_type
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
+
 Taxonomy:
     Maths > ? > ? > ? | type ? | difficulty ? | class ?
 
@@ -1885,6 +2598,22 @@ Answer:
 
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: MISSING
+
+Status matrix:
+    question text     no 
+    options           no  [MISSING]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  no 
+    test usage        no  (0 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_PRESENT
+
+Still missing:
+    question_text, options, answer, solution
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
 
 Taxonomy:
     Maths > Basic Maths > Wavy Curve Method > Wavy Curve Method | type Single_Choice(SCQ) | difficulty Easy | class ?
@@ -1927,6 +2656,22 @@ Answer:
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: MISSING
 
+Status matrix:
+    question text     no 
+    options           no  [MISSING]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  no 
+    test usage        YES (1 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_PRESENT
+
+Still missing:
+    question_text, options, answer, solution, chapter
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
+
 Taxonomy:
     Chemistry > ? > ? > ? | type Single_Choice(SCQ) | difficulty ? | class ?
 
@@ -1967,6 +2712,22 @@ Answer:
 
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: MISSING
+
+Status matrix:
+    question text     no 
+    options           no  [MISSING]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  no 
+    test usage        no  (0 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_PRESENT
+
+Still missing:
+    question_text, options, answer, solution
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
 
 Taxonomy:
     Physics > Moving Charges and Magnetism > Magnetic Force > Direction of Magnetic Force, Properties of Magnetic Force on Charge | type Single_Choice(SCQ) | difficulty Medium | class 12
@@ -2009,6 +2770,22 @@ Answer:
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: MISSING
 
+Status matrix:
+    question text     no 
+    options           no  [MISSING]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  no 
+    test usage        no  (0 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_PRESENT
+
+Still missing:
+    question_text, options, answer, solution
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
+
 Taxonomy:
     Maths > Conic Section > Parabola > ? | type Single_Choice(SCQ) | difficulty Medium | class 11
 
@@ -2049,6 +2826,22 @@ Answer:
 
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: MISSING
+
+Status matrix:
+    question text     no 
+    options           no  [MISSING]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  no 
+    test usage        no  (0 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_PRESENT
+
+Still missing:
+    question_text, options, answer, solution
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
 
 Taxonomy:
     Maths > Sets > Operations on Sets > Union of Sets | type Single_Choice(SCQ) | difficulty Medium | class ?
@@ -2091,6 +2884,22 @@ Answer:
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: MISSING
 
+Status matrix:
+    question text     no 
+    options           no  [MISSING]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  no 
+    test usage        no  (0 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_PRESENT
+
+Still missing:
+    question_text, options, answer, solution
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
+
 Taxonomy:
     Physics > Semiconductor Electronics: Materials, Devices and Simple Circuits > Digital Electronics and Logic Gates > Logic Gates | type Single_Choice(SCQ) | difficulty Medium | class 12
 
@@ -2132,6 +2941,22 @@ Answer:
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: MISSING
 
+Status matrix:
+    question text     no 
+    options           no  [MISSING]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  no 
+    test usage        YES (1 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_PRESENT
+
+Still missing:
+    question_text, options, answer, solution, chapter, question_type
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
+
 Taxonomy:
     Physics > ? > ? > ? | type ? | difficulty ? | class 11
 
@@ -2172,6 +2997,22 @@ Answer:
 
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: NOT_APPLICABLE
+
+Status matrix:
+    question text     no 
+    options           no  [NOT_APPLICABLE]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  no 
+    test usage        no  (0 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_PRESENT
+
+Still missing:
+    question_text, answer, solution
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
 
 Taxonomy:
     Physics > Motion in a Straight Line > Graphs in Motion in One Dimension > Motion Diagram | type Numerical | difficulty Easy | class 11
@@ -2217,6 +3058,22 @@ Answer:
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: MISSING
 
+Status matrix:
+    question text     no 
+    options           no  [MISSING]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  no 
+    test usage        YES (1 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_PRESENT
+
+Still missing:
+    question_text, options, answer, solution, chapter, question_type
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
+
 Taxonomy:
     Maths > ? > ? > ? | type ? | difficulty ? | class ?
 
@@ -2260,6 +3117,22 @@ Answer:
 
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: MISSING
+
+Status matrix:
+    question text     no 
+    options           no  [MISSING]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  no 
+    test usage        YES (1 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_PRESENT
+
+Still missing:
+    question_text, options, answer, solution, chapter, question_type
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
 
 Taxonomy:
     Chemistry > ? > ? > ? | type ? | difficulty ? | class ?
@@ -2305,6 +3178,22 @@ Answer:
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: MISSING
 
+Status matrix:
+    question text     no 
+    options           no  [MISSING]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  no 
+    test usage        YES (1 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_PRESENT
+
+Still missing:
+    question_text, options, answer, solution, chapter, question_type
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
+
 Taxonomy:
     Physics > ? > ? > ? | type ? | difficulty ? | class ?
 
@@ -2346,6 +3235,22 @@ Answer:
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: NOT_APPLICABLE
 
+Status matrix:
+    question text     no 
+    options           no  [NOT_APPLICABLE]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  no 
+    test usage        no  (0 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_PRESENT
+
+Still missing:
+    question_text, answer, solution
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
+
 Taxonomy:
     Chemistry > Structure of Atom > Filling of Orbitals in Atom > Aufbau Principle | type Numerical | difficulty Medium | class ?
 
@@ -2386,6 +3291,22 @@ Answer:
 
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: MISSING
+
+Status matrix:
+    question text     no 
+    options           no  [MISSING]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  no 
+    test usage        YES (1 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_PRESENT
+
+Still missing:
+    question_text, options, answer, solution, question_type
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
 
 Taxonomy:
     Maths > Inverse Trigonometric Functions > Properties of Inverse Trigonometric Functions > Properties of Inverse Trigonometric Functions | type ? | difficulty Medium | class ?
@@ -2431,6 +3352,22 @@ Answer:
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: MISSING
 
+Status matrix:
+    question text     no 
+    options           no  [MISSING]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  no 
+    test usage        YES (1 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_PRESENT
+
+Still missing:
+    question_text, options, answer, solution, chapter, question_type
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
+
 Taxonomy:
     Maths > ? > ? > ? | type ? | difficulty ? | class ?
 
@@ -2472,6 +3409,22 @@ Answer:
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: MISSING
 
+Status matrix:
+    question text     no 
+    options           no  [MISSING]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  no 
+    test usage        no  (0 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_PRESENT
+
+Still missing:
+    question_text, options, answer, solution
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
+
 Taxonomy:
     Physics > Current Electricity > Electrical Instrument (Galvanometer) > Galvanometer | type Single_Choice(SCQ) | difficulty Medium | class 12
 
@@ -2512,6 +3465,22 @@ Answer:
 
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: MISSING
+
+Status matrix:
+    question text     no 
+    options           no  [MISSING]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  no 
+    test usage        no  (0 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_PRESENT
+
+Still missing:
+    question_text, options, answer, solution
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
 
 Taxonomy:
     Physics > Motion in a Straight Line > Motion under gravity (Free fall motion) > Calculation of Time of flight, max height, and velocity | type Single_Choice(SCQ) | difficulty Easy | class 11
@@ -2557,6 +3526,22 @@ Answer:
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: MISSING
 
+Status matrix:
+    question text     no 
+    options           no  [MISSING]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  no 
+    test usage        YES (1 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_PRESENT
+
+Still missing:
+    question_text, options, answer, solution, chapter, question_type
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
+
 Taxonomy:
     Chemistry > ? > ? > ? | type ? | difficulty ? | class ?
 
@@ -2601,6 +3586,22 @@ Answer:
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: MISSING
 
+Status matrix:
+    question text     no 
+    options           no  [MISSING]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  no 
+    test usage        YES (1 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_PRESENT
+
+Still missing:
+    question_text, options, answer, solution, chapter, question_type
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
+
 Taxonomy:
     Maths > ? > ? > ? | type ? | difficulty ? | class ?
 
@@ -2642,6 +3643,22 @@ Answer:
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: MISSING
 
+Status matrix:
+    question text     no 
+    options           no  [MISSING]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  no 
+    test usage        YES (1 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_PRESENT
+
+Still missing:
+    question_text, options, answer, solution
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
+
 Taxonomy:
     Maths > Circles > Tangent of a circle > Direct Common Tangent | type Single_Choice(SCQ) | difficulty Medium | class ?
 
@@ -2682,6 +3699,22 @@ Answer:
 
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: MISSING
+
+Status matrix:
+    question text     no 
+    options           no  [MISSING]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  no 
+    test usage        YES (1 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_PRESENT
+
+Still missing:
+    question_text, options, answer, solution, question_type
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
 
 Taxonomy:
     Physics > Work, Energy and Power > The Work-Energy Theorem > Application of Work Energy Theorem | type ? | difficulty Medium | class ?
@@ -2727,6 +3760,22 @@ Answer:
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: MISSING
 
+Status matrix:
+    question text     no 
+    options           no  [MISSING]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  no 
+    test usage        YES (1 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_PRESENT
+
+Still missing:
+    question_text, options, answer, solution, chapter, question_type
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
+
 Taxonomy:
     Physics > ? > ? > ? | type ? | difficulty ? | class ?
 
@@ -2767,6 +3816,22 @@ Answer:
 
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: MISSING
+
+Status matrix:
+    question text     no 
+    options           no  [MISSING]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  no 
+    test usage        YES (1 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_PRESENT
+
+Still missing:
+    question_text, options, answer, solution
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
 
 Taxonomy:
     Chemistry > Thermodynamics > Enthalpy > Enthalpy | type Single_Choice(SCQ) | difficulty Easy | class ?
@@ -2812,6 +3877,22 @@ Answer:
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: MISSING
 
+Status matrix:
+    question text     no 
+    options           no  [MISSING]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  no 
+    test usage        YES (1 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_PRESENT
+
+Still missing:
+    question_text, options, answer, solution, chapter, question_type
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
+
 Taxonomy:
     Chemistry > ? > ? > ? | type ? | difficulty ? | class ?
 
@@ -2854,11 +3935,27 @@ Answer:
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: MISSING
 
+Status matrix:
+    question text     no 
+    options           no  [MISSING]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  no 
+    test usage        YES (2 occurrences)
+    conflicts         open [SAME_COLUMN_DIFFERENT_OCCURRENCES]
+    duplicate status  none
+    content source    NOT_PRESENT
+
+Still missing:
+    question_text, options, answer, solution, chapter, question_type
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
+
 Taxonomy:
     Physics > ? > ? > ? | type ? | difficulty ? | class ?
 
-Conflicts (1):
-    CF-001174 LOW CLASS_LEVEL_CONFLICT: "11" vs "12"
+Conflicts (1, all UNRESOLVED):
+    CF-001174 LOW CLASS_LEVEL_CONFLICT [SAME_COLUMN_DIFFERENT_OCCURRENCES]: "11" vs "12"
 
 Confidence:
     answer=NONE, identity=HIGH, options=NONE, provenance=HIGH, question_content=NONE, solution=NONE, taxonomy=NONE
@@ -2901,6 +3998,22 @@ Answer:
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: MISSING
 
+Status matrix:
+    question text     no 
+    options           no  [MISSING]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  no 
+    test usage        YES (1 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_PRESENT
+
+Still missing:
+    question_text, options, answer, solution, chapter, question_type
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
+
 Taxonomy:
     Chemistry > ? > ? > ? | type ? | difficulty ? | class ?
 
@@ -2941,6 +4054,22 @@ Answer:
 
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: NOT_APPLICABLE
+
+Status matrix:
+    question text     no 
+    options           no  [NOT_APPLICABLE]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  no 
+    test usage        no  (0 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_PRESENT
+
+Still missing:
+    question_text, answer, solution
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
 
 Taxonomy:
     Maths > Sets > Practical Problems on Union and Intersection of Two Sets > Practical Problems on Union and Intersection of Two Sets | type Numerical | difficulty Medium | class ?
@@ -2983,6 +4112,22 @@ Answer:
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: MISSING
 
+Status matrix:
+    question text     no 
+    options           no  [MISSING]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  no 
+    test usage        no  (0 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_PRESENT
+
+Still missing:
+    question_text, options, answer, solution
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
+
 Taxonomy:
     Physics > Mathematical Tools and Vectors > Scalars and Vectors > Unit Vector | type Single_Choice(SCQ) | difficulty Hard | class 11
 
@@ -3023,6 +4168,22 @@ Answer:
 
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: MISSING
+
+Status matrix:
+    question text     no 
+    options           no  [MISSING]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  no 
+    test usage        no  (0 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_PRESENT
+
+Still missing:
+    question_text, options, answer, solution
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
 
 Taxonomy:
     Maths > Basic Maths > Modulus > Modulus Inequality | type Single_Choice(SCQ) | difficulty Easy | class ?
@@ -3065,6 +4226,22 @@ Answer:
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: MISSING
 
+Status matrix:
+    question text     no 
+    options           no  [MISSING]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  no 
+    test usage        YES (1 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_PRESENT
+
+Still missing:
+    question_text, options, answer, solution
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
+
 Taxonomy:
     Maths > Binomial Theorem > Expansion of (a + x)^n > Expansion of (a + x)^n | type Single_Choice(SCQ) | difficulty Hard | class ?
 
@@ -3105,6 +4282,22 @@ Answer:
 
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: MISSING
+
+Status matrix:
+    question text     no 
+    options           no  [MISSING]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  no 
+    test usage        no  (0 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_PRESENT
+
+Still missing:
+    question_text, options, answer, solution
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
 
 Taxonomy:
     Physics > Laws of Motion > Equilibrium of a Particle > Equilibrium of a Particle | type Single_Choice(SCQ) | difficulty Medium | class 11
@@ -3148,6 +4341,22 @@ Answer:
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: MISSING
 
+Status matrix:
+    question text     no 
+    options           no  [MISSING]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  no 
+    test usage        YES (2 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_PRESENT
+
+Still missing:
+    question_text, options, answer, solution, question_type
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
+
 Taxonomy:
     Chemistry > General Principles and Processes of Isolation of Elements > Extraction of Aluminium > Extraction of Aluminium | type ? | difficulty Medium | class ?
 
@@ -3189,6 +4398,22 @@ Answer:
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: NOT_APPLICABLE
 
+Status matrix:
+    question text     no 
+    options           no  [NOT_APPLICABLE]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  no 
+    test usage        no  (0 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_PRESENT
+
+Still missing:
+    question_text, answer, solution
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
+
 Taxonomy:
     Chemistry > Organic Chemistry: Some Basic Principles and Techniques > Types of Isomerism > Structural Isomerism, Stereoisomerism | type Numerical | difficulty Medium | class ?
 
@@ -3229,6 +4454,22 @@ Answer:
 
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: MISSING
+
+Status matrix:
+    question text     no 
+    options           no  [MISSING]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  no 
+    test usage        YES (1 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_PRESENT
+
+Still missing:
+    question_text, options, answer, solution, chapter, question_type
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
 
 Taxonomy:
     Maths > ? > ? > ? | type ? | difficulty ? | class ?
@@ -3274,6 +4515,22 @@ Answer:
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: MISSING
 
+Status matrix:
+    question text     no 
+    options           no  [MISSING]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  no 
+    test usage        YES (1 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_PRESENT
+
+Still missing:
+    question_text, options, answer, solution, chapter, question_type
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
+
 Taxonomy:
     Maths > ? > ? > ? | type ? | difficulty ? | class ?
 
@@ -3315,6 +4572,22 @@ Answer:
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: MISSING
 
+Status matrix:
+    question text     no 
+    options           no  [MISSING]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  no 
+    test usage        YES (1 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_PRESENT
+
+Still missing:
+    question_text, options, answer, solution
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
+
 Taxonomy:
     Maths > Differential Equations > Differential Equations > Exact Differential Equations | type Single_Choice(SCQ) | difficulty Hard | class ?
 
@@ -3355,6 +4628,22 @@ Answer:
 
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: MISSING
+
+Status matrix:
+    question text     no 
+    options           no  [MISSING]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  no 
+    test usage        YES (1 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_PRESENT
+
+Still missing:
+    question_text, options, answer, solution, question_type
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
 
 Taxonomy:
     Physics > Alternating Current > AC Voltage Applied to a Parallel LCR Circuit > Parallel Resonance Circuit | type ? | difficulty Medium | class ?
@@ -3400,6 +4689,22 @@ Answer:
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: MISSING
 
+Status matrix:
+    question text     no 
+    options           no  [MISSING]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  no 
+    test usage        YES (1 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_PRESENT
+
+Still missing:
+    question_text, options, answer, solution, chapter, question_type
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
+
 Taxonomy:
     Maths > ? > ? > ? | type ? | difficulty ? | class ?
 
@@ -3440,6 +4745,22 @@ Answer:
 
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: MISSING
+
+Status matrix:
+    question text     no 
+    options           no  [MISSING]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  no 
+    test usage        no  (0 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_PRESENT
+
+Still missing:
+    question_text, options, answer, solution
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
 
 Taxonomy:
     Physics > Mathematical Tools and Vectors > Basic Maths > ? | type Single_Choice(SCQ) | difficulty Easy | class 11
@@ -3482,6 +4803,22 @@ Answer:
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: NOT_APPLICABLE
 
+Status matrix:
+    question text     no 
+    options           no  [NOT_APPLICABLE]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  no 
+    test usage        no  (0 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_PRESENT
+
+Still missing:
+    question_text, answer, solution
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
+
 Taxonomy:
     Chemistry > Alcohols, Phenols and Ethers > Some Commercially Important Alcohols > Ethylene Glycol | type Numerical | difficulty Easy | class ?
 
@@ -3522,6 +4859,22 @@ Answer:
 
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: NOT_APPLICABLE
+
+Status matrix:
+    question text     no 
+    options           no  [NOT_APPLICABLE]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  no 
+    test usage        no  (0 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_PRESENT
+
+Still missing:
+    question_text, answer, solution
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
 
 Taxonomy:
     Chemistry > Some Basic Concepts of Chemistry > Stoichiometry and Stoichiometric Calculations > Limiting Reagent | type Numerical | difficulty Medium | class ?
@@ -3567,6 +4920,22 @@ Answer:
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: MISSING
 
+Status matrix:
+    question text     no 
+    options           no  [MISSING]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  no 
+    test usage        YES (1 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_PRESENT
+
+Still missing:
+    question_text, options, answer, solution, chapter, question_type
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
+
 Taxonomy:
     Physics > ? > ? > ? | type ? | difficulty ? | class ?
 
@@ -3611,6 +4980,22 @@ Answer:
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: MISSING
 
+Status matrix:
+    question text     no 
+    options           no  [MISSING]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  no 
+    test usage        YES (1 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_PRESENT
+
+Still missing:
+    question_text, options, answer, solution, chapter, question_type
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
+
 Taxonomy:
     Physics > ? > ? > ? | type ? | difficulty ? | class ?
 
@@ -3652,6 +5037,22 @@ Answer:
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: MISSING
 
+Status matrix:
+    question text     no 
+    options           no  [MISSING]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  no 
+    test usage        no  (0 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_PRESENT
+
+Still missing:
+    question_text, options, answer, solution
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
+
 Taxonomy:
     Physics > Current Electricity > Electrical Instrument (Galvanometer) > Galvanometer | type Single_Choice(SCQ) | difficulty Easy | class 12
 
@@ -3692,6 +5093,22 @@ Answer:
 
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: MISSING
+
+Status matrix:
+    question text     no 
+    options           no  [MISSING]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  no 
+    test usage        no  (0 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_PRESENT
+
+Still missing:
+    question_text, options, answer, solution
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
 
 Taxonomy:
     Physics > Electric Charges and Fields > Electric Field > Electric Field | type Single_Choice(SCQ) | difficulty Easy | class 12
@@ -3737,6 +5154,22 @@ Answer:
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: MISSING
 
+Status matrix:
+    question text     no 
+    options           no  [MISSING]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  no 
+    test usage        YES (1 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_PRESENT
+
+Still missing:
+    question_text, options, answer, solution, chapter, question_type
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
+
 Taxonomy:
     Physics > ? > ? > ? | type ? | difficulty ? | class ?
 
@@ -3778,6 +5211,22 @@ Answer:
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: MISSING
 
+Status matrix:
+    question text     no 
+    options           no  [MISSING]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  no 
+    test usage        YES (1 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_PRESENT
+
+Still missing:
+    question_text, options, answer, solution
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
+
 Taxonomy:
     Physics > Waves > Equation of Progressive Wave > General Equation of Progressive Wave | type Single_Choice(SCQ) | difficulty Easy | class ?
 
@@ -3818,6 +5267,22 @@ Answer:
 
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: MISSING
+
+Status matrix:
+    question text     no 
+    options           no  [MISSING]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  no 
+    test usage        no  (0 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_PRESENT
+
+Still missing:
+    question_text, options, answer, solution
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
 
 Taxonomy:
     Physics > Electromagnetic Induction > Mutual Inductance > Mutual Inductance of Coaxial Solenoids | type Single_Choice(SCQ) | difficulty Medium | class 12
@@ -3863,6 +5328,22 @@ Answer:
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: MISSING
 
+Status matrix:
+    question text     no 
+    options           no  [MISSING]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  no 
+    test usage        YES (1 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_PRESENT
+
+Still missing:
+    question_text, options, answer, solution, chapter, question_type
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
+
 Taxonomy:
     Physics > ? > ? > ? | type ? | difficulty ? | class ?
 
@@ -3904,6 +5385,22 @@ Answer:
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: MISSING
 
+Status matrix:
+    question text     no 
+    options           no  [MISSING]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  no 
+    test usage        no  (0 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_PRESENT
+
+Still missing:
+    question_text, options, answer, solution
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
+
 Taxonomy:
     Maths > Relations and Functions > Functions > Inverse of a Function | type Multi_Choice(MCQ) | difficulty Medium | class ?
 
@@ -3944,6 +5441,22 @@ Answer:
 
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: MISSING
+
+Status matrix:
+    question text     no 
+    options           no  [MISSING]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  no 
+    test usage        YES (1 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_PRESENT
+
+Still missing:
+    question_text, options, answer, solution, question_type
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
 
 Taxonomy:
     Maths > Circles > Equation of Circle > Equation of Circle on a given Diameter | type ? | difficulty Medium | class ?
@@ -3989,6 +5502,22 @@ Answer:
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: MISSING
 
+Status matrix:
+    question text     no 
+    options           no  [MISSING]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  no 
+    test usage        YES (1 occurrences)
+    conflicts         none
+    duplicate status  none
+    content source    NOT_PRESENT
+
+Still missing:
+    question_text, options, answer, solution, chapter, question_type
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
+
 Taxonomy:
     Maths > ? > ? > ? | type ? | difficulty ? | class ?
 
@@ -4030,11 +5559,27 @@ Answer:
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: NOT_APPLICABLE
 
+Status matrix:
+    question text     no 
+    options           no  [NOT_APPLICABLE]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  YES (1 referenced; none present locally)
+    test usage        YES (1 occurrences)
+    conflicts         BLOCKING [OPTION_VS_VALUE_TYPE]
+    duplicate status  none
+    content source    NOT_PRESENT
+
+Still missing:
+    question_text, options, answer, solution, question_type
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
+
 Taxonomy:
     Physics > Mechanical Properties of Solids > Energy Stored in Deformed Body > Elastic Potential Energy Stored in a Stretched Wire or Rod | type ? | difficulty Medium | class 11
 
-Conflicts (1):
-    CF-000294 HIGH QUESTION_TYPE_CONFLICT: "Numerical" vs "Integer" vs "Single_Choice(SCQ)"
+Conflicts (1, all UNRESOLVED):
+    CF-000294 HIGH QUESTION_TYPE_CONFLICT [OPTION_VS_VALUE_TYPE]: "Numerical" vs "Integer" vs "Single_Choice(SCQ)"
 
 Confidence:
     answer=NONE, identity=HIGH, options=NONE, provenance=HIGH, question_content=NONE, solution=NONE, taxonomy=HIGH
@@ -4075,11 +5620,27 @@ Answer:
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: NOT_APPLICABLE
 
+Status matrix:
+    question text     no 
+    options           no  [NOT_APPLICABLE]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  YES (1 referenced; none present locally)
+    test usage        YES (2 occurrences)
+    conflicts         BLOCKING [OPTION_VS_VALUE_TYPE]
+    duplicate status  none
+    content source    NOT_PRESENT
+
+Still missing:
+    question_text, options, answer, solution, question_type
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
+
 Taxonomy:
     Physics > Atoms > The Line Spectra of the Hydrogen Atom, Hydrogen Spectrum > The Line Spectra of the Hydrogen Atom | type ? | difficulty Medium | class 12
 
-Conflicts (1):
-    CF-000411 HIGH QUESTION_TYPE_CONFLICT: "Numerical" vs "Integer" vs "Single_Choice(SCQ)"
+Conflicts (1, all UNRESOLVED):
+    CF-000411 HIGH QUESTION_TYPE_CONFLICT [OPTION_VS_VALUE_TYPE]: "Numerical" vs "Integer" vs "Single_Choice(SCQ)"
 
 Confidence:
     answer=NONE, identity=HIGH, options=NONE, provenance=HIGH, question_content=NONE, solution=NONE, taxonomy=HIGH
@@ -4119,11 +5680,27 @@ Answer:
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: NOT_APPLICABLE
 
+Status matrix:
+    question text     no 
+    options           no  [NOT_APPLICABLE]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  YES (1 referenced; none present locally)
+    test usage        YES (1 occurrences)
+    conflicts         BLOCKING [OPTION_VS_VALUE_TYPE]
+    duplicate status  none
+    content source    NOT_PRESENT
+
+Still missing:
+    question_text, options, answer, solution, question_type
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
+
 Taxonomy:
     Physics > Atoms > de-Broglie's Explanation of Bohr's Second Postulate of Quantization > de-Broglie's Explanation of Bohr's Second Postulate of Quantization | type ? | difficulty Medium | class 12
 
-Conflicts (1):
-    CF-000154 HIGH QUESTION_TYPE_CONFLICT: "Numerical" vs "Integer" vs "Single_Choice(SCQ)"
+Conflicts (1, all UNRESOLVED):
+    CF-000154 HIGH QUESTION_TYPE_CONFLICT [OPTION_VS_VALUE_TYPE]: "Numerical" vs "Integer" vs "Single_Choice(SCQ)"
 
 Confidence:
     answer=NONE, identity=HIGH, options=NONE, provenance=HIGH, question_content=NONE, solution=NONE, taxonomy=HIGH
@@ -4163,11 +5740,27 @@ Answer:
 Content:
     question_text: NOT RECOVERED; solution_text: NOT RECOVERED; options: NOT_APPLICABLE
 
+Status matrix:
+    question text     no 
+    options           no  [NOT_APPLICABLE]
+    answer            no 
+    solution          no 
+    metadata          YES
+    source documents  YES (1 referenced; none present locally)
+    test usage        YES (1 occurrences)
+    conflicts         BLOCKING [OPTION_VS_VALUE_TYPE]
+    duplicate status  none
+    content source    NOT_PRESENT
+
+Still missing:
+    question_text, options, answer, solution, question_type
+    needs an external source (authorized QBG export or the referenced document); see docs/data_recovery/SOURCE_INTAKE.md
+
 Taxonomy:
     Physics > Units and Measurements > Errors in Measurement > Absolute, Relative and Percentage Errors | type ? | difficulty Medium | class 11
 
-Conflicts (1):
-    CF-000495 HIGH QUESTION_TYPE_CONFLICT: "Numerical" vs "Integer" vs "Single_Choice(SCQ)"
+Conflicts (1, all UNRESOLVED):
+    CF-000495 HIGH QUESTION_TYPE_CONFLICT [OPTION_VS_VALUE_TYPE]: "Numerical" vs "Integer" vs "Single_Choice(SCQ)"
 
 Confidence:
     answer=NONE, identity=HIGH, options=NONE, provenance=HIGH, question_content=NONE, solution=NONE, taxonomy=HIGH

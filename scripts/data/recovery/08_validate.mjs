@@ -49,7 +49,16 @@ export function runValidate() {
     check("content", "numerical answers are never option-index arrays", "ERROR", all.filter((x) => VALUE_TYPES.has(x.question_type) && Array.isArray(x.answer_key)).map((x) => x.record_key));
     check("content", "option answers are never scalars", "ERROR", all.filter((x) => OPTION_TYPES.has(x.question_type) && x.answer_key !== null && !Array.isArray(x.answer_key)).map((x) => x.record_key));
     check("content", "isCorrect flags agree with answer_key", "ERROR", all.filter((x) => Array.isArray(x.options) && x.options.length && Array.isArray(x.answer_key) && x.options.some((o, i) => o.isCorrect !== null && o.isCorrect !== x.answer_key.includes(i + 1))).map((x) => x.record_key));
-    check("content", "no QBG record claims content (none recovered locally)", "WARN", q.filter((x) => hasText(x.question_text)).map((x) => x.record_key));
+    const exportStatusFile = path.join(STAGING_DIR, "qbg_export_status.json");
+    const exportStatus = fs.existsSync(exportStatusFile) ? JSON.parse(fs.readFileSync(exportStatusFile, "utf8")).status : "NOT_PRESENT";
+    checks.push({ group: "content", name: "QBG export status recorded", severity: "INFO", passed: true, failures: 0, samples: [], detail: `QBG export status = ${exportStatus}` });
+    const MATCHED = new Set(["MATCHED", "MATCHED_DUPLICATE_ROWS_IDENTICAL"]);
+    const carriesContent = (x) => hasText(x.question_text) || hasText(x.solution_text) || (Array.isArray(x.options) && x.options.length > 0);
+    check("content", "QBG records carry question content only from a matched export row", "ERROR", q.filter((x) => x.qbg_id && carriesContent(x) && !MATCHED.has(x.content_source?.status)).map((x) => x.record_key));
+    if (exportStatus !== "PRESENT") check("content", "without a QBG export, no QBG record has question content", "ERROR", q.filter((x) => x.qbg_id && carriesContent(x)).map((x) => x.record_key));
+    check("content", "every record states its content_source", "ERROR", all.filter((x) => !x.content_source?.status).map((x) => x.record_key));
+    const cp = (x) => x.content_provenance || {};
+    check("content", "every present content field has field-level provenance", "ERROR", all.filter((x) => (hasText(x.question_text) && !cp(x).question_text) || (hasText(x.solution_text) && !cp(x).solution_text) || (x.answer_key !== null && !cp(x).answer) || (Array.isArray(x.options) && x.options.length && !cp(x).options)).map((x) => x.record_key));
 
     // ---------------- metadata
     const SUBJECTS = new Set(["Physics", "Chemistry", "Maths", "Biology", "Botany", "Zoology"]);
@@ -69,7 +78,12 @@ export function runValidate() {
     check("provenance", "occurrences with invalid id cells are listed for review", "WARN", occ.filter((o) => o.qbg_id_status === "UNRESOLVED" && o.structure !== "MIRROR_OF_AITS").map((o) => o.occurrence_id), "expected: known data-entry gaps (Paper-02 / QUE ERROR)");
     check("provenance", "conflicting canonical fields are null (never a picked winner)", "ERROR", q.filter((x) => Object.entries(x.metadata_resolution).some(([f, r]) => r.status === "CONFLICT" && r.value !== null)).map((x) => x.record_key));
     check("provenance", "F_CONFLICT records have at least one conflict id", "ERROR", all.filter((x) => x.recovery_class === "F_CONFLICT" && !x.conflict_ids.length).map((x) => x.record_key));
+    check("provenance", "parent_question_id stays null (no parent-child relationship is verified)", "ERROR", all.filter((x) => x.parent_question_id !== null && x.parent_question_id !== undefined).map((x) => x.record_key));
+    check("provenance", "every conflict carries an analysis and was not auto-resolved", "ERROR", conf.filter((c) => !c.analysis?.category || c.analysis.auto_resolution !== "NOT_APPLIED").map((c) => c.conflict_id));
+    check("provenance", "every duplicate group is categorised", "ERROR", dups.filter((d) => !d.analysis?.category || d.analysis.category === "UNCATEGORISED").map((d) => d.duplicate_group_id));
     check("import", "only A/B records can be READY or READY_WITH_REVIEW", "ERROR", all.filter((x) => x.import_readiness !== "NOT_READY" && !["A_FULL", "B_CONTENT_WITHOUT_SOLUTION"].includes(x.recovery_class)).map((x) => x.record_key));
+    check("import", "metadata-only QBG records are never import-ready", "ERROR", q.filter((x) => x.qbg_id && !hasText(x.question_text) && x.import_readiness !== "NOT_READY").map((x) => x.record_key));
+    check("import", "import-ready records have question-text provenance", "ERROR", all.filter((x) => x.import_readiness !== "NOT_READY" && !cp(x).question_text).map((x) => x.record_key));
     check("import", "no record READY with LOW/UNKNOWN identity", "ERROR", all.filter((x) => x.import_readiness === "READY" && !["HIGH", "MEDIUM"].includes(x.confidence.identity)).map((x) => x.record_key));
 
     // ---------------- RankUp

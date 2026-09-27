@@ -1,6 +1,6 @@
 # RankUp ingestion specification (drop folder)
 
-**Current status: UNAVAILABLE.** None of the RankUp files are in this repository. See `data/canonical/rankup_status.json`.
+**Current status: UNAVAILABLE (`presence: NOT_PRESENT`).** None of the RankUp files are in this repository. RankUp is optional: `run_all.mjs` completes without it, creates no RankUp record, and reports `RankUp status = NOT_PRESENT`. See `data/canonical/rankup_status.json`.
 The pipeline has **not** fabricated any RankUp record. Every RankUp dataset is present but empty.
 
 ## How to supply the files

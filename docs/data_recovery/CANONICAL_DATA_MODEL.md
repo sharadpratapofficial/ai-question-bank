@@ -132,3 +132,38 @@ Confidence levels follow the brief:
 - NONE: the value is absent, which is distinct from uncertain.
 
 Only READY records (A/B, identity and content HIGH/MEDIUM, no open conflicts, `ORIGINAL_QBG`, chapter known) are eligible for automatic import.
+
+## Revision 2 additions
+
+Fields added to every canonical question record (`qbg_questions.jsonl`, `source_document_questions.jsonl`):
+
+| Field | Meaning |
+|---|---|
+| `content_source.status` | where the question body came from. QBG records: `NOT_PRESENT` (no export supplied; true for all today), `NOT_IN_EXPORT`, `MATCHED`, `MATCHED_DUPLICATE_ROWS_IDENTICAL`, `AMBIGUOUS_DUPLICATE_ROWS` (export rows differ; no content used). DOCX records: `LOCAL_DOCX`. Id-less rows: `NOT_APPLICABLE` |
+| `content_provenance.{question_text,options,answer,solution_text}` | field-level provenance: source, file, file SHA-256, row number / paragraphs, column or rule. `null` when the field is absent. Validation requires it for every present field |
+| `equation_placeholders` (DOCX) | counts of unconverted equation / unmapped-symbol placeholders in the question and the solution |
+| `extraction_notes` (DOCX staging) | deterministic layout fixes applied (e.g. options split from the stem paragraph) |
+
+Added to every conflict (`qbg_conflicts.jsonl`): `analysis` = `{ category, explanation, auto_resolution: "NOT_APPLIED", why_open, evidence_suggestion }`. `resolution` stays `UNRESOLVED`. An `evidence_suggestion` is independent supporting evidence for a reviewer, never an applied value.
+
+Added to every duplicate group (`qbg_duplicates.jsonl`): `analysis` = `{ category, same_question_record, relationship_status, evidence }`. The categories are:
+- `REPEATED_ID_ACROSS_WORKBOOK_ROWS`
+- `PASSAGE_PARENT_REUSE_INFERRED`
+- `REPEATED_ID_IN_TEST_UNEXPLAINED`
+- `SAME_POSITION_ANOMALY`
+- `DUPLICATE_QUESTION_TEXT`
+
+Inferred relationships are labelled `INFERRED`, never `VERIFIED`. `parent_question_id` stays null.
+
+Verified vs inferred:
+- **Verified facts:**
+  - canonical values with status `SINGLE`/`AGREE`
+  - identity from a QBG id
+  - content with `content_provenance`
+- **Inferred relationships:**
+  - `parent_question_candidates`
+  - `PASSAGE_PARENT_REUSE_INFERRED`
+  - `pyq_reference.candidate_qbg_ids`
+  - document roles with confidence below HIGH
+
+  These are carried in separate fields and never overwrite a verified field.

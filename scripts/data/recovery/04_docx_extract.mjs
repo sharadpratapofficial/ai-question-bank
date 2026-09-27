@@ -20,7 +20,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import JSZip from "jszip";
-import { DATA_DIR, REPO_ROOT, ensureDir, writeJsonl, writeJson, sha256File, rel } from "./lib/common.mjs";
+import { DATA_DIR, REPO_ROOT, ensureDir, writeJsonl, writeJson, writeCsv, sha256File, rel } from "./lib/common.mjs";
 import { normalizeAnswer, normalizeOptions, normalizeRichText, dedupeKey } from "./lib/normalize.mjs";
 import { SOURCES } from "./sources.mjs";
 
@@ -139,6 +139,21 @@ function splitOptions(tokens) {
     return opts;
 }
 
+/**
+ * Options that start inside a stem paragraph ("... value of [EQ](1)\t237\t(2)\t-240").
+ * Split only on the exact layout used for option rows: a token that is exactly
+ * "(1)" followed by a tab, and later a token exactly "(2)" followed by a tab.
+ * Returns { stem, options } or null when that layout is not present.
+ */
+export function splitInlineOptions(tokens) {
+    const marker = (n) => tokens.findIndex((k, i) => k.t === "text" && k.v.trim() === `(${n})` && tokens[i + 1]?.t === "tab");
+    const i1 = marker(1);
+    if (i1 < 0) return null;
+    const i2 = tokens.findIndex((k, i) => i > i1 && k.t === "text" && k.v.trim() === "(2)" && tokens[i + 1]?.t === "tab");
+    if (i2 < 0) return null;
+    return { stem: tokens.slice(0, i1), options: splitOptions(tokens.slice(i1)) };
+}
+
 export function segmentQuestionPaper(paras) {
     const questions = [];
     let section = null, qtypeHeading = null, cur = null;
@@ -151,13 +166,17 @@ export function segmentQuestionPaper(paras) {
         if (!section) continue;
         const m = p.text.match(/^\s*(\d{1,3})\.\t/);
         if (m) {
-            cur = { number: Number(m[1]), section, type_heading: qtypeHeading, stem: [stripLeading(p.tokens, /^\s*\d{1,3}\.\t?/)], stem_paras: [p.index], options: [], option_paras: [] };
+            const first = stripLeading(p.tokens, /^\s*\d{1,3}\.\t?/);
+            const inline = qtypeHeading !== "Integer" ? splitInlineOptions(first) : null;
+            cur = { number: Number(m[1]), section, type_heading: qtypeHeading, stem: [inline ? inline.stem : first], stem_paras: [p.index], options: inline ? inline.options : [], option_paras: inline ? [p.index] : [], inline_options_split: !!inline };
             questions.push(cur);
             continue;
         }
         if (!cur || !t && !p.tokens.some((k) => k.t === "ole" || k.t === "image")) continue;
         if (/^\s*\(\d\)\t/.test(p.text)) { cur.options.push(...splitOptions(p.tokens)); cur.option_paras.push(p.index); continue; }
         if (cur.options.length) { cur.options[cur.options.length - 1].tokens.push({ t: "br" }, ...p.tokens); cur.option_paras.push(p.index); continue; }
+        const inline = cur.type_heading !== "Integer" ? splitInlineOptions(p.tokens) : null;
+        if (inline) { cur.stem.push(inline.stem); cur.stem_paras.push(p.index); cur.options.push(...inline.options); cur.option_paras.push(p.index); cur.inline_options_split = true; continue; }
         cur.stem.push(p.tokens);
         cur.stem_paras.push(p.index);
     }
@@ -213,6 +232,22 @@ async function copyMedia(z, parts, docSlug) {
 
 const collect = (tokensList, kind) => tokensList.flat().filter((k) => k.t === kind);
 
+/** UTF-16LE "Equation Native": the OLE stream holding MathType's MTEF (what MT6.dll converts). */
+const EQ_NATIVE = Buffer.from("Equation Native", "utf16le");
+
+/** Describe one OLE object part without converting it: size, sha256, MTEF stream present. */
+async function describeOle(z, part, cache) {
+    if (!part) return { ole_sha256: null, ole_bytes: null, mtef_stream_present: null };
+    if (cache.has(part)) return cache.get(part);
+    const f = z.file(`word/${part}`);
+    const buf = f ? await f.async("nodebuffer") : null;
+    const d = buf
+        ? { ole_sha256: (await import("node:crypto")).createHash("sha256").update(buf).digest("hex"), ole_bytes: buf.length, mtef_stream_present: buf.includes(EQ_NATIVE) }
+        : { ole_sha256: null, ole_bytes: null, mtef_stream_present: null };
+    cache.set(part, d);
+    return d;
+}
+
 export async function runDocxExtract() {
     const qSrc = SOURCES.find((s) => s.key === "aits_t03_question_docx");
     const sSrc = SOURCES.find((s) => s.key === "aits_t03_solution_docx");
@@ -227,6 +262,8 @@ export async function runDocxExtract() {
     const qHash = sha256File(qFile), sHash = sDoc ? sha256File(sFile) : null;
 
     const records = [];
+    const placeholders = [];
+    const oleCacheQ = new Map(), oleCacheS = new Map();
     const mediaQ = new Set(), mediaS = new Set();
     for (const q of qs) {
         const stemTokens = q.stem.flatMap((t, i) => (i ? [{ t: "br" }, ...t] : t));
@@ -264,8 +301,19 @@ export async function runDocxExtract() {
         if (!sol) issues.push("NO_SOLUTION_FOUND");
 
         const contentConfidence = qOle.length || unmappedSym || issues.some((i) => i.startsWith("OPTION_STRUCTURE")) ? "LOW" : "MEDIUM";
+        const recKey = `docx:${docSlug}#Q${q.number}`;
+        // one review row per placeholder: equations are preserved, never converted or guessed
+        for (const [side, list, doc, cache, file] of [["question", qOle, qDoc, oleCacheQ, qFile], ["solution", sOle, sDoc, oleCacheS, sFile]]) {
+            for (let i = 0; i < list.length; i++) {
+                const o = list[i];
+                placeholders.push({ placeholder_id: `${recKey}/${side}/eq${i + 1}`, record_key: recKey, side, kind: "OLE_EQUATION", document: rel(file), ole_part: o.ole ? `word/${o.ole}` : null, prog_id: o.progId, preview_part: o.preview ? `word/${o.preview}` : null, ...(await describeOle(doc.z, o.ole, cache)), status: "PRESERVED_UNCONVERTED", action: "Convert with MathType (MT6.dll, python/qbg_modification/mtef.py) or transcribe from the preview; do not guess" });
+            }
+        }
+        const syms = [...collect([stemTokens, ...q.options.map((o) => o.tokens)], "sym_unmapped").map((s) => ["question", s]), ...collect([solutionTokens], "sym_unmapped").map((s) => ["solution", s])];
+        syms.forEach(([side, s], i) => placeholders.push({ placeholder_id: `${recKey}/${side}/sym${i + 1}`, record_key: recKey, side, kind: "UNMAPPED_SYMBOL", document: rel(side === "question" ? qFile : sFile), ole_part: null, prog_id: null, preview_part: null, ole_sha256: null, ole_bytes: null, mtef_stream_present: null, symbol_font: s.font, symbol_char: s.code, status: "PRESERVED_UNMAPPED", action: "Check the glyph in Word; no published mapping is applied for this font" }));
         records.push({
-            doc_question_key: `docx:${docSlug}#Q${q.number}`,
+            doc_question_key: recKey,
+            extraction_notes: q.inline_options_split ? ["OPTIONS_SPLIT_FROM_STEM_PARAGRAPH (exact '(1)<tab>...(2)<tab>' layout)"] : [],
             origin_type: "IMPORTED_EXTERNAL",
             qbg_id: null,
             qbg_link_status: "NO_QBG_MATCH",
@@ -302,6 +350,7 @@ export async function runDocxExtract() {
     const copiedQ = await copyMedia(qDoc.z, mediaQ, docSlug);
     const copiedS = sDoc ? await copyMedia(sDoc.z, mediaS, docSlug) : 0;
     writeJsonl(path.join(OUT_DIR, "docx_questions.jsonl"), records);
+    writeCsv(path.join(DATA_DIR, "review", "docx_equation_placeholders.csv"), placeholders, ["placeholder_id", "record_key", "side", "kind", "document", "ole_part", "prog_id", "preview_part", "ole_sha256", "ole_bytes", "mtef_stream_present", "symbol_font", "symbol_char", "status", "action"]);
     const previewExt = {};
     for (const m of [...mediaQ, ...mediaS]) { const e = path.extname(m).toLowerCase(); previewExt[e] = (previewExt[e] || 0) + 1; }
     const summary = {
@@ -318,6 +367,10 @@ export async function runDocxExtract() {
         media_copied: copiedQ + copiedS,
         media_by_extension: previewExt,
         mathtype_converter_available: false,
+        equation_placeholders: placeholders.filter((p) => p.kind === "OLE_EQUATION").length,
+        equation_placeholders_with_mtef_stream: placeholders.filter((p) => p.mtef_stream_present === true).length,
+        unmapped_symbol_placeholders: placeholders.filter((p) => p.kind === "UNMAPPED_SYMBOL").length,
+        options_split_from_stem_paragraph: records.filter((r) => r.extraction_notes.length).map((r) => r.source_question_number),
         mathtype_note: "OLE (Equation.DSMT4) -> LaTeX needs MathType's MT6.dll (python/qbg_modification/mtef.py). Not installed on this machine; WMF previews are not browser-renderable.",
         not_extracted: [
             { path: "qbg modifier sample file.docx", reason: "App test fixture (JRTS Dropper Test-01 maths excerpt, dated 26-07-2026). No QBG ids; no matching test in Important IDs (JRTS sheet is 2024-25)." },

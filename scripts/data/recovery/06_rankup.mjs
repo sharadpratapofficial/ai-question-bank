@@ -162,6 +162,8 @@ export function runRankup() {
         drop_dir_exists: fs.existsSync(dir),
         inputs,
         status: files.length ? "INGESTED" : "UNAVAILABLE",
+        presence: files.length ? "PRESENT" : "NOT_PRESENT",
+        note: files.length ? "RankUp files ingested from the drop folder." : "No RankUp files supplied. Optional source: the pipeline continues; no RankUp record is created.",
         counts: { pyq_register: pyq.length, concept_register: concept.length, archetype_register: archetype.length, reference_books: books.length, rankup_questions: questions.length, rankup_provenance_edges: provenance.length, rankup_qc_results: qc.length },
         expected_per_brief: { pyq_register: "556 (SBC/ATM/PER/RDX) + 213 (Electrochemistry)", concept_register: 331, archetype_register: 124, reference_books: 27 },
         qc_checks_modelled: QC_CHECKS,

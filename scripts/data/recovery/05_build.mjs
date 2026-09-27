@@ -14,13 +14,19 @@
  *     no source "wins" by order.
  *   - nothing is fetched; external documents are UNAVAILABLE locally.
  */
+import fs from "node:fs";
 import path from "node:path";
 import {
-    STAGING_DIR, CANONICAL_DIR, REPORTS_DIR, REVIEW_DIR, DATA_DIR, RUN_DATE,
-    streamJsonl, readJsonl, writeJsonl, writeJson, writeCsv, uuidv5, pct, countBy,
+    STAGING_DIR, CANONICAL_DIR, REPORTS_DIR, REVIEW_DIR, DATA_DIR, REPO_ROOT, RUN_DATE,
+    streamJsonl, readJsonl, readJson, writeJsonl, writeJson, writeCsv, uuidv5, pct, countBy, sha256File,
 } from "./lib/common.mjs";
-import { taxonomyCompareKey } from "./lib/normalize.mjs";
+import { taxonomyCompareKey, OPTION_TYPES } from "./lib/normalize.mjs";
 import { compareValues, conflictSeverity, classifyRecovery, importReadiness, findTextDuplicates, RECOVERY_CLASSES } from "./lib/canonical.mjs";
+import { indexExportRows, matchExport } from "./lib/qbg_export.mjs";
+import { analyzeConflict, categorizeDuplicate, parentChildRelationships } from "./lib/qc.mjs";
+
+/** Drop folder for authorized source documents (DOCX/PDF) matched to the registry by file name or Drive id. */
+export const DOCUMENT_DROP_DIR = "data/raw/documents";
 
 const ok = (n) => (n && n.status === "OK" ? n.normalized_value : null);
 const TAX_NAME_PRECEDENCE = ["tagging_csv", "autocuration.tagging", "autocuration.chapter_class_map", "important_ids.aits", "autocuration.data"];
@@ -29,11 +35,14 @@ const TAX_NAME_PRECEDENCE = ["tagging_csv", "autocuration.tagging", "autocuratio
 async function buildTaxonomy() {
     const ids = new Map();
     const chapterTopic = new Set(), topicSub = new Set();
+    const topicChapters = new Map(), subtopicTopics = new Map(), chapterClassIds = new Map();
+    const addTo = (m, k, v) => { if (!m.has(k)) m.set(k, new Set()); m.get(k).add(v); };
     for await (const t of streamJsonl(path.join(STAGING_DIR, "taxonomy_observations.jsonl"))) {
         if (t.level === "edge") {
             const e = t.edge;
-            if (e.chapter && e.topic) chapterTopic.add(`${e.chapter}>${e.topic}`);
-            if (e.topic && e.subtopic) topicSub.add(`${e.topic}>${e.subtopic}`);
+            if (e.chapter && e.topic) { chapterTopic.add(`${e.chapter}>${e.topic}`); addTo(topicChapters, e.topic, e.chapter); }
+            if (e.topic && e.subtopic) { topicSub.add(`${e.topic}>${e.subtopic}`); addTo(subtopicTopics, e.subtopic, e.topic); }
+            if (e.chapter && e.class) addTo(chapterClassIds, e.chapter, e.class);
             continue;
         }
         if (!ids.has(t.id)) ids.set(t.id, { id: t.id, levels: new Set(), names: new Map() });
@@ -60,7 +69,25 @@ async function buildTaxonomy() {
         if (keys.size > 1) taxConflicts.push({ taxonomy_id: n.id, levels: [...n.levels], canonical_name: n.canonical_name, canonical_name_source: n.canonical_name_source, variants: [...keys.values()].map((v) => v[0].name), sources: [...keys.values()].map((v) => v.map((x) => x.source).join("+")) });
         if (n.levels.size > 1) n.level_collision = true;
     }
-    return { ids, chapterTopic, topicSub, taxConflicts };
+    // chapter id -> class NAMES ("11"/"12") via the tagging CSV's class_id column
+    const chapterClassById = new Map([...chapterClassIds].map(([ch, cls]) => [ch, new Set([...cls].map((c) => ids.get(c)?.canonical_name).filter(Boolean))]));
+    return { ids, chapterTopic, topicSub, taxConflicts, topicChapters, subtopicTopics, chapterClassById };
+}
+
+// ------------------------------------------------------------------ optional QBG export
+async function loadQbgExport() {
+    const statusFile = path.join(STAGING_DIR, "qbg_export_status.json");
+    const status = fs.existsSync(statusFile) ? readJson(statusFile) : { status: "NOT_PRESENT", files: [] };
+    const rows = [];
+    if (status.status === "PRESENT") for await (const r of streamJsonl(path.join(STAGING_DIR, "qbg_export_rows.jsonl"))) rows.push(r);
+    return { status, rows, index: indexExportRows(rows) };
+}
+
+// ------------------------------------------------------------------ local document drop folder
+function scanLocalDocuments() {
+    const dir = path.join(REPO_ROOT, DOCUMENT_DROP_DIR);
+    if (!fs.existsSync(dir)) return [];
+    return fs.readdirSync(dir).sort().filter((f) => fs.statSync(path.join(dir, f)).isFile()).map((f) => ({ name: f, path: `${DOCUMENT_DROP_DIR}/${f}`, sha256: sha256File(path.join(dir, f)) }));
 }
 
 // ------------------------------------------------------------------ load AC rows (compact projection)
@@ -146,6 +173,9 @@ export async function runBuild() {
     const occAll = readJsonl(path.join(STAGING_DIR, "test_occurrences.jsonl"));
     const occ = occAll.filter((o) => o.structure !== "MIRROR_OF_AITS");
     const docxQs = readJsonl(path.join(DATA_DIR, "extracted", "docx_questions.jsonl"));
+    const qbgExport = await loadQbgExport();
+    const exportPresent = qbgExport.status.status === "PRESENT";
+    const typesById = new Map(); // qbg_id -> question types seen (duplicate evidence)
 
     // ---------------- group into canonical candidates
     const recs = new Map();
@@ -287,9 +317,25 @@ export async function runBuild() {
             if (ff?.id) docRefs.push({ doc: ff.id, kind: ff.kind, url: ff.url, via: "important_ids.Onepass.FinalFile", name: null, role_hint: "FOLDER", workbook: "Important IDs", sheet: o.sheet, row: o.source_row, record_key: rec.key, qbg_id: qbgId });
         }
 
+        // optional QBG export: metadata observations + content (joined on unique_id only)
+        const exp = qbgId ? qbgExport.index.get(qbgId) : null;
+        const expRow = exp?.chosen || null;
+        if (expRow) {
+            const loc = `${expRow.file} row ${expRow.row_number}`;
+            const m = expRow.metadata;
+            push("question_type", "qbg_export.question_type", loc, expRow.question_type, expRow.question_type);
+            for (const [f, v] of [["subject", m.subject], ["chapter", m.chapter], ["topic", m.topic], ["subtopic", m.subtopic], ["difficulty", m.difficulty], ["source", m.source], ["class_level", m.class_level]]) push(f, `qbg_export.${f}`, loc, v, v);
+            if (expRow.content.answer_key !== null) push("answer", "qbg_export.answer", loc, expRow.content.answer_rule, expRow.content.answer_key);
+        }
+
         // compare
         const cmp = {};
         for (const f of ["question_type", "subject", "chapter_id", "topic_id", "subtopic_id", "chapter", "topic", "subtopic", "difficulty", "source", "class_level", "answer"]) cmp[f] = compareValues(f, obs[f] || []);
+        if (qbgId) typesById.set(qbgId, cmp.question_type.candidates.map((c) => c.value));
+        if (exp && exp.status === "DUPLICATE_ROWS_DIFFER") {
+            const cid = addConflict({ record_keys: [rec.key], qbg_ids: [qbgId], field: "content", conflict_type: "EXPORT_DUPLICATE_ROWS_DIFFER", severity: "HIGH", values: exp.rows.map((r) => ({ source: "qbg_export", location: `${r.file} row ${r.row_number}`, raw: r.content_hash.slice(0, 16) })) });
+            noteConflict(rec.key, cid, "HIGH");
+        }
         // names that differ only as variants of an agreed taxonomy id are LOW, and the id's name is used
         for (const lvl of ["chapter", "topic", "subtopic"]) {
             const idc = cmp[`${lvl}_id`];
@@ -343,30 +389,42 @@ export async function runBuild() {
         const high = confl.filter((c) => c.sev === "HIGH").length;
         const optionsStatus = [...new Set(rec.ac.map((r) => r.options.options_status))].filter((s) => s !== "MISSING");
 
+        // content: only from a matched export row; otherwise null (never estimated)
+        const ec = expRow?.content || null;
+        const exportOptionsOk = !!ec && (!OPTION_TYPES.has(qtypeVal) || (Array.isArray(ec.options) && ec.options.length === 4));
         const clsIn = {
-            identity_confidence: identityConf, question_text: null, question_complete: false, options_ok: false,
-            question_type: qtypeVal, answer_key: answerVal, solution_text: null, solution_complete: false,
+            identity_confidence: identityConf, question_text: ec?.question_text ?? null, question_complete: !!ec?.question_text, options_ok: exportOptionsOk,
+            question_type: qtypeVal, answer_key: answerVal, solution_text: ec?.solution_text ?? null, solution_complete: !!ec?.solution_text,
             subject: cmp.subject.value, has_document_position: hasPosition, has_taxonomy: hasTaxonomy, has_test_usage: occCount > 0,
             high_conflicts: high, duplicate_of: null,
         };
         const cls = classifyRecovery(clsIn);
         const origin = isQbg ? "ORIGINAL_QBG" : "IMPORTED_EXTERNAL";
+        const answerFromExport = answerVal !== null && (cmp.answer.candidates[0]?.sources || []).some((s) => s.source === "qbg_export.answer");
         const confidence = {
             identity: identityConf,
-            question_content: "NONE",
-            options: optionsStatus.includes("OPTION_LABELS_ONLY") ? "NONE (labels only)" : "NONE",
-            answer: answerVal !== null ? "MEDIUM" : cmp.answer.status === "CONFLICT" ? "LOW" : "NONE",
-            solution: "NONE",
+            question_content: ec?.question_text ? "HIGH (QBG export)" : "NONE",
+            options: ec && Array.isArray(ec.options) && ec.options.length ? "HIGH (QBG export)" : optionsStatus.includes("OPTION_LABELS_ONLY") ? "NONE (labels only)" : "NONE",
+            answer: answerVal !== null ? (answerFromExport ? "HIGH" : "MEDIUM") : cmp.answer.status === "CONFLICT" ? "LOW" : "NONE",
+            solution: ec?.solution_text ? "HIGH (QBG export)" : "NONE",
             taxonomy: cmp.chapter_id.value && ["AGREE", "SINGLE"].includes(cmp.chapter_id.status) ? (cmp.chapter_id.status === "AGREE" ? "HIGH" : "MEDIUM") : cmp.chapter.value ? "MEDIUM" : "NONE",
             provenance: "HIGH",
         };
-        const imp = importReadiness({ identity_confidence: identityConf, content_confidence: "NONE", open_conflicts: confl.length, origin_type: origin, chapter: cmp.chapter.value }, cls.recovery_class);
+        const imp = importReadiness({ identity_confidence: identityConf, content_confidence: ec?.question_text ? "HIGH" : "NONE", open_conflicts: confl.length, origin_type: origin, chapter: cmp.chapter.value }, cls.recovery_class);
+        const exportRef = (field) => (expRow ? { source: "qbg_export", file: expRow.file, file_sha256: expRow.file_sha256, row_number: expRow.row_number, column: field } : null);
+        const answerRef = answerVal === null ? null : { source: cmp.answer.candidates[0].sources.map((s) => s.source).join("+"), locations: cmp.answer.candidates[0].sources.map((s) => s.location), rule: expRow?.content.answer_rule ?? "workbook Answer* column" };
+        const contentSource = !qbgId ? { status: "NOT_APPLICABLE" }
+            : !exportPresent ? { status: "NOT_PRESENT", note: "No QBG export available; question body not recovered." }
+            : !exp ? { status: "NOT_IN_EXPORT" }
+            : exp.status === "DUPLICATE_ROWS_DIFFER" ? { status: "AMBIGUOUS_DUPLICATE_ROWS", rows: exp.rows.map((r) => `${r.file} row ${r.row_number}`) }
+            : { status: exp.status === "SINGLE" ? "MATCHED" : "MATCHED_DUPLICATE_ROWS_IDENTICAL", file: expRow.file, row_numbers: exp.rows.map((r) => r.row_number), schema: expRow.schema, issues: expRow.issues };
         const questionId = uuidv5(rec.key);
         if (identityConf === "LOW" || identityConf === "UNKNOWN") lowConfidence.push({ record_key: rec.key, question_id: questionId, qbg_id: qbgId, identity_basis: identityBasis, reason: "no QBG id and no document position", source_rows: rec.ac.map((r) => r.excel_row).join(" "), subject: cmp.subject.value, chapter: cmp.chapter.value, action: "Locate this question in its source document or QBG; otherwise keep as metadata only." });
 
         const sourceRows = [
             ...rec.ac.map((r) => ({ workbook: "AutoCuration_Lovee (1).xlsx", sheet: "data", row: r.excel_row })),
             ...rec.occ.map((o) => ({ workbook: "Important IDs REplica (1).xlsx", sheet: o.sheet, row: o.source_row, cell: o.source_cell })),
+            ...(exp ? exp.rows.map((r) => ({ workbook: r.file, sheet: "qbg_export", row: r.row_number })) : []),
         ];
         const valueOf = (c) => c.value ?? null;
         const record = {
@@ -374,11 +432,18 @@ export async function runBuild() {
             record_key: rec.key,
             qbg_id: qbgId,
             origin_type: origin,
-            question_text: null,
-            options: null,
-            options_status: optionsStatus.length ? optionsStatus.join("|") : "MISSING",
+            question_text: ec?.question_text ?? null,
+            options: ec ? (Array.isArray(ec.options) ? ec.options : null) : null,
+            options_status: ec && Array.isArray(ec.options) ? (ec.options.length ? "OPTION_TEXTS (QBG export)" : "NOT_APPLICABLE") : optionsStatus.length ? optionsStatus.join("|") : "MISSING",
             answer_key: answerVal,
-            solution_text: null,
+            solution_text: ec?.solution_text ?? null,
+            content_source: contentSource,
+            content_provenance: {
+                question_text: ec?.question_text ? exportRef("content") : null,
+                options: ec && Array.isArray(ec.options) && ec.options.length ? exportRef("bilingual_options") : null,
+                answer: answerRef,
+                solution_text: ec?.solution_text ? exportRef("solutions") : null,
+            },
             question_type: qtypeVal,
             subject: valueOf(cmp.subject),
             chapter: valueOf(cmp.chapter),
@@ -425,9 +490,10 @@ export async function runBuild() {
                 ],
                 ac_row_count: rec.ac.length, occurrence_count: occCount,
                 in_autocuration: rec.ac.length > 0, in_important_ids: occCount > 0,
-                question_metadata_present: hasTaxonomy, question_text_present: false, options_present: false, answer_present: answerVal !== null, solution_present: false,
+                question_metadata_present: hasTaxonomy, question_text_present: !!record.question_text, options_present: Array.isArray(record.options) && record.options.length > 0, answer_present: answerVal !== null, solution_present: !!record.solution_text,
                 question_file_link: qDocs.map((d) => `gdrive:${d}`), solution_file_link: sDocs.map((d) => `gdrive:${d}`),
-                linked_to_content_locally: false, metadata_only: answerVal === null,
+                linked_to_content_locally: !!record.question_text, metadata_only: answerVal === null && !record.question_text && !record.solution_text,
+                content_source_status: contentSource.status,
                 subjects: cmp.subject.candidates.map((c) => c.value), chapters: cmp.chapter.candidates.map((c) => c.value), topics: cmp.topic.candidates.map((c) => c.value), subtopics: cmp.subtopic.candidates.map((c) => c.value),
                 question_types: cmp.question_type.candidates.map((c) => c.value), difficulty_levels: cmp.difficulty.candidates.map((c) => c.value), classes: cmp.class_level.candidates.map((c) => c.value), sources: cmp.source.candidates.map((c) => c.value),
                 exam_occurrences: testFamilies, test_instances: testInstances, parent_ids: [...parentCands],
@@ -524,6 +590,14 @@ export async function runBuild() {
             answer_key: answerKey,
             answer_kind: q.answer?.answer_kind ?? null,
             solution_text: q.solution_text,
+            content_source: { status: "LOCAL_DOCX", file: q.source_document.path },
+            content_provenance: {
+                question_text: q.question_text ? { source: "local_docx", file: q.source_document.path, file_sha256: q.source_document.sha256, paragraphs: q.source_document.paragraphs } : null,
+                options: optionsOk ? { source: "local_docx", file: q.source_document.path, paragraphs: q.source_document.paragraphs } : null,
+                answer: answerKey !== null ? { source: "local_docx answer key", file: q.solution_document?.path ?? null, paragraph: q.solution_document?.answer_key_paragraph ?? null, cross_check: q.answer_sources_agree === true ? "solution answer line agrees" : q.answer_sources_agree === false ? "solution answer line DISAGREES" : "no solution answer line" } : null,
+                solution_text: q.solution_text ? { source: "local_docx", file: q.solution_document?.path ?? null, file_sha256: q.solution_document?.sha256 ?? null, paragraphs: q.solution_document?.paragraphs ?? [] } : null,
+            },
+            equation_placeholders: { question: q.equations.question_ole.length, solution: q.equations.solution_ole.length, unmapped_symbols: (q.issues.find((i) => i.startsWith("UNMAPPED_SYMBOL_CHARS:")) || ":0").split(":")[1] * 1 },
             question_type: q.question_type,
             subject: q.subject,
             chapter: null, topic: null, subtopic: null,
@@ -613,6 +687,24 @@ export async function runBuild() {
             license_provenance: "PW internal material referenced from project workbooks; access requires authorization",
         };
     });
+    // authorized documents dropped into data/raw/documents/: matched by exact file name
+    // or by a "<driveId>" / "<driveId>__<anything>" file-name prefix. Registered as
+    // present; not extracted (no generic paper parser exists - see SOURCE_INTAKE.md).
+    const localDocs = scanLocalDocuments();
+    const localDocMatches = [];
+    for (const r of registry) {
+        const driveId = r.document_id.startsWith("gdrive:") ? r.document_id.slice(7) : null;
+        const hit = localDocs.find((f) => r.filenames.includes(f.name) || (driveId && (f.name === driveId || f.name.startsWith(`${driveId}__`) || f.name.startsWith(`${driveId}.`))));
+        if (!hit) continue;
+        r.availability = "LOCAL_NOT_EXTRACTED";
+        r.download_status = "PROVIDED_LOCALLY";
+        r.local_path = hit.path;
+        r.hash = hit.sha256;
+        r.local_match_basis = r.filenames.includes(hit.name) ? "exact file name" : "Drive id in file name";
+        localDocMatches.push({ document_id: r.document_id, local_path: hit.path, basis: r.local_match_basis, role: r.question_or_solution, qbg_ids: r.associated_qbg_ids_count });
+    }
+    const localDocIds = new Set(localDocMatches.map((m) => m.document_id));
+    const unmatchedLocalDocs = localDocs.filter((f) => !localDocMatches.some((m) => m.local_path === f.path));
     for (const [key, p, sha, q] of [["local:AITS_Test-03_12th_JEE_15-12-2024_Question.docx", "QUESTION_PAPER"], ["local:AITS_Test-03_12th_JEE_15-12-2024_Solutions.docx", "SOLUTION"]]) {
         const src = docxQs[0]?.[p === "QUESTION_PAPER" ? "source_document" : "solution_document"];
         registry.push({ document_id: key, source_url: null, source_type: "LOCAL_DOCX", provider: "repository", filenames: [key.slice(6)], question_or_solution: p, role_basis: "document content (cover + ANSWER KEY)", role_confidence: "HIGH", referenced_via: {}, associated_qbg_ids_count: 0, associated_qbg_ids: [], associated_record_count: docxQs.length, contains_many_questions: true, origin_rows_sample: [], availability: "LOCAL", download_status: "LOCAL_FILE", extraction_status: "EXTRACTED_PARTIAL (OLE equations unconverted)", hash: src?.sha256 || null, page_count: null, license_provenance: "PW internal test paper present in repository" });
@@ -713,7 +805,7 @@ export async function runBuild() {
     // ---------------- provenance graph edges
     const edges = [];
     for (const c of canonical) {
-        for (const s of c.provenance.source_rows) edges.push({ from: c.record_key, to: `${s.workbook}#${s.sheet}!${s.cell || "row" + s.row}`, relation: s.workbook.startsWith("Auto") ? "METADATA_FROM" : "USED_IN_TEST_ROW", confidence: c.confidence.identity });
+        for (const s of c.provenance.source_rows) edges.push({ from: c.record_key, to: `${s.workbook}#${s.sheet}!${s.cell || "row" + s.row}`, relation: s.sheet === "qbg_export" ? "CONTENT_FROM_QBG_EXPORT" : s.workbook.startsWith("Auto") ? "METADATA_FROM" : "USED_IN_TEST_ROW", confidence: c.confidence.identity });
         for (const d of c.documents.question_documents) edges.push({ from: c.record_key, to: d, relation: "QUESTION_DOCUMENT", confidence: "MEDIUM" });
         for (const d of c.documents.solution_documents) edges.push({ from: c.record_key, to: d, relation: "SOLUTION_DOCUMENT", confidence: "MEDIUM" });
         if (c.taxonomy_ids.chapter) edges.push({ from: c.record_key, to: `taxonomy:${c.taxonomy_ids.chapter}`, relation: "TAGGED_CHAPTER", confidence: c.confidence.taxonomy });
@@ -725,6 +817,27 @@ export async function runBuild() {
         edges.push({ from: d.record_key, to: "local:AITS_Test-03_12th_JEE_15-12-2024_Question.docx", relation: "EXTRACTED_FROM", confidence: "HIGH" });
         edges.push({ from: d.record_key, to: "local:AITS_Test-03_12th_JEE_15-12-2024_Solutions.docx", relation: "SOLUTION_EXTRACTED_FROM", confidence: "HIGH" });
         if (d.pyq_reference_text) edges.push({ from: d.record_key, to: `pyq-citation:${d.pyq_reference_text}`, relation: "CITES_PYQ (text only; not resolved to an id)", confidence: "LOW" });
+    }
+
+    // ---------------- QC annotations (explanations only; nothing is resolved)
+    const recByKey = new Map([...canonical, ...docCanon].map((r) => [r.record_key, r]));
+    for (const c of conflicts) {
+        const r = recByKey.get(c.record_keys[0]);
+        c.analysis = analyzeConflict(c, { chapterClassById: tax.chapterClassById, canonicalChapterId: r?.taxonomy_ids?.chapter ?? null });
+    }
+    for (const d of duplicates) d.analysis = categorizeDuplicate(d, { typesById });
+    const passageGroups = duplicates.filter((d) => d.analysis.category === "PASSAGE_PARENT_REUSE_INFERRED").map((d) => ({ qbg_id: d.members[0].slice(4), positions: (d.detail.match(/positions ([^(]+)\(/) || [])[1]?.trim() ?? "", test: d.detail.split(":")[0] }));
+    const relationships = parentChildRelationships({ compCandidates: parentChild, passageGroups });
+    const tname = (id) => (id && tax.ids.get(id)?.canonical_name) || null;
+    for (const t of taxPathIssues) {
+        if (t.issue === "CHAPTER_TOPIC_PAIR_NOT_IN_TAGGING_TABLES") {
+            const known = [...(tax.topicChapters.get(t.topic_id) || [])];
+            Object.assign(t, { chapter_name: tname(t.chapter_id), topic_name: tname(t.topic_id), child_known_under: known.map((k) => `${k} (${tname(k) ?? "?"})`).join("; "), category: known.length ? "TOPIC_FILED_UNDER_OTHER_CHAPTER_IN_TAGGING" : "TOPIC_ID_ABSENT_FROM_TAGGING_EDGES" });
+        } else {
+            const known = [...(tax.subtopicTopics.get(t.subtopic_id) || [])];
+            Object.assign(t, { topic_name: tname(t.topic_id), subtopic_name: tname(t.subtopic_id), child_known_under: known.map((k) => `${k} (${tname(k) ?? "?"})`).join("; "), category: known.length ? "SUBTOPIC_FILED_UNDER_OTHER_TOPIC_IN_TAGGING" : "SUBTOPIC_ID_ABSENT_FROM_TAGGING_EDGES" });
+        }
+        t.action = "Check the question's tagging in QBG; the workbook pair is kept as recorded, not corrected.";
     }
 
     // ---------------- write canonical outputs
@@ -744,7 +857,9 @@ export async function runBuild() {
             { source_id: "important_ids", file: "Important IDs REplica (1).xlsx", role: "QBG id -> test occurrence", status: "PRESENT" },
             { source_id: "tagging_csv", file: "python/qbg_modification/tagging_data/qbg_tagging_table.csv", role: "taxonomy", status: "PRESENT" },
             { source_id: "aits_t03_docx", file: "AITS_Test-03_12th_JEE_15-12-2024_{Question,Solutions}.docx", role: "source document (content)", status: "PRESENT" },
-            { source_id: "rankup", file: "data/raw/rankup/*", role: "RankUp registers + generated bank", status: "UNAVAILABLE" },
+            { source_id: "rankup", file: "data/raw/rankup/*", role: "RankUp registers + generated bank", status: "see rankup_status.json (optional)" },
+            { source_id: "qbg_export", file: qbgExport.status.files.map((f) => f.path).join(", ") || "QBG_data*.csv | data/raw/qbg/*", role: "question bodies/options/answers/solutions by unique_id (optional)", status: qbgExport.status.status },
+            { source_id: "local_documents", file: `${DOCUMENT_DROP_DIR}/*`, role: "authorized DOCX/PDF source documents matched to the registry (optional)", status: localDocs.length ? `PRESENT (${localDocs.length} files, ${localDocMatches.length} matched)` : "NOT_PRESENT" },
             { source_id: "qbg_api", file: "https://api.penpencil.co/qbg/questions/get-bulk-questions", role: "authoritative question bodies by unique_id", status: "NOT_ACCESSED (requires authorization)" },
             { source_id: "google_drive", file: "Drive documents referenced by the workbooks", role: "question/solution papers", status: "NOT_ACCESSED (requires authorization)" },
         ],
@@ -799,6 +914,27 @@ export async function runBuild() {
         source_documents: registry.length,
         source_documents_by_role: Object.fromEntries(countBy(registry, (r) => r.question_or_solution)),
         import_readiness: Object.fromEntries(countBy(all, (x) => x.import_readiness)),
+        import_readiness_qbg_ids: Object.fromEntries(countBy(qbgOnly, (x) => x.import_readiness)),
+        qbg_export: (() => {
+            const m = matchExport(new Set(qbgOnly.map((c) => c.qbg_id)), qbgExport.index);
+            return {
+                status: qbgExport.status.status,
+                files: qbgExport.status.files.map((f) => ({ path: f.path, rows: f.rows, sha256: f.sha256 })),
+                rows_total: qbgExport.status.rows_total,
+                export_unique_ids: qbgExport.index.size,
+                matched_known_ids: m.matched.length,
+                known_ids_not_in_export: exportPresent ? m.known_not_in_export.length : null,
+                export_ids_not_known: m.export_only.length,
+                qbg_ids_with_question_text: qbgOnly.filter((c) => c.question_text).length,
+                qbg_ids_with_solution: qbgOnly.filter((c) => c.solution_text).length,
+                content_source_status: Object.fromEntries(countBy(qbgOnly, (c) => c.content_source.status)),
+            };
+        })(),
+        local_documents: { present: localDocs.length, matched_to_registry: localDocMatches.length, unmatched: unmatchedLocalDocs.map((f) => f.path) },
+        conflicts_by_category: Object.fromEntries([...countBy(conflicts, (c) => c.analysis.category)].sort((a, b) => b[1] - a[1])),
+        conflicts_with_evidence_suggestion: conflicts.filter((c) => c.analysis.evidence_suggestion).length,
+        duplicates_by_category: Object.fromEntries(countBy(duplicates, (d) => d.analysis.category)),
+        parent_child_relationships: Object.fromEntries(countBy(relationships, (r) => r.relationship_status)),
         overlap,
     };
     writeJson(path.join(REPORTS_DIR, "recovery_summary.json"), summary);
@@ -815,17 +951,27 @@ export async function runBuild() {
     writeCsv(path.join(DATA_DIR, "reports", "qbg_overlap_report.csv"), overlapRows);
 
     // ---------------- review queues
-    writeCsv(path.join(REVIEW_DIR, "missing_content.csv"), canonical.filter((c) => c.qbg_id).map((c) => ({ qbg_id: c.qbg_id, question_id: c.question_id, recovery_class: c.recovery_class, subject: c.subject, chapter: c.chapter, question_type: c.question_type, answer_present: c.answer_key !== null, question_documents: c.documents.question_documents.join(" "), qbg_page: c.documents.qbg_question_page, where_content_lives: "QBG platform (unique_id) and/or listed Drive document", action: "Fetch body via authorized QBG get-bulk-questions export, or extract from the Drive document at the recorded position" })));
+    writeCsv(path.join(REVIEW_DIR, "missing_content.csv"), canonical.filter((c) => c.qbg_id && !c.question_text).map((c) => ({ qbg_id: c.qbg_id, question_id: c.question_id, recovery_class: c.recovery_class, content_source_status: c.content_source.status, subject: c.subject, chapter: c.chapter, question_type: c.question_type, answer_present: c.answer_key !== null, question_documents: c.documents.question_documents.join(" "), question_document_local: c.documents.question_documents.some((d) => localDocIds.has(d)), qbg_page: c.documents.qbg_question_page, where_content_lives: "QBG platform (unique_id) and/or listed Drive document", action: "Provide an authorized QBG export (data/raw/qbg/) or the listed source document (data/raw/documents/); see SOURCE_INTAKE.md" })));
     const answerConf = conflicts.filter((c) => c.field === "answer");
-    writeCsv(path.join(REVIEW_DIR, "answer_conflicts.csv"), [...answerConf.map((c) => ({ conflict_id: c.conflict_id, record_keys: c.record_keys.join(" "), values: JSON.stringify(c.values), severity: c.severity, action: "Check the source solution; choose and record the answer manually" })), ...reviewMalformedAnswers.map((m) => ({ conflict_id: "MALFORMED", record_keys: m.record_key, values: JSON.stringify({ raw: m.answer_raw, rule: m.rule, question_type: m.question_type, row: m.row }), severity: "MEDIUM", action: m.action }))]);
-    writeCsv(path.join(REVIEW_DIR, "option_conflicts.csv"), docCanon.filter((d) => d.extraction_issues.some((i) => i.startsWith("OPTION_STRUCTURE"))).map((d) => ({ record_key: d.record_key, question_number: d.source_question_number, issues: d.extraction_issues.join("; "), options_raw: JSON.stringify(d.options_raw), action: "Open the question docx at the listed paragraphs and transcribe the missing options" })));
-    writeCsv(path.join(REVIEW_DIR, "metadata_conflicts.csv"), conflicts.filter((c) => c.field !== "answer").map((c) => ({ conflict_id: c.conflict_id, severity: c.severity, conflict_type: c.conflict_type, field: c.field, record_keys: c.record_keys.join(" "), values: JSON.stringify(c.values), detail: c.detail || "", action: c.severity === "LOW" ? "Optional: confirm display name" : "Decide the correct value from the source; no automatic winner" })));
-    writeCsv(path.join(REVIEW_DIR, "duplicate_candidates.csv"), duplicates.map((d) => ({ duplicate_group_id: d.duplicate_group_id, duplicate_type: d.duplicate_type, classification: d.classification || (d.duplicate_type.startsWith("EXACT") ? "EXACT_DUPLICATE" : "REVIEW"), confidence: d.confidence, members: d.members.join(" "), canonical_candidate: d.canonical_candidate, similarity: d.similarity ?? "", detail: d.detail || "", action: d.action })));
+    const an = (c) => ({ category: c.analysis.category, why_open: c.analysis.why_open, evidence_suggestion: c.analysis.evidence_suggestion ? `${c.analysis.evidence_suggestion.value} (${c.analysis.evidence_suggestion.basis}; ${c.analysis.evidence_suggestion.strength})` : "" });
+    writeCsv(path.join(REVIEW_DIR, "answer_conflicts.csv"), [...answerConf.map((c) => ({ conflict_id: c.conflict_id, record_keys: c.record_keys.join(" "), values: JSON.stringify(c.values), severity: c.severity, ...an(c), action: "Check the source solution; choose and record the answer manually" })), ...reviewMalformedAnswers.map((m) => ({ conflict_id: "MALFORMED", record_keys: m.record_key, values: JSON.stringify({ raw: m.answer_raw, rule: m.rule, question_type: m.question_type, row: m.row }), severity: "MEDIUM", category: "MALFORMED_WORKBOOK_ANSWER", why_open: "The cell cannot be read as an answer for this question type without guessing.", evidence_suggestion: "", action: m.action }))], ["conflict_id", "record_keys", "values", "severity", "category", "why_open", "evidence_suggestion", "action"]);
+    writeCsv(path.join(REVIEW_DIR, "option_conflicts.csv"), docCanon.filter((d) => d.extraction_issues.some((i) => i.startsWith("OPTION_STRUCTURE"))).map((d) => ({ record_key: d.record_key, question_number: d.source_question_number, issues: d.extraction_issues.join("; "), options_raw: JSON.stringify(d.options_raw), action: "Open the question docx at the listed paragraphs and transcribe the missing options" })), ["record_key", "question_number", "issues", "options_raw", "action"]);
+    writeCsv(path.join(REVIEW_DIR, "metadata_conflicts.csv"), conflicts.filter((c) => c.field !== "answer").map((c) => ({ conflict_id: c.conflict_id, severity: c.severity, conflict_type: c.conflict_type, field: c.field, record_keys: c.record_keys.join(" "), values: JSON.stringify(c.values), detail: c.detail || "", ...an(c), action: c.severity === "LOW" ? "Optional: confirm display name / label" : "Decide the correct value from the source; no automatic winner" })));
+    writeCsv(path.join(REVIEW_DIR, "duplicate_candidates.csv"), duplicates.map((d) => ({ duplicate_group_id: d.duplicate_group_id, duplicate_type: d.duplicate_type, category: d.analysis.category, same_question_record: d.analysis.same_question_record, relationship_status: d.analysis.relationship_status, evidence: d.analysis.evidence.join("; "), classification: d.classification || (d.duplicate_type.startsWith("EXACT") ? "EXACT_DUPLICATE" : "REVIEW"), confidence: d.confidence, members: d.members.join(" "), canonical_candidate: d.canonical_candidate, similarity: d.similarity ?? "", detail: d.detail || "", action: d.action })));
+    // same test position -> different ids: position anomalies, listed with the duplicate analysis
+    writeCsv(path.join(REVIEW_DIR, "same_position_anomalies.csv"), conflicts.filter((c) => c.conflict_type === "SAME_TEST_POSITION_DIFFERENT_IDS").map((c) => ({ conflict_id: c.conflict_id, test_position: c.detail, qbg_ids: c.qbg_ids.join(" "), cells: c.values.map((v) => v.location).join(" "), category: "SAME_POSITION_ANOMALY", action: "Check which id belongs at this position (bilingual copy, re-upload, or entry error); nothing merged" })), ["conflict_id", "test_position", "qbg_ids", "cells", "category", "action"]);
     writeCsv(path.join(REVIEW_DIR, "broken_links.csv"), broken);
     writeCsv(path.join(REVIEW_DIR, "low_confidence_records.csv"), [...lowConfidence, ...orphanOcc.map((o) => ({ record_key: null, question_id: null, qbg_id: null, identity_basis: "TEST_POSITION_WITHOUT_VALID_ID", reason: `id cell holds ${JSON.stringify(o.qbg_id.raw_value)}`, source_rows: `${o.sheet}!${o.source_cell}`, subject: ok(o.subject), chapter: o.aits_taxonomy?.chapter ?? null, action: "Find the QBG id for this test position" }))]);
-    writeCsv(path.join(REVIEW_DIR, "parent_child_conflicts.csv"), parentChild);
+    writeCsv(path.join(REVIEW_DIR, "parent_child_relationships.csv"), relationships, ["child_qbg_id", "parent_candidate", "basis", "relationship_status", "parent_known_as_record", "confidence", "action"]);
+    const legacyPc = path.join(REVIEW_DIR, "parent_child_conflicts.csv");
+    if (fs.existsSync(legacyPc)) fs.unlinkSync(legacyPc); // superseded by parent_child_relationships.csv (generated output only)
     writeCsv(path.join(REVIEW_DIR, "taxonomy_name_conflicts.csv"), tax.taxConflicts.map((t) => ({ ...t, variants: t.variants.join(" || "), sources: t.sources.join(" || "), levels: t.levels.join(",") })));
-    writeCsv(path.join(REVIEW_DIR, "taxonomy_path_issues.csv"), taxPathIssues);
+    writeCsv(path.join(REVIEW_DIR, "taxonomy_path_issues.csv"), taxPathIssues, ["record_key", "row", "issue", "category", "chapter_id", "chapter_name", "topic_id", "topic_name", "subtopic_id", "subtopic_name", "child_known_under", "action"]);
+    // optional-source queues (header-only when the source is absent)
+    const expMatch = matchExport(new Set(qbgOnly.map((c) => c.qbg_id)), qbgExport.index);
+    writeCsv(path.join(REVIEW_DIR, "qbg_export_unmatched_ids.csv"), expMatch.export_only.map((id) => { const e = qbgExport.index.get(id); return { unique_id: id, rows: e.rows.map((r) => `${r.file} row ${r.row_number}`).join(" "), has_question_text: !!e.chosen?.content.question_text, subject: e.chosen?.metadata.subject ?? null, action: "Not in either workbook: kept out of the canonical set; decide whether to add it" }; }), ["unique_id", "rows", "has_question_text", "subject", "action"]);
+    writeCsv(path.join(REVIEW_DIR, "qbg_export_row_issues.csv"), qbgExport.rows.filter((r) => !r.unique_id || r.issues.length).map((r) => ({ file: r.file, row_number: r.row_number, unique_id: r.unique_id, unique_id_raw: r.unique_id_raw, issues: r.issues.join("; ") })), ["file", "row_number", "unique_id", "unique_id_raw", "issues"]);
+    writeCsv(path.join(REVIEW_DIR, "local_documents.csv"), [...localDocMatches.map((m) => ({ ...m, status: "MATCHED (not extracted)" })), ...unmatchedLocalDocs.map((f) => ({ document_id: null, local_path: f.path, basis: null, role: null, qbg_ids: 0, status: "UNMATCHED (name matches no registry document)" }))], ["document_id", "local_path", "basis", "role", "qbg_ids", "status"]);
     writeCsv(path.join(REVIEW_DIR, "unresolved_records.csv"), all.filter((x) => x.recovery_class === "H_UNRESOLVED").map((x) => ({ record_key: x.record_key, question_id: x.question_id, reasons: x.recovery_reasons.join("; "), source_rows: x.provenance.source_rows?.map((s) => `${s.sheet} ${s.row}`).join(" ") || "" })));
 
     return summary;

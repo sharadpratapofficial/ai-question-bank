@@ -42,3 +42,8 @@ python/qbg_modification/_out/
 
 # Ad-hoc local test uploads for QBG Ingestion — not repo fixtures.
 /qbg injestion sample file*
+
+# Proprietary source workbooks read by scripts/data/recovery (data recovery
+# inputs, not source code) — never commit.
+/AutoCuration_Lovee (1).xlsx
+/Important IDs REplica (1).xlsx

@@ -8,6 +8,7 @@ import path from "node:path";
 import JSZip from "jszip";
 import { REPO_ROOT, DOCS_DIR, rel, sha256File, readWorkbook, parseCsv, writeJson, writeText, mdTable, RUN_DATE } from "./lib/common.mjs";
 import { SOURCES, RANKUP_DROP_DIR } from "./sources.mjs";
+import { parseCsvChunks } from "./lib/qbg_export.mjs";
 
 const SKIP_DIRS = new Set(["node_modules", ".git", ".next", ".next-dev", "__pycache__", "data"]);
 const SKIP_PREFIXES = ["scripts/data/"]; // this pipeline's own code is not a source
@@ -71,14 +72,24 @@ function describeWorkbook(file) {
     };
 }
 
-function describeCsv(file) {
-    const rows = parseCsv(fs.readFileSync(file, "utf8")).filter((r) => r.some((v) => v !== ""));
-    return { row_count: Math.max(0, rows.length - 1), column_count: rows[0]?.length || 0, columns: rows[0] || [] };
+/** Row/column counts. Streamed, so a large export (e.g. a ~190 MB QBG_data.csv) is never held in memory. */
+async function describeCsv(file) {
+    let header = null, rows = 0;
+    const chunks = (async function* () { for await (const c of fs.createReadStream(file, { encoding: "utf8", highWaterMark: 1 << 20 })) yield c; })();
+    for await (const r of parseCsvChunks(chunks)) {
+        if (!r.some((v) => v !== "")) continue;
+        if (!header) header = r; else rows++;
+    }
+    return { row_count: rows, column_count: header?.length || 0, columns: header || [] };
 }
 
 export async function runInventory() {
     const files = [];
     walk(REPO_ROOT, files);
+    // data/ holds generated output and is skipped, except data/raw/: human-supplied inputs
+    // (QBG export, RankUp files, documents, other backups) are inventoried with their hashes.
+    const rawDir = path.join(REPO_ROOT, "data", "raw");
+    if (fs.existsSync(rawDir)) walk(rawDir, files);
     const entries = [];
     for (const f of files.sort()) {
         const r = rel(f);
@@ -92,7 +103,7 @@ export async function runInventory() {
         const entry = { path: r, filename: path.basename(f), extension: ext, size_bytes: stat.size, sha256: sha256File(f), source_category: cat.category, likely_purpose: cat.purpose, source_key: cat.source_key || null, status: "PRESENT" };
         try {
             if (ext === ".xlsx" || ext === ".xls") Object.assign(entry, describeWorkbook(f));
-            else if (ext === ".csv") Object.assign(entry, describeCsv(f));
+            else if (ext === ".csv") Object.assign(entry, await describeCsv(f));
             else if (ext === ".docx") Object.assign(entry, await describeDocx(f));
             else if (ext === ".pptx") Object.assign(entry, await describePptx(f));
             else if (ext === ".pdf") Object.assign(entry, describePdf(f));
@@ -114,7 +125,7 @@ export async function runInventory() {
 
     const inventory = {
         generated_for: RUN_DATE,
-        scope: "Repository folder only (S:\\Projects\\ai-question-bank), per user instruction. node_modules/.git/.next/.next-dev/data/ excluded.",
+        scope: "Repository folder only (S:\\Projects\\ai-question-bank), per user instruction. node_modules/.git/.next/.next-dev/data/ excluded, except data/raw/ (supplied inputs).",
         files: entries,
         missing_expected_sources: missing,
         rankup_drop_dir: { path: RANKUP_DROP_DIR, exists: fs.existsSync(dropDir), files: extraRankup },
