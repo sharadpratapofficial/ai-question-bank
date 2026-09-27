@@ -28,8 +28,33 @@ export const CANONICAL_DIR = path.join(REPO_ROOT, "data", "canonical");
 /** Work files (plans, logs, resume state) go under data/ unless IMPORT_WORK_DIR overrides it (tests). */
 const workDir = () => process.env.IMPORT_WORK_DIR || path.join(REPO_ROOT, "data");
 
+/**
+ * Supabase projects this historical recovery import must never write to.
+ * ljkpcqllqdamdatesbfe is the new operational question bank, filled only by
+ * scripts/newbank/import-questions.mjs; legacy recovery data does not belong there.
+ *
+ * The only way past this guard is a deliberate, two-part override naming the exact ref:
+ *   --override-protected-project=<ref>          on the command line, AND
+ *   RECOVERY_IMPORT_PROTECTED_OVERRIDE=<ref>     in the environment.
+ * Either one alone is refused.
+ */
+export const PROTECTED_PROJECT_REFS = Object.freeze(["ljkpcqllqdamdatesbfe"]);
+
+export function assertNotProtectedProject(refs, args, env = process.env) {
+    for (const ref of new Set(refs.filter(Boolean))) {
+        if (!PROTECTED_PROJECT_REFS.includes(ref)) continue;
+        const flagOk = args.overrideProtectedProject === ref;
+        const envOk = env.RECOVERY_IMPORT_PROTECTED_OVERRIDE === ref;
+        if (flagOk && envOk) continue;
+        throw new Error(
+            `Refusing to import recovery data into protected project ${ref} (the new operational question bank). ` +
+            `Nothing written. An override needs BOTH --override-protected-project=${ref} and RECOVERY_IMPORT_PROTECTED_OVERRIDE=${ref}.`,
+        );
+    }
+}
+
 export function parseArgs(argv) {
-    const a = { apply: false, resume: false, batchSize: 500, limit: null, confirmProject: null, flags: new Set() };
+    const a = { apply: false, resume: false, batchSize: 500, limit: null, confirmProject: null, overrideProtectedProject: null, flags: new Set() };
     for (const x of argv) {
         if (x === "--apply") a.apply = true;
         else if (x === "--dry-run") a.apply = false;
@@ -37,6 +62,7 @@ export function parseArgs(argv) {
         else if (x.startsWith("--batch-size=")) a.batchSize = Math.max(1, Number(x.split("=")[1]) || 500);
         else if (x.startsWith("--limit=")) a.limit = Number(x.split("=")[1]) || null;
         else if (x.startsWith("--confirm-project=")) a.confirmProject = x.split("=")[1];
+        else if (x.startsWith("--override-protected-project=")) a.overrideProtectedProject = x.split("=")[1];
         else if (x.startsWith("--")) a.flags.add(x.slice(2));
     }
     return a;
@@ -131,6 +157,9 @@ export async function runImport(spec, argv = process.argv.slice(2), injectedTarg
     if (!target) {
         if (!args.confirmProject) throw new Error("--apply requires --confirm-project=<project-ref>");
         const ref = (process.env.SUPABASE_URL || "").match(/https?:\/\/([^.]+)\./)?.[1];
+        // before any connection: checks both the confirmed ref and the one the URL really points at
+        try { assertNotProtectedProject([args.confirmProject, ref], args); }
+        catch (e) { log({ event: "abort", reason: "protected project" }); throw e; }
         if (ref !== args.confirmProject) throw new Error(`--confirm-project=${args.confirmProject} does not match SUPABASE_URL project ref ${ref}`);
         target = await supabaseTarget();
     }

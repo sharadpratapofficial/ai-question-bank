@@ -1,7 +1,9 @@
 #!/usr/bin/env node
 /**
- * LOCAL validation of scripts/sql/000_rebuild_schema.sql and
- * 001_post_import_backfills.sql on a disposable in-process PostgreSQL (PGlite).
+ * LOCAL validation of scripts/sql/000_rebuild_schema.sql,
+ * 001_post_import_backfills.sql and 003_new_question_bank_support.sql (+ its
+ * read-only verify script) on a disposable in-process PostgreSQL (PGlite).
+ * All checks after the apply step run against 000 + 003, as on the live project.
  * Never connects to Supabase or any network database.
  *
  * PGlite is not a project dependency. Install it anywhere outside the repo and
@@ -39,6 +41,9 @@ const { ROLE_PERMISSIONS, ALL_ROLES } = await import(pathToFileURL(path.join(rep
 const SHIM = read(path.join(here, "supabase_shim.sql"));
 const REBUILD = read(path.join(sqlDir, "000_rebuild_schema.sql"));
 const BACKFILL = read(path.join(sqlDir, "001_post_import_backfills.sql"));
+// Forward migration applied on top of 000 (new question bank: child_order + question-media).
+const NEWBANK = read(path.join(sqlDir, "003_new_question_bank_support.sql"));
+const NEWBANK_VERIFY = read(path.join(sqlDir, "003_verify_new_question_bank_support.sql"));
 
 // ---------------------------------------------------------------- harness ---
 const results = [];
@@ -97,6 +102,19 @@ await check("second apply leaves object counts unchanged", async () => {
     assert(JSON.stringify(first) === JSON.stringify(second), `${JSON.stringify(first)} vs ${JSON.stringify(second)}`);
     return JSON.stringify(second);
 });
+await check("static: 003 never drops a table, column, schema or type, and never deletes/truncates data", async () => {
+    const code = NEWBANK.split("\n").filter((l) => !/^\s*--/.test(l)).join("\n");
+    const bad = code.match(/\bdrop\s+(table|column|schema|type|extension|constraint)\b|\btruncate\b|\bdelete\s+from\b/gi) || [];
+    assert(bad.length === 0, bad.join(", "));
+});
+await check("apply 003_new_question_bank_support.sql over 000", async () => { await db.exec(NEWBANK); });
+const after003 = await snapshot();
+await check("apply 003 again (idempotent; object counts unchanged)", async () => {
+    await db.exec(NEWBANK);
+    const again = await snapshot();
+    assert(JSON.stringify(after003) === JSON.stringify(again), `${JSON.stringify(after003)} vs ${JSON.stringify(again)}`);
+    return JSON.stringify(again);
+});
 
 // ------------------------------------------------------- catalogue checks ---
 const TABLES = ["user_profiles", "qbg_questions", "question_status_transitions", "question_edit_history", "question_translations", "qbg_batches", "qbg_generated_tests", "qbg_generated_test_questions", "pdf_extraction_reports", "ai_reports", "agentic_qc_jobs", "qbg_tasks", "question_video_jobs", "qbg_question_pool", "chapter_merge_log"];
@@ -111,7 +129,7 @@ await check("RLS enabled on every public table", async () => {
     assert(off.length === 0, off.map((r) => r.relname).join(", "));
 });
 await check("qbg_questions column types match the app contract (difficutly_level kept)", async () => {
-    const want = { question_id: "uuid", qbg_id: "text", question_text: "text", options: "jsonb", answer_key: "jsonb", solution_text: "text", question_type: "text", subject: "text", chapter: "text", topic: "text", subtopic: "text", source: "text", difficutly_level: "text", class_level: "text", exam: "ARRAY", parent_question_id: "text", raw_data: "jsonb", source_docx: "jsonb", status: "USER-DEFINED", created_by: "uuid", last_modified_by: "uuid", last_modified_at: "timestamp with time zone" };
+    const want = { question_id: "uuid", qbg_id: "text", question_text: "text", options: "jsonb", answer_key: "jsonb", solution_text: "text", question_type: "text", subject: "text", chapter: "text", topic: "text", subtopic: "text", source: "text", difficutly_level: "text", class_level: "text", exam: "ARRAY", parent_question_id: "text", child_order: "smallint", raw_data: "jsonb", source_docx: "jsonb", status: "USER-DEFINED", created_by: "uuid", last_modified_by: "uuid", last_modified_at: "timestamp with time zone" };
     const cols = await all(db, `select column_name, data_type from information_schema.columns where table_schema='public' and table_name='qbg_questions'`);
     const got = Object.fromEntries(cols.map((c) => [c.column_name, c.data_type]));
     const bad = Object.entries(want).filter(([k, v]) => got[k] !== v).map(([k, v]) => `${k}: want ${v} got ${got[k]}`);
@@ -322,9 +340,10 @@ await check("user_profiles: self read, admin read-all/update, no self-promotion,
 });
 
 // ------------------------------------------------------------- storage -----
-await check("storage: 3 private buckets; per-user video folders; docx-media by permission; anon nothing", async () => {
+await check("storage: 4 private buckets; per-user video folders; docx-media by permission; anon nothing", async () => {
     const b = await all(db, `select id, public from storage.buckets order by id`);
-    assert(b.length === 3 && b.every((x) => x.public === false), JSON.stringify(b));
+    assert(b.length === 4 && b.every((x) => x.public === false), JSON.stringify(b));
+    assert(b.map((x) => x.id).join(",") === "ai-video-artifacts,docx-media,question-media,question-video-artifacts", JSON.stringify(b));
     const put = (bucket, name) => `insert into storage.objects (bucket_id, name) values ('${bucket}', '${name}')`;
     await as(db, "authenticated", U.ai, () => db.query(put("question-video-artifacts", `${U.ai}/job1/clips.zip`)));
     await as(db, "authenticated", U.ai, () => expectError(db, put("question-video-artifacts", `${U.manager}/job1/clips.zip`), [], "42501"));
@@ -338,6 +357,75 @@ await check("storage: 3 private buckets; per-user video folders; docx-media by p
         await expectError(db, put("docx-media", "x/y.png"), [], "42501");
         assert((await n(db, `select count(*) n from storage.objects`)) === 0, "anon reads nothing");
     });
+});
+
+// ------------------------------------------ 003: new question bank support ---
+const C1 = "66666666-6666-4666-8666-666666666661", C2 = "66666666-6666-4666-8666-666666666662";
+const insertChild = `insert into public.qbg_questions (question_id, qbg_id, question_text, question_type, parent_question_id, child_order) values ($1::uuid, $1::text, $2, 'Integer', $3, $4)`;
+await check("003 child_order: needs a parent, starts at 1, unique per parent, deferrable swap, ordering", () => as(db, "service_role", null, async () => {
+    await db.query(insertChild, [C1, "<p>child 1</p>", Q[0], 1]);
+    await db.query(insertChild, [C2, "<p>child 2</p>", Q[0], 2]);
+    await expectError(db, insertChild, ["66666666-6666-4666-8666-666666666663", "<p>dup</p>", Q[0], 1], "23505");
+    await expectError(db, insertChild, ["66666666-6666-4666-8666-666666666664", "<p>no parent</p>", null, 1], "23514");
+    await expectError(db, insertChild, ["66666666-6666-4666-8666-666666666665", "<p>zero</p>", Q[0], 0], "23514");
+    // same position under a different parent is fine; NULL positions never collide
+    await db.query(insertChild, ["66666666-6666-4666-8666-666666666666", "<p>other parent</p>", Q[1], 1]);
+    await db.query(`delete from public.qbg_questions where question_id = '66666666-6666-4666-8666-666666666666'`);
+    // swap positions in one transaction
+    await db.exec(`begin;
+        set constraints public.qbg_questions_parent_child_order_key deferred;
+        update public.qbg_questions set child_order = 2 where question_id = '${C1}';
+        update public.qbg_questions set child_order = 1 where question_id = '${C2}';
+        commit;`);
+    // the fetchChildQuestions() order: child_order asc nulls last, then question_id (Q[2] has no position)
+    const kids = (await all(db, `select question_id from public.qbg_questions where parent_question_id = $1 order by child_order asc nulls last, question_id`, [Q[0]])).map((r) => r.question_id);
+    assert(JSON.stringify(kids) === JSON.stringify([C2, C1, Q[2]]), JSON.stringify(kids));
+    await db.exec(`begin; set constraints public.qbg_questions_parent_child_order_key deferred;
+        update public.qbg_questions set child_order = 1 where question_id = '${C1}';
+        update public.qbg_questions set child_order = 2 where question_id = '${C2}'; commit;`);
+    return `order ${kids.length} children ok`;
+}));
+await check("003 restore RPC also restores child_order (and is still admin-only)", async () => {
+    const hid = (await one(db, `select id from public.question_edit_history where question_id=$1 and change_type='create'`, [C1])).id; // snapshot: child_order = 1
+    await as(db, "service_role", null, () => db.query(`update public.qbg_questions set child_order = 9 where question_id = $1`, [C1]));
+    await as(db, "authenticated", U.manager, () => expectError(db, `select public.admin_restore_question_version($1)`, [hid], "42501"));
+    await as(db, "authenticated", U.admin, () => db.query(`select public.admin_restore_question_version($1)`, [hid]));
+    const r = await one(db, `select child_order from public.qbg_questions where question_id = $1`, [C1]);
+    assert(r.child_order === 1, `restored child_order = ${r.child_order}`);
+    await as(db, "anon", null, () => expectError(db, `select public.admin_restore_question_version($1)`, [hid], "42501"));
+});
+await check("003 question-media: private + limits; uploads only by question creators/editors to newbank/<existing question>/<file>", async () => {
+    const b = await one(db, `select public, file_size_limit, allowed_mime_types from storage.buckets where id = 'question-media'`);
+    assert(b.public === false && Number(b.file_size_limit) === 10485760 && JSON.stringify(b.allowed_mime_types) === JSON.stringify(["image/png", "image/jpeg", "image/gif", "image/webp"]), JSON.stringify(b));
+    const put = (name) => `insert into storage.objects (bucket_id, name) values ('question-media', '${name}')`;
+    // allowed: upload_pdf (manager), manual_question_entry (data entry), edit_metadata (reviewer)
+    await as(db, "authenticated", U.manager, () => db.query(put(`newbank/${Q[0]}/fig-1.png`)));
+    await as(db, "authenticated", U.entry, () => db.query(put(`newbank/${Q[1]}/diagram_a.JPG`)));
+    await as(db, "authenticated", U.reviewer, () => db.query(put(`newbank/${Q[0]}/fix-2.webp`)));
+    // refused: read-only roles
+    const refused = async (who, p) => {
+        try { await as(db, "authenticated", U[who], () => expectError(db, put(p), [], "42501")); }
+        catch (e) { throw new Error(`${who} -> ${p}: ${e.message}`); }
+    };
+    for (const who of ["viewer", "ai", "fresh"]) await refused(who, `newbank/${Q[0]}/x-${who}.png`);
+    // refused: paths outside the convention, SVG, unknown question, non-canonical (upper-case) uuid
+    const HEX = "abcdef01-2345-4678-89ab-cdef01234567";
+    await as(db, "service_role", null, () => db.query(`insert into public.qbg_questions (question_id, qbg_id, question_text) values ($1::uuid, $1::text, '<p>hex id</p>')`, [HEX]));
+    const badPaths = [`other/${Q[0]}/x.png`, `newbank/not-a-uuid/x.png`, `newbank/${Q[0]}/x.svg`, `newbank/${Q[0]}/sub/x.png`, `newbank/${Q[0]}/.hidden.png`, `newbank/${Q[0]}/x.pdf`, `newbank/99999999-9999-4999-8999-999999999999/x.png`, `newbank/${HEX.toUpperCase()}/x.png`];
+    for (const p of badPaths) await refused("manager", p);
+    // reads follow the qbg_questions SELECT permissions
+    const seen = (who) => as(db, "authenticated", U[who], () => n(db, `select count(*) n from storage.objects where bucket_id = 'question-media'`));
+    assert((await seen("viewer")) === 3, "viewer reads");
+    assert((await seen("fresh")) === 0, "fresh account reads nothing");
+    // immutable for users: no update / delete policy -> 0 rows affected
+    const upd = await as(db, "authenticated", U.admin, () => db.query(`update storage.objects set name = name || '.x' where bucket_id = 'question-media'`));
+    const del = await as(db, "authenticated", U.admin, () => db.query(`delete from storage.objects where bucket_id = 'question-media'`));
+    assert(upd.affectedRows === 0 && del.affectedRows === 0, `update ${upd.affectedRows} / delete ${del.affectedRows}`);
+    await as(db, "anon", null, async () => {
+        await expectError(db, put(`newbank/${Q[0]}/anon.png`), [], "42501");
+        assert((await n(db, `select count(*) n from storage.objects where bucket_id = 'question-media'`)) === 0, "anon reads nothing");
+    });
+    return `3 uploads allowed, ${badPaths.length + 3} refused`;
 });
 
 // ------------------------------------------------------- FK side effects ---
@@ -387,6 +475,28 @@ await check("002_verify_bootstrap.sql reports all PASS on a fresh bootstrap", as
     const failed = rows.filter((r) => r.result !== "PASS");
     assert(rows.length >= 13 && !failed.length, failed.map((r) => `${r.check_name}: ${r.detail}`).join("; "));
     return `${rows.length} checks PASS`;
+});
+
+await check("003_verify_new_question_bank_support.sql: all PASS after 000 + 003, and after 000 -> 003 -> 000 -> 003", async () => {
+    const fresh = new PGlite({ extensions: { pgcrypto } });
+    await fresh.exec(SHIM);
+    await fresh.exec(REBUILD);
+    await fresh.exec(NEWBANK);
+    const verify = async () => (await fresh.query(NEWBANK_VERIFY)).rows;
+    const r1 = await verify();
+    const bootstrap = (await fresh.query(read(path.join(sqlDir, "002_verify_bootstrap.sql")))).rows;
+    // re-running 000 reverts the restore function; the verify script must notice, and 003 must repair it
+    await fresh.exec(REBUILD);
+    const stale = (await verify()).find((r) => r.check_name.startsWith("admin_restore_question_version restores child_order"));
+    await fresh.exec(NEWBANK);
+    const r2 = await verify();
+    await fresh.close();
+    const bad = [...r1, ...r2].filter((r) => r.result !== "PASS");
+    assert(r1.length >= 9 && !bad.length, bad.map((r) => `${r.check_name}: ${r.detail}`).join("; "));
+    assert(stale?.result === "FAIL", "verify must flag a 000 re-run");
+    const b = bootstrap.filter((r) => r.result !== "PASS");
+    assert(!b.length, `002 after 003: ${b.map((r) => r.check_name).join("; ")}`);
+    return `${r1.length} checks PASS; 002 still PASS after 003; a 000 re-run is detected and repaired by 003`;
 });
 
 await db.close();

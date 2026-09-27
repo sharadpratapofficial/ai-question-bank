@@ -23,6 +23,7 @@ export interface Question {
     source: string;
     difficutly_level: DifficultyLevel;  // ⚠️ Typo preserved from DB column name
     parent_question_id: string | null;
+    child_order?: number | null;        // position within a passage (1-based); null for standalone questions
     raw_data: RawQuestionData[] | null;
     // New columns extracted from raw_data (may be null if migration hasn't run)
     exam: string[] | null;              // e.g. ["JEE Mains", "NEET"]

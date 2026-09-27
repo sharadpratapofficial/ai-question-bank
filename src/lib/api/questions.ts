@@ -139,6 +139,9 @@ export async function fetchChildQuestions(
         .from(TABLE_NAME)
         .select("*")
         .eq("parent_question_id", parentQuestionId)
+        // child_order: scripts/sql/003_new_question_bank_support.sql; question_id breaks ties
+        // and orders legacy children that have no position.
+        .order("child_order", { ascending: true, nullsFirst: false })
         .order("question_id");
 
     if (error) {

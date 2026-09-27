@@ -6,7 +6,7 @@ Files:
 - `scripts/sql/000_rebuild_schema.sql`: the one-pass bootstrap (schema, triggers, RLS, storage)
 - `scripts/sql/002_verify_bootstrap.sql`: read-only post-run check
 - `scripts/sql/001_post_import_backfills.sql`: only after a real data import
-- `scripts/sql/validate/`: local validator (39 checks)
+- `scripts/sql/validate/`: local validator (46 checks, including `003`)
 
 ---
 
@@ -17,6 +17,7 @@ Files:
 | **0** | Dashboard → Authentication → Sign In / Providers | **Turn OFF "Allow new users to sign up"**. Users are created by an admin (`/admin/users`) or come through Google. Leave Email enabled so password sign-in works | toggle back |
 | **1** | Dashboard → SQL Editor | Paste and run **`scripts/sql/000_rebuild_schema.sql`** (whole file, one run). Creates extensions, enums, 15 tables, indexes, triggers, the auth → profile trigger, RLS, grants, 3 private buckets and storage policies. Idempotent: safe to re-run | new project: delete and recreate it |
 | **2** | SQL Editor | Run **`scripts/sql/002_verify_bootstrap.sql`**. Every row must say **PASS** | read-only |
+| **2b** | SQL Editor *(separately approved; forward migration for the new question bank)* | Run **`scripts/sql/003_new_question_bank_support.sql`** (adds `qbg_questions.child_order` and the private `question-media` bucket), then **`scripts/sql/003_verify_new_question_bank_support.sql`**: every row must say **PASS**. If `000` is ever re-run, re-run `003` after it | manual rollback block at the end of `003` |
 | **3** | Dashboard → Authentication → URL Configuration | Site URL = your app origin. Redirect URLs: `http://localhost:5001/auth/callback`, plus the production origin's `/auth/callback` | edit |
 | **4** | Dashboard → Authentication → Providers → Google *(only if Google sign-in is used)* | Enable Google with an OAuth client from Google Cloud Console. Its authorized redirect URI is `https://<project-ref>.supabase.co/auth/v1/callback`. Set `QBG_ALLOWED_GOOGLE_EMAILS` in the app env | disable provider |
 | **5** | `.env.local` (local, never committed) | Already present: `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY` (a publishable key, accepted), `SUPABASE_SERVICE_ROLE_KEY` (a secret key, accepted). Optional rename: `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`, `SUPABASE_SECRET_KEY` (see §6) | — |
@@ -24,7 +25,7 @@ Files:
 | **7** | SQL Editor | Promote it to admin: `update public.user_profiles set role = 'admin' where lower(email) = lower('<that email>');` (the only manual SQL write) | set role back |
 | **8** | App (`npm run dev`, sign in with that **real** account, not the dev bypass) | Smoke test: `/admin/users` lists the user; create a second user with role `viewer` from the UI; add **one** test question at `/questions` → *Add*; edit it; open its history; change its status | delete the test question in the Table Editor |
 | **9** | SQL Editor | Confirm the test question has an edit-history row with your user as editor: `select change_type, editor_email from question_edit_history order by created_at desc limit 5;` | read-only |
-| **10** | later, separately approved | Real data import (dry runs first: `scripts/data/import/`), then `001_post_import_backfills.sql` | — |
+| **10** | later, separately approved | New question-bank import with `scripts/newbank/import-questions.mjs` (dry runs and a trial first; see `docs/NEW_QUESTION_BANK_FORMAT.md`). The historical recovery importer (`scripts/data/import/`) **refuses this project** | — |
 
 **First action:** step 0 (a Dashboard toggle), then step 1: run `scripts/sql/000_rebuild_schema.sql` in the SQL Editor.
 
@@ -87,9 +88,11 @@ Edit history attribution: session writes record `auth.uid()`. Server-key writes 
 | `question-video-artifacts` | **private** | `<user_id>/<job_id>/…` | a user reads/writes only their own `<user_id>/` folder |
 | `ai-video-artifacts` | **private** | `<user_id>/<job_id>/…` | own folder only |
 | `docx-media` | **private** | `<extractionId>/<scope>/<sha>.<ext>` | read: upload_pdf / generate_tests / view_questions; write: upload_pdf. No delete |
+| `question-media` *(003)* | **private**, 10 MB, png/jpeg/gif/webp | `newbank/<question_id>/<filename>` | read: the `qbg_questions` SELECT permissions; upload: manual_question_entry / upload_pdf / edit_metadata, only to an existing question's folder; no update or delete (immutable) |
 
 - **Downloads** use short-lived signed URLs created server-side.
-- **Question diagrams** extracted from PDFs are embedded in `question_text` as data URLs, so no bucket is needed for them.
+- **Question diagrams** extracted from PDFs are embedded in `question_text` as data URLs (existing behaviour).
+- **New-bank question images** belong in `question-media`. Question HTML stores only the storage path, behind an app route (`/api/question-media/<path>`, not built yet) that checks the session and redirects to a short-lived signed URL.
 - **No bucket size limit is set:** the project's global limit applies (50 MB on the Free plan). Video ZIPs may exceed it.
 
 ---
