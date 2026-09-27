@@ -1,0 +1,6197 @@
+{
+  "kind": "xlsx",
+  "path": "AutoCuration_Lovee (1).xlsx",
+  "sha256": "71b60645e31c169ab48efaf12e90fbb0d546765e1de1ebde9b40f92e332e5a17",
+  "sheets": [
+    {
+      "column_count": 35,
+      "columns": [
+        {
+          "duplicate_rows": 47,
+          "formats": {
+            "QBG_CUID25": 16783
+          },
+          "header": "qbg_id",
+          "index": 0,
+          "inferred_type": "string",
+          "letter": "A",
+          "non_null": 16783,
+          "null_pct": 50.88,
+          "rows": 34168,
+          "top_values": [
+            {
+              "count": 2,
+              "value": "03b5lk3xldue3gfzdg2mwyjo6"
+            },
+            {
+              "count": 2,
+              "value": "0s7jjoimjotos2ymr4h19fgna"
+            },
+            {
+              "count": 2,
+              "value": "0xz2851qjxygg1p4ujxeja8w9"
+            },
+            {
+              "count": 2,
+              "value": "128uricnf99zzv9mnfh6od55c"
+            },
+            {
+              "count": 2,
+              "value": "1lh6vpx6qf8v4mxgim4an647y"
+            },
+            {
+              "count": 2,
+              "value": "3eahv03hw0d0aukb2e9jy83t7"
+            },
+            {
+              "count": 2,
+              "value": "3ugxmand8dbwcul54bjw253co"
+            },
+            {
+              "count": 2,
+              "value": "5i77hdidqi1croupndaiyctfc"
+            }
+          ],
+          "unique": 16736,
+          "values_occurring_more_than_once": 47
+        },
+        {
+          "duplicate_rows": 19389,
+          "formats": {
+            "DRIVE_URL": 19712,
+            "INTEGER": 1,
+            "TEXT": 1,
+            "URL": 14185
+          },
+          "header": "link",
+          "index": 1,
+          "inferred_type": "MIXED(number+string)",
+          "letter": "B",
+          "non_null": 33899,
+          "null_pct": 0.79,
+          "rows": 34168,
+          "top_values": [
+            {
+              "count": 209,
+              "value": "https://drive.google.com/file/d/1WhDGv791KvIdVZ15dPMZ0lQ2-R1Q6fkX/view?usp=drive_link"
+            },
+            {
+              "count": 202,
+              "value": "https://drive.google.com/file/d/1KioMATRO0hRfcNj1SUMXqp1smDcn5zHV/view?usp=drive_link"
+            },
+            {
+              "count": 200,
+              "value": "https://drive.google.com/open?id=1o6JzCPriT4R5ZTZqVSny6R-zFTV3meQO&usp=drive_copy"
+            },
+            {
+              "count": 200,
+              "value": "https://drive.google.com/open?id=1sqfbgNYT165NvDcNztiU0DvSKPWjvaBY&usp=drive_copy"
+            },
+            {
+              "count": 175,
+              "value": "https://drive.google.com/file/d/1JJSJcrX66doIuic14sM02dh9vWkGErPp/view?usp=drive_link"
+            },
+            {
+              "count": 173,
+              "value": "https://drive.google.com/open?id=1VpQCEzzYOFAXOrgZB--p6co2iVFwVDt9&usp=drive_copy"
+            },
+            {
+              "count": 170,
+              "value": "https://drive.google.com/open?id=1hTgt3iYzLPESAyBeh9Cfo3vXW-hUxuok&usp=drive_copy"
+            },
+            {
+              "count": 156,
+              "value": "https://drive.google.com/open?id=1xHFQQ7rXohVCSDBd5AezYj2bYbso6edk&usp=drive_copy"
+            }
+          ],
+          "unique": 14510,
+          "values_occurring_more_than_once": 321
+        },
+        {
+          "duplicate_rows": 34162,
+          "formats": {
+            "TEXT": 34168
+          },
+          "header": "question_type",
+          "index": 2,
+          "inferred_type": "string",
+          "letter": "C",
+          "non_null": 34168,
+          "null_pct": 0,
+          "rows": 34168,
+          "top_values": [
+            {
+              "count": 19136,
+              "value": "Single_Choice(SCQ)"
+            },
+            {
+              "count": 8000,
+              "value": "Numerical"
+            },
+            {
+              "count": 3783,
+              "value": "Multi_Choice(MCQ)"
+            },
+            {
+              "count": 2167,
+              "value": "Comprehension(COMP)"
+            },
+            {
+              "count": 1048,
+              "value": "Matching_List(ML)"
+            },
+            {
+              "count": 34,
+              "value": "Assertion_Reason(AR)"
+            }
+          ],
+          "unique": 6,
+          "values_occurring_more_than_once": 6
+        },
+        {
+          "duplicate_rows": 33848,
+          "formats": {
+            "TEXT": 33851
+          },
+          "header": "difficulty_level",
+          "index": 3,
+          "inferred_type": "string",
+          "letter": "D",
+          "non_null": 33851,
+          "null_pct": 0.93,
+          "rows": 34168,
+          "top_values": [
+            {
+              "count": 18979,
+              "value": "Medium"
+            },
+            {
+              "count": 8284,
+              "value": "Easy"
+            },
+            {
+              "count": 6588,
+              "value": "Hard"
+            }
+          ],
+          "unique": 3,
+          "values_occurring_more_than_once": 3
+        },
+        {
+          "duplicate_rows": 34152,
+          "formats": {
+            "TEXT": 34168
+          },
+          "header": "source",
+          "index": 4,
+          "inferred_type": "string",
+          "letter": "E",
+          "non_null": 34168,
+          "null_pct": 0,
+          "rows": 34168,
+          "top_values": [
+            {
+              "count": 9098,
+              "value": "Milestone"
+            },
+            {
+              "count": 7879,
+              "value": "JEE-Advanced Brahmastra"
+            },
+            {
+              "count": 5088,
+              "value": "AIR"
+            },
+            {
+              "count": 4883,
+              "value": "Main Booklet"
+            },
+            {
+              "count": 4268,
+              "value": "JEE Advanced"
+            },
+            {
+              "count": 1603,
+              "value": "AITS"
+            },
+            {
+              "count": 407,
+              "value": "3QuestionBank"
+            },
+            {
+              "count": 325,
+              "value": "Real Test"
+            }
+          ],
+          "unique": 16,
+          "values_occurring_more_than_once": 16
+        },
+        {
+          "duplicate_rows": 34164,
+          "formats": {
+            "TEXT": 34168
+          },
+          "header": "subject",
+          "index": 5,
+          "inferred_type": "string",
+          "letter": "F",
+          "non_null": 34168,
+          "null_pct": 0,
+          "rows": 34168,
+          "top_values": [
+            {
+              "count": 15001,
+              "value": "Physics"
+            },
+            {
+              "count": 11345,
+              "value": "Chemistry"
+            },
+            {
+              "count": 7732,
+              "value": "Maths"
+            },
+            {
+              "count": 90,
+              "value": "physics"
+            }
+          ],
+          "unique": 4,
+          "values_occurring_more_than_once": 4
+        },
+        {
+          "duplicate_rows": 34073,
+          "formats": {
+            "TEXT": 34168
+          },
+          "header": "chapter",
+          "index": 6,
+          "inferred_type": "string",
+          "letter": "G",
+          "non_null": 34168,
+          "null_pct": 0,
+          "rows": 34168,
+          "top_values": [
+            {
+              "count": 1146,
+              "value": "Motion in a Straight Line"
+            },
+            {
+              "count": 1110,
+              "value": "Basic Maths"
+            },
+            {
+              "count": 1096,
+              "value": "Structure of Atom"
+            },
+            {
+              "count": 818,
+              "value": "Thermodynamics"
+            },
+            {
+              "count": 803,
+              "value": "Electric Charges and Fields"
+            },
+            {
+              "count": 792,
+              "value": "Some Basic Concepts of Chemistry"
+            },
+            {
+              "count": 776,
+              "value": "Electrostatic Potential and Capacitance"
+            },
+            {
+              "count": 771,
+              "value": "Electrochemistry"
+            }
+          ],
+          "unique": 95,
+          "values_occurring_more_than_once": 93
+        },
+        {
+          "duplicate_rows": 32467,
+          "formats": {
+            "QBG_CUID25": 1820,
+            "TEXT": 32157
+          },
+          "header": "topic",
+          "index": 7,
+          "inferred_type": "string",
+          "letter": "H",
+          "non_null": 33977,
+          "null_pct": 0.56,
+          "rows": 34168,
+          "top_values": [
+            {
+              "count": 499,
+              "value": "Logarithm"
+            },
+            {
+              "count": 380,
+              "value": "Projectile Motion"
+            },
+            {
+              "count": 283,
+              "value": "Modulus"
+            },
+            {
+              "count": 279,
+              "value": "Wavy Curve Method"
+            },
+            {
+              "count": 272,
+              "value": "Basic Maths"
+            },
+            {
+              "count": 267,
+              "value": "Collisions"
+            },
+            {
+              "count": 251,
+              "value": "Dimensional Analysis and its Applications"
+            },
+            {
+              "count": 246,
+              "value": "Differentiation and Integration"
+            }
+          ],
+          "unique": 1510,
+          "values_occurring_more_than_once": 1310
+        },
+        {
+          "duplicate_rows": 30495,
+          "formats": {
+            "QBG_CUID25": 190,
+            "TEXT": 32976
+          },
+          "header": "subtopic",
+          "index": 8,
+          "inferred_type": "string",
+          "letter": "I",
+          "non_null": 33166,
+          "null_pct": 2.93,
+          "rows": 34168,
+          "top_values": [
+            {
+              "count": 1526,
+              "value": "-"
+            },
+            {
+              "count": 547,
+              "value": "Chemical Properties"
+            },
+            {
+              "count": 269,
+              "value": "Wavy Curve Method"
+            },
+            {
+              "count": 202,
+              "value": "Application of Equations of Motion"
+            },
+            {
+              "count": 195,
+              "value": "Logarithm Properties"
+            },
+            {
+              "count": 193,
+              "value": "Introduction"
+            },
+            {
+              "count": 170,
+              "value": "Logarithm Equation"
+            },
+            {
+              "count": 162,
+              "value": "Determinant of a Matrix of Order 3 × 3"
+            }
+          ],
+          "unique": 2671,
+          "values_occurring_more_than_once": 2208
+        },
+        {
+          "duplicate_rows": 15600,
+          "formats": {
+            "DRIVE_URL": 1243,
+            "FILE_NAME": 120,
+            "INTEGER": 5413,
+            "TEXT": 9008
+          },
+          "header": "class",
+          "index": 9,
+          "inferred_type": "MIXED(number+string)",
+          "letter": "J",
+          "non_null": 15784,
+          "null_pct": 53.8,
+          "rows": 34168,
+          "top_values": [
+            {
+              "count": 4107,
+              "value": "11"
+            },
+            {
+              "count": 1306,
+              "value": "12"
+            },
+            {
+              "count": 90,
+              "value": "Mile- Pra_04-Aug-2024_12th JEE_Main_Part Test_PHASE-1_ROI MODEL_Test-5_Question"
+            },
+            {
+              "count": 90,
+              "value": "Mile- Pra_09-Jun-2024_12th JEE_Main_Part Test_PHASE-2_KPM MODEL_Test-0_Question"
+            },
+            {
+              "count": 90,
+              "value": "Mile- Pra_14-Jul-2024_Dropper JEE_Main_Part Test_PHASE-3_ROI MODEL_Test-0_Question"
+            },
+            {
+              "count": 90,
+              "value": "Mile- Pra_16-Jun-2024_Dropper JEE_Main_Part Test_PHASE-2_KPM MODEL_Test-0_Question"
+            },
+            {
+              "count": 90,
+              "value": "Mile- Pra_16-Jun-2024_Dropper JEE_Main_Part Test_PHASE-2_ROI MODEL_Test-0_Question"
+            },
+            {
+              "count": 90,
+              "value": "Mile- Pra_18-Aug-2024_11th JEE_Main_Part Test_PHASE-4_KPM MODEL_Test-0_Question"
+            }
+          ],
+          "unique": 184,
+          "values_occurring_more_than_once": 183
+        },
+        {
+          "duplicate_rows": 3752,
+          "formats": {
+            "TEXT": 3788
+          },
+          "header": "used_in_exam",
+          "index": 10,
+          "inferred_type": "string",
+          "letter": "K",
+          "non_null": 3788,
+          "null_pct": 88.91,
+          "rows": 34168,
+          "top_values": [
+            {
+              "count": 2354,
+              "value": "MileStoneMarketing"
+            },
+            {
+              "count": 476,
+              "value": "Kattar"
+            },
+            {
+              "count": 374,
+              "value": "Mastery2"
+            },
+            {
+              "count": 180,
+              "value": "Mastery2,MileStoneMarketing"
+            },
+            {
+              "count": 126,
+              "value": "AITS_HYD,Kattar"
+            },
+            {
+              "count": 45,
+              "value": "NEET-PYQ-Ultimate"
+            },
+            {
+              "count": 40,
+              "value": "tagging-testing"
+            },
+            {
+              "count": 20,
+              "value": "MileStoneMarketing,tagging-testing"
+            }
+          ],
+          "unique": 36,
+          "values_occurring_more_than_once": 31
+        },
+        {
+          "duplicate_rows": 18759,
+          "formats": {
+            "INTEGER": 18968,
+            "TEXT": 20
+          },
+          "header": "Row_Number",
+          "index": 11,
+          "inferred_type": "MIXED(number+string)",
+          "letter": "L",
+          "non_null": 18988,
+          "null_pct": 44.43,
+          "rows": 34168,
+          "top_values": [
+            {
+              "count": 271,
+              "value": "10"
+            },
+            {
+              "count": 271,
+              "value": "11"
+            },
+            {
+              "count": 271,
+              "value": "12"
+            },
+            {
+              "count": 271,
+              "value": "13"
+            },
+            {
+              "count": 271,
+              "value": "14"
+            },
+            {
+              "count": 271,
+              "value": "15"
+            },
+            {
+              "count": 271,
+              "value": "16"
+            },
+            {
+              "count": 271,
+              "value": "17"
+            }
+          ],
+          "unique": 229,
+          "values_occurring_more_than_once": 202
+        },
+        {
+          "duplicate_rows": 19709,
+          "formats": {
+            "QBG_CUID25": 19712
+          },
+          "header": "subject_code",
+          "index": 12,
+          "inferred_type": "string",
+          "letter": "M",
+          "non_null": 19712,
+          "null_pct": 42.31,
+          "rows": 34168,
+          "top_values": [
+            {
+              "count": 10096,
+              "value": "iydv16vvyph4i0hajzqbqxk2t"
+            },
+            {
+              "count": 6576,
+              "value": "7rgg2rb3rbirmrkpguofa7sor"
+            },
+            {
+              "count": 3040,
+              "value": "19c8p297y48dy01537cxzinys"
+            }
+          ],
+          "unique": 3,
+          "values_occurring_more_than_once": 3
+        },
+        {
+          "duplicate_rows": 19612,
+          "formats": {
+            "LOWER_ALNUM_20_30": 1,
+            "QBG_CUID25": 19711
+          },
+          "header": "chapter_code",
+          "index": 13,
+          "inferred_type": "string",
+          "letter": "N",
+          "non_null": 19712,
+          "null_pct": 42.31,
+          "rows": 34168,
+          "top_values": [
+            {
+              "count": 654,
+              "value": "7kx7aknod2psthzyz0hxpqllr"
+            },
+            {
+              "count": 519,
+              "value": "n56993pcfvp85gtnvq3a1t3rw"
+            },
+            {
+              "count": 503,
+              "value": "nezbgy0nbv5cx5jd8fxlccu4f"
+            },
+            {
+              "count": 502,
+              "value": "07b1xigu2yazkn0ohu0v44d3y"
+            },
+            {
+              "count": 489,
+              "value": "cac21m9mra8wssslvivxnozws"
+            },
+            {
+              "count": 454,
+              "value": "5m9tbebxdyzr4sfxutg5f8dk4"
+            },
+            {
+              "count": 454,
+              "value": "t0l8btj327ht3t34rfxsp9qbl"
+            },
+            {
+              "count": 449,
+              "value": "cdpncu1c19n592npxvusrifdy"
+            }
+          ],
+          "unique": 100,
+          "values_occurring_more_than_once": 96
+        },
+        {
+          "duplicate_rows": 18398,
+          "formats": {
+            "INTEGER": 24,
+            "QBG_CUID25": 17868,
+            "TEXT": 1820
+          },
+          "header": "topic_code",
+          "index": 14,
+          "inferred_type": "MIXED(number+string)",
+          "letter": "O",
+          "non_null": 19712,
+          "null_pct": 42.31,
+          "rows": 34168,
+          "top_values": [
+            {
+              "count": 195,
+              "value": "gzo7g3it29k3lq9j7c7hh1x44"
+            },
+            {
+              "count": 171,
+              "value": "oprz3gpyyysqcaflomith22cf"
+            },
+            {
+              "count": 157,
+              "value": "8gdvw4m62dqqarzg8x3emd6jr"
+            },
+            {
+              "count": 152,
+              "value": "bpgjvq5jkfgy0qjan9x0v8r5u"
+            },
+            {
+              "count": 139,
+              "value": "zn18yw66stz5mm3qyu857dbhe"
+            },
+            {
+              "count": 138,
+              "value": "ca6wghxkkml5mgd1i76r227lb"
+            },
+            {
+              "count": 135,
+              "value": "a5ddoll4mwx9vp6ksx15y8oqh"
+            },
+            {
+              "count": 133,
+              "value": "inks5zjayuix5hobkc7tk53aq"
+            }
+          ],
+          "unique": 1314,
+          "values_occurring_more_than_once": 1138
+        },
+        {
+          "duplicate_rows": 17121,
+          "formats": {
+            "INTEGER": 24,
+            "QBG_CUID25": 19320,
+            "TEXT": 190
+          },
+          "header": "subtopic_code",
+          "index": 15,
+          "inferred_type": "MIXED(number+string)",
+          "letter": "P",
+          "non_null": 19534,
+          "null_pct": 42.83,
+          "rows": 34168,
+          "top_values": [
+            {
+              "count": 350,
+              "value": "15imm75mihwe0n44g05omyg1r"
+            },
+            {
+              "count": 122,
+              "value": "cvlkwahvz8llro3c2qia7at5s"
+            },
+            {
+              "count": 109,
+              "value": "f4b5ge4xul9vrja1whibae6gy"
+            },
+            {
+              "count": 82,
+              "value": "3nfhvt03up9mxieil15uls8ng"
+            },
+            {
+              "count": 81,
+              "value": "h3btk5zbpa2jkn145pxgjg4cd"
+            },
+            {
+              "count": 77,
+              "value": "338alakve50rlc35n1tnk9eb3"
+            },
+            {
+              "count": 73,
+              "value": "6we83ymfbnas39algqlc7390p"
+            },
+            {
+              "count": 72,
+              "value": "f1scg17uctl4tx3vj356gfsmg"
+            }
+          ],
+          "unique": 2413,
+          "values_occurring_more_than_once": 1907
+        },
+        {
+          "duplicate_rows": 19662,
+          "formats": {
+            "INTEGER": 17772,
+            "INTEGER_STRING": 1893
+          },
+          "header": "difficulty_level_code",
+          "index": 16,
+          "inferred_type": "MIXED(number+string)",
+          "letter": "Q",
+          "non_null": 19665,
+          "null_pct": 42.45,
+          "rows": 34168,
+          "top_values": [
+            {
+              "count": 10514,
+              "value": "2"
+            },
+            {
+              "count": 5052,
+              "value": "3"
+            },
+            {
+              "count": 4099,
+              "value": "1"
+            }
+          ],
+          "unique": 3,
+          "values_occurring_more_than_once": 3
+        },
+        {
+          "duplicate_rows": 707,
+          "formats": {
+            "INTEGER": 724
+          },
+          "header": "Source_Question_Number",
+          "index": 17,
+          "inferred_type": "number",
+          "letter": "R",
+          "non_null": 724,
+          "null_pct": 97.88,
+          "rows": 34168,
+          "top_values": [
+            {
+              "count": 50,
+              "value": "1"
+            },
+            {
+              "count": 50,
+              "value": "2"
+            },
+            {
+              "count": 50,
+              "value": "3"
+            },
+            {
+              "count": 50,
+              "value": "4"
+            },
+            {
+              "count": 50,
+              "value": "5"
+            },
+            {
+              "count": 50,
+              "value": "6"
+            },
+            {
+              "count": 50,
+              "value": "7"
+            },
+            {
+              "count": 50,
+              "value": "8"
+            }
+          ],
+          "unique": 17,
+          "values_occurring_more_than_once": 17
+        },
+        {
+          "duplicate_rows": 443,
+          "formats": {
+            "TEXT": 445
+          },
+          "header": "Option Text",
+          "index": 18,
+          "inferred_type": "string",
+          "letter": "S",
+          "non_null": 445,
+          "null_pct": 98.7,
+          "rows": 34168,
+          "top_values": [
+            {
+              "count": 440,
+              "value": "A~B~C~D"
+            },
+            {
+              "count": 5,
+              "value": "Select and submit to view solution"
+            }
+          ],
+          "unique": 2,
+          "values_occurring_more_than_once": 2
+        },
+        {
+          "duplicate_rows": 643,
+          "formats": {
+            "DECIMAL": 8,
+            "DECIMAL_STRING": 27,
+            "INTEGER": 248,
+            "INTEGER_STRING": 198,
+            "TEXT": 243
+          },
+          "header": "Answer*",
+          "index": 19,
+          "inferred_type": "MIXED(number+string)",
+          "letter": "T",
+          "non_null": 724,
+          "null_pct": 97.88,
+          "rows": 34168,
+          "top_values": [
+            {
+              "count": 85,
+              "value": "1"
+            },
+            {
+              "count": 77,
+              "value": "3"
+            },
+            {
+              "count": 71,
+              "value": "2"
+            },
+            {
+              "count": 65,
+              "value": "4"
+            },
+            {
+              "count": 43,
+              "value": "1,2,3"
+            },
+            {
+              "count": 27,
+              "value": "1,2,4"
+            },
+            {
+              "count": 25,
+              "value": "5"
+            },
+            {
+              "count": 23,
+              "value": "1,3"
+            }
+          ],
+          "unique": 81,
+          "values_occurring_more_than_once": 39
+        },
+        {
+          "duplicate_rows": 298,
+          "formats": {
+            "INTEGER": 317
+          },
+          "header": "Date",
+          "index": 20,
+          "inferred_type": "number",
+          "letter": "U",
+          "non_null": 317,
+          "null_pct": 99.07,
+          "rows": 34168,
+          "top_values": [
+            {
+              "count": 17,
+              "value": "45835"
+            },
+            {
+              "count": 17,
+              "value": "45841"
+            },
+            {
+              "count": 17,
+              "value": "45853"
+            },
+            {
+              "count": 17,
+              "value": "45859"
+            },
+            {
+              "count": 17,
+              "value": "45871"
+            },
+            {
+              "count": 17,
+              "value": "45877"
+            },
+            {
+              "count": 17,
+              "value": "45889"
+            },
+            {
+              "count": 17,
+              "value": "45895"
+            }
+          ],
+          "unique": 19,
+          "values_occurring_more_than_once": 19
+        },
+        {
+          "duplicate_rows": 311,
+          "formats": {
+            "INTEGER": 84,
+            "TEXT": 233
+          },
+          "header": "Pattern",
+          "index": 21,
+          "inferred_type": "MIXED(number+string)",
+          "letter": "V",
+          "non_null": 317,
+          "null_pct": 99.07,
+          "rows": 34168,
+          "top_values": [
+            {
+              "count": 85,
+              "value": "2023 P2"
+            },
+            {
+              "count": 80,
+              "value": "2025 P2"
+            },
+            {
+              "count": 68,
+              "value": "2024 P2"
+            },
+            {
+              "count": 34,
+              "value": "2023"
+            },
+            {
+              "count": 34,
+              "value": "2024"
+            },
+            {
+              "count": 16,
+              "value": "2025"
+            }
+          ],
+          "unique": 6,
+          "values_occurring_more_than_once": 6
+        },
+        {
+          "duplicate_rows": 314,
+          "formats": {
+            "TEXT": 317
+          },
+          "header": "QuestionFileLink",
+          "index": 22,
+          "inferred_type": "string",
+          "letter": "W",
+          "non_null": 317,
+          "null_pct": 99.07,
+          "rows": 34168,
+          "top_values": [
+            {
+              "count": 200,
+              "value": "Final File"
+            },
+            {
+              "count": 100,
+              "value": "Final Files"
+            },
+            {
+              "count": 17,
+              "value": "Final file"
+            }
+          ],
+          "unique": 3,
+          "values_occurring_more_than_once": 3
+        },
+        {
+          "duplicate_rows": 674,
+          "formats": {
+            "FILE_NAME": 724
+          },
+          "header": "QuestionFileLink",
+          "index": 23,
+          "inferred_type": "string",
+          "letter": "X",
+          "non_null": 724,
+          "null_pct": 97.88,
+          "rows": 34168,
+          "top_values": [
+            {
+              "count": 17,
+              "value": "AIR JEE Advanced (2026)_Atoms & Nuclei_Physics_Ques.pdf"
+            },
+            {
+              "count": 17,
+              "value": "AIR JEE Advanced (2026)_Centre of Mass and System of Particles_Physics_Ques.pdf"
+            },
+            {
+              "count": 17,
+              "value": "AIR JEE Advanced (2026)_Electromagnetic Induction _Physics_Q.pdf"
+            },
+            {
+              "count": 17,
+              "value": "AIR JEE Advanced (2026)_Electrostatic Potential and Capacitance_Physics_Ques.pdf"
+            },
+            {
+              "count": 17,
+              "value": "AIR JEE Advanced (2026)_Gravitation_Physics_Ques.pdf"
+            },
+            {
+              "count": 17,
+              "value": "AIR JEE Advanced (2026)_Moving Charges, Magnetism & Matter_Physics_Ques.pdf"
+            },
+            {
+              "count": 17,
+              "value": "AIR JEE Advanced (2026)_Ray Optics and Optical Instruments_Physics_Q.pdf"
+            },
+            {
+              "count": 17,
+              "value": "AIR JEE Advanced (2026)_Rotational Motion_Physics_Ques.pdf"
+            }
+          ],
+          "unique": 50,
+          "values_occurring_more_than_once": 50
+        },
+        {
+          "duplicate_rows": 985,
+          "formats": {
+            "DRIVE_URL": 325,
+            "FILE_NAME": 724
+          },
+          "header": "SolutionFileLInk",
+          "index": 24,
+          "inferred_type": "string",
+          "letter": "Y",
+          "non_null": 1049,
+          "null_pct": 96.93,
+          "rows": 34168,
+          "top_values": [
+            {
+              "count": 30,
+              "value": "https://drive.google.com/open?id=11vLtJiz9Fz9RUai6zUHIuuRVTh9gGIJb&usp=drive_copy"
+            },
+            {
+              "count": 25,
+              "value": "https://drive.google.com/open?id=19OYysEP-KRgZs6w6AGCTcL-8lvNXcZuG&usp=drive_copy"
+            },
+            {
+              "count": 25,
+              "value": "https://drive.google.com/open?id=1MQYcCnsvve1pxmUyxDaDheR_9mmNkCe6&usp=drive_copy"
+            },
+            {
+              "count": 25,
+              "value": "https://drive.google.com/open?id=1NP0pjiqefCGTol-I6o1dEiA4xg2vOm8H&usp=drive_copy"
+            },
+            {
+              "count": 25,
+              "value": "https://drive.google.com/open?id=1SBamb-QsL5Y00doQR4N8FAW-7q589y5n&usp=drive_copy"
+            },
+            {
+              "count": 25,
+              "value": "https://drive.google.com/open?id=1Sz85jtgBc3p8uWMqI2UoilgTYZERRg4Y&usp=drive_copy"
+            },
+            {
+              "count": 25,
+              "value": "https://drive.google.com/open?id=1UmZ7Pes1TYCnPuPghjZmP6aZzqSi25x0&usp=drive_copy"
+            },
+            {
+              "count": 25,
+              "value": "https://drive.google.com/open?id=1kS_DdoUFbz86PMqaNn9OEETr5vbgtp3W&usp=drive_copy"
+            }
+          ],
+          "unique": 64,
+          "values_occurring_more_than_once": 64
+        },
+        {
+          "duplicate_rows": 298,
+          "formats": {
+            "FILE_NAME": 317
+          },
+          "header": "QBG FILE LINK",
+          "index": 25,
+          "inferred_type": "string",
+          "letter": "Z",
+          "non_null": 317,
+          "null_pct": 99.07,
+          "rows": 34168,
+          "top_values": [
+            {
+              "count": 17,
+              "value": "AIR JEE Advanced (2026)_Atoms & Nuclei_Physics.xlsx"
+            },
+            {
+              "count": 17,
+              "value": "AIR JEE Advanced (2026)_Electromagnetic Induction _Physics.xlsx"
+            },
+            {
+              "count": 17,
+              "value": "AIR JEE Advanced (2026)_Moving Charges, Magnetism & Matter_Physics.xlsx.xlsx"
+            },
+            {
+              "count": 17,
+              "value": "AIR JEE Advanced (2026)_Ray Optics and Optical Instruments_Physics.xlsx"
+            },
+            {
+              "count": 17,
+              "value": "AIR JEE Advanced (2026)_Wave Optics_Physics.xlsx"
+            },
+            {
+              "count": 17,
+              "value": "Air JEE Advanced (2026)_Physics_Law of Motion.xlsx"
+            },
+            {
+              "count": 17,
+              "value": "cfdcwsc_1750946990620.xlsx"
+            },
+            {
+              "count": 17,
+              "value": "dfsdfsd_1756118429761.xlsx"
+            }
+          ],
+          "unique": 19,
+          "values_occurring_more_than_once": 19
+        },
+        {
+          "duplicate_rows": 293,
+          "formats": {
+            "TEXT": 317
+          },
+          "header": "ChapterFromChapterCode",
+          "index": 26,
+          "inferred_type": "string",
+          "letter": "AA",
+          "non_null": 317,
+          "null_pct": 99.07,
+          "rows": 34168,
+          "top_values": [
+            {
+              "count": 33,
+              "value": "Electrostatic Potential and Capacitance"
+            },
+            {
+              "count": 30,
+              "value": "Center of Mass"
+            },
+            {
+              "count": 19,
+              "value": "Laws of Motion"
+            },
+            {
+              "count": 17,
+              "value": "Dual Nature of Radiation and Matter"
+            },
+            {
+              "count": 17,
+              "value": "Electric Charges and Fields"
+            },
+            {
+              "count": 17,
+              "value": "Electromagnetic Induction"
+            },
+            {
+              "count": 17,
+              "value": "Gravitation"
+            },
+            {
+              "count": 17,
+              "value": "Moving Charges and Magnetism"
+            }
+          ],
+          "unique": 24,
+          "values_occurring_more_than_once": 24
+        },
+        {
+          "duplicate_rows": 0,
+          "formats": {
+            "INTEGER": 317
+          },
+          "header": "Original Row Number",
+          "index": 27,
+          "inferred_type": "number",
+          "letter": "AB",
+          "non_null": 317,
+          "null_pct": 99.07,
+          "rows": 34168,
+          "top_values": [
+            {
+              "count": 1,
+              "value": "1"
+            },
+            {
+              "count": 1,
+              "value": "10"
+            },
+            {
+              "count": 1,
+              "value": "100"
+            },
+            {
+              "count": 1,
+              "value": "101"
+            },
+            {
+              "count": 1,
+              "value": "102"
+            },
+            {
+              "count": 1,
+              "value": "103"
+            },
+            {
+              "count": 1,
+              "value": "104"
+            },
+            {
+              "count": 1,
+              "value": "105"
+            }
+          ],
+          "unique": 317,
+          "values_occurring_more_than_once": 0
+        },
+        {
+          "duplicate_rows": 313,
+          "formats": {
+            "INTEGER": 325
+          },
+          "header": "Dateofexam",
+          "index": 28,
+          "inferred_type": "number",
+          "letter": "AC",
+          "non_null": 325,
+          "null_pct": 99.05,
+          "rows": 34168,
+          "top_values": [
+            {
+              "count": 36,
+              "value": "45774"
+            },
+            {
+              "count": 34,
+              "value": "45606"
+            },
+            {
+              "count": 30,
+              "value": "45578"
+            },
+            {
+              "count": 25,
+              "value": "45592"
+            },
+            {
+              "count": 25,
+              "value": "45627"
+            },
+            {
+              "count": 25,
+              "value": "45641"
+            },
+            {
+              "count": 25,
+              "value": "45655"
+            },
+            {
+              "count": 25,
+              "value": "45669"
+            }
+          ],
+          "unique": 12,
+          "values_occurring_more_than_once": 12
+        },
+        {
+          "duplicate_rows": 1949,
+          "formats": {
+            "TEXT": 1958
+          },
+          "header": "exam_type",
+          "index": 29,
+          "inferred_type": "string",
+          "letter": "AD",
+          "non_null": 1958,
+          "null_pct": 94.27,
+          "rows": 34168,
+          "top_values": [
+            {
+              "count": 825,
+              "value": "Mains"
+            },
+            {
+              "count": 469,
+              "value": "Main"
+            },
+            {
+              "count": 314,
+              "value": "Advance"
+            },
+            {
+              "count": 140,
+              "value": "Advance_P1"
+            },
+            {
+              "count": 140,
+              "value": "Advance_P2"
+            },
+            {
+              "count": 18,
+              "value": "2022_P1"
+            },
+            {
+              "count": 18,
+              "value": "2022_P2"
+            },
+            {
+              "count": 17,
+              "value": "2023_P1"
+            }
+          ],
+          "unique": 9,
+          "values_occurring_more_than_once": 9
+        },
+        {
+          "duplicate_rows": 1941,
+          "formats": {
+            "TEXT": 1958
+          },
+          "header": "question_type_original",
+          "index": 30,
+          "inferred_type": "string",
+          "letter": "AE",
+          "non_null": 1958,
+          "null_pct": 94.27,
+          "rows": 34168,
+          "top_values": [
+            {
+              "count": 1008,
+              "value": "Single_Choice(SCQ)"
+            },
+            {
+              "count": 475,
+              "value": "Int"
+            },
+            {
+              "count": 96,
+              "value": "Multi_Choice(MCQ)"
+            },
+            {
+              "count": 79,
+              "value": "Num"
+            },
+            {
+              "count": 72,
+              "value": "MCQ"
+            },
+            {
+              "count": 61,
+              "value": "Single Digit"
+            },
+            {
+              "count": 60,
+              "value": "List"
+            },
+            {
+              "count": 50,
+              "value": "SCQ"
+            }
+          ],
+          "unique": 17,
+          "values_occurring_more_than_once": 16
+        },
+        {
+          "duplicate_rows": 1629,
+          "formats": {
+            "INTEGER": 594,
+            "TEXT": 1040
+          },
+          "header": "paperType",
+          "index": 31,
+          "inferred_type": "MIXED(number+string)",
+          "letter": "AF",
+          "non_null": 1634,
+          "null_pct": 95.22,
+          "rows": 34168,
+          "top_values": [
+            {
+              "count": 570,
+              "value": "Mains"
+            },
+            {
+              "count": 469,
+              "value": "Main"
+            },
+            {
+              "count": 297,
+              "value": "1"
+            },
+            {
+              "count": 297,
+              "value": "2"
+            },
+            {
+              "count": 1,
+              "value": "List Type"
+            }
+          ],
+          "unique": 5,
+          "values_occurring_more_than_once": 4
+        },
+        {
+          "duplicate_rows": 0,
+          "formats": {
+            "DRIVE_URL": 1632
+          },
+          "header": "Video Solution Link",
+          "index": 32,
+          "inferred_type": "string",
+          "letter": "AG",
+          "non_null": 1632,
+          "null_pct": 95.22,
+          "rows": 34168,
+          "top_values": [
+            {
+              "count": 1,
+              "value": "https://drive.google.com/open?id=1-3m575i7F1hlBBF6i2USK2_CE6tqhw1n&usp=drive_copy"
+            },
+            {
+              "count": 1,
+              "value": "https://drive.google.com/open?id=1-5QPdo-xpE32bH7kt2Vm0YzTcA78CHqU&usp=drive_copy"
+            },
+            {
+              "count": 1,
+              "value": "https://drive.google.com/open?id=1-84yRHtn94Wis4NDXbbkG02NETf9NI9G&usp=drive_copy"
+            },
+            {
+              "count": 1,
+              "value": "https://drive.google.com/open?id=1-DH7--9bDQbD8vbYp2xiRBiuxSDdK8Po&usp=drive_copy"
+            },
+            {
+              "count": 1,
+              "value": "https://drive.google.com/open?id=1-Dk5zR8KU8TJl_nUh0pyIRNxsge9D7qI&usp=drive_copy"
+            },
+            {
+              "count": 1,
+              "value": "https://drive.google.com/open?id=1-JhsWnfdu9YtrPo6BvKjbRVODKuWnOyp&usp=drive_copy"
+            },
+            {
+              "count": 1,
+              "value": "https://drive.google.com/open?id=1-ObBM0BF00dUnqWw7c8qxZmQKO2CqtsH&usp=drive_copy"
+            },
+            {
+              "count": 1,
+              "value": "https://drive.google.com/open?id=1-Okaox01eIDMnSmai1nQRmJgnTmXWOHL&usp=drive_copy"
+            }
+          ],
+          "unique": 1632,
+          "values_occurring_more_than_once": 0
+        },
+        {
+          "duplicate_rows": 15363,
+          "formats": {
+            "QBG_CUID25": 15365
+          },
+          "header": "class_id",
+          "index": 33,
+          "inferred_type": "string",
+          "letter": "AH",
+          "non_null": 15365,
+          "null_pct": 55.03,
+          "rows": 34168,
+          "top_values": [
+            {
+              "count": 9386,
+              "value": "nasza1gowlgs8vhih1zkhapdz"
+            },
+            {
+              "count": 5979,
+              "value": "oyhh7ve8217so92jw81tefbyp"
+            }
+          ],
+          "unique": 2,
+          "values_occurring_more_than_once": 2
+        },
+        {
+          "duplicate_rows": 15363,
+          "formats": {
+            "INTEGER": 15365
+          },
+          "header": "class_name",
+          "index": 34,
+          "inferred_type": "number",
+          "letter": "AI",
+          "non_null": 15365,
+          "null_pct": 55.03,
+          "rows": 34168,
+          "top_values": [
+            {
+              "count": 9386,
+              "value": "11"
+            },
+            {
+              "count": 5979,
+              "value": "12"
+            }
+          ],
+          "unique": 2,
+          "values_occurring_more_than_once": 2
+        }
+      ],
+      "data_rows": 34168,
+      "header_row_1based": 1,
+      "name": "data",
+      "repeated_header_names": [
+        "QuestionFileLink"
+      ],
+      "tabular": true
+    },
+    {
+      "column_count": 59,
+      "columns": [
+        {
+          "duplicate_rows": 93,
+          "formats": {
+            "INTEGER": 1,
+            "TEXT": 100
+          },
+          "header": null,
+          "index": 0,
+          "inferred_type": "MIXED(number+string)",
+          "letter": "A",
+          "non_null": 101,
+          "null_pct": 3.81,
+          "rows": 105,
+          "top_values": [
+            {
+              "count": 34,
+              "value": "Chemistry"
+            },
+            {
+              "count": 33,
+              "value": "Physics"
+            },
+            {
+              "count": 29,
+              "value": "Maths"
+            },
+            {
+              "count": 1,
+              "value": "2022"
+            },
+            {
+              "count": 1,
+              "value": "Exam Type"
+            },
+            {
+              "count": 1,
+              "value": "JEE Advanced"
+            },
+            {
+              "count": 1,
+              "value": "Pick ✅ Chapters and Select Topics (Optional)"
+            },
+            {
+              "count": 1,
+              "value": "Subject"
+            }
+          ],
+          "unique": 8,
+          "values_occurring_more_than_once": 3
+        },
+        {
+          "duplicate_rows": 1,
+          "formats": {
+            "TEXT": 100
+          },
+          "header": null,
+          "index": 1,
+          "inferred_type": "string",
+          "letter": "B",
+          "non_null": 100,
+          "null_pct": 4.76,
+          "rows": 105,
+          "top_values": [
+            {
+              "count": 2,
+              "value": "Thermodynamics"
+            },
+            {
+              "count": 1,
+              "value": "AITS"
+            },
+            {
+              "count": 1,
+              "value": "Alcohols, Phenols and Ethers"
+            },
+            {
+              "count": 1,
+              "value": "Aldehydes, Ketones and Carboxylic Acids"
+            },
+            {
+              "count": 1,
+              "value": "Alternating Current"
+            },
+            {
+              "count": 1,
+              "value": "Amines"
+            },
+            {
+              "count": 1,
+              "value": "Application of Derivatives"
+            },
+            {
+              "count": 1,
+              "value": "Application of Integrals"
+            }
+          ],
+          "unique": 99,
+          "values_occurring_more_than_once": 1
+        },
+        {
+          "duplicate_rows": 98,
+          "formats": {
+            "BOOLEAN": 100,
+            "INTEGER": 1,
+            "TEXT": 2
+          },
+          "header": null,
+          "index": 2,
+          "inferred_type": "MIXED(boolean+number+string)",
+          "letter": "C",
+          "non_null": 103,
+          "null_pct": 1.9,
+          "rows": 105,
+          "top_values": [
+            {
+              "count": 98,
+              "value": "false"
+            },
+            {
+              "count": 2,
+              "value": "true"
+            },
+            {
+              "count": 1,
+              "value": "0"
+            },
+            {
+              "count": 1,
+              "value": "Easy%"
+            },
+            {
+              "count": 1,
+              "value": "Pick"
+            }
+          ],
+          "unique": 5,
+          "values_occurring_more_than_once": 2
+        },
+        {
+          "duplicate_rows": 0,
+          "formats": {
+            "INTEGER": 1,
+            "TEXT": 3
+          },
+          "header": null,
+          "index": 3,
+          "inferred_type": "MIXED(number+string)",
+          "letter": "D",
+          "non_null": 4,
+          "null_pct": 96.19,
+          "rows": 105,
+          "top_values": [
+            {
+              "count": 1,
+              "value": "80"
+            },
+            {
+              "count": 1,
+              "value": "Group 14 Elements: The Carbon Family, Group 13 Elements: The Boron Family"
+            },
+            {
+              "count": 1,
+              "value": "Hard%"
+            },
+            {
+              "count": 1,
+              "value": "Topic"
+            }
+          ],
+          "unique": 4,
+          "values_occurring_more_than_once": 0
+        },
+        {
+          "duplicate_rows": 0,
+          "formats": {
+            "INTEGER": 1,
+            "TEXT": 1
+          },
+          "header": null,
+          "index": 4,
+          "inferred_type": "MIXED(number+string)",
+          "letter": "E",
+          "non_null": 2,
+          "null_pct": 98.1,
+          "rows": 105,
+          "top_values": [
+            {
+              "count": 1,
+              "value": "20"
+            },
+            {
+              "count": 1,
+              "value": "Medium%"
+            }
+          ],
+          "unique": 2,
+          "values_occurring_more_than_once": 0
+        },
+        {
+          "duplicate_rows": 0,
+          "formats": {
+            "INTEGER": 1,
+            "TEXT": 1
+          },
+          "header": null,
+          "index": 5,
+          "inferred_type": "MIXED(number+string)",
+          "letter": "F",
+          "non_null": 2,
+          "null_pct": 98.1,
+          "rows": 105,
+          "top_values": [
+            {
+              "count": 1,
+              "value": "1"
+            },
+            {
+              "count": 1,
+              "value": "Required Number of Tests"
+            }
+          ],
+          "unique": 2,
+          "values_occurring_more_than_once": 0
+        },
+        {
+          "duplicate_rows": 3,
+          "formats": {
+            "QBG_CUID25": 2,
+            "TEXT": 96
+          },
+          "header": null,
+          "index": 6,
+          "inferred_type": "string",
+          "letter": "G",
+          "non_null": 98,
+          "null_pct": 6.67,
+          "rows": 105,
+          "top_values": [
+            {
+              "count": 2,
+              "value": "#N/A"
+            },
+            {
+              "count": 2,
+              "value": "Limits"
+            },
+            {
+              "count": 2,
+              "value": "Thermodynamic Processes"
+            },
+            {
+              "count": 1,
+              "value": "8tw7ndwlclsdlpq1xdgn8i9gm"
+            },
+            {
+              "count": 1,
+              "value": "A.M. and G.M. Inequality and its Application"
+            },
+            {
+              "count": 1,
+              "value": "AC Voltage Applied to an Inductor and a Capacitor"
+            },
+            {
+              "count": 1,
+              "value": "Algebra of Complex Numbers"
+            },
+            {
+              "count": 1,
+              "value": "Amplitude Modulation (Power and Current Relation in AM Wave)"
+            }
+          ],
+          "unique": 95,
+          "values_occurring_more_than_once": 3
+        },
+        {
+          "duplicate_rows": 2,
+          "formats": {
+            "INTEGER": 1,
+            "QBG_CUID25": 1,
+            "TEXT": 92
+          },
+          "header": null,
+          "index": 7,
+          "inferred_type": "MIXED(number+string)",
+          "letter": "H",
+          "non_null": 94,
+          "null_pct": 10.48,
+          "rows": 105,
+          "top_values": [
+            {
+              "count": 2,
+              "value": "#N/A"
+            },
+            {
+              "count": 2,
+              "value": "Heat Capacity"
+            },
+            {
+              "count": 1,
+              "value": "46160"
+            },
+            {
+              "count": 1,
+              "value": "62lfv2xgwywd109lkth2v7f8a"
+            },
+            {
+              "count": 1,
+              "value": "Acceleration"
+            },
+            {
+              "count": 1,
+              "value": "Activation Energy"
+            },
+            {
+              "count": 1,
+              "value": "Adsorption"
+            },
+            {
+              "count": 1,
+              "value": "Alcohols"
+            }
+          ],
+          "unique": 92,
+          "values_occurring_more_than_once": 2
+        },
+        {
+          "duplicate_rows": 5,
+          "formats": {
+            "TEXT": 91
+          },
+          "header": null,
+          "index": 8,
+          "inferred_type": "string",
+          "letter": "I",
+          "non_null": 91,
+          "null_pct": 13.33,
+          "rows": 105,
+          "top_values": [
+            {
+              "count": 4,
+              "value": "#N/A"
+            },
+            {
+              "count": 2,
+              "value": "Enthalpies for Different Types of Reactions"
+            },
+            {
+              "count": 2,
+              "value": "Introduction"
+            },
+            {
+              "count": 1,
+              "value": "Analysis of Quadrilateral"
+            },
+            {
+              "count": 1,
+              "value": "Applications of Determinant"
+            },
+            {
+              "count": 1,
+              "value": "Applications to Geometry"
+            },
+            {
+              "count": 1,
+              "value": "Arithmetic -Geometric Progression (AGP)"
+            },
+            {
+              "count": 1,
+              "value": "Aromatic Hydrocarbon"
+            }
+          ],
+          "unique": 86,
+          "values_occurring_more_than_once": 3
+        },
+        {
+          "duplicate_rows": 1,
+          "formats": {
+            "QBG_CUID25": 1,
+            "TEXT": 89
+          },
+          "header": null,
+          "index": 9,
+          "inferred_type": "string",
+          "letter": "J",
+          "non_null": 90,
+          "null_pct": 14.29,
+          "rows": 105,
+          "top_values": [
+            {
+              "count": 2,
+              "value": "Exothermic and Endothermic Reactions"
+            },
+            {
+              "count": 1,
+              "value": "AC Voltage Applied to a Series LCR Circuit"
+            },
+            {
+              "count": 1,
+              "value": "Abnormal Molar Masses"
+            },
+            {
+              "count": 1,
+              "value": "Adjoint and Inverse of a Matrix"
+            },
+            {
+              "count": 1,
+              "value": "Alpha-Particle Scattering and Rutherford's Nuclear Model of Atom"
+            },
+            {
+              "count": 1,
+              "value": "Analysis of Acidic Radicals"
+            },
+            {
+              "count": 1,
+              "value": "Angle of Banking (Motion of a Car on a Smooth Banked Road)"
+            },
+            {
+              "count": 1,
+              "value": "Angular Momentum"
+            }
+          ],
+          "unique": 89,
+          "values_occurring_more_than_once": 1
+        },
+        {
+          "duplicate_rows": 5,
+          "formats": {
+            "QBG_CUID25": 1,
+            "TEXT": 87
+          },
+          "header": null,
+          "index": 10,
+          "inferred_type": "string",
+          "letter": "K",
+          "non_null": 88,
+          "null_pct": 16.19,
+          "rows": 105,
+          "top_values": [
+            {
+              "count": 4,
+              "value": "Introduction"
+            },
+            {
+              "count": 2,
+              "value": "#N/A"
+            },
+            {
+              "count": 2,
+              "value": "Spontaneity in Terms of Free Energy Change"
+            },
+            {
+              "count": 1,
+              "value": "Alcohols and Ethers: Classification"
+            },
+            {
+              "count": 1,
+              "value": "Allotropes of Hydrogen"
+            },
+            {
+              "count": 1,
+              "value": "Analysis of Two Lines"
+            },
+            {
+              "count": 1,
+              "value": "Analysis of Two Sets"
+            },
+            {
+              "count": 1,
+              "value": "Application of Junction Diode as a Rectifier (Half-Wave Rectifier Circuit, and Full-Wave Rectifier Circuit)"
+            }
+          ],
+          "unique": 83,
+          "values_occurring_more_than_once": 3
+        },
+        {
+          "duplicate_rows": 3,
+          "formats": {
+            "QBG_CUID25": 2,
+            "TEXT": 85
+          },
+          "header": null,
+          "index": 11,
+          "inferred_type": "string",
+          "letter": "L",
+          "non_null": 87,
+          "null_pct": 17.14,
+          "rows": 105,
+          "top_values": [
+            {
+              "count": 3,
+              "value": "Introduction"
+            },
+            {
+              "count": 2,
+              "value": "Enthalpy"
+            },
+            {
+              "count": 1,
+              "value": "#N/A"
+            },
+            {
+              "count": 1,
+              "value": "AC Through an L-R circuit"
+            },
+            {
+              "count": 1,
+              "value": "Acid - Base Titration"
+            },
+            {
+              "count": 1,
+              "value": "Alcohols and Ethers: Nomenclature & Isomerism"
+            },
+            {
+              "count": 1,
+              "value": "Alkali Metal"
+            },
+            {
+              "count": 1,
+              "value": "Ampere's Circuital Law"
+            }
+          ],
+          "unique": 84,
+          "values_occurring_more_than_once": 2
+        },
+        {
+          "duplicate_rows": 5,
+          "formats": {
+            "QBG_CUID25": 4,
+            "TEXT": 81
+          },
+          "header": null,
+          "index": 12,
+          "inferred_type": "string",
+          "letter": "M",
+          "non_null": 85,
+          "null_pct": 19.05,
+          "rows": 105,
+          "top_values": [
+            {
+              "count": 5,
+              "value": "Introduction"
+            },
+            {
+              "count": 2,
+              "value": "Spontaneity: Second Law of Thermodynamics"
+            },
+            {
+              "count": 1,
+              "value": "#N/A"
+            },
+            {
+              "count": 1,
+              "value": "1rbihhp2mvnthzoc8izma43ei"
+            },
+            {
+              "count": 1,
+              "value": "Alkynes"
+            },
+            {
+              "count": 1,
+              "value": "Alternating Current and emf"
+            },
+            {
+              "count": 1,
+              "value": "An Important Concept of Binomial Theorem"
+            },
+            {
+              "count": 1,
+              "value": "Analysis of Basic Radicals"
+            }
+          ],
+          "unique": 80,
+          "values_occurring_more_than_once": 2
+        },
+        {
+          "duplicate_rows": 3,
+          "formats": {
+            "QBG_CUID25": 5,
+            "TEXT": 79
+          },
+          "header": null,
+          "index": 13,
+          "inferred_type": "string",
+          "letter": "N",
+          "non_null": 84,
+          "null_pct": 20,
+          "rows": 105,
+          "top_values": [
+            {
+              "count": 2,
+              "value": "Introduction"
+            },
+            {
+              "count": 2,
+              "value": "Miscellaneous"
+            },
+            {
+              "count": 2,
+              "value": "Pressure-Volume Work"
+            },
+            {
+              "count": 1,
+              "value": "7x1mebncujyovoieu396borxi"
+            },
+            {
+              "count": 1,
+              "value": "8lf0tmec7xd6kmnarj8stdclk"
+            },
+            {
+              "count": 1,
+              "value": "AC Voltage Applied to a Parallel LCR Circuit"
+            },
+            {
+              "count": 1,
+              "value": "Algebra of Real Functions"
+            },
+            {
+              "count": 1,
+              "value": "Alkanes"
+            }
+          ],
+          "unique": 81,
+          "values_occurring_more_than_once": 3
+        },
+        {
+          "duplicate_rows": 2,
+          "formats": {
+            "QBG_CUID25": 7,
+            "TEXT": 73
+          },
+          "header": null,
+          "index": 14,
+          "inferred_type": "string",
+          "letter": "O",
+          "non_null": 80,
+          "null_pct": 23.81,
+          "rows": 105,
+          "top_values": [
+            {
+              "count": 2,
+              "value": "Introduction"
+            },
+            {
+              "count": 2,
+              "value": "Reversible Adiabatic Expansion of Ideal Gas"
+            },
+            {
+              "count": 1,
+              "value": "36j06nrbiwa7n5916hx97g5h4"
+            },
+            {
+              "count": 1,
+              "value": "7bxv5n4kh3gityr4edjl3py4c"
+            },
+            {
+              "count": 1,
+              "value": "AC Through an R-C circuit"
+            },
+            {
+              "count": 1,
+              "value": "Acid Rain"
+            },
+            {
+              "count": 1,
+              "value": "Alkenes"
+            },
+            {
+              "count": 1,
+              "value": "Bending of a Cyclist"
+            }
+          ],
+          "unique": 78,
+          "values_occurring_more_than_once": 2
+        },
+        {
+          "duplicate_rows": 1,
+          "formats": {
+            "QBG_CUID25": 11,
+            "TEXT": 62
+          },
+          "header": null,
+          "index": 15,
+          "inferred_type": "string",
+          "letter": "P",
+          "non_null": 73,
+          "null_pct": 30.48,
+          "rows": 105,
+          "top_values": [
+            {
+              "count": 2,
+              "value": "Energetics of Phase Transition"
+            },
+            {
+              "count": 1,
+              "value": "2rjl9nvpiwwapgj1gb7oeq58i"
+            },
+            {
+              "count": 1,
+              "value": "A.G.P."
+            },
+            {
+              "count": 1,
+              "value": "AC Voltage Applied to an Inductor"
+            },
+            {
+              "count": 1,
+              "value": "Addition Rule of Probability"
+            },
+            {
+              "count": 1,
+              "value": "Aldehydes"
+            },
+            {
+              "count": 1,
+              "value": "Aluminium Compounds"
+            },
+            {
+              "count": 1,
+              "value": "Angle Between the Lines"
+            }
+          ],
+          "unique": 72,
+          "values_occurring_more_than_once": 1
+        },
+        {
+          "duplicate_rows": 2,
+          "formats": {
+            "QBG_CUID25": 13,
+            "TEXT": 61
+          },
+          "header": null,
+          "index": 16,
+          "inferred_type": "string",
+          "letter": "Q",
+          "non_null": 74,
+          "null_pct": 29.52,
+          "rows": 105,
+          "top_values": [
+            {
+              "count": 2,
+              "value": "Heat Engine and Carnot Cycle"
+            },
+            {
+              "count": 2,
+              "value": "Introduction"
+            },
+            {
+              "count": 1,
+              "value": "3pvx72lyrd7qzucm4tlj66dhq"
+            },
+            {
+              "count": 1,
+              "value": "3xzrre5lwku0vhxj13138xr3o"
+            },
+            {
+              "count": 1,
+              "value": "4kyl5xax4crcqln0dadj2ufyw"
+            },
+            {
+              "count": 1,
+              "value": "6apxioitm7ew247atgfs8h35d"
+            },
+            {
+              "count": 1,
+              "value": "6nbbqlaifpgwoczbnjl8gqi7c"
+            },
+            {
+              "count": 1,
+              "value": "80q66ev4ao3yqta5v9zfsdn47"
+            }
+          ],
+          "unique": 72,
+          "values_occurring_more_than_once": 2
+        },
+        {
+          "duplicate_rows": 2,
+          "formats": {
+            "QBG_CUID25": 14,
+            "TEXT": 55
+          },
+          "header": null,
+          "index": 17,
+          "inferred_type": "string",
+          "letter": "R",
+          "non_null": 69,
+          "null_pct": 34.29,
+          "rows": 105,
+          "top_values": [
+            {
+              "count": 2,
+              "value": "Introduction"
+            },
+            {
+              "count": 2,
+              "value": "Relationship Between Cp and Cv"
+            },
+            {
+              "count": 1,
+              "value": "0f3fwqv0tkjmr1kihvirtdk98"
+            },
+            {
+              "count": 1,
+              "value": "437vmlnasze3v4qaeuss315ui"
+            },
+            {
+              "count": 1,
+              "value": "Ammonia"
+            },
+            {
+              "count": 1,
+              "value": "Ampere Circuital Law and its Contradiction"
+            },
+            {
+              "count": 1,
+              "value": "Application of Multinomial Expansion"
+            },
+            {
+              "count": 1,
+              "value": "Cartesian Coordinates"
+            }
+          ],
+          "unique": 67,
+          "values_occurring_more_than_once": 2
+        },
+        {
+          "duplicate_rows": 2,
+          "formats": {
+            "QBG_CUID25": 12,
+            "TEXT": 47
+          },
+          "header": null,
+          "index": 18,
+          "inferred_type": "string",
+          "letter": "S",
+          "non_null": 59,
+          "null_pct": 43.81,
+          "rows": 105,
+          "top_values": [
+            {
+              "count": 2,
+              "value": "Introduction"
+            },
+            {
+              "count": 2,
+              "value": "Thermodynamic State Variables"
+            },
+            {
+              "count": 1,
+              "value": "10kb1rkk2dwneyyiyhc3diq5m"
+            },
+            {
+              "count": 1,
+              "value": "39324dn1mmkigf6ibx6io3k7x"
+            },
+            {
+              "count": 1,
+              "value": "5b79l52qjrdbqkw9v1y3s4whv"
+            },
+            {
+              "count": 1,
+              "value": "AC Voltage Applied to a Resistor"
+            },
+            {
+              "count": 1,
+              "value": "Allotropes of Sulphur"
+            },
+            {
+              "count": 1,
+              "value": "Aluminium"
+            }
+          ],
+          "unique": 57,
+          "values_occurring_more_than_once": 2
+        },
+        {
+          "duplicate_rows": 2,
+          "formats": {
+            "QBG_CUID25": 12,
+            "TEXT": 49
+          },
+          "header": null,
+          "index": 19,
+          "inferred_type": "string",
+          "letter": "T",
+          "non_null": 61,
+          "null_pct": 41.9,
+          "rows": 105,
+          "top_values": [
+            {
+              "count": 2,
+              "value": "Enthalpy Change"
+            },
+            {
+              "count": 2,
+              "value": "Salt Hydrolysis"
+            },
+            {
+              "count": 1,
+              "value": "1kqkniiltc2f4nkbncba459g7"
+            },
+            {
+              "count": 1,
+              "value": "2-Blocks Problems (Friction)"
+            },
+            {
+              "count": 1,
+              "value": "2750h4b2oj3hgnfv2c4m5oiyj"
+            },
+            {
+              "count": 1,
+              "value": "A.M., G.M. and H.M. of Two Positive Real Numbers"
+            },
+            {
+              "count": 1,
+              "value": "Acceleration Due to Gravity"
+            },
+            {
+              "count": 1,
+              "value": "Allotropes of Carbon"
+            }
+          ],
+          "unique": 59,
+          "values_occurring_more_than_once": 2
+        },
+        {
+          "duplicate_rows": 1,
+          "formats": {
+            "QBG_CUID25": 9,
+            "TEXT": 45
+          },
+          "header": null,
+          "index": 20,
+          "inferred_type": "string",
+          "letter": "U",
+          "non_null": 54,
+          "null_pct": 48.57,
+          "rows": 105,
+          "top_values": [
+            {
+              "count": 2,
+              "value": "Gibbs Energy Change and Equilibrium"
+            },
+            {
+              "count": 1,
+              "value": "2rjl9nvpiwwapgj1gb7oeq58i"
+            },
+            {
+              "count": 1,
+              "value": "7jh2bhg55nhiefrep970tys6v"
+            },
+            {
+              "count": 1,
+              "value": "Addition of Vectors"
+            },
+            {
+              "count": 1,
+              "value": "Angle"
+            },
+            {
+              "count": 1,
+              "value": "Anomalous Behaviour of Carbon"
+            },
+            {
+              "count": 1,
+              "value": "Atomic Number"
+            },
+            {
+              "count": 1,
+              "value": "Buffer Solution"
+            }
+          ],
+          "unique": 53,
+          "values_occurring_more_than_once": 1
+        },
+        {
+          "duplicate_rows": 1,
+          "formats": {
+            "QBG_CUID25": 5,
+            "TEXT": 41
+          },
+          "header": null,
+          "index": 21,
+          "inferred_type": "string",
+          "letter": "V",
+          "non_null": 46,
+          "null_pct": 56.19,
+          "rows": 105,
+          "top_values": [
+            {
+              "count": 2,
+              "value": "Calculation of Work"
+            },
+            {
+              "count": 1,
+              "value": "1qhlpp7yb3i0r5z5l71zteydt"
+            },
+            {
+              "count": 1,
+              "value": "345miognraigp3olnospjz32o"
+            },
+            {
+              "count": 1,
+              "value": "34lkxdf361fz9vnq6sxjryz1g"
+            },
+            {
+              "count": 1,
+              "value": "A.M."
+            },
+            {
+              "count": 1,
+              "value": "Acceleration due to Gravity"
+            },
+            {
+              "count": 1,
+              "value": "Acidity and Basicity of Organic Compounds"
+            },
+            {
+              "count": 1,
+              "value": "Addition and Subtraction of Vectors - Graphical Methods"
+            }
+          ],
+          "unique": 45,
+          "values_occurring_more_than_once": 1
+        },
+        {
+          "duplicate_rows": 1,
+          "formats": {
+            "QBG_CUID25": 8,
+            "TEXT": 41
+          },
+          "header": null,
+          "index": 22,
+          "inferred_type": "string",
+          "letter": "W",
+          "non_null": 49,
+          "null_pct": 53.33,
+          "rows": 105,
+          "top_values": [
+            {
+              "count": 2,
+              "value": "State of a System"
+            },
+            {
+              "count": 1,
+              "value": "1xb6oi9eib4a2jnvm1m1noge1"
+            },
+            {
+              "count": 1,
+              "value": "5pwyx989d6qr1b7et4k7frrc3"
+            },
+            {
+              "count": 1,
+              "value": "8j5vqo1i4cpvns61glq5k2u8n"
+            },
+            {
+              "count": 1,
+              "value": "Alternating Current and Emf"
+            },
+            {
+              "count": 1,
+              "value": "Ammeter"
+            },
+            {
+              "count": 1,
+              "value": "Applications of p-type and n-type Semiconductors"
+            },
+            {
+              "count": 1,
+              "value": "Chelation and Denticity"
+            }
+          ],
+          "unique": 48,
+          "values_occurring_more_than_once": 1
+        },
+        {
+          "duplicate_rows": 2,
+          "formats": {
+            "QBG_CUID25": 10,
+            "TEXT": 38
+          },
+          "header": null,
+          "index": 23,
+          "inferred_type": "string",
+          "letter": "X",
+          "non_null": 48,
+          "null_pct": 54.29,
+          "rows": 105,
+          "top_values": [
+            {
+              "count": 2,
+              "value": "#N/A"
+            },
+            {
+              "count": 2,
+              "value": "The System and the Surroundings"
+            },
+            {
+              "count": 1,
+              "value": "43e95ivv1rzsiznfdk84pxr0m"
+            },
+            {
+              "count": 1,
+              "value": "4y2hnpj3odqt3735paln8rwn6"
+            },
+            {
+              "count": 1,
+              "value": "7dj06iilc2is76f4fwbsv8pvx"
+            },
+            {
+              "count": 1,
+              "value": "94kjz0owu5cp55y3icks6mooz"
+            },
+            {
+              "count": 1,
+              "value": "AC Voltage Applied to an inductor and a Capacitor"
+            },
+            {
+              "count": 1,
+              "value": "Activated Complex Theory"
+            }
+          ],
+          "unique": 46,
+          "values_occurring_more_than_once": 2
+        },
+        {
+          "duplicate_rows": 1,
+          "formats": {
+            "QBG_CUID25": 10,
+            "TEXT": 30
+          },
+          "header": null,
+          "index": 24,
+          "inferred_type": "string",
+          "letter": "Y",
+          "non_null": 40,
+          "null_pct": 61.9,
+          "rows": 105,
+          "top_values": [
+            {
+              "count": 2,
+              "value": "Internal Energy"
+            },
+            {
+              "count": 1,
+              "value": "#N/A"
+            },
+            {
+              "count": 1,
+              "value": "02hj8mfihap2emsrutd5hul4j"
+            },
+            {
+              "count": 1,
+              "value": "37e42ieurtchb54f7rroqyvt8"
+            },
+            {
+              "count": 1,
+              "value": "8tzbtb7wqs6bxqay6lbrbbayr"
+            },
+            {
+              "count": 1,
+              "value": "Application of Solubility Product and Common Ion Effect"
+            },
+            {
+              "count": 1,
+              "value": "Atomic Mass Unit"
+            },
+            {
+              "count": 1,
+              "value": "Calculation of pH of Mixture of Acids and Bases"
+            }
+          ],
+          "unique": 39,
+          "values_occurring_more_than_once": 1
+        },
+        {
+          "duplicate_rows": 2,
+          "formats": {
+            "QBG_CUID25": 10,
+            "TEXT": 26
+          },
+          "header": null,
+          "index": 25,
+          "inferred_type": "string",
+          "letter": "Z",
+          "non_null": 36,
+          "null_pct": 65.71,
+          "rows": 105,
+          "top_values": [
+            {
+              "count": 2,
+              "value": "Equipotential Surfaces (Relation Between Electric Field and Potential)"
+            },
+            {
+              "count": 2,
+              "value": "Gibbs Energy Change and Non-Mechanical Work"
+            },
+            {
+              "count": 1,
+              "value": "22tgb7s4ufqzfut9sva1i5mbh"
+            },
+            {
+              "count": 1,
+              "value": "3rmb9svnn0loor0aut9kjjsyz"
+            },
+            {
+              "count": 1,
+              "value": "50cxicygy3imbkmqidz7aijdi"
+            },
+            {
+              "count": 1,
+              "value": "AC Voltage Applied to an inductor, and a Capacitor"
+            },
+            {
+              "count": 1,
+              "value": "Acids, Bases and Salts"
+            },
+            {
+              "count": 1,
+              "value": "Application of vectors"
+            }
+          ],
+          "unique": 34,
+          "values_occurring_more_than_once": 2
+        },
+        {
+          "duplicate_rows": 1,
+          "formats": {
+            "QBG_CUID25": 9,
+            "TEXT": 25
+          },
+          "header": null,
+          "index": 26,
+          "inferred_type": "string",
+          "letter": "AA",
+          "non_null": 34,
+          "null_pct": 67.62,
+          "rows": 105,
+          "top_values": [
+            {
+              "count": 2,
+              "value": "Polytropic Process"
+            },
+            {
+              "count": 1,
+              "value": "#N/A"
+            },
+            {
+              "count": 1,
+              "value": "15y5adzy7intw7q5seupmgu4f"
+            },
+            {
+              "count": 1,
+              "value": "33xm012e8hqi3c0bi65ozqzk5"
+            },
+            {
+              "count": 1,
+              "value": "48o4hwobwbu93epkv6gqzr3af"
+            },
+            {
+              "count": 1,
+              "value": "Addition and Subtraction of Vectors"
+            },
+            {
+              "count": 1,
+              "value": "Alternating Current and EMF"
+            },
+            {
+              "count": 1,
+              "value": "Approximation"
+            }
+          ],
+          "unique": 33,
+          "values_occurring_more_than_once": 1
+        },
+        {
+          "duplicate_rows": 2,
+          "formats": {
+            "QBG_CUID25": 9,
+            "TEXT": 23
+          },
+          "header": null,
+          "index": 27,
+          "inferred_type": "string",
+          "letter": "AB",
+          "non_null": 32,
+          "null_pct": 69.52,
+          "rows": 105,
+          "top_values": [
+            {
+              "count": 2,
+              "value": "First law of Thermodynamics"
+            },
+            {
+              "count": 2,
+              "value": "Introduction"
+            },
+            {
+              "count": 1,
+              "value": "2d8lm4ks95et25l5z7majs3v6"
+            },
+            {
+              "count": 1,
+              "value": "3xkzctxwt8i4a5zkn1betxlei"
+            },
+            {
+              "count": 1,
+              "value": "4u0z5ojbvfw0s4ew1zcgegy62"
+            },
+            {
+              "count": 1,
+              "value": "4xvobx45wf7hwxll3syjuki8z"
+            },
+            {
+              "count": 1,
+              "value": "AC Voltage Applied to an inductor and a Capacitor"
+            },
+            {
+              "count": 1,
+              "value": "Acid - Base Titration"
+            }
+          ],
+          "unique": 30,
+          "values_occurring_more_than_once": 2
+        },
+        {
+          "duplicate_rows": 1,
+          "formats": {
+            "QBG_CUID25": 9,
+            "TEXT": 22
+          },
+          "header": null,
+          "index": 28,
+          "inferred_type": "string",
+          "letter": "AC",
+          "non_null": 31,
+          "null_pct": 70.48,
+          "rows": 105,
+          "top_values": [
+            {
+              "count": 2,
+              "value": "Heat Supplied to a Gas or Released by Gas"
+            },
+            {
+              "count": 1,
+              "value": "7jr3jkyv7s4ksz4tcpbshhs6s"
+            },
+            {
+              "count": 1,
+              "value": "8rrrfcvyy7ad3ff962i6l0l6k"
+            },
+            {
+              "count": 1,
+              "value": "Atomic Models"
+            },
+            {
+              "count": 1,
+              "value": "Earth Satellite,Energy of An Orbiting Satellite (Geostationary and Polar Satellites)"
+            },
+            {
+              "count": 1,
+              "value": "Force on Dielectric Slab"
+            },
+            {
+              "count": 1,
+              "value": "Hydraulic Lift"
+            },
+            {
+              "count": 1,
+              "value": "Ionic Equilibria involving Complex Ions"
+            }
+          ],
+          "unique": 30,
+          "values_occurring_more_than_once": 1
+        },
+        {
+          "duplicate_rows": 3,
+          "formats": {
+            "QBG_CUID25": 8,
+            "TEXT": 19
+          },
+          "header": null,
+          "index": 29,
+          "inferred_type": "string",
+          "letter": "AD",
+          "non_null": 27,
+          "null_pct": 74.29,
+          "rows": 105,
+          "top_values": [
+            {
+              "count": 2,
+              "value": "#N/A"
+            },
+            {
+              "count": 2,
+              "value": "Introduction"
+            },
+            {
+              "count": 2,
+              "value": "Third Law of Thermodynamics"
+            },
+            {
+              "count": 1,
+              "value": "5n351wikae4ju5w5uc3i731p5"
+            },
+            {
+              "count": 1,
+              "value": "6feo1y2po46nmw579ybchzjba"
+            },
+            {
+              "count": 1,
+              "value": "Effect of pH on Solubility"
+            },
+            {
+              "count": 1,
+              "value": "Factor Affecting Surface Tension"
+            },
+            {
+              "count": 1,
+              "value": "Fluorine"
+            }
+          ],
+          "unique": 24,
+          "values_occurring_more_than_once": 3
+        },
+        {
+          "duplicate_rows": 2,
+          "formats": {
+            "QBG_CUID25": 8,
+            "TEXT": 19
+          },
+          "header": null,
+          "index": 30,
+          "inferred_type": "string",
+          "letter": "AE",
+          "non_null": 27,
+          "null_pct": 74.29,
+          "rows": 105,
+          "top_values": [
+            {
+              "count": 2,
+              "value": "#N/A"
+            },
+            {
+              "count": 2,
+              "value": "Parameter of System"
+            },
+            {
+              "count": 1,
+              "value": "00vxxe18moqq0tmt6erqpt94n"
+            },
+            {
+              "count": 1,
+              "value": "3kz6zpvy6ducdesr6w71knq28"
+            },
+            {
+              "count": 1,
+              "value": "844tggn59swp8h70eybr6bdnv"
+            },
+            {
+              "count": 1,
+              "value": "Anomalous Properties of Second Period Elements"
+            },
+            {
+              "count": 1,
+              "value": "Applications of Radioactivity"
+            },
+            {
+              "count": 1,
+              "value": "Concept of Self Energy"
+            }
+          ],
+          "unique": 25,
+          "values_occurring_more_than_once": 2
+        },
+        {
+          "duplicate_rows": 1,
+          "formats": {
+            "QBG_CUID25": 5,
+            "TEXT": 16
+          },
+          "header": null,
+          "index": 31,
+          "inferred_type": "string",
+          "letter": "AF",
+          "non_null": 21,
+          "null_pct": 80,
+          "rows": 105,
+          "top_values": [
+            {
+              "count": 2,
+              "value": "1st Law of Thermodynamics"
+            },
+            {
+              "count": 1,
+              "value": "6gvbwim2ntglxwg6g71q90w3m"
+            },
+            {
+              "count": 1,
+              "value": "Analysis of Cubic Equation"
+            },
+            {
+              "count": 1,
+              "value": "Determination of Cell Constant"
+            },
+            {
+              "count": 1,
+              "value": "Dioxygen"
+            },
+            {
+              "count": 1,
+              "value": "Energy in Wave Motion"
+            },
+            {
+              "count": 1,
+              "value": "Exchange and Pairing energy"
+            },
+            {
+              "count": 1,
+              "value": "Introduction"
+            }
+          ],
+          "unique": 20,
+          "values_occurring_more_than_once": 1
+        },
+        {
+          "duplicate_rows": 1,
+          "formats": {
+            "QBG_CUID25": 6,
+            "TEXT": 13
+          },
+          "header": null,
+          "index": 32,
+          "inferred_type": "string",
+          "letter": "AG",
+          "non_null": 19,
+          "null_pct": 81.9,
+          "rows": 105,
+          "top_values": [
+            {
+              "count": 2,
+              "value": "Polytropic Process"
+            },
+            {
+              "count": 1,
+              "value": "0ahnzzxqrnz2gmiz5bl4css60"
+            },
+            {
+              "count": 1,
+              "value": "Allotropic Forms of Phosphorus"
+            },
+            {
+              "count": 1,
+              "value": "Bernoulli's Principle (Applications of Bernoulli's Theorem)"
+            },
+            {
+              "count": 1,
+              "value": "Calculation of Hydrolysis Constant, Degree of Hydrolysis, and pH of Salt Solutions"
+            },
+            {
+              "count": 1,
+              "value": "Dalton's Atomic Theory"
+            },
+            {
+              "count": 1,
+              "value": "Electrolytes"
+            },
+            {
+              "count": 1,
+              "value": "Magnetism and Gauss Law"
+            }
+          ],
+          "unique": 18,
+          "values_occurring_more_than_once": 1
+        },
+        {
+          "duplicate_rows": 1,
+          "formats": {
+            "QBG_CUID25": 4,
+            "TEXT": 14
+          },
+          "header": null,
+          "index": 33,
+          "inferred_type": "string",
+          "letter": "AH",
+          "non_null": 18,
+          "null_pct": 82.86,
+          "rows": 105,
+          "top_values": [
+            {
+              "count": 2,
+              "value": "Heat"
+            },
+            {
+              "count": 1,
+              "value": "7xc1j5cuurpvj0e3maxdsgt1v"
+            },
+            {
+              "count": 1,
+              "value": "Acids, Bases and Salts"
+            },
+            {
+              "count": 1,
+              "value": "Angle of Friction"
+            },
+            {
+              "count": 1,
+              "value": "Avogadro's Hypothesis"
+            },
+            {
+              "count": 1,
+              "value": "Bernoullis Principle(Applications of Bernoullis Theorem)"
+            },
+            {
+              "count": 1,
+              "value": "Evidence for the Quantized Electronic Energy Levels: Atomic Spectra"
+            },
+            {
+              "count": 1,
+              "value": "Factors Affecting the Reaction Rate"
+            }
+          ],
+          "unique": 17,
+          "values_occurring_more_than_once": 1
+        },
+        {
+          "duplicate_rows": 2,
+          "formats": {
+            "QBG_CUID25": 4,
+            "TEXT": 14
+          },
+          "header": null,
+          "index": 34,
+          "inferred_type": "string",
+          "letter": "AI",
+          "non_null": 18,
+          "null_pct": 82.86,
+          "rows": 105,
+          "top_values": [
+            {
+              "count": 2,
+              "value": "#N/A"
+            },
+            {
+              "count": 2,
+              "value": "Thermal Equilibrium"
+            },
+            {
+              "count": 1,
+              "value": "4na7ev8y9ob8dhz46c421jxl5"
+            },
+            {
+              "count": 1,
+              "value": "Kinetics of Consecutive/Sequence/Series Reactions"
+            },
+            {
+              "count": 1,
+              "value": "Lattice Energy"
+            },
+            {
+              "count": 1,
+              "value": "Metallic/Electrolytic Conductors"
+            },
+            {
+              "count": 1,
+              "value": "Monosaccharides"
+            },
+            {
+              "count": 1,
+              "value": "Pseudohalides and Pseudohalogens"
+            }
+          ],
+          "unique": 16,
+          "values_occurring_more_than_once": 2
+        },
+        {
+          "duplicate_rows": 1,
+          "formats": {
+            "QBG_CUID25": 4,
+            "TEXT": 8
+          },
+          "header": null,
+          "index": 35,
+          "inferred_type": "string",
+          "letter": "AJ",
+          "non_null": 12,
+          "null_pct": 88.57,
+          "rows": 105,
+          "top_values": [
+            {
+              "count": 2,
+              "value": "Carnot's Theorem"
+            },
+            {
+              "count": 1,
+              "value": "4pzucvvyiamgxzjzo2kh81hcv"
+            },
+            {
+              "count": 1,
+              "value": "Angle of Repose"
+            },
+            {
+              "count": 1,
+              "value": "Developments Leading to the Bohr's Model of Atom"
+            },
+            {
+              "count": 1,
+              "value": "Gram Molecular Mass"
+            },
+            {
+              "count": 1,
+              "value": "Interhalogen Compounds"
+            },
+            {
+              "count": 1,
+              "value": "Melting and Boiling Points"
+            },
+            {
+              "count": 1,
+              "value": "Relationship Between Equilibrium Constant (K)"
+            }
+          ],
+          "unique": 11,
+          "values_occurring_more_than_once": 1
+        },
+        {
+          "duplicate_rows": 1,
+          "formats": {
+            "QBG_CUID25": 3,
+            "TEXT": 8
+          },
+          "header": null,
+          "index": 36,
+          "inferred_type": "string",
+          "letter": "AK",
+          "non_null": 11,
+          "null_pct": 89.52,
+          "rows": 105,
+          "top_values": [
+            {
+              "count": 2,
+              "value": "Extensive Properties"
+            },
+            {
+              "count": 1,
+              "value": "Conservation of Linear Momentum"
+            },
+            {
+              "count": 1,
+              "value": "Effective Nuclear Charge"
+            },
+            {
+              "count": 1,
+              "value": "Oleum Labelling"
+            },
+            {
+              "count": 1,
+              "value": "Phosphorus Oxides"
+            },
+            {
+              "count": 1,
+              "value": "Physical Equilibrium"
+            },
+            {
+              "count": 1,
+              "value": "Sommerfeld's Model"
+            },
+            {
+              "count": 1,
+              "value": "egoa9lufirnmeth78ledvrt2n"
+            }
+          ],
+          "unique": 10,
+          "values_occurring_more_than_once": 1
+        },
+        {
+          "duplicate_rows": 1,
+          "formats": {
+            "QBG_CUID25": 3,
+            "TEXT": 7
+          },
+          "header": null,
+          "index": 37,
+          "inferred_type": "string",
+          "letter": "AL",
+          "non_null": 10,
+          "null_pct": 90.48,
+          "rows": 105,
+          "top_values": [
+            {
+              "count": 2,
+              "value": "Intensive Properties"
+            },
+            {
+              "count": 1,
+              "value": "4j9sfoqwkw8dlx4ioya8ql1cq"
+            },
+            {
+              "count": 1,
+              "value": "Calculation of Hydrolysis Constant"
+            },
+            {
+              "count": 1,
+              "value": "Classification of Force"
+            },
+            {
+              "count": 1,
+              "value": "Equivalent Mass"
+            },
+            {
+              "count": 1,
+              "value": "Oxides"
+            },
+            {
+              "count": 1,
+              "value": "Study of Spectra"
+            },
+            {
+              "count": 1,
+              "value": "fbp3kcnsriy84uxq4z3w4vlzx"
+            }
+          ],
+          "unique": 9,
+          "values_occurring_more_than_once": 1
+        },
+        {
+          "duplicate_rows": 1,
+          "formats": {
+            "QBG_CUID25": 1,
+            "TEXT": 5
+          },
+          "header": null,
+          "index": 38,
+          "inferred_type": "string",
+          "letter": "AM",
+          "non_null": 6,
+          "null_pct": 94.29,
+          "rows": 105,
+          "top_values": [
+            {
+              "count": 2,
+              "value": "Carnot Engine"
+            },
+            {
+              "count": 1,
+              "value": "Acids"
+            },
+            {
+              "count": 1,
+              "value": "Hydrogen Chloride"
+            },
+            {
+              "count": 1,
+              "value": "Oxidation Number"
+            },
+            {
+              "count": 1,
+              "value": "hlhwqp776pzqxpcr2sk0ekf56"
+            }
+          ],
+          "unique": 5,
+          "values_occurring_more_than_once": 1
+        },
+        {
+          "duplicate_rows": 1,
+          "formats": {
+            "QBG_CUID25": 1,
+            "TEXT": 4
+          },
+          "header": null,
+          "index": 39,
+          "inferred_type": "string",
+          "letter": "AN",
+          "non_null": 5,
+          "null_pct": 95.24,
+          "rows": 105,
+          "top_values": [
+            {
+              "count": 2,
+              "value": "Equation of State"
+            },
+            {
+              "count": 1,
+              "value": "00xteey7mzpq440cbscss2c99"
+            },
+            {
+              "count": 1,
+              "value": "Electrolytes"
+            },
+            {
+              "count": 1,
+              "value": "N - factor"
+            }
+          ],
+          "unique": 4,
+          "values_occurring_more_than_once": 1
+        },
+        {
+          "duplicate_rows": 1,
+          "formats": {
+            "QBG_CUID25": 1,
+            "TEXT": 4
+          },
+          "header": null,
+          "index": 40,
+          "inferred_type": "string",
+          "letter": "AO",
+          "non_null": 5,
+          "null_pct": 95.24,
+          "rows": 105,
+          "top_values": [
+            {
+              "count": 2,
+              "value": "Refrigerators and Heat Pumps"
+            },
+            {
+              "count": 1,
+              "value": "6guca44t4fkdza0vmz16ce64v"
+            },
+            {
+              "count": 1,
+              "value": "Balancing of Chemical Equations"
+            },
+            {
+              "count": 1,
+              "value": "Dissociation/Ionization of Acids and Bases"
+            }
+          ],
+          "unique": 4,
+          "values_occurring_more_than_once": 1
+        },
+        {
+          "duplicate_rows": 1,
+          "formats": {
+            "QBG_CUID25": 1,
+            "TEXT": 3
+          },
+          "header": null,
+          "index": 41,
+          "inferred_type": "string",
+          "letter": "AP",
+          "non_null": 4,
+          "null_pct": 96.19,
+          "rows": 105,
+          "top_values": [
+            {
+              "count": 2,
+              "value": "Hess's Law of Constant Heat Summation"
+            },
+            {
+              "count": 1,
+              "value": "0r7l5mprc45noxsjppxavp69w"
+            },
+            {
+              "count": 1,
+              "value": "Ostwald Law of Dilution"
+            }
+          ],
+          "unique": 3,
+          "values_occurring_more_than_once": 1
+        },
+        {
+          "duplicate_rows": 1,
+          "formats": {
+            "QBG_CUID25": 1,
+            "TEXT": 3
+          },
+          "header": null,
+          "index": 42,
+          "inferred_type": "string",
+          "letter": "AQ",
+          "non_null": 4,
+          "null_pct": 96.19,
+          "rows": 105,
+          "top_values": [
+            {
+              "count": 2,
+              "value": "Lattice Enthalpy"
+            },
+            {
+              "count": 1,
+              "value": "Calculation of pH of Very Dilute Acid or Alkali Solutions"
+            },
+            {
+              "count": 1,
+              "value": "gcwnuvmr4d4lczl4cz0ej66we"
+            }
+          ],
+          "unique": 3,
+          "values_occurring_more_than_once": 1
+        },
+        {
+          "duplicate_rows": 1,
+          "formats": {
+            "QBG_CUID25": 1,
+            "TEXT": 3
+          },
+          "header": null,
+          "index": 43,
+          "inferred_type": "string",
+          "letter": "AR",
+          "non_null": 4,
+          "null_pct": 96.19,
+          "rows": 105,
+          "top_values": [
+            {
+              "count": 2,
+              "value": "Effect of Temperature on Feasibility of a Process"
+            },
+            {
+              "count": 1,
+              "value": "Strength of Acids and Bases"
+            },
+            {
+              "count": 1,
+              "value": "sh1xw74doq6agv1azspmnxofe"
+            }
+          ],
+          "unique": 3,
+          "values_occurring_more_than_once": 1
+        },
+        {
+          "duplicate_rows": 1,
+          "formats": {
+            "QBG_CUID25": 1,
+            "TEXT": 3
+          },
+          "header": null,
+          "index": 44,
+          "inferred_type": "string",
+          "letter": "AS",
+          "non_null": 4,
+          "null_pct": 96.19,
+          "rows": 105,
+          "top_values": [
+            {
+              "count": 2,
+              "value": "Free Expansion"
+            },
+            {
+              "count": 1,
+              "value": "Ionization of Acids and Bases"
+            },
+            {
+              "count": 1,
+              "value": "q08khlealhu77rycz1wev70f7"
+            }
+          ],
+          "unique": 3,
+          "values_occurring_more_than_once": 1
+        },
+        {
+          "duplicate_rows": 1,
+          "formats": {
+            "QBG_CUID25": 1,
+            "TEXT": 2
+          },
+          "header": null,
+          "index": 45,
+          "inferred_type": "string",
+          "letter": "AT",
+          "non_null": 3,
+          "null_pct": 97.14,
+          "rows": 105,
+          "top_values": [
+            {
+              "count": 2,
+              "value": "Introduction"
+            },
+            {
+              "count": 1,
+              "value": "50cxicygy3imbkmqidz7aijdi"
+            }
+          ],
+          "unique": 2,
+          "values_occurring_more_than_once": 1
+        },
+        {
+          "duplicate_rows": 1,
+          "formats": {
+            "QBG_CUID25": 1,
+            "TEXT": 2
+          },
+          "header": null,
+          "index": 46,
+          "inferred_type": "string",
+          "letter": "AU",
+          "non_null": 3,
+          "null_pct": 97.14,
+          "rows": 105,
+          "top_values": [
+            {
+              "count": 2,
+              "value": "Calorific Value"
+            },
+            {
+              "count": 1,
+              "value": "tqcmbt50llwf8hsno7sv5pgaq"
+            }
+          ],
+          "unique": 2,
+          "values_occurring_more_than_once": 1
+        },
+        {
+          "duplicate_rows": 1,
+          "formats": {
+            "QBG_CUID25": 1,
+            "TEXT": 2
+          },
+          "header": null,
+          "index": 47,
+          "inferred_type": "string",
+          "letter": "AV",
+          "non_null": 3,
+          "null_pct": 97.14,
+          "rows": 105,
+          "top_values": [
+            {
+              "count": 2,
+              "value": "Thermodynamic Coefficient"
+            },
+            {
+              "count": 1,
+              "value": "ia6ryvmazz7p0jozb4cfg3dze"
+            }
+          ],
+          "unique": 2,
+          "values_occurring_more_than_once": 1
+        },
+        {
+          "duplicate_rows": 1,
+          "formats": {
+            "QBG_CUID25": 1,
+            "TEXT": 2
+          },
+          "header": null,
+          "index": 48,
+          "inferred_type": "string",
+          "letter": "AW",
+          "non_null": 3,
+          "null_pct": 97.14,
+          "rows": 105,
+          "top_values": [
+            {
+              "count": 2,
+              "value": "Kirchoff's Law"
+            },
+            {
+              "count": 1,
+              "value": "vosseo4p62m5tk2w7p4ez6yn0"
+            }
+          ],
+          "unique": 2,
+          "values_occurring_more_than_once": 1
+        },
+        {
+          "duplicate_rows": 1,
+          "formats": {
+            "TEXT": 2
+          },
+          "header": null,
+          "index": 49,
+          "inferred_type": "string",
+          "letter": "AX",
+          "non_null": 2,
+          "null_pct": 98.1,
+          "rows": 105,
+          "top_values": [
+            {
+              "count": 2,
+              "value": "Second Law of Thermodynamics"
+            }
+          ],
+          "unique": 1,
+          "values_occurring_more_than_once": 1
+        },
+        {
+          "duplicate_rows": 1,
+          "formats": {
+            "TEXT": 2
+          },
+          "header": null,
+          "index": 50,
+          "inferred_type": "string",
+          "letter": "AY",
+          "non_null": 2,
+          "null_pct": 98.1,
+          "rows": 105,
+          "top_values": [
+            {
+              "count": 2,
+              "value": "Change in Thermodynamics Properties in Expansion or Contraction of a Gas"
+            }
+          ],
+          "unique": 1,
+          "values_occurring_more_than_once": 1
+        },
+        {
+          "duplicate_rows": 1,
+          "formats": {
+            "TEXT": 2
+          },
+          "header": null,
+          "index": 51,
+          "inferred_type": "string",
+          "letter": "AZ",
+          "non_null": 2,
+          "null_pct": 98.1,
+          "rows": 105,
+          "top_values": [
+            {
+              "count": 2,
+              "value": "Calorimetry: Measurement of Enthalpy of a Reaction"
+            }
+          ],
+          "unique": 1,
+          "values_occurring_more_than_once": 1
+        },
+        {
+          "duplicate_rows": 1,
+          "formats": {
+            "TEXT": 2
+          },
+          "header": null,
+          "index": 52,
+          "inferred_type": "string",
+          "letter": "BA",
+          "non_null": 2,
+          "null_pct": 98.1,
+          "rows": 105,
+          "top_values": [
+            {
+              "count": 2,
+              "value": "Specific Heat Capacity of Water"
+            }
+          ],
+          "unique": 1,
+          "values_occurring_more_than_once": 1
+        },
+        {
+          "duplicate_rows": 1,
+          "formats": {
+            "TEXT": 2
+          },
+          "header": null,
+          "index": 53,
+          "inferred_type": "string",
+          "letter": "BB",
+          "non_null": 2,
+          "null_pct": 98.1,
+          "rows": 105,
+          "top_values": [
+            {
+              "count": 2,
+              "value": "Reversible and Irreversible Processes"
+            }
+          ],
+          "unique": 1,
+          "values_occurring_more_than_once": 1
+        },
+        {
+          "duplicate_rows": 1,
+          "formats": {
+            "TEXT": 2
+          },
+          "header": null,
+          "index": 54,
+          "inferred_type": "string",
+          "letter": "BC",
+          "non_null": 2,
+          "null_pct": 98.1,
+          "rows": 105,
+          "top_values": [
+            {
+              "count": 2,
+              "value": "First Law of Thermodynamics"
+            }
+          ],
+          "unique": 1,
+          "values_occurring_more_than_once": 1
+        },
+        {
+          "duplicate_rows": 1,
+          "formats": {
+            "TEXT": 2
+          },
+          "header": null,
+          "index": 55,
+          "inferred_type": "string",
+          "letter": "BD",
+          "non_null": 2,
+          "null_pct": 98.1,
+          "rows": 105,
+          "top_values": [
+            {
+              "count": 2,
+              "value": "First Law of Thermodynamics (Calculating internal Energy of Gas)"
+            }
+          ],
+          "unique": 1,
+          "values_occurring_more_than_once": 1
+        },
+        {
+          "duplicate_rows": 1,
+          "formats": {
+            "TEXT": 2
+          },
+          "header": null,
+          "index": 56,
+          "inferred_type": "string",
+          "letter": "BE",
+          "non_null": 2,
+          "null_pct": 98.1,
+          "rows": 105,
+          "top_values": [
+            {
+              "count": 2,
+              "value": "Carnot Engine and Carnot Theorem"
+            }
+          ],
+          "unique": 1,
+          "values_occurring_more_than_once": 1
+        },
+        {
+          "duplicate_rows": 1,
+          "formats": {
+            "TEXT": 2
+          },
+          "header": null,
+          "index": 57,
+          "inferred_type": "string",
+          "letter": "BF",
+          "non_null": 2,
+          "null_pct": 98.1,
+          "rows": 105,
+          "top_values": [
+            {
+              "count": 2,
+              "value": "Polytropic Process (Pva = Constant)"
+            }
+          ],
+          "unique": 1,
+          "values_occurring_more_than_once": 1
+        },
+        {
+          "duplicate_rows": 1,
+          "formats": {
+            "TEXT": 2
+          },
+          "header": null,
+          "index": 58,
+          "inferred_type": "string",
+          "letter": "BG",
+          "non_null": 2,
+          "null_pct": 98.1,
+          "rows": 105,
+          "top_values": [
+            {
+              "count": 2,
+              "value": "Scalars and Vectors"
+            }
+          ],
+          "unique": 1,
+          "values_occurring_more_than_once": 1
+        }
+      ],
+      "data_rows": 105,
+      "header_row_1based": null,
+      "name": "MainCurationSheet",
+      "repeated_header_names": [],
+      "tabular": false
+    },
+    {
+      "column_count": 8,
+      "columns": [
+        {
+          "duplicate_rows": 0,
+          "formats": {
+            "INTEGER": 116
+          },
+          "header": "Test Number",
+          "index": 0,
+          "inferred_type": "number",
+          "letter": "A",
+          "non_null": 116,
+          "null_pct": 0,
+          "rows": 116,
+          "top_values": [
+            {
+              "count": 1,
+              "value": "1"
+            },
+            {
+              "count": 1,
+              "value": "10"
+            },
+            {
+              "count": 1,
+              "value": "101"
+            },
+            {
+              "count": 1,
+              "value": "102"
+            },
+            {
+              "count": 1,
+              "value": "103"
+            },
+            {
+              "count": 1,
+              "value": "104"
+            },
+            {
+              "count": 1,
+              "value": "105"
+            },
+            {
+              "count": 1,
+              "value": "106"
+            }
+          ],
+          "unique": 116,
+          "values_occurring_more_than_once": 0
+        },
+        {
+          "duplicate_rows": 115,
+          "formats": {
+            "EMAIL": 116
+          },
+          "header": "User Email",
+          "index": 1,
+          "inferred_type": "string",
+          "letter": "B",
+          "non_null": 116,
+          "null_pct": 0,
+          "rows": 116,
+          "top_values": [
+            {
+              "count": 116,
+              "value": "l***@pw.live"
+            }
+          ],
+          "unique": 1,
+          "values_occurring_more_than_once": 1
+        },
+        {
+          "duplicate_rows": 95,
+          "formats": {
+            "TEXT": 116
+          },
+          "header": "Exam Type",
+          "index": 2,
+          "inferred_type": "string",
+          "letter": "C",
+          "non_null": 116,
+          "null_pct": 0,
+          "rows": 116,
+          "top_values": [
+            {
+              "count": 64,
+              "value": "JEE Main"
+            },
+            {
+              "count": 5,
+              "value": "JEE Main (12th FS)"
+            },
+            {
+              "count": 5,
+              "value": "JEE Main(11th + 12th)"
+            },
+            {
+              "count": 5,
+              "value": "JEE Main(Only 11th FS)"
+            },
+            {
+              "count": 5,
+              "value": "NEET"
+            },
+            {
+              "count": 4,
+              "value": "JEE Advanced_2025_P1"
+            },
+            {
+              "count": 3,
+              "value": "JEE Advanced_2022_P1"
+            },
+            {
+              "count": 3,
+              "value": "JEE Advanced_2023_P1"
+            }
+          ],
+          "unique": 21,
+          "values_occurring_more_than_once": 16
+        },
+        {
+          "duplicate_rows": 104,
+          "formats": {
+            "TEXT": 116
+          },
+          "header": "Batch Name",
+          "index": 3,
+          "inferred_type": "string",
+          "letter": "D",
+          "non_null": 116,
+          "null_pct": 0,
+          "rows": 116,
+          "top_values": [
+            {
+              "count": 43,
+              "value": "Kattar"
+            },
+            {
+              "count": 30,
+              "value": "MileStoneMarketing"
+            },
+            {
+              "count": 28,
+              "value": "Mastery2"
+            },
+            {
+              "count": 4,
+              "value": "Mastery2-taken"
+            },
+            {
+              "count": 2,
+              "value": "Mastery2-notused"
+            },
+            {
+              "count": 2,
+              "value": "NEET-PYQ-Ultimate"
+            },
+            {
+              "count": 2,
+              "value": "tagging-testing"
+            },
+            {
+              "count": 1,
+              "value": "AITS_12th"
+            }
+          ],
+          "unique": 12,
+          "values_occurring_more_than_once": 7
+        },
+        {
+          "duplicate_rows": 91,
+          "formats": {
+            "INTEGER": 116
+          },
+          "header": "Test Date",
+          "index": 4,
+          "inferred_type": "number",
+          "letter": "E",
+          "non_null": 116,
+          "null_pct": 0,
+          "rows": 116,
+          "top_values": [
+            {
+              "count": 30,
+              "value": "46041"
+            },
+            {
+              "count": 26,
+              "value": "46160"
+            },
+            {
+              "count": 16,
+              "value": "46096"
+            },
+            {
+              "count": 8,
+              "value": "46156"
+            },
+            {
+              "count": 4,
+              "value": "46056"
+            },
+            {
+              "count": 2,
+              "value": "46026"
+            },
+            {
+              "count": 2,
+              "value": "46058"
+            },
+            {
+              "count": 2,
+              "value": "46063"
+            }
+          ],
+          "unique": 25,
+          "values_occurring_more_than_once": 17
+        },
+        {
+          "duplicate_rows": 114,
+          "formats": {
+            "TEXT": 116
+          },
+          "header": "Subjects",
+          "index": 5,
+          "inferred_type": "string",
+          "letter": "F",
+          "non_null": 116,
+          "null_pct": 0,
+          "rows": 116,
+          "top_values": [
+            {
+              "count": 86,
+              "value": "Physics"
+            },
+            {
+              "count": 30,
+              "value": "Physics, Chemistry, Maths"
+            }
+          ],
+          "unique": 2,
+          "values_occurring_more_than_once": 2
+        },
+        {
+          "duplicate_rows": 77,
+          "formats": {
+            "TEXT": 116
+          },
+          "header": "Chapters",
+          "index": 6,
+          "inferred_type": "string",
+          "letter": "G",
+          "non_null": 116,
+          "null_pct": 0,
+          "rows": 116,
+          "top_values": [
+            {
+              "count": 24,
+              "value": "Units and Measurements, Motion in a Straight Line, Motion in a Plane, Laws of Motion, Work Energy and Power, Circular..."
+            },
+            {
+              "count": 10,
+              "value": "Electric Charges and Fields, Electrostatic Potential and Capacitance, Current Electricity, Moving Charges and Magneti..."
+            },
+            {
+              "count": 10,
+              "value": "Mathematical Tools and Vectors, Units and Measurements, Motion in a Straight Line, Motion in a Plane, Laws of Motion,..."
+            },
+            {
+              "count": 5,
+              "value": "Electric Charges and Fields, Electrostatic Potential and Capacitance, Current Electricity, Moving Charges and Magneti..."
+            },
+            {
+              "count": 5,
+              "value": "Units and Measurements, Motion in a Straight Line, Motion in a Plane, Laws of Motion, Work Energy and Power, Circular..."
+            },
+            {
+              "count": 5,
+              "value": "Units and Measurements, Motion in a Straight Line, Motion in a Plane, Laws of Motion, Work Energy and Power, Circular..."
+            },
+            {
+              "count": 4,
+              "value": "Units and Measurements, Motion in a Straight Line, Motion in a Plane, Laws of Motion, Work Energy and Power, Circular..."
+            },
+            {
+              "count": 3,
+              "value": "Electrostatic Potential and Capacitance"
+            }
+          ],
+          "unique": 39,
+          "values_occurring_more_than_once": 26
+        },
+        {
+          "duplicate_rows": 0,
+          "formats": {
+            "DRIVE_URL": 116
+          },
+          "header": "SheetLink",
+          "index": 7,
+          "inferred_type": "string",
+          "letter": "H",
+          "non_null": 116,
+          "null_pct": 0,
+          "rows": 116,
+          "top_values": [
+            {
+              "count": 1,
+              "value": "https://docs.google.com/spreadsheets/d/1--jaOmN4szPTmyJzkzBoH5isr3h3rhfp3hJMIXM2y0Q/edit"
+            },
+            {
+              "count": 1,
+              "value": "https://docs.google.com/spreadsheets/d/1-B_iK2MyON82wVuMbticy-gZpvPN0NWSPuhIFcTPsoM/edit"
+            },
+            {
+              "count": 1,
+              "value": "https://docs.google.com/spreadsheets/d/1-BwNrL2rV6OeGWxIo_vnFUPy09cTx7grcuP7fU8Kv_I/edit"
+            },
+            {
+              "count": 1,
+              "value": "https://docs.google.com/spreadsheets/d/10h3WaJunMw_JNFbV4H2nYaHPCtnZOPo31UGA1NxzVXA/edit"
+            },
+            {
+              "count": 1,
+              "value": "https://docs.google.com/spreadsheets/d/11_nuqIwDrAZ9JhWBfSpchun0OiF_cm83qhBCf8TiwLw/edit"
+            },
+            {
+              "count": 1,
+              "value": "https://docs.google.com/spreadsheets/d/11mVg6UKhzbtjxCG5zmW15Z6mbsXyDuWYyrS7S29HOj0/edit"
+            },
+            {
+              "count": 1,
+              "value": "https://docs.google.com/spreadsheets/d/12-4vEMHck3rx0k1a0c-Kk5f34NEk433dto3BPqtr5oo/edit"
+            },
+            {
+              "count": 1,
+              "value": "https://docs.google.com/spreadsheets/d/12Z0zBwJ-Dsf3dcRmbir3klAOUhbWhLn856HRaHqOBvE/edit"
+            }
+          ],
+          "unique": 116,
+          "values_occurring_more_than_once": 0
+        }
+      ],
+      "data_rows": 116,
+      "header_row_1based": 1,
+      "name": "output",
+      "repeated_header_names": [],
+      "tabular": true
+    },
+    {
+      "column_count": 4,
+      "columns": [
+        {
+          "duplicate_rows": 2,
+          "formats": {
+            "QBG_CUID25": 35
+          },
+          "header": "chapter id",
+          "index": 0,
+          "inferred_type": "string",
+          "letter": "A",
+          "non_null": 35,
+          "null_pct": 0,
+          "rows": 35,
+          "top_values": [
+            {
+              "count": 2,
+              "value": "gajx4xmnmbg2g132ziagc0cnq"
+            },
+            {
+              "count": 2,
+              "value": "yzmzrf76yika272nqaf11nn52"
+            },
+            {
+              "count": 1,
+              "value": "0rrarapopbsgfvsdhwnud0gzt"
+            },
+            {
+              "count": 1,
+              "value": "18w5r2dal5pkxruso8gp8putx"
+            },
+            {
+              "count": 1,
+              "value": "1n891csxeh1hd57rbxn02bzo8"
+            },
+            {
+              "count": 1,
+              "value": "30v5fum0bifcpih7a8ky2jooz"
+            },
+            {
+              "count": 1,
+              "value": "4b3826c3xi338thl59is0irhl"
+            },
+            {
+              "count": 1,
+              "value": "4kdfozozxe9o40hqobuk5lipy"
+            }
+          ],
+          "unique": 33,
+          "values_occurring_more_than_once": 2
+        },
+        {
+          "duplicate_rows": 3,
+          "formats": {
+            "TEXT": 35
+          },
+          "header": "chapter name",
+          "index": 1,
+          "inferred_type": "string",
+          "letter": "B",
+          "non_null": 35,
+          "null_pct": 0,
+          "rows": 35,
+          "top_values": [
+            {
+              "count": 2,
+              "value": "Center of Mass and System of Particles"
+            },
+            {
+              "count": 2,
+              "value": "Electromagnetic Waves"
+            },
+            {
+              "count": 2,
+              "value": "Moving Charges and Magnetism"
+            },
+            {
+              "count": 1,
+              "value": "Alternating Current"
+            },
+            {
+              "count": 1,
+              "value": "Atoms"
+            },
+            {
+              "count": 1,
+              "value": "Circular Motion"
+            },
+            {
+              "count": 1,
+              "value": "Current Electricity"
+            },
+            {
+              "count": 1,
+              "value": "Dual Nature of Radiation and Matter"
+            }
+          ],
+          "unique": 32,
+          "values_occurring_more_than_once": 3
+        },
+        {
+          "duplicate_rows": 33,
+          "formats": {
+            "QBG_CUID25": 35
+          },
+          "header": "class id",
+          "index": 2,
+          "inferred_type": "string",
+          "letter": "C",
+          "non_null": 35,
+          "null_pct": 0,
+          "rows": 35,
+          "top_values": [
+            {
+              "count": 19,
+              "value": "nasza1gowlgs8vhih1zkhapdz"
+            },
+            {
+              "count": 16,
+              "value": "oyhh7ve8217so92jw81tefbyp"
+            }
+          ],
+          "unique": 2,
+          "values_occurring_more_than_once": 2
+        },
+        {
+          "duplicate_rows": 33,
+          "formats": {
+            "INTEGER": 35
+          },
+          "header": "class name",
+          "index": 3,
+          "inferred_type": "number",
+          "letter": "D",
+          "non_null": 35,
+          "null_pct": 0,
+          "rows": 35,
+          "top_values": [
+            {
+              "count": 19,
+              "value": "11"
+            },
+            {
+              "count": 16,
+              "value": "12"
+            }
+          ],
+          "unique": 2,
+          "values_occurring_more_than_once": 2
+        }
+      ],
+      "data_rows": 35,
+      "header_row_1based": 1,
+      "name": "chapterid-classid mapping",
+      "repeated_header_names": [],
+      "tabular": true
+    },
+    {
+      "column_count": 8,
+      "columns": [
+        {
+          "duplicate_rows": 4471,
+          "formats": {
+            "QBG_CUID25": 4474
+          },
+          "header": "subject_id",
+          "index": 0,
+          "inferred_type": "string",
+          "letter": "A",
+          "non_null": 4474,
+          "null_pct": 0,
+          "rows": 4474,
+          "top_values": [
+            {
+              "count": 1667,
+              "value": "iydv16vvyph4i0hajzqbqxk2t"
+            },
+            {
+              "count": 1608,
+              "value": "19c8p297y48dy01537cxzinys"
+            },
+            {
+              "count": 1199,
+              "value": "7rgg2rb3rbirmrkpguofa7sor"
+            }
+          ],
+          "unique": 3,
+          "values_occurring_more_than_once": 3
+        },
+        {
+          "duplicate_rows": 4471,
+          "formats": {
+            "TEXT": 4474
+          },
+          "header": "Subject",
+          "index": 1,
+          "inferred_type": "string",
+          "letter": "B",
+          "non_null": 4474,
+          "null_pct": 0,
+          "rows": 4474,
+          "top_values": [
+            {
+              "count": 1667,
+              "value": "Physics"
+            },
+            {
+              "count": 1608,
+              "value": "Maths"
+            },
+            {
+              "count": 1199,
+              "value": "Chemistry"
+            }
+          ],
+          "unique": 3,
+          "values_occurring_more_than_once": 3
+        },
+        {
+          "duplicate_rows": 4172,
+          "formats": {
+            "QBG_CUID25": 4332
+          },
+          "header": "Chapter_id",
+          "index": 2,
+          "inferred_type": "string",
+          "letter": "C",
+          "non_null": 4332,
+          "null_pct": 3.17,
+          "rows": 4474,
+          "top_values": [
+            {
+              "count": 128,
+              "value": "n56993pcfvp85gtnvq3a1t3rw"
+            },
+            {
+              "count": 101,
+              "value": "6vvmtbqliw4f0lvwq2hg7lrx2"
+            },
+            {
+              "count": 96,
+              "value": "ca33u7zvbbnt64edqggwp2a1x"
+            },
+            {
+              "count": 91,
+              "value": "7kx7aknod2psthzyz0hxpqllr"
+            },
+            {
+              "count": 88,
+              "value": "z0xwqev0o9ylrgfspy0nmi78v"
+            },
+            {
+              "count": 85,
+              "value": "wut90nwznjcwq8s8uq9ldw02b"
+            },
+            {
+              "count": 75,
+              "value": "g80cnfd2kerep6t9ycncsir5v"
+            },
+            {
+              "count": 67,
+              "value": "tz4907islds6g7agzogsbkw95"
+            }
+          ],
+          "unique": 160,
+          "values_occurring_more_than_once": 155
+        },
+        {
+          "duplicate_rows": 4334,
+          "formats": {
+            "TEXT": 4472
+          },
+          "header": "Chapter",
+          "index": 3,
+          "inferred_type": "string",
+          "letter": "D",
+          "non_null": 4472,
+          "null_pct": 0.04,
+          "rows": 4474,
+          "top_values": [
+            {
+              "count": 115,
+              "value": "Current Electricity"
+            },
+            {
+              "count": 103,
+              "value": "Relations and Functions"
+            },
+            {
+              "count": 102,
+              "value": "The p-Block Elements"
+            },
+            {
+              "count": 99,
+              "value": "Thermodynamics"
+            },
+            {
+              "count": 97,
+              "value": "Ray Optics and Optical Instruments"
+            },
+            {
+              "count": 87,
+              "value": "Center of Mass"
+            },
+            {
+              "count": 82,
+              "value": "Electric Charges and Fields"
+            },
+            {
+              "count": 79,
+              "value": "Statistics"
+            }
+          ],
+          "unique": 138,
+          "values_occurring_more_than_once": 130
+        },
+        {
+          "duplicate_rows": 2813,
+          "formats": {
+            "QBG_CUID25": 4328
+          },
+          "header": "Topic_id",
+          "index": 4,
+          "inferred_type": "string",
+          "letter": "E",
+          "non_null": 4328,
+          "null_pct": 3.26,
+          "rows": 4474,
+          "top_values": [
+            {
+              "count": 45,
+              "value": "2rjl9nvpiwwapgj1gb7oeq58i"
+            },
+            {
+              "count": 32,
+              "value": "r9madadhv7fy4qma2kdl7ikhj"
+            },
+            {
+              "count": 29,
+              "value": "39324dn1mmkigf6ibx6io3k7x"
+            },
+            {
+              "count": 25,
+              "value": "1rbihhp2mvnthzoc8izma43ei"
+            },
+            {
+              "count": 22,
+              "value": "gcdgs7x6jw6yzq1c6wbeca5h8"
+            },
+            {
+              "count": 21,
+              "value": "gzo7g3it29k3lq9j7c7hh1x44"
+            },
+            {
+              "count": 21,
+              "value": "i7icg0ny0tfqjz715znhhofor"
+            },
+            {
+              "count": 21,
+              "value": "xwfabk62zhvh1b70zzh404zxh"
+            }
+          ],
+          "unique": 1515,
+          "values_occurring_more_than_once": 877
+        },
+        {
+          "duplicate_rows": 3095,
+          "formats": {
+            "TEXT": 4474
+          },
+          "header": "Topic",
+          "index": 5,
+          "inferred_type": "string",
+          "letter": "F",
+          "non_null": 4474,
+          "null_pct": 0,
+          "rows": 4474,
+          "top_values": [
+            {
+              "count": 83,
+              "value": "Introduction"
+            },
+            {
+              "count": 59,
+              "value": "Definitions"
+            },
+            {
+              "count": 46,
+              "value": "Limit"
+            },
+            {
+              "count": 28,
+              "value": "Parabola"
+            },
+            {
+              "count": 26,
+              "value": "Functions"
+            },
+            {
+              "count": 24,
+              "value": "Pressure"
+            },
+            {
+              "count": 23,
+              "value": "Collisions"
+            },
+            {
+              "count": 22,
+              "value": "Operations on Sets"
+            }
+          ],
+          "unique": 1379,
+          "values_occurring_more_than_once": 874
+        },
+        {
+          "duplicate_rows": 977,
+          "formats": {
+            "QBG_CUID25": 3234
+          },
+          "header": "Subtopic_id",
+          "index": 6,
+          "inferred_type": "string",
+          "letter": "G",
+          "non_null": 3234,
+          "null_pct": 27.72,
+          "rows": 4474,
+          "top_values": [
+            {
+              "count": 37,
+              "value": "dc9ed0o6vxceruwmumf49sn0q"
+            },
+            {
+              "count": 21,
+              "value": "15imm75mihwe0n44g05omyg1r"
+            },
+            {
+              "count": 21,
+              "value": "ekt8uyur9kjjlszy9pg7c5fkz"
+            },
+            {
+              "count": 14,
+              "value": "b60shklyj7kzcqb9ytagaoe5t"
+            },
+            {
+              "count": 9,
+              "value": "f5rkg7of815gzodzz2pix3qz9"
+            },
+            {
+              "count": 9,
+              "value": "gyznw096layocqab50o4hmher"
+            },
+            {
+              "count": 8,
+              "value": "mp9mbsanyhfl5atjk413r7cvs"
+            },
+            {
+              "count": 8,
+              "value": "som9xnj6rzl9maohal1itmyup"
+            }
+          ],
+          "unique": 2257,
+          "values_occurring_more_than_once": 606
+        },
+        {
+          "duplicate_rows": 792,
+          "formats": {
+            "TEXT": 4025
+          },
+          "header": "Subtopic",
+          "index": 7,
+          "inferred_type": "string",
+          "letter": "H",
+          "non_null": 4025,
+          "null_pct": 10.04,
+          "rows": 4474,
+          "top_values": [
+            {
+              "count": 76,
+              "value": "Introduction"
+            },
+            {
+              "count": 31,
+              "value": "Chemical properties"
+            },
+            {
+              "count": 18,
+              "value": "Defination"
+            },
+            {
+              "count": 16,
+              "value": "Physical properties"
+            },
+            {
+              "count": 15,
+              "value": "Miscellaneous"
+            },
+            {
+              "count": 10,
+              "value": "Preparation"
+            },
+            {
+              "count": 7,
+              "value": "Properties"
+            },
+            {
+              "count": 7,
+              "value": "Volume"
+            }
+          ],
+          "unique": 3233,
+          "values_occurring_more_than_once": 545
+        }
+      ],
+      "data_rows": 4474,
+      "header_row_1based": 1,
+      "name": "tagging",
+      "repeated_header_names": [],
+      "tabular": true
+    },
+    {
+      "column_count": 7,
+      "columns": [
+        {
+          "duplicate_rows": 0,
+          "formats": {
+            "INTEGER": 1
+          },
+          "header": "No of Questions",
+          "index": 0,
+          "inferred_type": "number",
+          "letter": "A",
+          "non_null": 1,
+          "null_pct": 0,
+          "rows": 1,
+          "top_values": [
+            {
+              "count": 1,
+              "value": "3"
+            }
+          ],
+          "unique": 1,
+          "values_occurring_more_than_once": 0
+        },
+        {
+          "duplicate_rows": 0,
+          "formats": {
+            "TEXT": 1
+          },
+          "header": "Subject",
+          "index": 1,
+          "inferred_type": "string",
+          "letter": "B",
+          "non_null": 1,
+          "null_pct": 0,
+          "rows": 1,
+          "top_values": [
+            {
+              "count": 1,
+              "value": "physics"
+            }
+          ],
+          "unique": 1,
+          "values_occurring_more_than_once": 0
+        },
+        {
+          "duplicate_rows": 0,
+          "formats": {
+            "TEXT": 1
+          },
+          "header": "Chapter",
+          "index": 2,
+          "inferred_type": "string",
+          "letter": "C",
+          "non_null": 1,
+          "null_pct": 0,
+          "rows": 1,
+          "top_values": [
+            {
+              "count": 1,
+              "value": "rotation"
+            }
+          ],
+          "unique": 1,
+          "values_occurring_more_than_once": 0
+        },
+        {
+          "duplicate_rows": 0,
+          "formats": {
+            "TEXT": 1
+          },
+          "header": "Topic",
+          "index": 3,
+          "inferred_type": "string",
+          "letter": "D",
+          "non_null": 1,
+          "null_pct": 0,
+          "rows": 1,
+          "top_values": [
+            {
+              "count": 1,
+              "value": "inertia"
+            }
+          ],
+          "unique": 1,
+          "values_occurring_more_than_once": 0
+        },
+        {
+          "duplicate_rows": 0,
+          "formats": {
+            "TEXT": 1
+          },
+          "header": "Type of Question",
+          "index": 4,
+          "inferred_type": "string",
+          "letter": "E",
+          "non_null": 1,
+          "null_pct": 0,
+          "rows": 1,
+          "top_values": [
+            {
+              "count": 1,
+              "value": "SCQ"
+            }
+          ],
+          "unique": 1,
+          "values_occurring_more_than_once": 0
+        },
+        {
+          "duplicate_rows": 0,
+          "formats": {
+            "TEXT": 1
+          },
+          "header": "source",
+          "index": 5,
+          "inferred_type": "string",
+          "letter": "F",
+          "non_null": 1,
+          "null_pct": 0,
+          "rows": 1,
+          "top_values": [
+            {
+              "count": 1,
+              "value": "air, any"
+            }
+          ],
+          "unique": 1,
+          "values_occurring_more_than_once": 0
+        },
+        {
+          "duplicate_rows": 0,
+          "formats": {
+            "TEXT": 1
+          },
+          "header": "Difficulty Level",
+          "index": 6,
+          "inferred_type": "string",
+          "letter": "G",
+          "non_null": 1,
+          "null_pct": 0,
+          "rows": 1,
+          "top_values": [
+            {
+              "count": 1,
+              "value": "Easy, Any"
+            }
+          ],
+          "unique": 1,
+          "values_occurring_more_than_once": 0
+        }
+      ],
+      "data_rows": 1,
+      "header_row_1based": 3,
+      "name": "Curate_Customised_Paper",
+      "repeated_header_names": [],
+      "tabular": true
+    },
+    {
+      "column_count": 15,
+      "columns": [
+        {
+          "duplicate_rows": 0,
+          "formats": {
+            "TEXT": 29
+          },
+          "header": null,
+          "index": 0,
+          "inferred_type": "string",
+          "letter": "A",
+          "non_null": 29,
+          "null_pct": 89.22,
+          "rows": 269,
+          "top_values": [
+            {
+              "count": 1,
+              "value": "AITS_12th"
+            },
+            {
+              "count": 1,
+              "value": "Arjuna B0"
+            },
+            {
+              "count": 1,
+              "value": "Arjuna N1"
+            },
+            {
+              "count": 1,
+              "value": "Arjuna N2"
+            },
+            {
+              "count": 1,
+              "value": "Arjuna O1"
+            },
+            {
+              "count": 1,
+              "value": "JEE Test Series"
+            },
+            {
+              "count": 1,
+              "value": "Kattar"
+            },
+            {
+              "count": 1,
+              "value": "Lakshya N1"
+            }
+          ],
+          "unique": 29,
+          "values_occurring_more_than_once": 0
+        },
+        {
+          "duplicate_rows": 0,
+          "formats": {
+            "TEXT": 17
+          },
+          "header": null,
+          "index": 1,
+          "inferred_type": "string",
+          "letter": "B",
+          "non_null": 17,
+          "null_pct": 93.68,
+          "rows": 269,
+          "top_values": [
+            {
+              "count": 1,
+              "value": "3QuestionBank"
+            },
+            {
+              "count": 1,
+              "value": "AIR"
+            },
+            {
+              "count": 1,
+              "value": "AITS"
+            },
+            {
+              "count": 1,
+              "value": "AITS-NoVideo"
+            },
+            {
+              "count": 1,
+              "value": "JEE Advanced"
+            },
+            {
+              "count": 1,
+              "value": "JEE-Advanced Brahmastra"
+            },
+            {
+              "count": 1,
+              "value": "Main Booklet"
+            },
+            {
+              "count": 1,
+              "value": "Milestone"
+            }
+          ],
+          "unique": 17,
+          "values_occurring_more_than_once": 0
+        },
+        {
+          "duplicate_rows": 0,
+          "formats": {
+            "TEXT": 4
+          },
+          "header": null,
+          "index": 2,
+          "inferred_type": "string",
+          "letter": "C",
+          "non_null": 4,
+          "null_pct": 98.51,
+          "rows": 269,
+          "top_values": [
+            {
+              "count": 1,
+              "value": "Chemistry"
+            },
+            {
+              "count": 1,
+              "value": "Maths"
+            },
+            {
+              "count": 1,
+              "value": "Physics"
+            },
+            {
+              "count": 1,
+              "value": "physics"
+            }
+          ],
+          "unique": 4,
+          "values_occurring_more_than_once": 0
+        },
+        {
+          "duplicate_rows": 0,
+          "formats": {
+            "TEXT": 7
+          },
+          "header": null,
+          "index": 3,
+          "inferred_type": "string",
+          "letter": "D",
+          "non_null": 7,
+          "null_pct": 97.4,
+          "rows": 269,
+          "top_values": [
+            {
+              "count": 1,
+              "value": "Assertion_Reason(AR)"
+            },
+            {
+              "count": 1,
+              "value": "Comprehension(COMP)"
+            },
+            {
+              "count": 1,
+              "value": "Matching_List(ML)"
+            },
+            {
+              "count": 1,
+              "value": "Multi_Choice(MCQ)"
+            },
+            {
+              "count": 1,
+              "value": "Numerical"
+            },
+            {
+              "count": 1,
+              "value": "Single_Choice(SCQ)"
+            },
+            {
+              "count": 1,
+              "value": "question_type"
+            }
+          ],
+          "unique": 7,
+          "values_occurring_more_than_once": 0
+        },
+        {
+          "duplicate_rows": 0,
+          "formats": {
+            "TEXT": 4
+          },
+          "header": null,
+          "index": 4,
+          "inferred_type": "string",
+          "letter": "E",
+          "non_null": 4,
+          "null_pct": 98.51,
+          "rows": 269,
+          "top_values": [
+            {
+              "count": 1,
+              "value": "Easy"
+            },
+            {
+              "count": 1,
+              "value": "Hard"
+            },
+            {
+              "count": 1,
+              "value": "Medium"
+            },
+            {
+              "count": 1,
+              "value": "difficulty_level"
+            }
+          ],
+          "unique": 4,
+          "values_occurring_more_than_once": 0
+        },
+        {
+          "duplicate_rows": 52,
+          "formats": {
+            "DECIMAL": 2,
+            "INTEGER": 88
+          },
+          "header": null,
+          "index": 5,
+          "inferred_type": "number",
+          "letter": "F",
+          "non_null": 90,
+          "null_pct": 66.54,
+          "rows": 269,
+          "top_values": [
+            {
+              "count": 3,
+              "value": "1"
+            },
+            {
+              "count": 3,
+              "value": "10"
+            },
+            {
+              "count": 3,
+              "value": "11"
+            },
+            {
+              "count": 3,
+              "value": "12"
+            },
+            {
+              "count": 3,
+              "value": "13"
+            },
+            {
+              "count": 3,
+              "value": "14"
+            },
+            {
+              "count": 3,
+              "value": "15"
+            },
+            {
+              "count": 3,
+              "value": "16"
+            }
+          ],
+          "unique": 38,
+          "values_occurring_more_than_once": 29
+        },
+        {
+          "duplicate_rows": 100,
+          "formats": {
+            "TEXT": 104
+          },
+          "header": null,
+          "index": 6,
+          "inferred_type": "string",
+          "letter": "G",
+          "non_null": 104,
+          "null_pct": 61.34,
+          "rows": 269,
+          "top_values": [
+            {
+              "count": 34,
+              "value": "Chemistry"
+            },
+            {
+              "count": 33,
+              "value": "Physics"
+            },
+            {
+              "count": 29,
+              "value": "Maths"
+            },
+            {
+              "count": 8,
+              "value": "physics"
+            }
+          ],
+          "unique": 4,
+          "values_occurring_more_than_once": 4
+        },
+        {
+          "duplicate_rows": 9,
+          "formats": {
+            "TEXT": 104
+          },
+          "header": null,
+          "index": 7,
+          "inferred_type": "string",
+          "letter": "H",
+          "non_null": 104,
+          "null_pct": 61.34,
+          "rows": 269,
+          "top_values": [
+            {
+              "count": 2,
+              "value": "Current Electricity"
+            },
+            {
+              "count": 2,
+              "value": "Electric Charges and Fields"
+            },
+            {
+              "count": 2,
+              "value": "Electromagnetic Induction"
+            },
+            {
+              "count": 2,
+              "value": "Electrostatic Potential and Capacitance"
+            },
+            {
+              "count": 2,
+              "value": "Magnetism and Matter"
+            },
+            {
+              "count": 2,
+              "value": "Motion in a Straight Line"
+            },
+            {
+              "count": 2,
+              "value": "Moving Charges and Magnetism"
+            },
+            {
+              "count": 2,
+              "value": "Thermodynamics"
+            }
+          ],
+          "unique": 95,
+          "values_occurring_more_than_once": 9
+        },
+        {
+          "duplicate_rows": 41,
+          "formats": {
+            "TEXT": 50
+          },
+          "header": null,
+          "index": 8,
+          "inferred_type": "string",
+          "letter": "I",
+          "non_null": 50,
+          "null_pct": 81.41,
+          "rows": 269,
+          "top_values": [
+            {
+              "count": 8,
+              "value": "JEE Advance 2023"
+            },
+            {
+              "count": 8,
+              "value": "JEE Advance 2024"
+            },
+            {
+              "count": 7,
+              "value": "JEE Advance 2021"
+            },
+            {
+              "count": 7,
+              "value": "JEE Advance 2025"
+            },
+            {
+              "count": 6,
+              "value": "Customised Paper"
+            },
+            {
+              "count": 6,
+              "value": "JEE Advance 2022"
+            },
+            {
+              "count": 5,
+              "value": "JEE Advance 2020"
+            },
+            {
+              "count": 2,
+              "value": "JEE Mains"
+            }
+          ],
+          "unique": 9,
+          "values_occurring_more_than_once": 8
+        },
+        {
+          "duplicate_rows": 45,
+          "formats": {
+            "TEXT": 50
+          },
+          "header": null,
+          "index": 9,
+          "inferred_type": "string",
+          "letter": "J",
+          "non_null": 50,
+          "null_pct": 81.41,
+          "rows": 269,
+          "top_values": [
+            {
+              "count": 22,
+              "value": "Paper1"
+            },
+            {
+              "count": 19,
+              "value": "Paper2"
+            },
+            {
+              "count": 6,
+              "value": "Customised Paper"
+            },
+            {
+              "count": 2,
+              "value": "JEE Mains"
+            },
+            {
+              "count": 1,
+              "value": "NEET"
+            }
+          ],
+          "unique": 5,
+          "values_occurring_more_than_once": 4
+        },
+        {
+          "duplicate_rows": 44,
+          "formats": {
+            "TEXT": 50
+          },
+          "header": null,
+          "index": 10,
+          "inferred_type": "string",
+          "letter": "K",
+          "non_null": 50,
+          "null_pct": 81.41,
+          "rows": 269,
+          "top_values": [
+            {
+              "count": 14,
+              "value": "Numerical"
+            },
+            {
+              "count": 13,
+              "value": "Multi_Choice(MCQ)"
+            },
+            {
+              "count": 12,
+              "value": "Single_Choice(SCQ)"
+            },
+            {
+              "count": 5,
+              "value": "Comprehension(COMP)"
+            },
+            {
+              "count": 5,
+              "value": "Matching_List(ML)"
+            },
+            {
+              "count": 1,
+              "value": "Assertion_Reason(AR)"
+            }
+          ],
+          "unique": 6,
+          "values_occurring_more_than_once": 5
+        },
+        {
+          "duplicate_rows": 40,
+          "formats": {
+            "INTEGER": 44,
+            "TEXT": 6
+          },
+          "header": null,
+          "index": 11,
+          "inferred_type": "MIXED(number+string)",
+          "letter": "L",
+          "non_null": 50,
+          "null_pct": 81.41,
+          "rows": 269,
+          "top_values": [
+            {
+              "count": 13,
+              "value": "6"
+            },
+            {
+              "count": 12,
+              "value": "4"
+            },
+            {
+              "count": 9,
+              "value": "3"
+            },
+            {
+              "count": 6,
+              "value": "NA"
+            },
+            {
+              "count": 3,
+              "value": "8"
+            },
+            {
+              "count": 2,
+              "value": "2"
+            },
+            {
+              "count": 2,
+              "value": "5"
+            },
+            {
+              "count": 1,
+              "value": "12"
+            }
+          ],
+          "unique": 10,
+          "values_occurring_more_than_once": 7
+        },
+        {
+          "duplicate_rows": 223,
+          "formats": {
+            "INTEGER": 268,
+            "TEXT": 1
+          },
+          "header": null,
+          "index": 16,
+          "inferred_type": "MIXED(number+string)",
+          "letter": "Q",
+          "non_null": 269,
+          "null_pct": 0,
+          "rows": 269,
+          "top_values": [
+            {
+              "count": 14,
+              "value": "1"
+            },
+            {
+              "count": 14,
+              "value": "10"
+            },
+            {
+              "count": 14,
+              "value": "11"
+            },
+            {
+              "count": 14,
+              "value": "12"
+            },
+            {
+              "count": 14,
+              "value": "13"
+            },
+            {
+              "count": 14,
+              "value": "14"
+            },
+            {
+              "count": 14,
+              "value": "2"
+            },
+            {
+              "count": 14,
+              "value": "3"
+            }
+          ],
+          "unique": 46,
+          "values_occurring_more_than_once": 25
+        },
+        {
+          "duplicate_rows": 254,
+          "formats": {
+            "TEXT": 269
+          },
+          "header": null,
+          "index": 17,
+          "inferred_type": "string",
+          "letter": "R",
+          "non_null": 269,
+          "null_pct": 0,
+          "rows": 269,
+          "top_values": [
+            {
+              "count": 45,
+              "value": "NEET"
+            },
+            {
+              "count": 25,
+              "value": "JEE Mains"
+            },
+            {
+              "count": 18,
+              "value": "JEE Advance 2020 Paper 1"
+            },
+            {
+              "count": 18,
+              "value": "JEE Advance 2020 Paper 2"
+            },
+            {
+              "count": 18,
+              "value": "JEE Advance 2022 Paper 1"
+            },
+            {
+              "count": 18,
+              "value": "JEE Advance 2022 Paper 2"
+            },
+            {
+              "count": 17,
+              "value": "JEE Advance 2023 Paper 1"
+            },
+            {
+              "count": 17,
+              "value": "JEE Advance 2024 Paper 1"
+            }
+          ],
+          "unique": 15,
+          "values_occurring_more_than_once": 14
+        },
+        {
+          "duplicate_rows": 263,
+          "formats": {
+            "TEXT": 269
+          },
+          "header": null,
+          "index": 18,
+          "inferred_type": "string",
+          "letter": "S",
+          "non_null": 269,
+          "null_pct": 0,
+          "rows": 269,
+          "top_values": [
+            {
+              "count": 103,
+              "value": "Single_Choice(SCQ)"
+            },
+            {
+              "count": 83,
+              "value": "Numerical"
+            },
+            {
+              "count": 55,
+              "value": "Multi_Choice(MCQ)"
+            },
+            {
+              "count": 15,
+              "value": "Matching_List(ML)"
+            },
+            {
+              "count": 12,
+              "value": "Comprehension(COMP)"
+            },
+            {
+              "count": 1,
+              "value": "Question Type"
+            }
+          ],
+          "unique": 6,
+          "values_occurring_more_than_once": 5
+        }
+      ],
+      "data_rows": 269,
+      "header_row_1based": null,
+      "name": "dropdowns",
+      "repeated_header_names": [],
+      "tabular": false
+    },
+    {
+      "column_count": 0,
+      "columns": [],
+      "data_rows": 0,
+      "header_row_1based": null,
+      "name": "Sheet28",
+      "repeated_header_names": [],
+      "tabular": false
+    },
+    {
+      "column_count": 5,
+      "columns": [
+        {
+          "duplicate_rows": 38,
+          "formats": {
+            "TEXT": 46
+          },
+          "header": "Exam Type",
+          "index": 0,
+          "inferred_type": "string",
+          "letter": "A",
+          "non_null": 46,
+          "null_pct": 0,
+          "rows": 46,
+          "top_values": [
+            {
+              "count": 8,
+              "value": "JEE Advance 2021"
+            },
+            {
+              "count": 8,
+              "value": "JEE Advance 2023"
+            },
+            {
+              "count": 8,
+              "value": "JEE Advance 2024"
+            },
+            {
+              "count": 7,
+              "value": "JEE Advance 2025"
+            },
+            {
+              "count": 6,
+              "value": "JEE Advance 2020"
+            },
+            {
+              "count": 6,
+              "value": "JEE Advance 2022"
+            },
+            {
+              "count": 2,
+              "value": "JEE Mains"
+            },
+            {
+              "count": 1,
+              "value": "NEET"
+            }
+          ],
+          "unique": 8,
+          "values_occurring_more_than_once": 7
+        },
+        {
+          "duplicate_rows": 42,
+          "formats": {
+            "TEXT": 46
+          },
+          "header": "Paper Type",
+          "index": 1,
+          "inferred_type": "string",
+          "letter": "B",
+          "non_null": 46,
+          "null_pct": 0,
+          "rows": 46,
+          "top_values": [
+            {
+              "count": 22,
+              "value": "Paper1"
+            },
+            {
+              "count": 21,
+              "value": "Paper2"
+            },
+            {
+              "count": 2,
+              "value": "JEE Mains"
+            },
+            {
+              "count": 1,
+              "value": "NEET"
+            }
+          ],
+          "unique": 4,
+          "values_occurring_more_than_once": 3
+        },
+        {
+          "duplicate_rows": 38,
+          "formats": {
+            "TEXT": 46
+          },
+          "header": "Question Type",
+          "index": 2,
+          "inferred_type": "string",
+          "letter": "C",
+          "non_null": 46,
+          "null_pct": 0,
+          "rows": 46,
+          "top_values": [
+            {
+              "count": 12,
+              "value": "Multi_Choice(MCQ)"
+            },
+            {
+              "count": 12,
+              "value": "Single_Choice(SCQ)"
+            },
+            {
+              "count": 7,
+              "value": "Integer"
+            },
+            {
+              "count": 5,
+              "value": "Numerical"
+            },
+            {
+              "count": 4,
+              "value": "Matching_List(ML)"
+            },
+            {
+              "count": 4,
+              "value": "Passage_Numerical"
+            },
+            {
+              "count": 1,
+              "value": "Passage_SCQ"
+            },
+            {
+              "count": 1,
+              "value": "Single_Digit_Integer"
+            }
+          ],
+          "unique": 8,
+          "values_occurring_more_than_once": 6
+        },
+        {
+          "duplicate_rows": 38,
+          "formats": {
+            "INTEGER": 46
+          },
+          "header": "Number of questions",
+          "index": 3,
+          "inferred_type": "number",
+          "letter": "D",
+          "non_null": 46,
+          "null_pct": 0,
+          "rows": 46,
+          "top_values": [
+            {
+              "count": 15,
+              "value": "6"
+            },
+            {
+              "count": 12,
+              "value": "4"
+            },
+            {
+              "count": 10,
+              "value": "3"
+            },
+            {
+              "count": 3,
+              "value": "2"
+            },
+            {
+              "count": 3,
+              "value": "8"
+            },
+            {
+              "count": 1,
+              "value": "20"
+            },
+            {
+              "count": 1,
+              "value": "45"
+            },
+            {
+              "count": 1,
+              "value": "5"
+            }
+          ],
+          "unique": 8,
+          "values_occurring_more_than_once": 5
+        },
+        {
+          "duplicate_rows": 27,
+          "formats": {
+            "INTEGER": 32,
+            "TEXT": 14
+          },
+          "header": "Question numbers",
+          "index": 4,
+          "inferred_type": "MIXED(number+string)",
+          "letter": "E",
+          "non_null": 46,
+          "null_pct": 0,
+          "rows": 46,
+          "top_values": [
+            {
+              "count": 6,
+              "value": "15-18"
+            },
+            {
+              "count": 6,
+              "value": "46026"
+            },
+            {
+              "count": 6,
+              "value": "46248"
+            },
+            {
+              "count": 5,
+              "value": "46149"
+            },
+            {
+              "count": 3,
+              "value": "46028"
+            },
+            {
+              "count": 3,
+              "value": "46215"
+            },
+            {
+              "count": 2,
+              "value": "13-18"
+            },
+            {
+              "count": 2,
+              "value": "15-17"
+            }
+          ],
+          "unique": 19,
+          "values_occurring_more_than_once": 10
+        }
+      ],
+      "data_rows": 46,
+      "header_row_1based": 1,
+      "name": "Sheet13",
+      "repeated_header_names": [],
+      "tabular": true
+    },
+    {
+      "column_count": 7,
+      "columns": [
+        {
+          "duplicate_rows": 91,
+          "formats": {
+            "TEXT": 95
+          },
+          "header": null,
+          "index": 0,
+          "inferred_type": "string",
+          "letter": "A",
+          "non_null": 95,
+          "null_pct": 1.04,
+          "rows": 96,
+          "top_values": [
+            {
+              "count": 33,
+              "value": "Chemistry"
+            },
+            {
+              "count": 32,
+              "value": "Physics"
+            },
+            {
+              "count": 29,
+              "value": "Maths"
+            },
+            {
+              "count": 1,
+              "value": "physics"
+            }
+          ],
+          "unique": 4,
+          "values_occurring_more_than_once": 3
+        },
+        {
+          "duplicate_rows": 45,
+          "formats": {
+            "INTEGER": 95
+          },
+          "header": null,
+          "index": 1,
+          "inferred_type": "number",
+          "letter": "B",
+          "non_null": 95,
+          "null_pct": 1.04,
+          "rows": 96,
+          "top_values": [
+            {
+              "count": 3,
+              "value": "1"
+            },
+            {
+              "count": 3,
+              "value": "10"
+            },
+            {
+              "count": 3,
+              "value": "11"
+            },
+            {
+              "count": 3,
+              "value": "12"
+            },
+            {
+              "count": 3,
+              "value": "13"
+            },
+            {
+              "count": 3,
+              "value": "14"
+            },
+            {
+              "count": 3,
+              "value": "15"
+            },
+            {
+              "count": 3,
+              "value": "2"
+            }
+          ],
+          "unique": 50,
+          "values_occurring_more_than_once": 30
+        },
+        {
+          "duplicate_rows": 1,
+          "formats": {
+            "TEXT": 95
+          },
+          "header": null,
+          "index": 2,
+          "inferred_type": "string",
+          "letter": "C",
+          "non_null": 95,
+          "null_pct": 1.04,
+          "rows": 96,
+          "top_values": [
+            {
+              "count": 2,
+              "value": "Thermodynamics"
+            },
+            {
+              "count": 1,
+              "value": "Alcohols, Phenols and Ethers"
+            },
+            {
+              "count": 1,
+              "value": "Aldehydes, Ketones and Carboxylic Acids"
+            },
+            {
+              "count": 1,
+              "value": "Alternating Current"
+            },
+            {
+              "count": 1,
+              "value": "Amines"
+            },
+            {
+              "count": 1,
+              "value": "Application of Derivatives"
+            },
+            {
+              "count": 1,
+              "value": "Application of Integrals"
+            },
+            {
+              "count": 1,
+              "value": "Atoms"
+            }
+          ],
+          "unique": 94,
+          "values_occurring_more_than_once": 1
+        },
+        {
+          "duplicate_rows": 59,
+          "formats": {
+            "TEXT": 62
+          },
+          "header": null,
+          "index": 4,
+          "inferred_type": "string",
+          "letter": "E",
+          "non_null": 62,
+          "null_pct": 35.42,
+          "rows": 96,
+          "top_values": [
+            {
+              "count": 32,
+              "value": "Physics"
+            },
+            {
+              "count": 29,
+              "value": "Maths"
+            },
+            {
+              "count": 1,
+              "value": "physics"
+            }
+          ],
+          "unique": 3,
+          "values_occurring_more_than_once": 2
+        },
+        {
+          "duplicate_rows": 26,
+          "formats": {
+            "DECIMAL": 2,
+            "INTEGER": 60
+          },
+          "header": null,
+          "index": 5,
+          "inferred_type": "number",
+          "letter": "F",
+          "non_null": 62,
+          "null_pct": 35.42,
+          "rows": 96,
+          "top_values": [
+            {
+              "count": 3,
+              "value": "4"
+            },
+            {
+              "count": 2,
+              "value": "1"
+            },
+            {
+              "count": 2,
+              "value": "10"
+            },
+            {
+              "count": 2,
+              "value": "11"
+            },
+            {
+              "count": 2,
+              "value": "12"
+            },
+            {
+              "count": 2,
+              "value": "2"
+            },
+            {
+              "count": 2,
+              "value": "3"
+            },
+            {
+              "count": 2,
+              "value": "5"
+            }
+          ],
+          "unique": 36,
+          "values_occurring_more_than_once": 25
+        },
+        {
+          "duplicate_rows": 0,
+          "formats": {
+            "TEXT": 63
+          },
+          "header": null,
+          "index": 6,
+          "inferred_type": "string",
+          "letter": "G",
+          "non_null": 63,
+          "null_pct": 34.38,
+          "rows": 96,
+          "top_values": [
+            {
+              "count": 1,
+              "value": "Alternating Current"
+            },
+            {
+              "count": 1,
+              "value": "Application of Derivatives"
+            },
+            {
+              "count": 1,
+              "value": "Application of Integrals"
+            },
+            {
+              "count": 1,
+              "value": "Atoms"
+            },
+            {
+              "count": 1,
+              "value": "Basic Maths"
+            },
+            {
+              "count": 1,
+              "value": "Binomial Theorem"
+            },
+            {
+              "count": 1,
+              "value": "Center of Mass and System of Particles"
+            },
+            {
+              "count": 1,
+              "value": "Circles"
+            }
+          ],
+          "unique": 63,
+          "values_occurring_more_than_once": 0
+        },
+        {
+          "duplicate_rows": 1,
+          "formats": {
+            "DECIMAL": 2,
+            "INTEGER": 27
+          },
+          "header": null,
+          "index": 7,
+          "inferred_type": "number",
+          "letter": "H",
+          "non_null": 29,
+          "null_pct": 69.79,
+          "rows": 96,
+          "top_values": [
+            {
+              "count": 2,
+              "value": "4"
+            },
+            {
+              "count": 1,
+              "value": "1"
+            },
+            {
+              "count": 1,
+              "value": "10"
+            },
+            {
+              "count": 1,
+              "value": "1000"
+            },
+            {
+              "count": 1,
+              "value": "11"
+            },
+            {
+              "count": 1,
+              "value": "12"
+            },
+            {
+              "count": 1,
+              "value": "2"
+            },
+            {
+              "count": 1,
+              "value": "3"
+            }
+          ],
+          "unique": 28,
+          "values_occurring_more_than_once": 1
+        }
+      ],
+      "data_rows": 96,
+      "header_row_1based": null,
+      "name": "ChapterSequence",
+      "repeated_header_names": [],
+      "tabular": false
+    }
+  ]
+}
