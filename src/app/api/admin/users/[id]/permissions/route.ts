@@ -1,15 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createClient } from "@supabase/supabase-js";
+import { createClient as createServerClient } from "@/lib/supabase/server";
 import { checkPermission } from "@/lib/auth/serverAuth";
 import { ROLE_PERMISSIONS, isValidRole, sanitizePermissions } from "@/lib/auth/permissions";
 
 const TABLE = "user_profiles";
 
+// user_profiles RLS only lets an admin read or update other users' rows, so
+// these queries must run as the caller (cookie session), not as a
+// session-less anon client that RLS sees as nobody.
 function getSupabase() {
-    return createClient(
-        process.env.NEXT_PUBLIC_SUPABASE_URL!,
-        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-    );
+    return createServerClient();
 }
 
 /**
@@ -55,7 +55,7 @@ export async function POST(
         );
     }
 
-    const supabase = getSupabase();
+    const supabase = await getSupabase();
 
     const { data: current, error: readError } = await supabase
         .from(TABLE)

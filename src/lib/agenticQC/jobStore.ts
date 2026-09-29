@@ -22,12 +22,13 @@
  * The executor lives in `executor.ts`; this file is only the store +
  * cancellation flag bookkeeping.
  */
-import { createClient, type SupabaseClient } from "@supabase/supabase-js";
+import type { SupabaseClient } from "@supabase/supabase-js";
 import type { ModelTokenUsage, AgentTokenUsage } from "./pricing";
 
 export type { ModelTokenUsage, AgentTokenUsage };
 import type { PreparsedQuestion } from "./executor";
 import type { FileInput } from "./llm";
+import { getSupabaseAdmin } from "@/lib/supabase/admin";
 
 // ─── Storage backend ───────────────────────────────────────────────────
 
@@ -41,16 +42,8 @@ const TABLE = "agentic_qc_jobs";
  * (USING true) and we scope every query by `user_id` explicitly, matching the
  * rest of the app's data access.
  */
-let _supabase: SupabaseClient | null = null;
 function db(): SupabaseClient {
-    if (!_supabase) {
-        _supabase = createClient(
-            process.env.NEXT_PUBLIC_SUPABASE_URL!,
-            process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-            { auth: { persistSession: false, autoRefreshToken: false } }
-        );
-    }
-    return _supabase;
+        return getSupabaseAdmin(); // itself a process-wide singleton
 }
 
 // ─── Types ─────────────────────────────────────────────────────────────

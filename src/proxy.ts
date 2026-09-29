@@ -1,4 +1,6 @@
+import { hasDevAuthCookie } from "@/lib/auth/devAuth";
 import { createServerClient } from "@supabase/ssr";
+import { getSupabaseUrl, getSupabasePublishableKey } from "@/lib/supabase/env";
 import { NextResponse, type NextRequest } from "next/server";
 
 function isProtectedPath(pathname: string): boolean {
@@ -25,8 +27,8 @@ export async function proxy(request: NextRequest) {
     });
 
     const supabase = createServerClient(
-        process.env.NEXT_PUBLIC_SUPABASE_URL!,
-        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+        getSupabaseUrl(),
+        getSupabasePublishableKey(),
         {
             cookies: {
                 getAll() {
@@ -52,8 +54,9 @@ export async function proxy(request: NextRequest) {
         user = null;
     }
 
-    const hasDevAuthCookie = request.cookies.get("qbg_dev_auth")?.value === "1";
-    const isAuthenticated = Boolean(user) || hasDevAuthCookie;
+    // Ignored in production builds — see src/lib/auth/devAuth.ts.
+    const isDevAuth = hasDevAuthCookie(request.cookies);
+    const isAuthenticated = Boolean(user) || isDevAuth;
 
     const { pathname } = request.nextUrl;
 

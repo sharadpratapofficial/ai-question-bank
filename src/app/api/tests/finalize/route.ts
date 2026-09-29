@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { finalizeGeneratedTests, getQuestionUsageMap } from "@/lib/api/testHistory";
-import { createClient } from "@supabase/supabase-js";
 import { TABLE_NAME } from "@/lib/constants";
 import type { ExamPreset, GeneratedTest, Question, TestGenerationConfig } from "@/types";
 import { checkPermission } from "@/lib/auth/serverAuth";
+import { getSupabaseAdmin } from "@/lib/supabase/admin";
 
 interface FinalizePayload {
     batchNames: string[];
@@ -19,10 +19,7 @@ interface FinalizePayload {
 const AI_GENERATED_SOURCE = "AI Generated";
 
 function getSupabase() {
-    return createClient(
-        process.env.NEXT_PUBLIC_SUPABASE_URL!,
-        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-    );
+    return getSupabaseAdmin();
 }
 
 function mapQuestionToDBRow(question: Question) {

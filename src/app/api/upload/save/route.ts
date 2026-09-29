@@ -1,14 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createClient } from "@supabase/supabase-js";
 import type { SaveQuestionsRequest, SaveQuestionsResponse, ExtractedQuestion } from "@/types/extraction";
 import { TABLE_NAME } from "@/lib/constants";
 import { checkPermission } from "@/lib/auth/serverAuth";
+import { getSupabaseAdmin } from "@/lib/supabase/admin";
 
 function getSupabase() {
-    return createClient(
-        process.env.NEXT_PUBLIC_SUPABASE_URL!,
-        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-    );
+    return getSupabaseAdmin();
 }
 
 function generateQuestionId(): string {

@@ -1,12 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import { fetchQuestions } from "@/lib/api/questions";
-import { createClient as createAnonClient } from "@supabase/supabase-js";
 import { createClient as createServerClient } from "@/lib/supabase/server";
 import type { FilterState, QuestionStatus } from "@/types";
 import type { Question, QuestionOption } from "@/types";
 import { ALL_QUESTION_STATUSES } from "@/types";
 import { TABLE_NAME } from "@/lib/constants";
-import { checkPermission, getCurrentUserWithRole } from "@/lib/auth/serverAuth";
+import { checkPermission, getCurrentUserWithRole, checkAnyPermission } from "@/lib/auth/serverAuth";
+import { getSupabaseAdmin } from "@/lib/supabase/admin";
 
 interface CreateQuestionInput {
     question_text?: string;
@@ -32,10 +32,7 @@ interface CreateQuestionsRequest {
 }
 
 function getSupabase() {
-    return createAnonClient(
-        process.env.NEXT_PUBLIC_SUPABASE_URL!,
-        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-    );
+    return getSupabaseAdmin();
 }
 
 function isNumericalQuestionType(questionType: string): boolean {
@@ -131,6 +128,9 @@ function normalizeCreateInput(
 }
 
 export async function GET(request: NextRequest) {
+    // Reads through the server-only client, so this route is the access check.
+    const forbid = await checkAnyPermission(["view_questions", "generate_tests"]);
+    if (forbid) return forbid;
     try {
         const { searchParams } = new URL(request.url);
 

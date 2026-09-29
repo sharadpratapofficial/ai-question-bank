@@ -12,6 +12,7 @@
  * Returns: { success, questions: ParsedQuestion[], subjects: string[],
  *            missingIds: string[], warnings: string[] }
  */
+import { hasDevAuthCookie } from "@/lib/auth/devAuth";
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { checkPermission } from "@/lib/auth/serverAuth";
@@ -49,7 +50,7 @@ export async function POST(req: NextRequest) {
     const {
         data: { user },
     } = await supabase.auth.getUser();
-    const isDev = req.cookies.get("qbg_dev_auth")?.value === "1";
+    const isDev = hasDevAuthCookie(req.cookies);
 
     let creds: QbgCreds | undefined;
     if (user) {

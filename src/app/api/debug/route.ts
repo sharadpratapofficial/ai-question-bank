@@ -1,15 +1,16 @@
-import { createClient } from "@supabase/supabase-js";
 import { NextResponse } from "next/server";
 import { sortChaptersForSubject } from "@/lib/chapterOrder";
-
-const supabase = createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
+import { getSupabaseAdmin } from "@/lib/supabase/admin";
+import { checkPermission } from "@/lib/auth/serverAuth";
 
 const TABLE_NAME = "qbg_questions";
 
+// Diagnostic dump of the question table. Uses the server-only client, so it is
+// admin-only (it previously had no gate at all).
 export async function GET() {
+    const forbid = await checkPermission("manage_users");
+    if (forbid) return forbid;
+    const supabase = getSupabaseAdmin();
     try {
         // 1. Total count
         const { count, error: countError } = await supabase

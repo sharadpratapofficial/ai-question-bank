@@ -1,0 +1,5834 @@
+{
+  "kind": "xlsx",
+  "path": "Important IDs REplica (1).xlsx",
+  "sha256": "afeb8ae4c9b1610313540815c7badf45a69b377de4c915cf57015a58e7acbb6c",
+  "sheets": [
+    {
+      "column_count": 2,
+      "columns": [
+        {
+          "duplicate_rows": 0,
+          "formats": {
+            "TEXT": 2
+          },
+          "header": null,
+          "index": 0,
+          "inferred_type": "string",
+          "letter": "A",
+          "non_null": 2,
+          "null_pct": 0,
+          "rows": 2,
+          "top_values": [
+            {
+              "count": 1,
+              "value": "2023-2024"
+            },
+            {
+              "count": 1,
+              "value": "2024-2025"
+            }
+          ],
+          "unique": 2,
+          "values_occurring_more_than_once": 0
+        },
+        {
+          "duplicate_rows": 1,
+          "formats": {
+            "TEXT": 2
+          },
+          "header": null,
+          "index": 1,
+          "inferred_type": "string",
+          "letter": "B",
+          "non_null": 2,
+          "null_pct": 0,
+          "rows": 2,
+          "top_values": [
+            {
+              "count": 2,
+              "value": "AITS"
+            }
+          ],
+          "unique": 1,
+          "values_occurring_more_than_once": 1
+        }
+      ],
+      "data_rows": 2,
+      "header_row_1based": null,
+      "name": "Sheet8",
+      "repeated_header_names": [],
+      "tabular": false
+    },
+    {
+      "column_count": 8,
+      "columns": [
+        {
+          "duplicate_rows": 566,
+          "formats": {
+            "TEXT": 567
+          },
+          "header": "Year",
+          "index": 0,
+          "inferred_type": "string",
+          "letter": "A",
+          "non_null": 567,
+          "null_pct": 0.18,
+          "rows": 568,
+          "top_values": [
+            {
+              "count": 567,
+              "value": "2024-25"
+            }
+          ],
+          "unique": 1,
+          "values_occurring_more_than_once": 1
+        },
+        {
+          "duplicate_rows": 566,
+          "formats": {
+            "TEXT": 568
+          },
+          "header": "Test Name",
+          "index": 1,
+          "inferred_type": "string",
+          "letter": "B",
+          "non_null": 568,
+          "null_pct": 0,
+          "rows": 568,
+          "top_values": [
+            {
+              "count": 567,
+              "value": "JEE Real Test Series"
+            },
+            {
+              "count": 1,
+              "value": "Data for Question ingestion in QBG"
+            }
+          ],
+          "unique": 2,
+          "values_occurring_more_than_once": 1
+        },
+        {
+          "duplicate_rows": 565,
+          "formats": {
+            "TEXT": 567
+          },
+          "header": "Pattern",
+          "index": 2,
+          "inferred_type": "string",
+          "letter": "C",
+          "non_null": 567,
+          "null_pct": 0.18,
+          "rows": 568,
+          "top_values": [
+            {
+              "count": 465,
+              "value": "Main"
+            },
+            {
+              "count": 102,
+              "value": "Advanced"
+            }
+          ],
+          "unique": 2,
+          "values_occurring_more_than_once": 2
+        },
+        {
+          "duplicate_rows": 100,
+          "formats": {
+            "INTEGER": 102
+          },
+          "header": "Paper Number",
+          "index": 3,
+          "inferred_type": "number",
+          "letter": "D",
+          "non_null": 102,
+          "null_pct": 82.04,
+          "rows": 568,
+          "top_values": [
+            {
+              "count": 51,
+              "value": "1"
+            },
+            {
+              "count": 51,
+              "value": "2"
+            }
+          ],
+          "unique": 2,
+          "values_occurring_more_than_once": 2
+        },
+        {
+          "duplicate_rows": 564,
+          "formats": {
+            "TEXT": 567
+          },
+          "header": "Subject",
+          "index": 4,
+          "inferred_type": "string",
+          "letter": "E",
+          "non_null": 567,
+          "null_pct": 0.18,
+          "rows": 568,
+          "top_values": [
+            {
+              "count": 189,
+              "value": "Chemistry"
+            },
+            {
+              "count": 189,
+              "value": "Maths"
+            },
+            {
+              "count": 189,
+              "value": "Physics"
+            }
+          ],
+          "unique": 3,
+          "values_occurring_more_than_once": 3
+        },
+        {
+          "duplicate_rows": 463,
+          "formats": {
+            "TEXT": 465
+          },
+          "header": "Q. Type",
+          "index": 5,
+          "inferred_type": "string",
+          "letter": "F",
+          "non_null": 465,
+          "null_pct": 18.13,
+          "rows": 568,
+          "top_values": [
+            {
+              "count": 360,
+              "value": "SCQ"
+            },
+            {
+              "count": 105,
+              "value": "Numerical"
+            }
+          ],
+          "unique": 2,
+          "values_occurring_more_than_once": 2
+        },
+        {
+          "duplicate_rows": 477,
+          "formats": {
+            "QUESTION_NUMBER": 567
+          },
+          "header": "Question Number",
+          "index": 6,
+          "inferred_type": "string",
+          "letter": "G",
+          "non_null": 567,
+          "null_pct": 0.18,
+          "rows": 568,
+          "top_values": [
+            {
+              "count": 8,
+              "value": "Q001"
+            },
+            {
+              "count": 8,
+              "value": "Q002"
+            },
+            {
+              "count": 8,
+              "value": "Q003"
+            },
+            {
+              "count": 8,
+              "value": "Q004"
+            },
+            {
+              "count": 8,
+              "value": "Q005"
+            },
+            {
+              "count": 8,
+              "value": "Q006"
+            },
+            {
+              "count": 8,
+              "value": "Q007"
+            },
+            {
+              "count": 8,
+              "value": "Q008"
+            }
+          ],
+          "unique": 90,
+          "values_occurring_more_than_once": 75
+        },
+        {
+          "duplicate_rows": 6,
+          "formats": {
+            "QBG_CUID25": 567
+          },
+          "header": "QBG IDs",
+          "index": 7,
+          "inferred_type": "string",
+          "letter": "H",
+          "non_null": 567,
+          "null_pct": 0.18,
+          "rows": 568,
+          "top_values": [
+            {
+              "count": 2,
+              "value": "4r6tm4icxp6q9ntp47nbsdehx"
+            },
+            {
+              "count": 2,
+              "value": "bg4k0mxnkrm4c9ofne70saxb6"
+            },
+            {
+              "count": 2,
+              "value": "ieavhkf6cs180k7kh63g3hg5d"
+            },
+            {
+              "count": 2,
+              "value": "oiwdny6q6x1wof86renc22gdp"
+            },
+            {
+              "count": 2,
+              "value": "plzustv94ud3n4kmi94efntfm"
+            },
+            {
+              "count": 2,
+              "value": "z9t46r1oqe87latdxzl927f5v"
+            },
+            {
+              "count": 1,
+              "value": "04nnwzghgs0ffy8yp6uvng7og"
+            },
+            {
+              "count": 1,
+              "value": "0775vr3q37c1nljkrsnzfxmcs"
+            }
+          ],
+          "unique": 561,
+          "values_occurring_more_than_once": 6
+        }
+      ],
+      "data_rows": 568,
+      "header_row_1based": 1,
+      "name": "JRTS",
+      "repeated_header_names": [],
+      "tabular": true
+    },
+    {
+      "column_count": 23,
+      "columns": [
+        {
+          "duplicate_rows": 8440,
+          "formats": {
+            "TEXT": 8442
+          },
+          "header": "Year",
+          "index": 0,
+          "inferred_type": "string",
+          "letter": "A",
+          "non_null": 8442,
+          "null_pct": 0,
+          "rows": 8442,
+          "top_values": [
+            {
+              "count": 4782,
+              "value": "2023-24"
+            },
+            {
+              "count": 3660,
+              "value": "2024-25"
+            }
+          ],
+          "unique": 2,
+          "values_occurring_more_than_once": 2
+        },
+        {
+          "duplicate_rows": 8371,
+          "formats": {
+            "INTEGER": 1314,
+            "TEXT": 7128
+          },
+          "header": "Date",
+          "index": 1,
+          "inferred_type": "MIXED(number+string)",
+          "letter": "B",
+          "non_null": 8442,
+          "null_pct": 0,
+          "rows": 8442,
+          "top_values": [
+            {
+              "count": 306,
+              "value": "17-12-2023"
+            },
+            {
+              "count": 270,
+              "value": "45598"
+            },
+            {
+              "count": 216,
+              "value": "19-05-2024"
+            },
+            {
+              "count": 216,
+              "value": "20-03-2024"
+            },
+            {
+              "count": 216,
+              "value": "45417"
+            },
+            {
+              "count": 216,
+              "value": "45631"
+            },
+            {
+              "count": 204,
+              "value": "15-05-2024"
+            },
+            {
+              "count": 204,
+              "value": "21-04-2024"
+            }
+          ],
+          "unique": 71,
+          "values_occurring_more_than_once": 71
+        },
+        {
+          "duplicate_rows": 8441,
+          "formats": {
+            "TEXT": 8442
+          },
+          "header": "Test Name",
+          "index": 2,
+          "inferred_type": "string",
+          "letter": "C",
+          "non_null": 8442,
+          "null_pct": 0,
+          "rows": 8442,
+          "top_values": [
+            {
+              "count": 8442,
+              "value": "AITS"
+            }
+          ],
+          "unique": 1,
+          "values_occurring_more_than_once": 1
+        },
+        {
+          "duplicate_rows": 8440,
+          "formats": {
+            "TEXT": 8442
+          },
+          "header": "Pattern",
+          "index": 3,
+          "inferred_type": "string",
+          "letter": "D",
+          "non_null": 8442,
+          "null_pct": 0,
+          "rows": 8442,
+          "top_values": [
+            {
+              "count": 4980,
+              "value": "Main"
+            },
+            {
+              "count": 3462,
+              "value": "Advanced"
+            }
+          ],
+          "unique": 2,
+          "values_occurring_more_than_once": 2
+        },
+        {
+          "duplicate_rows": 8438,
+          "formats": {
+            "TEXT": 8442
+          },
+          "header": "Batch",
+          "index": 4,
+          "inferred_type": "string",
+          "letter": "E",
+          "non_null": 8442,
+          "null_pct": 0,
+          "rows": 8442,
+          "top_values": [
+            {
+              "count": 3687,
+              "value": "Lakshya"
+            },
+            {
+              "count": 1926,
+              "value": "Prayas"
+            },
+            {
+              "count": 1419,
+              "value": "Arjuna"
+            },
+            {
+              "count": 1410,
+              "value": "Dropper"
+            }
+          ],
+          "unique": 4,
+          "values_occurring_more_than_once": 4
+        },
+        {
+          "duplicate_rows": 3460,
+          "formats": {
+            "INTEGER": 3462
+          },
+          "header": "Paper Number",
+          "index": 5,
+          "inferred_type": "number",
+          "letter": "F",
+          "non_null": 3462,
+          "null_pct": 58.99,
+          "rows": 8442,
+          "top_values": [
+            {
+              "count": 1731,
+              "value": "1"
+            },
+            {
+              "count": 1731,
+              "value": "2"
+            }
+          ],
+          "unique": 2,
+          "values_occurring_more_than_once": 2
+        },
+        {
+          "duplicate_rows": 8435,
+          "formats": {
+            "TEXT": 8442
+          },
+          "header": "Subject",
+          "index": 6,
+          "inferred_type": "string",
+          "letter": "G",
+          "non_null": 8442,
+          "null_pct": 0,
+          "rows": 8442,
+          "top_values": [
+            {
+              "count": 2812,
+              "value": "Physics"
+            },
+            {
+              "count": 2787,
+              "value": "Chemistry"
+            },
+            {
+              "count": 2198,
+              "value": "Maths"
+            },
+            {
+              "count": 276,
+              "value": "Mathematics"
+            },
+            {
+              "count": 276,
+              "value": "Mathethatics"
+            },
+            {
+              "count": 59,
+              "value": "Mathemathics"
+            },
+            {
+              "count": 34,
+              "value": "chemistry"
+            }
+          ],
+          "unique": 7,
+          "values_occurring_more_than_once": 7
+        },
+        {
+          "duplicate_rows": 4978,
+          "formats": {
+            "TEXT": 4980
+          },
+          "header": "Q. Type",
+          "index": 7,
+          "inferred_type": "string",
+          "letter": "H",
+          "non_null": 4980,
+          "null_pct": 41.01,
+          "rows": 8442,
+          "top_values": [
+            {
+              "count": 4095,
+              "value": "SCQ"
+            },
+            {
+              "count": 885,
+              "value": "Numerical"
+            }
+          ],
+          "unique": 2,
+          "values_occurring_more_than_once": 2
+        },
+        {
+          "duplicate_rows": 8262,
+          "formats": {
+            "INTEGER": 2226,
+            "QUESTION_NUMBER": 6216
+          },
+          "header": "Question Number",
+          "index": 8,
+          "inferred_type": "MIXED(number+string)",
+          "letter": "I",
+          "non_null": 8442,
+          "null_pct": 0,
+          "rows": 8442,
+          "top_values": [
+            {
+              "count": 96,
+              "value": "Q001"
+            },
+            {
+              "count": 96,
+              "value": "Q002"
+            },
+            {
+              "count": 96,
+              "value": "Q003"
+            },
+            {
+              "count": 96,
+              "value": "Q004"
+            },
+            {
+              "count": 96,
+              "value": "Q005"
+            },
+            {
+              "count": 96,
+              "value": "Q006"
+            },
+            {
+              "count": 96,
+              "value": "Q007"
+            },
+            {
+              "count": 96,
+              "value": "Q008"
+            }
+          ],
+          "unique": 180,
+          "values_occurring_more_than_once": 180
+        },
+        {
+          "duplicate_rows": 750,
+          "formats": {
+            "QBG_CUID25": 8399,
+            "TEXT": 43
+          },
+          "header": "QBG IDs",
+          "index": 9,
+          "inferred_type": "string",
+          "letter": "J",
+          "non_null": 8442,
+          "null_pct": 0,
+          "rows": 8442,
+          "top_values": [
+            {
+              "count": 38,
+              "value": "Paper-02"
+            },
+            {
+              "count": 4,
+              "value": "6jfzvaa5qfd9pk99wd9ystqce"
+            },
+            {
+              "count": 4,
+              "value": "akcpb2eq2ghze1heft1a6h7of"
+            },
+            {
+              "count": 4,
+              "value": "h12wmyubr79bpqddkqvud7kx0"
+            },
+            {
+              "count": 4,
+              "value": "hyfb2sisj0gw2vd0kpxsuyeox"
+            },
+            {
+              "count": 4,
+              "value": "s7de2ylyxj60fguvnix7z725l"
+            },
+            {
+              "count": 4,
+              "value": "t2mo35g5squxt43gcevrqrrqd"
+            },
+            {
+              "count": 3,
+              "value": "0gp6n39nie0an71jrk5oq5ma6"
+            }
+          ],
+          "unique": 7692,
+          "values_occurring_more_than_once": 683
+        },
+        {
+          "duplicate_rows": 2,
+          "formats": {
+            "QBG_CUID25": 4
+          },
+          "header": "Comp",
+          "index": 10,
+          "inferred_type": "string",
+          "letter": "K",
+          "non_null": 4,
+          "null_pct": 99.95,
+          "rows": 8442,
+          "top_values": [
+            {
+              "count": 2,
+              "value": "n2bjvdfkuzoywvniayu7f0vnb"
+            },
+            {
+              "count": 2,
+              "value": "x7h5mc9d6p8uswmt2zlvlaln5"
+            }
+          ],
+          "unique": 2,
+          "values_occurring_more_than_once": 2
+        },
+        {
+          "duplicate_rows": 101,
+          "formats": {
+            "DRIVE_URL": 8238,
+            "TEXT": 102
+          },
+          "header": "VS",
+          "index": 11,
+          "inferred_type": "string",
+          "letter": "L",
+          "non_null": 8340,
+          "null_pct": 1.21,
+          "rows": 8442,
+          "top_values": [
+            {
+              "count": 102,
+              "value": "NOT Available in Drive"
+            },
+            {
+              "count": 1,
+              "value": "https://drive.google.com/open?id=1---d8FP8F6zYVyTkFUd49gA-c29JSgJZ&usp=drive_copy"
+            },
+            {
+              "count": 1,
+              "value": "https://drive.google.com/open?id=1--s8zdji4luvaA62vGs0tFT6Ncyf28dH&usp=drive_copy"
+            },
+            {
+              "count": 1,
+              "value": "https://drive.google.com/open?id=1-0nPnU1hSD1levAKLejvLu_H9FS5qWbF&usp=drive_copy"
+            },
+            {
+              "count": 1,
+              "value": "https://drive.google.com/open?id=1-1UU8-NsnpgCRS20ei-4fufm0kJC49RP&usp=drive_copy"
+            },
+            {
+              "count": 1,
+              "value": "https://drive.google.com/open?id=1-1YQo9I9XctEIXEAhCYEubRI-6nJat7G&usp=drive_copy"
+            },
+            {
+              "count": 1,
+              "value": "https://drive.google.com/open?id=1-1kuRY81oN-9tA8ikAwzZrU4QrxkVhH0&usp=drive_copy"
+            },
+            {
+              "count": 1,
+              "value": "https://drive.google.com/open?id=1-1wt82yobcDsTLGjz-Ubbgl2oX1syFZl&usp=drive_copy"
+            }
+          ],
+          "unique": 8239,
+          "values_occurring_more_than_once": 1
+        },
+        {
+          "duplicate_rows": 4947,
+          "formats": {
+            "INTEGER": 4957
+          },
+          "header": null,
+          "index": 12,
+          "inferred_type": "number",
+          "letter": "M",
+          "non_null": 4957,
+          "null_pct": 41.28,
+          "rows": 8442,
+          "top_values": [
+            {
+              "count": 570,
+              "value": "8"
+            },
+            {
+              "count": 564,
+              "value": "1"
+            },
+            {
+              "count": 558,
+              "value": "5"
+            },
+            {
+              "count": 540,
+              "value": "4"
+            },
+            {
+              "count": 514,
+              "value": "2"
+            },
+            {
+              "count": 480,
+              "value": "3"
+            },
+            {
+              "count": 468,
+              "value": "7"
+            },
+            {
+              "count": 426,
+              "value": "9"
+            }
+          ],
+          "unique": 10,
+          "values_occurring_more_than_once": 10
+        },
+        {
+          "duplicate_rows": 8235,
+          "formats": {
+            "QBG_CUID25": 8238
+          },
+          "header": null,
+          "index": 13,
+          "inferred_type": "string",
+          "letter": "N",
+          "non_null": 8238,
+          "null_pct": 2.42,
+          "rows": 8442,
+          "top_values": [
+            {
+              "count": 2746,
+              "value": "19c8p297y48dy01537cxzinys"
+            },
+            {
+              "count": 2746,
+              "value": "7rgg2rb3rbirmrkpguofa7sor"
+            },
+            {
+              "count": 2746,
+              "value": "iydv16vvyph4i0hajzqbqxk2t"
+            }
+          ],
+          "unique": 3,
+          "values_occurring_more_than_once": 3
+        },
+        {
+          "duplicate_rows": 8233,
+          "formats": {
+            "TEXT": 8238
+          },
+          "header": null,
+          "index": 14,
+          "inferred_type": "string",
+          "letter": "O",
+          "non_null": 8238,
+          "null_pct": 2.42,
+          "rows": 8442,
+          "top_values": [
+            {
+              "count": 2746,
+              "value": "Chemistry"
+            },
+            {
+              "count": 2686,
+              "value": "Maths"
+            },
+            {
+              "count": 2596,
+              "value": "Physics"
+            },
+            {
+              "count": 150,
+              "value": "physics"
+            },
+            {
+              "count": 60,
+              "value": "maths"
+            }
+          ],
+          "unique": 5,
+          "values_occurring_more_than_once": 5
+        },
+        {
+          "duplicate_rows": 8142,
+          "formats": {
+            "QBG_CUID25": 8238
+          },
+          "header": null,
+          "index": 15,
+          "inferred_type": "string",
+          "letter": "P",
+          "non_null": 8238,
+          "null_pct": 2.42,
+          "rows": 8442,
+          "top_values": [
+            {
+              "count": 243,
+              "value": "pr17srqdcp9mrlzggdih6tpcu"
+            },
+            {
+              "count": 236,
+              "value": "7kx7aknod2psthzyz0hxpqllr"
+            },
+            {
+              "count": 201,
+              "value": "tz4907islds6g7agzogsbkw95"
+            },
+            {
+              "count": 173,
+              "value": "n56993pcfvp85gtnvq3a1t3rw"
+            },
+            {
+              "count": 170,
+              "value": "nezbgy0nbv5cx5jd8fxlccu4f"
+            },
+            {
+              "count": 169,
+              "value": "73ulm8ow5ghud5xw8alehsdyh"
+            },
+            {
+              "count": 163,
+              "value": "07b1xigu2yazkn0ohu0v44d3y"
+            },
+            {
+              "count": 162,
+              "value": "ca33u7zvbbnt64edqggwp2a1x"
+            }
+          ],
+          "unique": 96,
+          "values_occurring_more_than_once": 95
+        },
+        {
+          "duplicate_rows": 8052,
+          "formats": {
+            "TEXT": 8148
+          },
+          "header": null,
+          "index": 16,
+          "inferred_type": "string",
+          "letter": "Q",
+          "non_null": 8148,
+          "null_pct": 3.48,
+          "rows": 8442,
+          "top_values": [
+            {
+              "count": 243,
+              "value": "Aldehydes, Ketones and Carboxylic Acids"
+            },
+            {
+              "count": 230,
+              "value": "Thermodynamics"
+            },
+            {
+              "count": 196,
+              "value": "Organic Chemistry: Some Basic Principles and Techniques"
+            },
+            {
+              "count": 173,
+              "value": "Rotational Motion"
+            },
+            {
+              "count": 163,
+              "value": "Equilibrium"
+            },
+            {
+              "count": 163,
+              "value": "Quadratic Equations"
+            },
+            {
+              "count": 162,
+              "value": "Relations and Functions"
+            },
+            {
+              "count": 161,
+              "value": "Laws of Motion"
+            }
+          ],
+          "unique": 96,
+          "values_occurring_more_than_once": 95
+        },
+        {
+          "duplicate_rows": 7401,
+          "formats": {
+            "QBG_CUID25": 8238
+          },
+          "header": null,
+          "index": 17,
+          "inferred_type": "string",
+          "letter": "R",
+          "non_null": 8238,
+          "null_pct": 2.42,
+          "rows": 8442,
+          "top_values": [
+            {
+              "count": 126,
+              "value": "bpgjvq5jkfgy0qjan9x0v8r5u"
+            },
+            {
+              "count": 91,
+              "value": "7bxv5n4kh3gityr4edjl3py4c"
+            },
+            {
+              "count": 87,
+              "value": "39324dn1mmkigf6ibx6io3k7x"
+            },
+            {
+              "count": 86,
+              "value": "forc6a9qtvds21iopunpemigg"
+            },
+            {
+              "count": 82,
+              "value": "zn18yw66stz5mm3qyu857dbhe"
+            },
+            {
+              "count": 80,
+              "value": "oprz3gpyyysqcaflomith22cf"
+            },
+            {
+              "count": 72,
+              "value": "8j5vqo1i4cpvns61glq5k2u8n"
+            },
+            {
+              "count": 71,
+              "value": "trdha9n2f94334y21osqximpb"
+            }
+          ],
+          "unique": 837,
+          "values_occurring_more_than_once": 726
+        },
+        {
+          "duplicate_rows": 7305,
+          "formats": {
+            "TEXT": 8148
+          },
+          "header": null,
+          "index": 18,
+          "inferred_type": "string",
+          "letter": "S",
+          "non_null": 8148,
+          "null_pct": 3.48,
+          "rows": 8442,
+          "top_values": [
+            {
+              "count": 126,
+              "value": "Chemical Reactions of Aldehydes and Ketones"
+            },
+            {
+              "count": 91,
+              "value": "Methods of Solution of Ordinary Differential Equation of First Order and First Degree"
+            },
+            {
+              "count": 87,
+              "value": "Functions"
+            },
+            {
+              "count": 86,
+              "value": "Definite Integration"
+            },
+            {
+              "count": 82,
+              "value": "Bonding in Coordination Compounds"
+            },
+            {
+              "count": 80,
+              "value": "Thermodynamic Processes"
+            },
+            {
+              "count": 71,
+              "value": "Colligative Properties"
+            },
+            {
+              "count": 71,
+              "value": "Trigonometric Functions"
+            }
+          ],
+          "unique": 843,
+          "values_occurring_more_than_once": 732
+        },
+        {
+          "duplicate_rows": 6709,
+          "formats": {
+            "QBG_CUID25": 8202
+          },
+          "header": null,
+          "index": 19,
+          "inferred_type": "string",
+          "letter": "T",
+          "non_null": 8202,
+          "null_pct": 2.84,
+          "rows": 8442,
+          "top_values": [
+            {
+              "count": 183,
+              "value": "15imm75mihwe0n44g05omyg1r"
+            },
+            {
+              "count": 62,
+              "value": "cj09mig961t4dwsdyb1iadhvu"
+            },
+            {
+              "count": 58,
+              "value": "b60shklyj7kzcqb9ytagaoe5t"
+            },
+            {
+              "count": 55,
+              "value": "otaf6h26lvcgfzcebd034zgoj"
+            },
+            {
+              "count": 48,
+              "value": "som9xnj6rzl9maohal1itmyup"
+            },
+            {
+              "count": 42,
+              "value": "rc2c9dackq7hbqf5g9bvl9k2i"
+            },
+            {
+              "count": 41,
+              "value": "1kc04sk0loz3k9zg0aexuoa5z"
+            },
+            {
+              "count": 41,
+              "value": "ry0d1hi6qfez0vnaa17mrl57h"
+            }
+          ],
+          "unique": 1493,
+          "values_occurring_more_than_once": 1195
+        },
+        {
+          "duplicate_rows": 6643,
+          "formats": {
+            "TEXT": 8148
+          },
+          "header": null,
+          "index": 20,
+          "inferred_type": "string",
+          "letter": "U",
+          "non_null": 8148,
+          "null_pct": 3.48,
+          "rows": 8442,
+          "top_values": [
+            {
+              "count": 183,
+              "value": "Chemical Properties"
+            },
+            {
+              "count": 62,
+              "value": "Solving Definite Integral Via Indefinite Integral"
+            },
+            {
+              "count": 58,
+              "value": "Miscellaneous"
+            },
+            {
+              "count": 55,
+              "value": "Area Bounded Between Two Curves"
+            },
+            {
+              "count": 42,
+              "value": "Miscellaneous/Mixed"
+            },
+            {
+              "count": 41,
+              "value": "Differentiability at a Point"
+            },
+            {
+              "count": 41,
+              "value": "Stereoisomerism"
+            },
+            {
+              "count": 40,
+              "value": "Motion of Charged Particle in a Magnetic Field"
+            }
+          ],
+          "unique": 1505,
+          "values_occurring_more_than_once": 1203
+        },
+        {
+          "duplicate_rows": 8235,
+          "formats": {
+            "INTEGER": 8047,
+            "INTEGER_STRING": 191
+          },
+          "header": null,
+          "index": 21,
+          "inferred_type": "MIXED(number+string)",
+          "letter": "V",
+          "non_null": 8238,
+          "null_pct": 2.42,
+          "rows": 8442,
+          "top_values": [
+            {
+              "count": 5428,
+              "value": "2"
+            },
+            {
+              "count": 1589,
+              "value": "3"
+            },
+            {
+              "count": 1221,
+              "value": "1"
+            }
+          ],
+          "unique": 3,
+          "values_occurring_more_than_once": 3
+        },
+        {
+          "duplicate_rows": 8115,
+          "formats": {
+            "TEXT": 8118
+          },
+          "header": null,
+          "index": 22,
+          "inferred_type": "string",
+          "letter": "W",
+          "non_null": 8118,
+          "null_pct": 3.84,
+          "rows": 8442,
+          "top_values": [
+            {
+              "count": 5354,
+              "value": "Medium"
+            },
+            {
+              "count": 1561,
+              "value": "Hard"
+            },
+            {
+              "count": 1203,
+              "value": "Easy"
+            }
+          ],
+          "unique": 3,
+          "values_occurring_more_than_once": 3
+        }
+      ],
+      "data_rows": 8442,
+      "header_row_1based": 1,
+      "name": "AITS",
+      "repeated_header_names": [],
+      "tabular": true
+    },
+    {
+      "column_count": 15,
+      "columns": [
+        {
+          "duplicate_rows": 9700,
+          "formats": {
+            "INTEGER": 2700,
+            "INTEGER_STRING": 7005
+          },
+          "header": "Year",
+          "index": 0,
+          "inferred_type": "MIXED(number+string)",
+          "letter": "A",
+          "non_null": 9705,
+          "null_pct": 0,
+          "rows": 9705,
+          "top_values": [
+            {
+              "count": 2340,
+              "value": "2021"
+            },
+            {
+              "count": 2160,
+              "value": "2023"
+            },
+            {
+              "count": 1980,
+              "value": "2022"
+            },
+            {
+              "count": 1800,
+              "value": "2024"
+            },
+            {
+              "count": 1425,
+              "value": "2025"
+            }
+          ],
+          "unique": 5,
+          "values_occurring_more_than_once": 5
+        },
+        {
+          "duplicate_rows": 9678,
+          "formats": {
+            "TEXT": 9705
+          },
+          "header": "Month",
+          "index": 1,
+          "inferred_type": "string",
+          "letter": "B",
+          "non_null": 9705,
+          "null_pct": 0,
+          "rows": 9705,
+          "top_values": [
+            {
+              "count": 1980,
+              "value": "Apr"
+            },
+            {
+              "count": 1620,
+              "value": "Jan"
+            },
+            {
+              "count": 1530,
+              "value": "Jul"
+            },
+            {
+              "count": 1080,
+              "value": "Jun"
+            },
+            {
+              "count": 900,
+              "value": "Feb"
+            },
+            {
+              "count": 540,
+              "value": "Aug"
+            },
+            {
+              "count": 540,
+              "value": "Mar"
+            },
+            {
+              "count": 90,
+              "value": "Sep"
+            }
+          ],
+          "unique": 27,
+          "values_occurring_more_than_once": 27
+        },
+        {
+          "duplicate_rows": 8253,
+          "formats": {
+            "INTEGER": 1800,
+            "INTEGER_STRING": 6480
+          },
+          "header": "Date",
+          "index": 2,
+          "inferred_type": "MIXED(number+string)",
+          "letter": "C",
+          "non_null": 8280,
+          "null_pct": 14.68,
+          "rows": 9705,
+          "top_values": [
+            {
+              "count": 900,
+              "value": "25"
+            },
+            {
+              "count": 900,
+              "value": "27"
+            },
+            {
+              "count": 720,
+              "value": "26"
+            },
+            {
+              "count": 720,
+              "value": "29"
+            },
+            {
+              "count": 540,
+              "value": "24"
+            },
+            {
+              "count": 540,
+              "value": "31"
+            },
+            {
+              "count": 360,
+              "value": "28"
+            },
+            {
+              "count": 360,
+              "value": "30"
+            }
+          ],
+          "unique": 27,
+          "values_occurring_more_than_once": 27
+        },
+        {
+          "duplicate_rows": 9704,
+          "formats": {
+            "TEXT": 9705
+          },
+          "header": "Pattern",
+          "index": 3,
+          "inferred_type": "string",
+          "letter": "D",
+          "non_null": 9705,
+          "null_pct": 0,
+          "rows": 9705,
+          "top_values": [
+            {
+              "count": 9705,
+              "value": "Main"
+            }
+          ],
+          "unique": 1,
+          "values_occurring_more_than_once": 1
+        },
+        {
+          "duplicate_rows": 8278,
+          "formats": {
+            "TEXT": 8280
+          },
+          "header": "Shift",
+          "index": 4,
+          "inferred_type": "string",
+          "letter": "E",
+          "non_null": 8280,
+          "null_pct": 14.68,
+          "rows": 9705,
+          "top_values": [
+            {
+              "count": 4140,
+              "value": "I"
+            },
+            {
+              "count": 4140,
+              "value": "II"
+            }
+          ],
+          "unique": 2,
+          "values_occurring_more_than_once": 2
+        },
+        {
+          "duplicate_rows": 9702,
+          "formats": {
+            "TEXT": 9705
+          },
+          "header": "Subject",
+          "index": 5,
+          "inferred_type": "string",
+          "letter": "F",
+          "non_null": 9705,
+          "null_pct": 0,
+          "rows": 9705,
+          "top_values": [
+            {
+              "count": 3235,
+              "value": "Chemistry"
+            },
+            {
+              "count": 3235,
+              "value": "Maths"
+            },
+            {
+              "count": 3235,
+              "value": "Physics"
+            }
+          ],
+          "unique": 3,
+          "values_occurring_more_than_once": 3
+        },
+        {
+          "duplicate_rows": 9540,
+          "formats": {
+            "QUESTION_NUMBER": 9705
+          },
+          "header": "Q.NO:",
+          "index": 6,
+          "inferred_type": "string",
+          "letter": "G",
+          "non_null": 9705,
+          "null_pct": 0,
+          "rows": 9705,
+          "top_values": [
+            {
+              "count": 92,
+              "value": "Q001"
+            },
+            {
+              "count": 92,
+              "value": "Q002"
+            },
+            {
+              "count": 92,
+              "value": "Q003"
+            },
+            {
+              "count": 92,
+              "value": "Q004"
+            },
+            {
+              "count": 92,
+              "value": "Q005"
+            },
+            {
+              "count": 92,
+              "value": "Q006"
+            },
+            {
+              "count": 92,
+              "value": "Q007"
+            },
+            {
+              "count": 92,
+              "value": "Q008"
+            }
+          ],
+          "unique": 165,
+          "values_occurring_more_than_once": 165
+        },
+        {
+          "duplicate_rows": 2,
+          "formats": {
+            "QBG_CUID25": 9705
+          },
+          "header": "IDs",
+          "index": 7,
+          "inferred_type": "string",
+          "letter": "H",
+          "non_null": 9705,
+          "null_pct": 0,
+          "rows": 9705,
+          "top_values": [
+            {
+              "count": 2,
+              "value": "azpjbt7bs6d8u3kl4hi3tll7q"
+            },
+            {
+              "count": 2,
+              "value": "r9emo0t5x16m7m36womrtlyow"
+            },
+            {
+              "count": 1,
+              "value": "00437dbgbabga3zy1orzvs4nd"
+            },
+            {
+              "count": 1,
+              "value": "006bn1c569k72qxz1hvaqr3j2"
+            },
+            {
+              "count": 1,
+              "value": "00ggsqxuntm0bvahk7t9r5bk8"
+            },
+            {
+              "count": 1,
+              "value": "00o31ncv9ei5wvpgy1kum3vcu"
+            },
+            {
+              "count": 1,
+              "value": "00wl2sgtucf15ftvz0cvp91or"
+            },
+            {
+              "count": 1,
+              "value": "00ylhufusvoed8gt9n60we58q"
+            }
+          ],
+          "unique": 9703,
+          "values_occurring_more_than_once": 2
+        },
+        {
+          "duplicate_rows": 517,
+          "formats": {
+            "INTEGER": 522
+          },
+          "header": "Year",
+          "index": 10,
+          "inferred_type": "number",
+          "letter": "K",
+          "non_null": 522,
+          "null_pct": 94.62,
+          "rows": 9705,
+          "top_values": [
+            {
+              "count": 114,
+              "value": "2021"
+            },
+            {
+              "count": 108,
+              "value": "2022"
+            },
+            {
+              "count": 102,
+              "value": "2023"
+            },
+            {
+              "count": 102,
+              "value": "2024"
+            },
+            {
+              "count": 96,
+              "value": "2025"
+            }
+          ],
+          "unique": 5,
+          "values_occurring_more_than_once": 5
+        },
+        {
+          "duplicate_rows": 521,
+          "formats": {
+            "TEXT": 522
+          },
+          "header": "Pattern",
+          "index": 11,
+          "inferred_type": "string",
+          "letter": "L",
+          "non_null": 522,
+          "null_pct": 94.62,
+          "rows": 9705,
+          "top_values": [
+            {
+              "count": 522,
+              "value": "Advanced"
+            }
+          ],
+          "unique": 1,
+          "values_occurring_more_than_once": 1
+        },
+        {
+          "duplicate_rows": 518,
+          "formats": {
+            "INTEGER": 426,
+            "TEXT": 96
+          },
+          "header": "Paper",
+          "index": 12,
+          "inferred_type": "MIXED(number+string)",
+          "letter": "M",
+          "non_null": 522,
+          "null_pct": 94.62,
+          "rows": 9705,
+          "top_values": [
+            {
+              "count": 213,
+              "value": "1"
+            },
+            {
+              "count": 213,
+              "value": "2"
+            },
+            {
+              "count": 48,
+              "value": "18 May Paper 1"
+            },
+            {
+              "count": 48,
+              "value": "18 May Paper 2"
+            }
+          ],
+          "unique": 4,
+          "values_occurring_more_than_once": 4
+        },
+        {
+          "duplicate_rows": 518,
+          "formats": {
+            "TEXT": 522
+          },
+          "header": "Subject",
+          "index": 13,
+          "inferred_type": "string",
+          "letter": "N",
+          "non_null": 522,
+          "null_pct": 94.62,
+          "rows": 9705,
+          "top_values": [
+            {
+              "count": 177,
+              "value": "Chemistry"
+            },
+            {
+              "count": 168,
+              "value": "Maths"
+            },
+            {
+              "count": 145,
+              "value": "physics"
+            },
+            {
+              "count": 32,
+              "value": "Physics"
+            }
+          ],
+          "unique": 4,
+          "values_occurring_more_than_once": 4
+        },
+        {
+          "duplicate_rows": 422,
+          "formats": {
+            "TEXT": 426
+          },
+          "header": "Question Type",
+          "index": 14,
+          "inferred_type": "string",
+          "letter": "O",
+          "non_null": 426,
+          "null_pct": 95.61,
+          "rows": 9705,
+          "top_values": [
+            {
+              "count": 120,
+              "value": "NUM"
+            },
+            {
+              "count": 108,
+              "value": "MCQ"
+            },
+            {
+              "count": 102,
+              "value": "COMP"
+            },
+            {
+              "count": 96,
+              "value": "SCQ"
+            }
+          ],
+          "unique": 4,
+          "values_occurring_more_than_once": 4
+        },
+        {
+          "duplicate_rows": 417,
+          "formats": {
+            "QUESTION_NUMBER": 522
+          },
+          "header": "Q.NO:",
+          "index": 15,
+          "inferred_type": "string",
+          "letter": "P",
+          "non_null": 522,
+          "null_pct": 94.62,
+          "rows": 9705,
+          "top_values": [
+            {
+              "count": 8,
+              "value": "Q001"
+            },
+            {
+              "count": 8,
+              "value": "Q002"
+            },
+            {
+              "count": 8,
+              "value": "Q003"
+            },
+            {
+              "count": 8,
+              "value": "Q004"
+            },
+            {
+              "count": 8,
+              "value": "Q005"
+            },
+            {
+              "count": 8,
+              "value": "Q006"
+            },
+            {
+              "count": 8,
+              "value": "Q007"
+            },
+            {
+              "count": 8,
+              "value": "Q008"
+            }
+          ],
+          "unique": 105,
+          "values_occurring_more_than_once": 105
+        },
+        {
+          "duplicate_rows": 36,
+          "formats": {
+            "QBG_CUID25": 522
+          },
+          "header": "IDs",
+          "index": 16,
+          "inferred_type": "string",
+          "letter": "Q",
+          "non_null": 522,
+          "null_pct": 94.62,
+          "rows": 9705,
+          "top_values": [
+            {
+              "count": 2,
+              "value": "175cfw2v1pih5gzpb690u0eex"
+            },
+            {
+              "count": 2,
+              "value": "25ev1094v89hmwo2rtj4ce89s"
+            },
+            {
+              "count": 2,
+              "value": "60wwodgnvzkyqqlbdeyp9z27y"
+            },
+            {
+              "count": 2,
+              "value": "64ovgnb8s7ayl3yq04h8gqp19"
+            },
+            {
+              "count": 2,
+              "value": "6d7g2xlcejo1j8j6nufaw184q"
+            },
+            {
+              "count": 2,
+              "value": "91mlbtq81rde4immntlpzwski"
+            },
+            {
+              "count": 2,
+              "value": "9suluf7tokgt7htv0w1ubmuhz"
+            },
+            {
+              "count": 2,
+              "value": "aystika46mull1nhmkwu07kka"
+            }
+          ],
+          "unique": 486,
+          "values_occurring_more_than_once": 36
+        }
+      ],
+      "data_rows": 9705,
+      "header_row_1based": 2,
+      "name": "PYQs",
+      "repeated_header_names": [
+        "Year",
+        "Pattern",
+        "Subject",
+        "Q.NO:",
+        "IDs"
+      ],
+      "tabular": true
+    },
+    {
+      "column_count": 8,
+      "columns": [
+        {
+          "duplicate_rows": 1691,
+          "formats": {
+            "TEXT": 1692
+          },
+          "header": "Year",
+          "index": 0,
+          "inferred_type": "string",
+          "letter": "A",
+          "non_null": 1692,
+          "null_pct": 0,
+          "rows": 1692,
+          "top_values": [
+            {
+              "count": 1692,
+              "value": "2023-24"
+            }
+          ],
+          "unique": 1,
+          "values_occurring_more_than_once": 1
+        },
+        {
+          "duplicate_rows": 1691,
+          "formats": {
+            "TEXT": 1692
+          },
+          "header": "Test Name",
+          "index": 1,
+          "inferred_type": "string",
+          "letter": "B",
+          "non_null": 1692,
+          "null_pct": 0,
+          "rows": 1692,
+          "top_values": [
+            {
+              "count": 1692,
+              "value": "JEE Ranker Test Series"
+            }
+          ],
+          "unique": 1,
+          "values_occurring_more_than_once": 1
+        },
+        {
+          "duplicate_rows": 1690,
+          "formats": {
+            "TEXT": 1692
+          },
+          "header": "Pattern",
+          "index": 2,
+          "inferred_type": "string",
+          "letter": "C",
+          "non_null": 1692,
+          "null_pct": 0,
+          "rows": 1692,
+          "top_values": [
+            {
+              "count": 1260,
+              "value": "Main"
+            },
+            {
+              "count": 432,
+              "value": "Advanced"
+            }
+          ],
+          "unique": 2,
+          "values_occurring_more_than_once": 2
+        },
+        {
+          "duplicate_rows": 430,
+          "formats": {
+            "TEXT": 432
+          },
+          "header": "Paper Number",
+          "index": 3,
+          "inferred_type": "string",
+          "letter": "D",
+          "non_null": 432,
+          "null_pct": 74.47,
+          "rows": 1692,
+          "top_values": [
+            {
+              "count": 216,
+              "value": "Paper 1"
+            },
+            {
+              "count": 216,
+              "value": "Paper 2"
+            }
+          ],
+          "unique": 2,
+          "values_occurring_more_than_once": 2
+        },
+        {
+          "duplicate_rows": 1689,
+          "formats": {
+            "TEXT": 1692
+          },
+          "header": "Subject",
+          "index": 4,
+          "inferred_type": "string",
+          "letter": "E",
+          "non_null": 1692,
+          "null_pct": 0,
+          "rows": 1692,
+          "top_values": [
+            {
+              "count": 564,
+              "value": "Chemistry"
+            },
+            {
+              "count": 564,
+              "value": "Maths"
+            },
+            {
+              "count": 564,
+              "value": "Physics"
+            }
+          ],
+          "unique": 3,
+          "values_occurring_more_than_once": 3
+        },
+        {
+          "duplicate_rows": 1688,
+          "formats": {
+            "TEXT": 1692
+          },
+          "header": "Q. Type",
+          "index": 5,
+          "inferred_type": "string",
+          "letter": "F",
+          "non_null": 1692,
+          "null_pct": 0,
+          "rows": 1692,
+          "top_values": [
+            {
+              "count": 912,
+              "value": "SCQ"
+            },
+            {
+              "count": 456,
+              "value": "Numerial"
+            },
+            {
+              "count": 180,
+              "value": "Numerical"
+            },
+            {
+              "count": 144,
+              "value": "MCQ"
+            }
+          ],
+          "unique": 4,
+          "values_occurring_more_than_once": 4
+        },
+        {
+          "duplicate_rows": 1602,
+          "formats": {
+            "QUESTION_NUMBER": 1692
+          },
+          "header": "Question Number",
+          "index": 6,
+          "inferred_type": "string",
+          "letter": "G",
+          "non_null": 1692,
+          "null_pct": 0,
+          "rows": 1692,
+          "top_values": [
+            {
+              "count": 22,
+              "value": "Q001"
+            },
+            {
+              "count": 22,
+              "value": "Q002"
+            },
+            {
+              "count": 22,
+              "value": "Q003"
+            },
+            {
+              "count": 22,
+              "value": "Q004"
+            },
+            {
+              "count": 22,
+              "value": "Q005"
+            },
+            {
+              "count": 22,
+              "value": "Q006"
+            },
+            {
+              "count": 22,
+              "value": "Q007"
+            },
+            {
+              "count": 22,
+              "value": "Q008"
+            }
+          ],
+          "unique": 90,
+          "values_occurring_more_than_once": 90
+        },
+        {
+          "duplicate_rows": 0,
+          "formats": {
+            "QBG_CUID25": 1691,
+            "TEXT": 1
+          },
+          "header": "QBG IDs",
+          "index": 7,
+          "inferred_type": "string",
+          "letter": "H",
+          "non_null": 1692,
+          "null_pct": 0,
+          "rows": 1692,
+          "top_values": [
+            {
+              "count": 1,
+              "value": "000ft89lhpyzgo3h4p63kyizr"
+            },
+            {
+              "count": 1,
+              "value": "026llsjnku7nq6v63apba1qy8"
+            },
+            {
+              "count": 1,
+              "value": "02aio1r7sop1ipouxjlijg78h"
+            },
+            {
+              "count": 1,
+              "value": "0394s8uagkjf3dmc6h5jhewen"
+            },
+            {
+              "count": 1,
+              "value": "03e71gpnlwxei5okxdjm3at1y"
+            },
+            {
+              "count": 1,
+              "value": "03ftsihah3xcccn6rmiwdkejk"
+            },
+            {
+              "count": 1,
+              "value": "03k8liwxdqzav78m188r3tmdd"
+            },
+            {
+              "count": 1,
+              "value": "045bcdo4jld1ehzctimj9ymi4"
+            }
+          ],
+          "unique": 1692,
+          "values_occurring_more_than_once": 0
+        }
+      ],
+      "data_rows": 1692,
+      "header_row_1based": 1,
+      "name": "RTS",
+      "repeated_header_names": [],
+      "tabular": true
+    },
+    {
+      "column_count": 35,
+      "columns": [
+        {
+          "duplicate_rows": 0,
+          "formats": {
+            "INTEGER": 90,
+            "TEXT": 4
+          },
+          "header": null,
+          "index": 0,
+          "inferred_type": "MIXED(number+string)",
+          "letter": "A",
+          "non_null": 94,
+          "null_pct": 0,
+          "rows": 94,
+          "top_values": [
+            {
+              "count": 1,
+              "value": "1"
+            },
+            {
+              "count": 1,
+              "value": "10"
+            },
+            {
+              "count": 1,
+              "value": "11"
+            },
+            {
+              "count": 1,
+              "value": "12"
+            },
+            {
+              "count": 1,
+              "value": "13"
+            },
+            {
+              "count": 1,
+              "value": "14"
+            },
+            {
+              "count": 1,
+              "value": "15"
+            },
+            {
+              "count": 1,
+              "value": "16"
+            }
+          ],
+          "unique": 94,
+          "values_occurring_more_than_once": 0
+        },
+        {
+          "duplicate_rows": 0,
+          "formats": {
+            "QBG_CUID25": 90,
+            "TEXT": 2
+          },
+          "header": null,
+          "index": 1,
+          "inferred_type": "string",
+          "letter": "B",
+          "non_null": 92,
+          "null_pct": 2.13,
+          "rows": 94,
+          "top_values": [
+            {
+              "count": 1,
+              "value": "015exh2akksnl7dax0vgiyac0"
+            },
+            {
+              "count": 1,
+              "value": "0tmynug0zsoq1do0wede555lc"
+            },
+            {
+              "count": 1,
+              "value": "11qf57asbll7tsx1kyg04rq8e"
+            },
+            {
+              "count": 1,
+              "value": "19uyqmvkfw1a7leczvqtzew19"
+            },
+            {
+              "count": 1,
+              "value": "1dmbeo8nme37xyt8jyudaup9h"
+            },
+            {
+              "count": 1,
+              "value": "1z6v2yhiyyczj55gj36f3b6cp"
+            },
+            {
+              "count": 1,
+              "value": "2jh72vyxsb8t01gibidixjowv"
+            },
+            {
+              "count": 1,
+              "value": "2txg5k033u2payui52h9dlu3b"
+            }
+          ],
+          "unique": 92,
+          "values_occurring_more_than_once": 0
+        },
+        {
+          "duplicate_rows": 90,
+          "formats": {
+            "TEXT": 91
+          },
+          "header": null,
+          "index": 2,
+          "inferred_type": "string",
+          "letter": "C",
+          "non_null": 91,
+          "null_pct": 3.19,
+          "rows": 94,
+          "top_values": [
+            {
+              "count": 91,
+              "value": "Link"
+            }
+          ],
+          "unique": 1,
+          "values_occurring_more_than_once": 1
+        },
+        {
+          "duplicate_rows": 59,
+          "formats": {
+            "TEXT": 61
+          },
+          "header": null,
+          "index": 3,
+          "inferred_type": "string",
+          "letter": "D",
+          "non_null": 61,
+          "null_pct": 35.11,
+          "rows": 94,
+          "top_values": [
+            {
+              "count": 60,
+              "value": "Done"
+            },
+            {
+              "count": 1,
+              "value": "Tagging"
+            }
+          ],
+          "unique": 2,
+          "values_occurring_more_than_once": 1
+        },
+        {
+          "duplicate_rows": 0,
+          "formats": {
+            "TEXT": 2
+          },
+          "header": null,
+          "index": 4,
+          "inferred_type": "string",
+          "letter": "E",
+          "non_null": 2,
+          "null_pct": 97.87,
+          "rows": 94,
+          "top_values": [
+            {
+              "count": 1,
+              "value": "Source File Link"
+            },
+            {
+              "count": 1,
+              "value": "Test-11 ok_Full Length"
+            }
+          ],
+          "unique": 2,
+          "values_occurring_more_than_once": 0
+        },
+        {
+          "duplicate_rows": 0,
+          "formats": {
+            "INTEGER": 90,
+            "TEXT": 4
+          },
+          "header": null,
+          "index": 6,
+          "inferred_type": "MIXED(number+string)",
+          "letter": "G",
+          "non_null": 94,
+          "null_pct": 0,
+          "rows": 94,
+          "top_values": [
+            {
+              "count": 1,
+              "value": "1"
+            },
+            {
+              "count": 1,
+              "value": "10"
+            },
+            {
+              "count": 1,
+              "value": "11"
+            },
+            {
+              "count": 1,
+              "value": "12"
+            },
+            {
+              "count": 1,
+              "value": "13"
+            },
+            {
+              "count": 1,
+              "value": "14"
+            },
+            {
+              "count": 1,
+              "value": "15"
+            },
+            {
+              "count": 1,
+              "value": "16"
+            }
+          ],
+          "unique": 94,
+          "values_occurring_more_than_once": 0
+        },
+        {
+          "duplicate_rows": 0,
+          "formats": {
+            "QBG_CUID25": 90,
+            "TEXT": 2
+          },
+          "header": null,
+          "index": 7,
+          "inferred_type": "string",
+          "letter": "H",
+          "non_null": 92,
+          "null_pct": 2.13,
+          "rows": 94,
+          "top_values": [
+            {
+              "count": 1,
+              "value": "0ab0ag9qpmfuno5qepmb2a3dg"
+            },
+            {
+              "count": 1,
+              "value": "0smt0bjue67gwyfwubw5u191z"
+            },
+            {
+              "count": 1,
+              "value": "15bchge1wvnw4gsxffhfediiu"
+            },
+            {
+              "count": 1,
+              "value": "1z57p3uvkygeag81gk8r42ewl"
+            },
+            {
+              "count": 1,
+              "value": "20d2tsi7dxf1lmaonufjhzjcy"
+            },
+            {
+              "count": 1,
+              "value": "26lv3qp2f3ltlheqnclw4z7yv"
+            },
+            {
+              "count": 1,
+              "value": "2v009vtzlbjjzqrdrn7dz1uiw"
+            },
+            {
+              "count": 1,
+              "value": "2ynn99s7i92vwvwyry4oevela"
+            }
+          ],
+          "unique": 92,
+          "values_occurring_more_than_once": 0
+        },
+        {
+          "duplicate_rows": 90,
+          "formats": {
+            "TEXT": 91
+          },
+          "header": null,
+          "index": 8,
+          "inferred_type": "string",
+          "letter": "I",
+          "non_null": 91,
+          "null_pct": 3.19,
+          "rows": 94,
+          "top_values": [
+            {
+              "count": 91,
+              "value": "Link"
+            }
+          ],
+          "unique": 1,
+          "values_occurring_more_than_once": 1
+        },
+        {
+          "duplicate_rows": 59,
+          "formats": {
+            "TEXT": 61
+          },
+          "header": null,
+          "index": 9,
+          "inferred_type": "string",
+          "letter": "J",
+          "non_null": 61,
+          "null_pct": 35.11,
+          "rows": 94,
+          "top_values": [
+            {
+              "count": 60,
+              "value": "Done"
+            },
+            {
+              "count": 1,
+              "value": "Tagging"
+            }
+          ],
+          "unique": 2,
+          "values_occurring_more_than_once": 1
+        },
+        {
+          "duplicate_rows": 0,
+          "formats": {
+            "FILE_NAME": 1,
+            "TEXT": 2
+          },
+          "header": null,
+          "index": 10,
+          "inferred_type": "string",
+          "letter": "K",
+          "non_null": 3,
+          "null_pct": 96.81,
+          "rows": 94,
+          "top_values": [
+            {
+              "count": 1,
+              "value": "AIR_JEE_Full length JEE Main (Unused)_Test-12.pdf"
+            },
+            {
+              "count": 1,
+              "value": "Source File Link"
+            },
+            {
+              "count": 1,
+              "value": "Test-12 ok_Full Length"
+            }
+          ],
+          "unique": 3,
+          "values_occurring_more_than_once": 0
+        },
+        {
+          "duplicate_rows": 0,
+          "formats": {
+            "INTEGER": 90,
+            "TEXT": 4
+          },
+          "header": null,
+          "index": 12,
+          "inferred_type": "MIXED(number+string)",
+          "letter": "M",
+          "non_null": 94,
+          "null_pct": 0,
+          "rows": 94,
+          "top_values": [
+            {
+              "count": 1,
+              "value": "1"
+            },
+            {
+              "count": 1,
+              "value": "10"
+            },
+            {
+              "count": 1,
+              "value": "11"
+            },
+            {
+              "count": 1,
+              "value": "12"
+            },
+            {
+              "count": 1,
+              "value": "13"
+            },
+            {
+              "count": 1,
+              "value": "14"
+            },
+            {
+              "count": 1,
+              "value": "15"
+            },
+            {
+              "count": 1,
+              "value": "16"
+            }
+          ],
+          "unique": 94,
+          "values_occurring_more_than_once": 0
+        },
+        {
+          "duplicate_rows": 0,
+          "formats": {
+            "QBG_CUID25": 90,
+            "TEXT": 2
+          },
+          "header": null,
+          "index": 13,
+          "inferred_type": "string",
+          "letter": "N",
+          "non_null": 92,
+          "null_pct": 2.13,
+          "rows": 94,
+          "top_values": [
+            {
+              "count": 1,
+              "value": "02givyz3qp90covy9bwjzueu2"
+            },
+            {
+              "count": 1,
+              "value": "1raf2hlad4rs547f7ei9obfec"
+            },
+            {
+              "count": 1,
+              "value": "2l9h825lg6rju58e81yvxvplx"
+            },
+            {
+              "count": 1,
+              "value": "3vjcsqizlieq2yfpcuhs1n7pk"
+            },
+            {
+              "count": 1,
+              "value": "49rzhil0gfglkq1nunoob0ty9"
+            },
+            {
+              "count": 1,
+              "value": "4mujsf1oa7s4b1pdamr5t7vpj"
+            },
+            {
+              "count": 1,
+              "value": "4yv64o4hmwslodampzuy5ah7r"
+            },
+            {
+              "count": 1,
+              "value": "5iszirhll27buctkn75ntz3ve"
+            }
+          ],
+          "unique": 92,
+          "values_occurring_more_than_once": 0
+        },
+        {
+          "duplicate_rows": 90,
+          "formats": {
+            "TEXT": 91
+          },
+          "header": null,
+          "index": 14,
+          "inferred_type": "string",
+          "letter": "O",
+          "non_null": 91,
+          "null_pct": 3.19,
+          "rows": 94,
+          "top_values": [
+            {
+              "count": 91,
+              "value": "Link"
+            }
+          ],
+          "unique": 1,
+          "values_occurring_more_than_once": 1
+        },
+        {
+          "duplicate_rows": 59,
+          "formats": {
+            "TEXT": 61
+          },
+          "header": null,
+          "index": 15,
+          "inferred_type": "string",
+          "letter": "P",
+          "non_null": 61,
+          "null_pct": 35.11,
+          "rows": 94,
+          "top_values": [
+            {
+              "count": 60,
+              "value": "Done"
+            },
+            {
+              "count": 1,
+              "value": "Tagging"
+            }
+          ],
+          "unique": 2,
+          "values_occurring_more_than_once": 1
+        },
+        {
+          "duplicate_rows": 0,
+          "formats": {
+            "TEXT": 2
+          },
+          "header": null,
+          "index": 16,
+          "inferred_type": "string",
+          "letter": "Q",
+          "non_null": 2,
+          "null_pct": 97.87,
+          "rows": 94,
+          "top_values": [
+            {
+              "count": 1,
+              "value": "Source File Link"
+            },
+            {
+              "count": 1,
+              "value": "Test-13 ok_Full Length"
+            }
+          ],
+          "unique": 2,
+          "values_occurring_more_than_once": 0
+        },
+        {
+          "duplicate_rows": 0,
+          "formats": {
+            "INTEGER": 90,
+            "TEXT": 4
+          },
+          "header": null,
+          "index": 18,
+          "inferred_type": "MIXED(number+string)",
+          "letter": "S",
+          "non_null": 94,
+          "null_pct": 0,
+          "rows": 94,
+          "top_values": [
+            {
+              "count": 1,
+              "value": "1"
+            },
+            {
+              "count": 1,
+              "value": "10"
+            },
+            {
+              "count": 1,
+              "value": "11"
+            },
+            {
+              "count": 1,
+              "value": "12"
+            },
+            {
+              "count": 1,
+              "value": "13"
+            },
+            {
+              "count": 1,
+              "value": "14"
+            },
+            {
+              "count": 1,
+              "value": "15"
+            },
+            {
+              "count": 1,
+              "value": "16"
+            }
+          ],
+          "unique": 94,
+          "values_occurring_more_than_once": 0
+        },
+        {
+          "duplicate_rows": 0,
+          "formats": {
+            "QBG_CUID25": 90,
+            "TEXT": 2
+          },
+          "header": null,
+          "index": 19,
+          "inferred_type": "string",
+          "letter": "T",
+          "non_null": 92,
+          "null_pct": 2.13,
+          "rows": 94,
+          "top_values": [
+            {
+              "count": 1,
+              "value": "0axzgaum1n1nmmvicfgy12bg6"
+            },
+            {
+              "count": 1,
+              "value": "0l4cauk93o8v48c3tce0bh1cj"
+            },
+            {
+              "count": 1,
+              "value": "1eajg9mc3cszb589swm71dkw4"
+            },
+            {
+              "count": 1,
+              "value": "1q54dky0d6thk3wagzvvgpope"
+            },
+            {
+              "count": 1,
+              "value": "1qccwqj569cxeghrr6cziedrr"
+            },
+            {
+              "count": 1,
+              "value": "2adz144oe2xgg714cv4swykwr"
+            },
+            {
+              "count": 1,
+              "value": "3gav49giapit36nq9tblwm3di"
+            },
+            {
+              "count": 1,
+              "value": "3ii17inrjh9pgw6c70hxp8qzu"
+            }
+          ],
+          "unique": 92,
+          "values_occurring_more_than_once": 0
+        },
+        {
+          "duplicate_rows": 90,
+          "formats": {
+            "TEXT": 91
+          },
+          "header": null,
+          "index": 20,
+          "inferred_type": "string",
+          "letter": "U",
+          "non_null": 91,
+          "null_pct": 3.19,
+          "rows": 94,
+          "top_values": [
+            {
+              "count": 91,
+              "value": "Link"
+            }
+          ],
+          "unique": 1,
+          "values_occurring_more_than_once": 1
+        },
+        {
+          "duplicate_rows": 59,
+          "formats": {
+            "TEXT": 61
+          },
+          "header": null,
+          "index": 21,
+          "inferred_type": "string",
+          "letter": "V",
+          "non_null": 61,
+          "null_pct": 35.11,
+          "rows": 94,
+          "top_values": [
+            {
+              "count": 60,
+              "value": "Done"
+            },
+            {
+              "count": 1,
+              "value": "Tagging"
+            }
+          ],
+          "unique": 2,
+          "values_occurring_more_than_once": 1
+        },
+        {
+          "duplicate_rows": 0,
+          "formats": {
+            "TEXT": 2
+          },
+          "header": null,
+          "index": 22,
+          "inferred_type": "string",
+          "letter": "W",
+          "non_null": 2,
+          "null_pct": 97.87,
+          "rows": 94,
+          "top_values": [
+            {
+              "count": 1,
+              "value": "Source File Link"
+            },
+            {
+              "count": 1,
+              "value": "Test-14 ok_Full Length"
+            }
+          ],
+          "unique": 2,
+          "values_occurring_more_than_once": 0
+        },
+        {
+          "duplicate_rows": 0,
+          "formats": {
+            "INTEGER": 90,
+            "TEXT": 4
+          },
+          "header": null,
+          "index": 24,
+          "inferred_type": "MIXED(number+string)",
+          "letter": "Y",
+          "non_null": 94,
+          "null_pct": 0,
+          "rows": 94,
+          "top_values": [
+            {
+              "count": 1,
+              "value": "1"
+            },
+            {
+              "count": 1,
+              "value": "10"
+            },
+            {
+              "count": 1,
+              "value": "11"
+            },
+            {
+              "count": 1,
+              "value": "12"
+            },
+            {
+              "count": 1,
+              "value": "13"
+            },
+            {
+              "count": 1,
+              "value": "14"
+            },
+            {
+              "count": 1,
+              "value": "15"
+            },
+            {
+              "count": 1,
+              "value": "16"
+            }
+          ],
+          "unique": 94,
+          "values_occurring_more_than_once": 0
+        },
+        {
+          "duplicate_rows": 0,
+          "formats": {
+            "QBG_CUID25": 90,
+            "TEXT": 2
+          },
+          "header": null,
+          "index": 25,
+          "inferred_type": "string",
+          "letter": "Z",
+          "non_null": 92,
+          "null_pct": 2.13,
+          "rows": 94,
+          "top_values": [
+            {
+              "count": 1,
+              "value": "05kzkdhekbi31odb9o9etk7nw"
+            },
+            {
+              "count": 1,
+              "value": "0a2iyiyc4eo9aw5699vyy5vrw"
+            },
+            {
+              "count": 1,
+              "value": "0gk8qxhsqwmos0wgo2do3hdt6"
+            },
+            {
+              "count": 1,
+              "value": "26ds8wndzihi1tg0ss3vjv66o"
+            },
+            {
+              "count": 1,
+              "value": "2nrrgvx44980daknmtpmtnsog"
+            },
+            {
+              "count": 1,
+              "value": "2p5pe2nygpm9opfczhxljxqqg"
+            },
+            {
+              "count": 1,
+              "value": "3d18mzsmm3f8ns0ji8sk1ncd8"
+            },
+            {
+              "count": 1,
+              "value": "3jjxnp26lb18nzbf1l85fahi9"
+            }
+          ],
+          "unique": 92,
+          "values_occurring_more_than_once": 0
+        },
+        {
+          "duplicate_rows": 90,
+          "formats": {
+            "TEXT": 91
+          },
+          "header": null,
+          "index": 26,
+          "inferred_type": "string",
+          "letter": "AA",
+          "non_null": 91,
+          "null_pct": 3.19,
+          "rows": 94,
+          "top_values": [
+            {
+              "count": 91,
+              "value": "Link"
+            }
+          ],
+          "unique": 1,
+          "values_occurring_more_than_once": 1
+        },
+        {
+          "duplicate_rows": 29,
+          "formats": {
+            "TEXT": 31
+          },
+          "header": null,
+          "index": 27,
+          "inferred_type": "string",
+          "letter": "AB",
+          "non_null": 31,
+          "null_pct": 67.02,
+          "rows": 94,
+          "top_values": [
+            {
+              "count": 30,
+              "value": "Done"
+            },
+            {
+              "count": 1,
+              "value": "Tagging"
+            }
+          ],
+          "unique": 2,
+          "values_occurring_more_than_once": 1
+        },
+        {
+          "duplicate_rows": 0,
+          "formats": {
+            "FILE_NAME": 1,
+            "TEXT": 2
+          },
+          "header": null,
+          "index": 28,
+          "inferred_type": "string",
+          "letter": "AC",
+          "non_null": 3,
+          "null_pct": 96.81,
+          "rows": 94,
+          "top_values": [
+            {
+              "count": 1,
+              "value": "JEE_AIR Special Test Series_Full length Test (unused) Test-15.pdf"
+            },
+            {
+              "count": 1,
+              "value": "Source File Link"
+            },
+            {
+              "count": 1,
+              "value": "Test-15 ok_Full Length"
+            }
+          ],
+          "unique": 3,
+          "values_occurring_more_than_once": 0
+        },
+        {
+          "duplicate_rows": 0,
+          "formats": {
+            "INTEGER": 54,
+            "TEXT": 4
+          },
+          "header": null,
+          "index": 30,
+          "inferred_type": "MIXED(number+string)",
+          "letter": "AE",
+          "non_null": 58,
+          "null_pct": 38.3,
+          "rows": 94,
+          "top_values": [
+            {
+              "count": 1,
+              "value": "1"
+            },
+            {
+              "count": 1,
+              "value": "10"
+            },
+            {
+              "count": 1,
+              "value": "11"
+            },
+            {
+              "count": 1,
+              "value": "12"
+            },
+            {
+              "count": 1,
+              "value": "13"
+            },
+            {
+              "count": 1,
+              "value": "14"
+            },
+            {
+              "count": 1,
+              "value": "15"
+            },
+            {
+              "count": 1,
+              "value": "16"
+            }
+          ],
+          "unique": 58,
+          "values_occurring_more_than_once": 0
+        },
+        {
+          "duplicate_rows": 0,
+          "formats": {
+            "QBG_CUID25": 54,
+            "TEXT": 2
+          },
+          "header": null,
+          "index": 31,
+          "inferred_type": "string",
+          "letter": "AF",
+          "non_null": 56,
+          "null_pct": 40.43,
+          "rows": 94,
+          "top_values": [
+            {
+              "count": 1,
+              "value": "0els2lbnskn1o6p0wdh0x1u9w"
+            },
+            {
+              "count": 1,
+              "value": "0g4q8bge19lned9g2u96jbemf"
+            },
+            {
+              "count": 1,
+              "value": "15g39mrddi3bs7nyskfadp8p2"
+            },
+            {
+              "count": 1,
+              "value": "1ie2pks19ymkpljz1tmjzgp3t"
+            },
+            {
+              "count": 1,
+              "value": "2e6i9fp7qwxakm16rjp1tyl8t"
+            },
+            {
+              "count": 1,
+              "value": "39xme2j1fig7o7n4o6mvn1t2x"
+            },
+            {
+              "count": 1,
+              "value": "4tq6m9290yvgjkp41a8fjhw1y"
+            },
+            {
+              "count": 1,
+              "value": "5bfkkfsfp6x9al2vqgq6p5evk"
+            }
+          ],
+          "unique": 56,
+          "values_occurring_more_than_once": 0
+        },
+        {
+          "duplicate_rows": 54,
+          "formats": {
+            "TEXT": 55
+          },
+          "header": null,
+          "index": 32,
+          "inferred_type": "string",
+          "letter": "AG",
+          "non_null": 55,
+          "null_pct": 41.49,
+          "rows": 94,
+          "top_values": [
+            {
+              "count": 55,
+              "value": "Link"
+            }
+          ],
+          "unique": 1,
+          "values_occurring_more_than_once": 1
+        },
+        {
+          "duplicate_rows": 17,
+          "formats": {
+            "TEXT": 19
+          },
+          "header": null,
+          "index": 33,
+          "inferred_type": "string",
+          "letter": "AH",
+          "non_null": 19,
+          "null_pct": 79.79,
+          "rows": 94,
+          "top_values": [
+            {
+              "count": 18,
+              "value": "Done"
+            },
+            {
+              "count": 1,
+              "value": "Tagging"
+            }
+          ],
+          "unique": 2,
+          "values_occurring_more_than_once": 1
+        },
+        {
+          "duplicate_rows": 0,
+          "formats": {
+            "FILE_NAME": 1,
+            "TEXT": 2
+          },
+          "header": null,
+          "index": 34,
+          "inferred_type": "string",
+          "letter": "AI",
+          "non_null": 3,
+          "null_pct": 96.81,
+          "rows": 94,
+          "top_values": [
+            {
+              "count": 1,
+              "value": "JEE_AIR Special Test Series_Test-06 (Paper I).pdf"
+            },
+            {
+              "count": 1,
+              "value": "Source File Link"
+            },
+            {
+              "count": 1,
+              "value": "Test-6 ok_Full Length"
+            }
+          ],
+          "unique": 3,
+          "values_occurring_more_than_once": 0
+        },
+        {
+          "duplicate_rows": 0,
+          "formats": {
+            "INTEGER": 54,
+            "TEXT": 4
+          },
+          "header": null,
+          "index": 36,
+          "inferred_type": "MIXED(number+string)",
+          "letter": "AK",
+          "non_null": 58,
+          "null_pct": 38.3,
+          "rows": 94,
+          "top_values": [
+            {
+              "count": 1,
+              "value": "1"
+            },
+            {
+              "count": 1,
+              "value": "10"
+            },
+            {
+              "count": 1,
+              "value": "11"
+            },
+            {
+              "count": 1,
+              "value": "12"
+            },
+            {
+              "count": 1,
+              "value": "13"
+            },
+            {
+              "count": 1,
+              "value": "14"
+            },
+            {
+              "count": 1,
+              "value": "15"
+            },
+            {
+              "count": 1,
+              "value": "16"
+            }
+          ],
+          "unique": 58,
+          "values_occurring_more_than_once": 0
+        },
+        {
+          "duplicate_rows": 0,
+          "formats": {
+            "QBG_CUID25": 54,
+            "TEXT": 2
+          },
+          "header": null,
+          "index": 37,
+          "inferred_type": "string",
+          "letter": "AL",
+          "non_null": 56,
+          "null_pct": 40.43,
+          "rows": 94,
+          "top_values": [
+            {
+              "count": 1,
+              "value": "1jbw5jboq0wa4chlafhg63i3j"
+            },
+            {
+              "count": 1,
+              "value": "1n5jtlpugqcc1ll88o6wyugxz"
+            },
+            {
+              "count": 1,
+              "value": "1wypkn3rmr4jk24hev997uhns"
+            },
+            {
+              "count": 1,
+              "value": "1x4n1bxstu47ummwcarjyhr69"
+            },
+            {
+              "count": 1,
+              "value": "250qqz2o7hr6obddd25pmy9ak"
+            },
+            {
+              "count": 1,
+              "value": "2lefz2qi2h1co2t02nr2zq5tg"
+            },
+            {
+              "count": 1,
+              "value": "35sxrd809xwsqvnmxytox7wrf"
+            },
+            {
+              "count": 1,
+              "value": "3ij76rbmicoihix2ljtvx6i3g"
+            }
+          ],
+          "unique": 56,
+          "values_occurring_more_than_once": 0
+        },
+        {
+          "duplicate_rows": 54,
+          "formats": {
+            "TEXT": 55
+          },
+          "header": null,
+          "index": 38,
+          "inferred_type": "string",
+          "letter": "AM",
+          "non_null": 55,
+          "null_pct": 41.49,
+          "rows": 94,
+          "top_values": [
+            {
+              "count": 55,
+              "value": "Link"
+            }
+          ],
+          "unique": 1,
+          "values_occurring_more_than_once": 1
+        },
+        {
+          "duplicate_rows": 17,
+          "formats": {
+            "TEXT": 19
+          },
+          "header": null,
+          "index": 39,
+          "inferred_type": "string",
+          "letter": "AN",
+          "non_null": 19,
+          "null_pct": 79.79,
+          "rows": 94,
+          "top_values": [
+            {
+              "count": 18,
+              "value": "Done"
+            },
+            {
+              "count": 1,
+              "value": "Tagging"
+            }
+          ],
+          "unique": 2,
+          "values_occurring_more_than_once": 1
+        },
+        {
+          "duplicate_rows": 0,
+          "formats": {
+            "FILE_NAME": 1,
+            "TEXT": 2
+          },
+          "header": null,
+          "index": 40,
+          "inferred_type": "string",
+          "letter": "AO",
+          "non_null": 3,
+          "null_pct": 96.81,
+          "rows": 94,
+          "top_values": [
+            {
+              "count": 1,
+              "value": "JEE_Full length JEE Advanced (Unused)_Test 06 (paper II).pdf"
+            },
+            {
+              "count": 1,
+              "value": "Source File Link"
+            },
+            {
+              "count": 1,
+              "value": "Test-6 ok_Full Length"
+            }
+          ],
+          "unique": 3,
+          "values_occurring_more_than_once": 0
+        }
+      ],
+      "data_rows": 94,
+      "header_row_1based": null,
+      "name": "Full length JEE Main+Advanced (",
+      "repeated_header_names": [],
+      "tabular": false
+    },
+    {
+      "column_count": 30,
+      "columns": [
+        {
+          "duplicate_rows": 2368,
+          "formats": {
+            "INTEGER": 255,
+            "TEXT": 2148
+          },
+          "header": "Class",
+          "index": 0,
+          "inferred_type": "MIXED(number+string)",
+          "letter": "A",
+          "non_null": 2403,
+          "null_pct": 0.7,
+          "rows": 2420,
+          "top_values": [
+            {
+              "count": 1090,
+              "value": "11th"
+            },
+            {
+              "count": 1040,
+              "value": "12th & Dropper"
+            },
+            {
+              "count": 9,
+              "value": "1"
+            },
+            {
+              "count": 9,
+              "value": "10"
+            },
+            {
+              "count": 9,
+              "value": "11"
+            },
+            {
+              "count": 9,
+              "value": "12"
+            },
+            {
+              "count": 9,
+              "value": "13"
+            },
+            {
+              "count": 9,
+              "value": "14"
+            }
+          ],
+          "unique": 35,
+          "values_occurring_more_than_once": 35
+        },
+        {
+          "duplicate_rows": 2375,
+          "formats": {
+            "TEXT": 2389
+          },
+          "header": "Subject",
+          "index": 1,
+          "inferred_type": "string",
+          "letter": "B",
+          "non_null": 2389,
+          "null_pct": 1.28,
+          "rows": 2420,
+          "top_values": [
+            {
+              "count": 1070,
+              "value": "Physics"
+            },
+            {
+              "count": 695,
+              "value": "Chemistry"
+            },
+            {
+              "count": 365,
+              "value": "Maths"
+            },
+            {
+              "count": 30,
+              "value": "Indefinite Integration"
+            },
+            {
+              "count": 30,
+              "value": "Method of Differentiation"
+            },
+            {
+              "count": 30,
+              "value": "State of Matter"
+            },
+            {
+              "count": 30,
+              "value": "[Quadratic Equations]"
+            },
+            {
+              "count": 30,
+              "value": "[Thermodynamics]"
+            }
+          ],
+          "unique": 14,
+          "values_occurring_more_than_once": 14
+        },
+        {
+          "duplicate_rows": 2072,
+          "formats": {
+            "QBG_CUID25": 250,
+            "TEXT": 2144
+          },
+          "header": "Chapter",
+          "index": 2,
+          "inferred_type": "string",
+          "letter": "C",
+          "non_null": 2394,
+          "null_pct": 1.07,
+          "rows": 2420,
+          "top_values": [
+            {
+              "count": 60,
+              "value": "Circular Motion"
+            },
+            {
+              "count": 60,
+              "value": "Equilibrium"
+            },
+            {
+              "count": 60,
+              "value": "Fluids Mechanics"
+            },
+            {
+              "count": 60,
+              "value": "Mechanical Properties of Solids"
+            },
+            {
+              "count": 60,
+              "value": "P-block Elements (Group 13 and 14)"
+            },
+            {
+              "count": 60,
+              "value": "Redox Reaction"
+            },
+            {
+              "count": 60,
+              "value": "Rotational Motion"
+            },
+            {
+              "count": 55,
+              "value": "Thermodynamics"
+            }
+          ],
+          "unique": 322,
+          "values_occurring_more_than_once": 71
+        },
+        {
+          "duplicate_rows": 2357,
+          "formats": {
+            "QUESTION_NUMBER": 2130,
+            "TEXT": 259
+          },
+          "header": "Question Number",
+          "index": 3,
+          "inferred_type": "string",
+          "letter": "D",
+          "non_null": 2389,
+          "null_pct": 1.28,
+          "rows": 2420,
+          "top_values": [
+            {
+              "count": 250,
+              "value": "Done"
+            },
+            {
+              "count": 75,
+              "value": "Q001"
+            },
+            {
+              "count": 75,
+              "value": "Q002"
+            },
+            {
+              "count": 75,
+              "value": "Q003"
+            },
+            {
+              "count": 75,
+              "value": "Q004"
+            },
+            {
+              "count": 75,
+              "value": "Q005"
+            },
+            {
+              "count": 75,
+              "value": "Q006"
+            },
+            {
+              "count": 75,
+              "value": "Q007"
+            }
+          ],
+          "unique": 32,
+          "values_occurring_more_than_once": 32
+        },
+        {
+          "duplicate_rows": 359,
+          "formats": {
+            "QBG_CUID25": 2130,
+            "TEXT": 16
+          },
+          "header": "IDs",
+          "index": 4,
+          "inferred_type": "string",
+          "letter": "E",
+          "non_null": 2146,
+          "null_pct": 11.32,
+          "rows": 2420,
+          "top_values": [
+            {
+              "count": 9,
+              "value": "Remarks"
+            },
+            {
+              "count": 5,
+              "value": "@s***@pw.live sir please type solution and answer key"
+            },
+            {
+              "count": 2,
+              "value": "00pokpfa7wftw4x43am0rmll9"
+            },
+            {
+              "count": 2,
+              "value": "02i4ls1l0der936frgk3bcu0h"
+            },
+            {
+              "count": 2,
+              "value": "09knizhayb4kj46prkvmguwxn"
+            },
+            {
+              "count": 2,
+              "value": "0dccaxrjk8hgrdt8c7w1xmqn5"
+            },
+            {
+              "count": 2,
+              "value": "0j8oaz2j69ll1gp3h12hakavz"
+            },
+            {
+              "count": 2,
+              "value": "0uh4bql2ek9e0f00msh2ss667"
+            }
+          ],
+          "unique": 1787,
+          "values_occurring_more_than_once": 349
+        },
+        {
+          "duplicate_rows": 2364,
+          "formats": {
+            "INTEGER": 250,
+            "TEXT": 2148
+          },
+          "header": "Tagging Status",
+          "index": 5,
+          "inferred_type": "MIXED(number+string)",
+          "letter": "F",
+          "non_null": 2398,
+          "null_pct": 0.91,
+          "rows": 2420,
+          "top_values": [
+            {
+              "count": 2130,
+              "value": "Done"
+            },
+            {
+              "count": 9,
+              "value": "1"
+            },
+            {
+              "count": 9,
+              "value": "10"
+            },
+            {
+              "count": 9,
+              "value": "11"
+            },
+            {
+              "count": 9,
+              "value": "12"
+            },
+            {
+              "count": 9,
+              "value": "13"
+            },
+            {
+              "count": 9,
+              "value": "14"
+            },
+            {
+              "count": 9,
+              "value": "15"
+            }
+          ],
+          "unique": 34,
+          "values_occurring_more_than_once": 34
+        },
+        {
+          "duplicate_rows": 246,
+          "formats": {
+            "TEXT": 259
+          },
+          "header": null,
+          "index": 6,
+          "inferred_type": "string",
+          "letter": "G",
+          "non_null": 259,
+          "null_pct": 89.3,
+          "rows": 2420,
+          "top_values": [
+            {
+              "count": 30,
+              "value": "Alcohols, Phenols and Ethers"
+            },
+            {
+              "count": 30,
+              "value": "Application of integrals"
+            },
+            {
+              "count": 30,
+              "value": "Definite Integration"
+            },
+            {
+              "count": 30,
+              "value": "[Biomolecules]"
+            },
+            {
+              "count": 30,
+              "value": "[Inverse Trigonometric Function]"
+            },
+            {
+              "count": 25,
+              "value": "[Hydrogen and its Compound]"
+            },
+            {
+              "count": 25,
+              "value": "[Probability]"
+            },
+            {
+              "count": 25,
+              "value": "[Three Dimensional Geometry]"
+            }
+          ],
+          "unique": 13,
+          "values_occurring_more_than_once": 11
+        },
+        {
+          "duplicate_rows": 5,
+          "formats": {
+            "QBG_CUID25": 250,
+            "TEXT": 9
+          },
+          "header": null,
+          "index": 7,
+          "inferred_type": "string",
+          "letter": "H",
+          "non_null": 259,
+          "null_pct": 89.3,
+          "rows": 2420,
+          "top_values": [
+            {
+              "count": 5,
+              "value": "FAISAL KHAN"
+            },
+            {
+              "count": 2,
+              "value": "Sunil Kumar"
+            },
+            {
+              "count": 1,
+              "value": "00vzwiypnhswcaulhj8tujj6u"
+            },
+            {
+              "count": 1,
+              "value": "061b776cl1xq9nlics452lu2f"
+            },
+            {
+              "count": 1,
+              "value": "0asvpif0rny2l8rs7n9zhbz0m"
+            },
+            {
+              "count": 1,
+              "value": "0jpu72js591zg4tzrk9wkus2m"
+            },
+            {
+              "count": 1,
+              "value": "0kqx4c6rsdwmhka5fz33zxofu"
+            },
+            {
+              "count": 1,
+              "value": "0m7wt0pw4rbbry0kqph89svb7"
+            }
+          ],
+          "unique": 254,
+          "values_occurring_more_than_once": 2
+        },
+        {
+          "duplicate_rows": 257,
+          "formats": {
+            "TEXT": 259
+          },
+          "header": null,
+          "index": 8,
+          "inferred_type": "string",
+          "letter": "I",
+          "non_null": 259,
+          "null_pct": 89.3,
+          "rows": 2420,
+          "top_values": [
+            {
+              "count": 250,
+              "value": "Done"
+            },
+            {
+              "count": 9,
+              "value": "Tagging"
+            }
+          ],
+          "unique": 2,
+          "values_occurring_more_than_once": 2
+        },
+        {
+          "duplicate_rows": 16,
+          "formats": {
+            "TEXT": 21
+          },
+          "header": null,
+          "index": 9,
+          "inferred_type": "string",
+          "letter": "J",
+          "non_null": 21,
+          "null_pct": 99.13,
+          "rows": 2420,
+          "top_values": [
+            {
+              "count": 9,
+              "value": "Remarks"
+            },
+            {
+              "count": 5,
+              "value": "@s***@pw.live  se please type solution and answer key"
+            },
+            {
+              "count": 5,
+              "value": "@s***@pw.live please type solution"
+            },
+            {
+              "count": 1,
+              "value": "no solution"
+            },
+            {
+              "count": 1,
+              "value": "solution pending"
+            }
+          ],
+          "unique": 5,
+          "values_occurring_more_than_once": 3
+        },
+        {
+          "duplicate_rows": 245,
+          "formats": {
+            "INTEGER": 260,
+            "TEXT": 18
+          },
+          "header": null,
+          "index": 10,
+          "inferred_type": "MIXED(number+string)",
+          "letter": "K",
+          "non_null": 278,
+          "null_pct": 88.51,
+          "rows": 2420,
+          "top_values": [
+            {
+              "count": 9,
+              "value": "1"
+            },
+            {
+              "count": 9,
+              "value": "10"
+            },
+            {
+              "count": 9,
+              "value": "11"
+            },
+            {
+              "count": 9,
+              "value": "12"
+            },
+            {
+              "count": 9,
+              "value": "13"
+            },
+            {
+              "count": 9,
+              "value": "14"
+            },
+            {
+              "count": 9,
+              "value": "15"
+            },
+            {
+              "count": 9,
+              "value": "16"
+            }
+          ],
+          "unique": 33,
+          "values_occurring_more_than_once": 33
+        },
+        {
+          "duplicate_rows": 246,
+          "formats": {
+            "TEXT": 258,
+            "URL": 1
+          },
+          "header": null,
+          "index": 11,
+          "inferred_type": "string",
+          "letter": "L",
+          "non_null": 259,
+          "null_pct": 89.3,
+          "rows": 2420,
+          "top_values": [
+            {
+              "count": 30,
+              "value": "Application of Derivatives"
+            },
+            {
+              "count": 30,
+              "value": "Circle"
+            },
+            {
+              "count": 30,
+              "value": "Complex Numbers"
+            },
+            {
+              "count": 30,
+              "value": "Redox Reaction"
+            },
+            {
+              "count": 30,
+              "value": "[Aldehydes, Ketones and Carboxylic Acids]"
+            },
+            {
+              "count": 25,
+              "value": "Chemistry Everyday life"
+            },
+            {
+              "count": 25,
+              "value": "Linear Programming (Test 14)"
+            },
+            {
+              "count": 25,
+              "value": "Polymer"
+            }
+          ],
+          "unique": 13,
+          "values_occurring_more_than_once": 11
+        },
+        {
+          "duplicate_rows": 5,
+          "formats": {
+            "QBG_CUID25": 250,
+            "TEXT": 9
+          },
+          "header": null,
+          "index": 12,
+          "inferred_type": "string",
+          "letter": "M",
+          "non_null": 259,
+          "null_pct": 89.3,
+          "rows": 2420,
+          "top_values": [
+            {
+              "count": 4,
+              "value": "DTP Name : Swapnil Bokan"
+            },
+            {
+              "count": 2,
+              "value": "FAISAL KHAN"
+            },
+            {
+              "count": 2,
+              "value": "Lekhraj Meghwal"
+            },
+            {
+              "count": 1,
+              "value": "05yaij91ah9bl9ygm9oslob3m"
+            },
+            {
+              "count": 1,
+              "value": "0mvlz1otfudq1k9wwqhjyo3r1"
+            },
+            {
+              "count": 1,
+              "value": "0sd2rv8yn4lgw7f6phjzaotps"
+            },
+            {
+              "count": 1,
+              "value": "0tccx7cjwlokm2ipilb01kgqs"
+            },
+            {
+              "count": 1,
+              "value": "12tumut68n34qhor68j5oneh5"
+            }
+          ],
+          "unique": 254,
+          "values_occurring_more_than_once": 3
+        },
+        {
+          "duplicate_rows": 257,
+          "formats": {
+            "TEXT": 259
+          },
+          "header": null,
+          "index": 13,
+          "inferred_type": "string",
+          "letter": "N",
+          "non_null": 259,
+          "null_pct": 89.3,
+          "rows": 2420,
+          "top_values": [
+            {
+              "count": 250,
+              "value": "Done"
+            },
+            {
+              "count": 9,
+              "value": "Tagging"
+            }
+          ],
+          "unique": 2,
+          "values_occurring_more_than_once": 2
+        },
+        {
+          "duplicate_rows": 134,
+          "formats": {
+            "TEXT": 138
+          },
+          "header": null,
+          "index": 14,
+          "inferred_type": "string",
+          "letter": "O",
+          "non_null": 138,
+          "null_pct": 94.3,
+          "rows": 2420,
+          "top_values": [
+            {
+              "count": 120,
+              "value": "QBG ID"
+            },
+            {
+              "count": 9,
+              "value": "Remarks"
+            },
+            {
+              "count": 6,
+              "value": "solution pending"
+            },
+            {
+              "count": 3,
+              "value": "no solution"
+            }
+          ],
+          "unique": 4,
+          "values_occurring_more_than_once": 4
+        },
+        {
+          "duplicate_rows": 250,
+          "formats": {
+            "INTEGER": 265,
+            "TEXT": 18
+          },
+          "header": null,
+          "index": 15,
+          "inferred_type": "MIXED(number+string)",
+          "letter": "P",
+          "non_null": 283,
+          "null_pct": 88.31,
+          "rows": 2420,
+          "top_values": [
+            {
+              "count": 9,
+              "value": "1"
+            },
+            {
+              "count": 9,
+              "value": "10"
+            },
+            {
+              "count": 9,
+              "value": "11"
+            },
+            {
+              "count": 9,
+              "value": "12"
+            },
+            {
+              "count": 9,
+              "value": "13"
+            },
+            {
+              "count": 9,
+              "value": "14"
+            },
+            {
+              "count": 9,
+              "value": "15"
+            },
+            {
+              "count": 9,
+              "value": "16"
+            }
+          ],
+          "unique": 33,
+          "values_occurring_more_than_once": 33
+        },
+        {
+          "duplicate_rows": 260,
+          "formats": {
+            "TEXT": 275
+          },
+          "header": null,
+          "index": 16,
+          "inferred_type": "string",
+          "letter": "Q",
+          "non_null": 275,
+          "null_pct": 88.64,
+          "rows": 2420,
+          "top_values": [
+            {
+              "count": 30,
+              "value": "Amines"
+            },
+            {
+              "count": 30,
+              "value": "Differential Equation"
+            },
+            {
+              "count": 30,
+              "value": "P-block Elements (Group 13 and 14)"
+            },
+            {
+              "count": 30,
+              "value": "Permutation & Combination"
+            },
+            {
+              "count": 30,
+              "value": "Sequence and Series"
+            },
+            {
+              "count": 30,
+              "value": "The p-block elements"
+            },
+            {
+              "count": 30,
+              "value": "Vector Algebra"
+            },
+            {
+              "count": 30,
+              "value": "[Conic Sections:Parabola]"
+            }
+          ],
+          "unique": 15,
+          "values_occurring_more_than_once": 11
+        },
+        {
+          "duplicate_rows": 4,
+          "formats": {
+            "QBG_CUID25": 265,
+            "TEXT": 10
+          },
+          "header": null,
+          "index": 17,
+          "inferred_type": "string",
+          "letter": "R",
+          "non_null": 275,
+          "null_pct": 88.64,
+          "rows": 2420,
+          "top_values": [
+            {
+              "count": 4,
+              "value": "Sunil Kumar"
+            },
+            {
+              "count": 2,
+              "value": "DTP Name : Swapnil Bokan"
+            },
+            {
+              "count": 1,
+              "value": "04n552askbzux5gnrlmvefpw1"
+            },
+            {
+              "count": 1,
+              "value": "0dca21313g76c0tzpc86w9vdz"
+            },
+            {
+              "count": 1,
+              "value": "0enipowy8d3ceq5iaujz1dquz"
+            },
+            {
+              "count": 1,
+              "value": "0iv5y497tlduu9mgbqk168mhw"
+            },
+            {
+              "count": 1,
+              "value": "0lnvcyozscsimjrzp68hcv57n"
+            },
+            {
+              "count": 1,
+              "value": "0y9ru34kjkip29orodrguqjks"
+            }
+          ],
+          "unique": 271,
+          "values_occurring_more_than_once": 2
+        },
+        {
+          "duplicate_rows": 272,
+          "formats": {
+            "TEXT": 274
+          },
+          "header": null,
+          "index": 18,
+          "inferred_type": "string",
+          "letter": "S",
+          "non_null": 274,
+          "null_pct": 88.68,
+          "rows": 2420,
+          "top_values": [
+            {
+              "count": 265,
+              "value": "Done"
+            },
+            {
+              "count": 9,
+              "value": "Tagging"
+            }
+          ],
+          "unique": 2,
+          "values_occurring_more_than_once": 2
+        },
+        {
+          "duplicate_rows": 23,
+          "formats": {
+            "TEXT": 29
+          },
+          "header": null,
+          "index": 19,
+          "inferred_type": "string",
+          "letter": "T",
+          "non_null": 29,
+          "null_pct": 98.8,
+          "rows": 2420,
+          "top_values": [
+            {
+              "count": 9,
+              "value": "Remarks"
+            },
+            {
+              "count": 7,
+              "value": "@s***@pw.live sir please type solution and answer key"
+            },
+            {
+              "count": 6,
+              "value": "@s***@pw.live please type solution and answer key"
+            },
+            {
+              "count": 4,
+              "value": "no solution"
+            },
+            {
+              "count": 2,
+              "value": "@s***@pw.live sir this question is not tagged in jee please correct it"
+            },
+            {
+              "count": 1,
+              "value": "wrong solution"
+            }
+          ],
+          "unique": 6,
+          "values_occurring_more_than_once": 5
+        },
+        {
+          "duplicate_rows": 230,
+          "formats": {
+            "INTEGER": 245,
+            "TEXT": 18
+          },
+          "header": null,
+          "index": 20,
+          "inferred_type": "MIXED(number+string)",
+          "letter": "U",
+          "non_null": 263,
+          "null_pct": 89.13,
+          "rows": 2420,
+          "top_values": [
+            {
+              "count": 9,
+              "value": "1"
+            },
+            {
+              "count": 9,
+              "value": "10"
+            },
+            {
+              "count": 9,
+              "value": "11"
+            },
+            {
+              "count": 9,
+              "value": "12"
+            },
+            {
+              "count": 9,
+              "value": "13"
+            },
+            {
+              "count": 9,
+              "value": "14"
+            },
+            {
+              "count": 9,
+              "value": "15"
+            },
+            {
+              "count": 9,
+              "value": "16"
+            }
+          ],
+          "unique": 33,
+          "values_occurring_more_than_once": 33
+        },
+        {
+          "duplicate_rows": 239,
+          "formats": {
+            "TEXT": 252,
+            "URL": 1
+          },
+          "header": null,
+          "index": 21,
+          "inferred_type": "string",
+          "letter": "V",
+          "non_null": 253,
+          "null_pct": 89.55,
+          "rows": 2420,
+          "top_values": [
+            {
+              "count": 30,
+              "value": "Equilibrium"
+            },
+            {
+              "count": 30,
+              "value": "Limit, Continuity and Differentiability"
+            },
+            {
+              "count": 30,
+              "value": "Straight Lines"
+            },
+            {
+              "count": 30,
+              "value": "[Principles Of Qualitative Analysis: Salt Analysis]"
+            },
+            {
+              "count": 25,
+              "value": "Environmental Chemistry"
+            },
+            {
+              "count": 25,
+              "value": "Linear Programming (Test 16)"
+            },
+            {
+              "count": 25,
+              "value": "Probability"
+            },
+            {
+              "count": 25,
+              "value": "[Conic Sections:Ellipse]"
+            }
+          ],
+          "unique": 14,
+          "values_occurring_more_than_once": 11
+        },
+        {
+          "duplicate_rows": 5,
+          "formats": {
+            "QBG_CUID25": 245,
+            "TEXT": 9
+          },
+          "header": null,
+          "index": 22,
+          "inferred_type": "string",
+          "letter": "W",
+          "non_null": 254,
+          "null_pct": 89.5,
+          "rows": 2420,
+          "top_values": [
+            {
+              "count": 4,
+              "value": "FAISAL KHAN"
+            },
+            {
+              "count": 2,
+              "value": "DTP Name : Swapnil Bokan"
+            },
+            {
+              "count": 2,
+              "value": "Sunil Kumar"
+            },
+            {
+              "count": 1,
+              "value": "0ej0x3tiqrgctu19ub74p55wr"
+            },
+            {
+              "count": 1,
+              "value": "0u9nnkmoma5ubnezzsj4ewmco"
+            },
+            {
+              "count": 1,
+              "value": "0zko8e9055sj4v346zpqiuo9i"
+            },
+            {
+              "count": 1,
+              "value": "1fmojyq3n09or1lxrypma91oj"
+            },
+            {
+              "count": 1,
+              "value": "1gs9xecigprm29n4q1e48lk83"
+            }
+          ],
+          "unique": 249,
+          "values_occurring_more_than_once": 3
+        },
+        {
+          "duplicate_rows": 252,
+          "formats": {
+            "TEXT": 254
+          },
+          "header": null,
+          "index": 23,
+          "inferred_type": "string",
+          "letter": "X",
+          "non_null": 254,
+          "null_pct": 89.5,
+          "rows": 2420,
+          "top_values": [
+            {
+              "count": 245,
+              "value": "Done"
+            },
+            {
+              "count": 9,
+              "value": "Tagging"
+            }
+          ],
+          "unique": 2,
+          "values_occurring_more_than_once": 2
+        },
+        {
+          "duplicate_rows": 8,
+          "formats": {
+            "TEXT": 9
+          },
+          "header": null,
+          "index": 24,
+          "inferred_type": "string",
+          "letter": "Y",
+          "non_null": 9,
+          "null_pct": 99.63,
+          "rows": 2420,
+          "top_values": [
+            {
+              "count": 9,
+              "value": "Remarks"
+            }
+          ],
+          "unique": 1,
+          "values_occurring_more_than_once": 1
+        },
+        {
+          "duplicate_rows": 235,
+          "formats": {
+            "INTEGER": 250,
+            "TEXT": 18
+          },
+          "header": null,
+          "index": 25,
+          "inferred_type": "MIXED(number+string)",
+          "letter": "Z",
+          "non_null": 268,
+          "null_pct": 88.93,
+          "rows": 2420,
+          "top_values": [
+            {
+              "count": 9,
+              "value": "1"
+            },
+            {
+              "count": 9,
+              "value": "10"
+            },
+            {
+              "count": 9,
+              "value": "11"
+            },
+            {
+              "count": 9,
+              "value": "12"
+            },
+            {
+              "count": 9,
+              "value": "13"
+            },
+            {
+              "count": 9,
+              "value": "14"
+            },
+            {
+              "count": 9,
+              "value": "15"
+            },
+            {
+              "count": 9,
+              "value": "16"
+            }
+          ],
+          "unique": 33,
+          "values_occurring_more_than_once": 33
+        },
+        {
+          "duplicate_rows": 217,
+          "formats": {
+            "TEXT": 229,
+            "URL": 1
+          },
+          "header": null,
+          "index": 26,
+          "inferred_type": "string",
+          "letter": "AA",
+          "non_null": 230,
+          "null_pct": 90.5,
+          "rows": 2420,
+          "top_values": [
+            {
+              "count": 31,
+              "value": "[Some Basic Principles and Techniques]"
+            },
+            {
+              "count": 30,
+              "value": "Binomial theorem"
+            },
+            {
+              "count": 30,
+              "value": "Coordination Compounds"
+            },
+            {
+              "count": 30,
+              "value": "Relation & Functions"
+            },
+            {
+              "count": 25,
+              "value": "Introduction to Three Dimensional Geometry"
+            },
+            {
+              "count": 25,
+              "value": "Surface Chemistry"
+            },
+            {
+              "count": 25,
+              "value": "[Conic Sections:Hyperbola]"
+            },
+            {
+              "count": 25,
+              "value": "[The Solid State]"
+            }
+          ],
+          "unique": 13,
+          "values_occurring_more_than_once": 9
+        },
+        {
+          "duplicate_rows": 34,
+          "formats": {
+            "QBG_CUID25": 220,
+            "TEXT": 40
+          },
+          "header": null,
+          "index": 27,
+          "inferred_type": "string",
+          "letter": "AB",
+          "non_null": 260,
+          "null_pct": 89.26,
+          "rows": 2420,
+          "top_values": [
+            {
+              "count": 30,
+              "value": "QBG ID"
+            },
+            {
+              "count": 4,
+              "value": "DTP Name : Swapnil Bokan"
+            },
+            {
+              "count": 3,
+              "value": "FAISAL KHAN"
+            },
+            {
+              "count": 1,
+              "value": "00uaeuy4rcb3l4sje9np4nvhw"
+            },
+            {
+              "count": 1,
+              "value": "08k6dduxesky9t8bgm2rjujo3"
+            },
+            {
+              "count": 1,
+              "value": "095a213w9a2gca1ly4kbka7vw"
+            },
+            {
+              "count": 1,
+              "value": "0cvw81ssaxlu7d6i9jxkifv52"
+            },
+            {
+              "count": 1,
+              "value": "0hfatmy3vfm2als14l8qinryl"
+            }
+          ],
+          "unique": 226,
+          "values_occurring_more_than_once": 3
+        },
+        {
+          "duplicate_rows": 227,
+          "formats": {
+            "TEXT": 229
+          },
+          "header": null,
+          "index": 28,
+          "inferred_type": "string",
+          "letter": "AC",
+          "non_null": 229,
+          "null_pct": 90.54,
+          "rows": 2420,
+          "top_values": [
+            {
+              "count": 220,
+              "value": "Done"
+            },
+            {
+              "count": 9,
+              "value": "Tagging"
+            }
+          ],
+          "unique": 2,
+          "values_occurring_more_than_once": 2
+        },
+        {
+          "duplicate_rows": 8,
+          "formats": {
+            "TEXT": 9
+          },
+          "header": null,
+          "index": 29,
+          "inferred_type": "string",
+          "letter": "AD",
+          "non_null": 9,
+          "null_pct": 99.63,
+          "rows": 2420,
+          "top_values": [
+            {
+              "count": 9,
+              "value": "Remarks"
+            }
+          ],
+          "unique": 1,
+          "values_occurring_more_than_once": 1
+        }
+      ],
+      "data_rows": 2420,
+      "header_row_1based": 1,
+      "name": "Onepass Test Series",
+      "repeated_header_names": [],
+      "tabular": true
+    },
+    {
+      "column_count": 11,
+      "columns": [
+        {
+          "duplicate_rows": 2,
+          "formats": {
+            "TEXT": 3
+          },
+          "header": "Batch Name",
+          "index": 1,
+          "inferred_type": "string",
+          "letter": "B",
+          "non_null": 3,
+          "null_pct": 82.35,
+          "rows": 17,
+          "top_values": [
+            {
+              "count": 3,
+              "value": "Ranker Test Series Hindi"
+            }
+          ],
+          "unique": 1,
+          "values_occurring_more_than_once": 1
+        },
+        {
+          "duplicate_rows": 0,
+          "formats": {
+            "TEXT": 3
+          },
+          "header": "Subject",
+          "index": 2,
+          "inferred_type": "string",
+          "letter": "C",
+          "non_null": 3,
+          "null_pct": 82.35,
+          "rows": 17,
+          "top_values": [
+            {
+              "count": 1,
+              "value": "Chemistry"
+            },
+            {
+              "count": 1,
+              "value": "Maths"
+            },
+            {
+              "count": 1,
+              "value": "Physics"
+            }
+          ],
+          "unique": 3,
+          "values_occurring_more_than_once": 0
+        },
+        {
+          "duplicate_rows": 0,
+          "formats": {
+            "FILE_NAME": 3
+          },
+          "header": "Source",
+          "index": 4,
+          "inferred_type": "string",
+          "letter": "E",
+          "non_null": 3,
+          "null_pct": 82.35,
+          "rows": 17,
+          "top_values": [
+            {
+              "count": 1,
+              "value": "JEE_RTS_Chemistry.pdf"
+            },
+            {
+              "count": 1,
+              "value": "JEE_RTS_Maths.pdf"
+            },
+            {
+              "count": 1,
+              "value": "JEE_RTS_Physics.pdf"
+            }
+          ],
+          "unique": 3,
+          "values_occurring_more_than_once": 0
+        },
+        {
+          "duplicate_rows": 2,
+          "formats": {
+            "INTEGER": 3
+          },
+          "header": "Count",
+          "index": 7,
+          "inferred_type": "number",
+          "letter": "H",
+          "non_null": 3,
+          "null_pct": 82.35,
+          "rows": 17,
+          "top_values": [
+            {
+              "count": 3,
+              "value": "564"
+            }
+          ],
+          "unique": 1,
+          "values_occurring_more_than_once": 1
+        },
+        {
+          "duplicate_rows": 0,
+          "formats": {
+            "EMAIL": 3
+          },
+          "header": "Alloted to",
+          "index": 8,
+          "inferred_type": "string",
+          "letter": "I",
+          "non_null": 3,
+          "null_pct": 82.35,
+          "rows": 17,
+          "top_values": [
+            {
+              "count": 1,
+              "value": "l***@pw.live"
+            },
+            {
+              "count": 1,
+              "value": "p***@pw.live"
+            },
+            {
+              "count": 1,
+              "value": "s***@pw.live"
+            }
+          ],
+          "unique": 3,
+          "values_occurring_more_than_once": 0
+        },
+        {
+          "duplicate_rows": 1,
+          "formats": {
+            "TEXT": 3
+          },
+          "header": "Translation Status",
+          "index": 10,
+          "inferred_type": "string",
+          "letter": "K",
+          "non_null": 3,
+          "null_pct": 82.35,
+          "rows": 17,
+          "top_values": [
+            {
+              "count": 2,
+              "value": "INPROCESS"
+            },
+            {
+              "count": 1,
+              "value": "DONE"
+            }
+          ],
+          "unique": 2,
+          "values_occurring_more_than_once": 1
+        },
+        {
+          "duplicate_rows": 0,
+          "formats": {
+            "TEXT": 17
+          },
+          "header": "Test 01 (Ist Half) (Done)",
+          "index": 18,
+          "inferred_type": "string",
+          "letter": "S",
+          "non_null": 17,
+          "null_pct": 0,
+          "rows": 17,
+          "top_values": [
+            {
+              "count": 1,
+              "value": "Test - 1"
+            },
+            {
+              "count": 1,
+              "value": "Test - 2"
+            },
+            {
+              "count": 1,
+              "value": "Test - 3"
+            },
+            {
+              "count": 1,
+              "value": "Test - 4"
+            },
+            {
+              "count": 1,
+              "value": "Test 02 (IInd Half) (Done)"
+            },
+            {
+              "count": 1,
+              "value": "Test 03 (Ist Half) (Done)"
+            },
+            {
+              "count": 1,
+              "value": "Test 04 (IInd Half) (Done)"
+            },
+            {
+              "count": 1,
+              "value": "Test 05 (Done)"
+            }
+          ],
+          "unique": 17,
+          "values_occurring_more_than_once": 0
+        },
+        {
+          "duplicate_rows": 0,
+          "formats": {
+            "FILE_NAME": 17
+          },
+          "header": "OTS PART Test-01 (Ist Half)_JEE Mains (2023) Questions.docx",
+          "index": 20,
+          "inferred_type": "string",
+          "letter": "U",
+          "non_null": 17,
+          "null_pct": 0,
+          "rows": 17,
+          "top_values": [
+            {
+              "count": 1,
+              "value": "OTS PART Test-02 (IInd Half)_JEE Mains (2023) Questions.docx"
+            },
+            {
+              "count": 1,
+              "value": "OTS PART Test-03 (Ist Half)_JEE Mains (2023) Questions.docx"
+            },
+            {
+              "count": 1,
+              "value": "OTS PART Test-04 (IInd Half)_JEE Mains (2023) Questions_translation.docx"
+            },
+            {
+              "count": 1,
+              "value": "OTS Test-05_JEE Mains (2023) Questions_Prashant Keserwani_translation.docx"
+            },
+            {
+              "count": 1,
+              "value": "OTS Test-06_JEE Mains (2023) Questions_Prashant Keserwani_translation.docx"
+            },
+            {
+              "count": 1,
+              "value": "OTS Test-07_JEE Mains (2023) Questions_Prashant Keserwani_translation.docx"
+            },
+            {
+              "count": 1,
+              "value": "OTS Test-08_JEE Mains (2023) Questions_Ravish Kr..docx"
+            },
+            {
+              "count": 1,
+              "value": "OTS Test-09_JEE Mains (2023) Questions_Ravish Kr._translation.docx"
+            }
+          ],
+          "unique": 17,
+          "values_occurring_more_than_once": 0
+        },
+        {
+          "duplicate_rows": 0,
+          "formats": {
+            "FILE_NAME": 17
+          },
+          "header": "OTS PART Test-01 (Ist Half)_JEE Mains (2023) Solutions.docx",
+          "index": 21,
+          "inferred_type": "string",
+          "letter": "V",
+          "non_null": 17,
+          "null_pct": 0,
+          "rows": 17,
+          "top_values": [
+            {
+              "count": 1,
+              "value": "OTS PART Test-02 (IInd Half)_JEE Mains (2023) Solution_translation.docx"
+            },
+            {
+              "count": 1,
+              "value": "OTS PART Test-03 (Ist Half)_JEE Mains (2023) Solution_translation.docx"
+            },
+            {
+              "count": 1,
+              "value": "OTS PART Test-04 (IInd Half)_JEE Mains (2023) Solution_translation.docx"
+            },
+            {
+              "count": 1,
+              "value": "OTS Test-05_JEE Mains (2023) Solutions_Prashant Keserwani.docx"
+            },
+            {
+              "count": 1,
+              "value": "OTS Test-06_JEE Mains (2023) Solutions_Prashant Keserwani_translation.docx"
+            },
+            {
+              "count": 1,
+              "value": "OTS Test-07_JEE Mains (2023) Solutions_Prashant Keserwani_translation.docx"
+            },
+            {
+              "count": 1,
+              "value": "OTS Test-08_JEE Mains (2023) Solutions_Ravish Kr._translation.docx"
+            },
+            {
+              "count": 1,
+              "value": "OTS Test-09_JEE Mains (2023) Solutions_Ravish Kr._translation.docx"
+            }
+          ],
+          "unique": 17,
+          "values_occurring_more_than_once": 0
+        },
+        {
+          "duplicate_rows": 0,
+          "formats": {
+            "FILE_NAME": 4
+          },
+          "header": null,
+          "index": 22,
+          "inferred_type": "string",
+          "letter": "W",
+          "non_null": 4,
+          "null_pct": 76.47,
+          "rows": 17,
+          "top_values": [
+            {
+              "count": 1,
+              "value": "OTS _JEE_Advanced Test-15_Paper-2_Questions_translation.docx"
+            },
+            {
+              "count": 1,
+              "value": "OTS _JEE_Advanced Test-16_Paper-02_Questions_translation.docx"
+            },
+            {
+              "count": 1,
+              "value": "OTS _JEE_Advanced Test-17_Paper-02_Questions_translation.docx"
+            },
+            {
+              "count": 1,
+              "value": "OTS _JEE_Advanced Test-18_Paper-2_Questions_translation.docx"
+            }
+          ],
+          "unique": 4,
+          "values_occurring_more_than_once": 0
+        },
+        {
+          "duplicate_rows": 0,
+          "formats": {
+            "FILE_NAME": 4
+          },
+          "header": null,
+          "index": 23,
+          "inferred_type": "string",
+          "letter": "X",
+          "non_null": 4,
+          "null_pct": 76.47,
+          "rows": 17,
+          "top_values": [
+            {
+              "count": 1,
+              "value": "OTS _JEE_Advanced Test-15_Paper-2_Solution_translation.docx"
+            },
+            {
+              "count": 1,
+              "value": "OTS _JEE_Advanced Test-16_Paper-02_Solution_translation.docx"
+            },
+            {
+              "count": 1,
+              "value": "OTS _JEE_Advanced Test-17_Paper-02_Solution_translation.docx"
+            },
+            {
+              "count": 1,
+              "value": "OTS _JEE_Advanced Test-18_Paper-2_Solution_translation.docx"
+            }
+          ],
+          "unique": 4,
+          "values_occurring_more_than_once": 0
+        }
+      ],
+      "data_rows": 17,
+      "header_row_1based": 1,
+      "name": "RTS Hindi",
+      "repeated_header_names": [],
+      "tabular": true
+    },
+    {
+      "column_count": 22,
+      "columns": [
+        {
+          "duplicate_rows": 8440,
+          "formats": {
+            "TEXT": 8442
+          },
+          "header": "Year",
+          "index": 0,
+          "inferred_type": "string",
+          "letter": "A",
+          "non_null": 8442,
+          "null_pct": 0,
+          "rows": 8442,
+          "top_values": [
+            {
+              "count": 4782,
+              "value": "2023-24"
+            },
+            {
+              "count": 3660,
+              "value": "2024-25"
+            }
+          ],
+          "unique": 2,
+          "values_occurring_more_than_once": 2
+        },
+        {
+          "duplicate_rows": 8371,
+          "formats": {
+            "INTEGER": 1314,
+            "TEXT": 7128
+          },
+          "header": "Date",
+          "index": 1,
+          "inferred_type": "MIXED(number+string)",
+          "letter": "B",
+          "non_null": 8442,
+          "null_pct": 0,
+          "rows": 8442,
+          "top_values": [
+            {
+              "count": 306,
+              "value": "17-12-2023"
+            },
+            {
+              "count": 270,
+              "value": "45598"
+            },
+            {
+              "count": 216,
+              "value": "19-05-2024"
+            },
+            {
+              "count": 216,
+              "value": "20-03-2024"
+            },
+            {
+              "count": 216,
+              "value": "45417"
+            },
+            {
+              "count": 216,
+              "value": "45631"
+            },
+            {
+              "count": 204,
+              "value": "15-05-2024"
+            },
+            {
+              "count": 204,
+              "value": "21-04-2024"
+            }
+          ],
+          "unique": 71,
+          "values_occurring_more_than_once": 71
+        },
+        {
+          "duplicate_rows": 8441,
+          "formats": {
+            "TEXT": 8442
+          },
+          "header": "Test Name",
+          "index": 2,
+          "inferred_type": "string",
+          "letter": "C",
+          "non_null": 8442,
+          "null_pct": 0,
+          "rows": 8442,
+          "top_values": [
+            {
+              "count": 8442,
+              "value": "AITS"
+            }
+          ],
+          "unique": 1,
+          "values_occurring_more_than_once": 1
+        },
+        {
+          "duplicate_rows": 8440,
+          "formats": {
+            "TEXT": 8442
+          },
+          "header": "Pattern",
+          "index": 3,
+          "inferred_type": "string",
+          "letter": "D",
+          "non_null": 8442,
+          "null_pct": 0,
+          "rows": 8442,
+          "top_values": [
+            {
+              "count": 4980,
+              "value": "Main"
+            },
+            {
+              "count": 3462,
+              "value": "Advanced"
+            }
+          ],
+          "unique": 2,
+          "values_occurring_more_than_once": 2
+        },
+        {
+          "duplicate_rows": 8438,
+          "formats": {
+            "TEXT": 8442
+          },
+          "header": "Batch",
+          "index": 4,
+          "inferred_type": "string",
+          "letter": "E",
+          "non_null": 8442,
+          "null_pct": 0,
+          "rows": 8442,
+          "top_values": [
+            {
+              "count": 3687,
+              "value": "Lakshya"
+            },
+            {
+              "count": 1926,
+              "value": "Prayas"
+            },
+            {
+              "count": 1419,
+              "value": "Arjuna"
+            },
+            {
+              "count": 1410,
+              "value": "Dropper"
+            }
+          ],
+          "unique": 4,
+          "values_occurring_more_than_once": 4
+        },
+        {
+          "duplicate_rows": 3460,
+          "formats": {
+            "INTEGER": 3462
+          },
+          "header": "Paper Number",
+          "index": 5,
+          "inferred_type": "number",
+          "letter": "F",
+          "non_null": 3462,
+          "null_pct": 58.99,
+          "rows": 8442,
+          "top_values": [
+            {
+              "count": 1731,
+              "value": "1"
+            },
+            {
+              "count": 1731,
+              "value": "2"
+            }
+          ],
+          "unique": 2,
+          "values_occurring_more_than_once": 2
+        },
+        {
+          "duplicate_rows": 8435,
+          "formats": {
+            "TEXT": 8442
+          },
+          "header": "Subject",
+          "index": 6,
+          "inferred_type": "string",
+          "letter": "G",
+          "non_null": 8442,
+          "null_pct": 0,
+          "rows": 8442,
+          "top_values": [
+            {
+              "count": 2812,
+              "value": "Physics"
+            },
+            {
+              "count": 2787,
+              "value": "Chemistry"
+            },
+            {
+              "count": 2198,
+              "value": "Maths"
+            },
+            {
+              "count": 276,
+              "value": "Mathematics"
+            },
+            {
+              "count": 276,
+              "value": "Mathethatics"
+            },
+            {
+              "count": 59,
+              "value": "Mathemathics"
+            },
+            {
+              "count": 34,
+              "value": "chemistry"
+            }
+          ],
+          "unique": 7,
+          "values_occurring_more_than_once": 7
+        },
+        {
+          "duplicate_rows": 8262,
+          "formats": {
+            "INTEGER": 2226,
+            "QUESTION_NUMBER": 6216
+          },
+          "header": "Question Number",
+          "index": 8,
+          "inferred_type": "MIXED(number+string)",
+          "letter": "I",
+          "non_null": 8442,
+          "null_pct": 0,
+          "rows": 8442,
+          "top_values": [
+            {
+              "count": 96,
+              "value": "Q001"
+            },
+            {
+              "count": 96,
+              "value": "Q002"
+            },
+            {
+              "count": 96,
+              "value": "Q003"
+            },
+            {
+              "count": 96,
+              "value": "Q004"
+            },
+            {
+              "count": 96,
+              "value": "Q005"
+            },
+            {
+              "count": 96,
+              "value": "Q006"
+            },
+            {
+              "count": 96,
+              "value": "Q007"
+            },
+            {
+              "count": 96,
+              "value": "Q008"
+            }
+          ],
+          "unique": 180,
+          "values_occurring_more_than_once": 180
+        },
+        {
+          "duplicate_rows": 750,
+          "formats": {
+            "QBG_CUID25": 8399,
+            "TEXT": 43
+          },
+          "header": "QBG IDs",
+          "index": 9,
+          "inferred_type": "string",
+          "letter": "J",
+          "non_null": 8442,
+          "null_pct": 0,
+          "rows": 8442,
+          "top_values": [
+            {
+              "count": 38,
+              "value": "Paper-02"
+            },
+            {
+              "count": 4,
+              "value": "6jfzvaa5qfd9pk99wd9ystqce"
+            },
+            {
+              "count": 4,
+              "value": "akcpb2eq2ghze1heft1a6h7of"
+            },
+            {
+              "count": 4,
+              "value": "h12wmyubr79bpqddkqvud7kx0"
+            },
+            {
+              "count": 4,
+              "value": "hyfb2sisj0gw2vd0kpxsuyeox"
+            },
+            {
+              "count": 4,
+              "value": "s7de2ylyxj60fguvnix7z725l"
+            },
+            {
+              "count": 4,
+              "value": "t2mo35g5squxt43gcevrqrrqd"
+            },
+            {
+              "count": 3,
+              "value": "0gp6n39nie0an71jrk5oq5ma6"
+            }
+          ],
+          "unique": 7692,
+          "values_occurring_more_than_once": 683
+        },
+        {
+          "duplicate_rows": 2,
+          "formats": {
+            "QBG_CUID25": 4
+          },
+          "header": "Comp",
+          "index": 10,
+          "inferred_type": "string",
+          "letter": "K",
+          "non_null": 4,
+          "null_pct": 99.95,
+          "rows": 8442,
+          "top_values": [
+            {
+              "count": 2,
+              "value": "n2bjvdfkuzoywvniayu7f0vnb"
+            },
+            {
+              "count": 2,
+              "value": "x7h5mc9d6p8uswmt2zlvlaln5"
+            }
+          ],
+          "unique": 2,
+          "values_occurring_more_than_once": 2
+        },
+        {
+          "duplicate_rows": 101,
+          "formats": {
+            "DRIVE_URL": 8238,
+            "TEXT": 102
+          },
+          "header": "VS",
+          "index": 11,
+          "inferred_type": "string",
+          "letter": "L",
+          "non_null": 8340,
+          "null_pct": 1.21,
+          "rows": 8442,
+          "top_values": [
+            {
+              "count": 102,
+              "value": "NOT Available in Drive"
+            },
+            {
+              "count": 1,
+              "value": "https://drive.google.com/open?id=1---d8FP8F6zYVyTkFUd49gA-c29JSgJZ&usp=drive_copy"
+            },
+            {
+              "count": 1,
+              "value": "https://drive.google.com/open?id=1--s8zdji4luvaA62vGs0tFT6Ncyf28dH&usp=drive_copy"
+            },
+            {
+              "count": 1,
+              "value": "https://drive.google.com/open?id=1-0nPnU1hSD1levAKLejvLu_H9FS5qWbF&usp=drive_copy"
+            },
+            {
+              "count": 1,
+              "value": "https://drive.google.com/open?id=1-1UU8-NsnpgCRS20ei-4fufm0kJC49RP&usp=drive_copy"
+            },
+            {
+              "count": 1,
+              "value": "https://drive.google.com/open?id=1-1YQo9I9XctEIXEAhCYEubRI-6nJat7G&usp=drive_copy"
+            },
+            {
+              "count": 1,
+              "value": "https://drive.google.com/open?id=1-1kuRY81oN-9tA8ikAwzZrU4QrxkVhH0&usp=drive_copy"
+            },
+            {
+              "count": 1,
+              "value": "https://drive.google.com/open?id=1-1wt82yobcDsTLGjz-Ubbgl2oX1syFZl&usp=drive_copy"
+            }
+          ],
+          "unique": 8239,
+          "values_occurring_more_than_once": 1
+        },
+        {
+          "duplicate_rows": 4947,
+          "formats": {
+            "INTEGER": 4957
+          },
+          "header": null,
+          "index": 12,
+          "inferred_type": "number",
+          "letter": "M",
+          "non_null": 4957,
+          "null_pct": 41.28,
+          "rows": 8442,
+          "top_values": [
+            {
+              "count": 570,
+              "value": "8"
+            },
+            {
+              "count": 564,
+              "value": "1"
+            },
+            {
+              "count": 558,
+              "value": "5"
+            },
+            {
+              "count": 540,
+              "value": "4"
+            },
+            {
+              "count": 514,
+              "value": "2"
+            },
+            {
+              "count": 480,
+              "value": "3"
+            },
+            {
+              "count": 468,
+              "value": "7"
+            },
+            {
+              "count": 426,
+              "value": "9"
+            }
+          ],
+          "unique": 10,
+          "values_occurring_more_than_once": 10
+        },
+        {
+          "duplicate_rows": 8235,
+          "formats": {
+            "QBG_CUID25": 8238
+          },
+          "header": null,
+          "index": 13,
+          "inferred_type": "string",
+          "letter": "N",
+          "non_null": 8238,
+          "null_pct": 2.42,
+          "rows": 8442,
+          "top_values": [
+            {
+              "count": 2746,
+              "value": "19c8p297y48dy01537cxzinys"
+            },
+            {
+              "count": 2746,
+              "value": "7rgg2rb3rbirmrkpguofa7sor"
+            },
+            {
+              "count": 2746,
+              "value": "iydv16vvyph4i0hajzqbqxk2t"
+            }
+          ],
+          "unique": 3,
+          "values_occurring_more_than_once": 3
+        },
+        {
+          "duplicate_rows": 8233,
+          "formats": {
+            "TEXT": 8238
+          },
+          "header": null,
+          "index": 14,
+          "inferred_type": "string",
+          "letter": "O",
+          "non_null": 8238,
+          "null_pct": 2.42,
+          "rows": 8442,
+          "top_values": [
+            {
+              "count": 2746,
+              "value": "Chemistry"
+            },
+            {
+              "count": 2686,
+              "value": "Maths"
+            },
+            {
+              "count": 2596,
+              "value": "Physics"
+            },
+            {
+              "count": 150,
+              "value": "physics"
+            },
+            {
+              "count": 60,
+              "value": "maths"
+            }
+          ],
+          "unique": 5,
+          "values_occurring_more_than_once": 5
+        },
+        {
+          "duplicate_rows": 8142,
+          "formats": {
+            "QBG_CUID25": 8238
+          },
+          "header": null,
+          "index": 15,
+          "inferred_type": "string",
+          "letter": "P",
+          "non_null": 8238,
+          "null_pct": 2.42,
+          "rows": 8442,
+          "top_values": [
+            {
+              "count": 243,
+              "value": "pr17srqdcp9mrlzggdih6tpcu"
+            },
+            {
+              "count": 236,
+              "value": "7kx7aknod2psthzyz0hxpqllr"
+            },
+            {
+              "count": 201,
+              "value": "tz4907islds6g7agzogsbkw95"
+            },
+            {
+              "count": 173,
+              "value": "n56993pcfvp85gtnvq3a1t3rw"
+            },
+            {
+              "count": 170,
+              "value": "nezbgy0nbv5cx5jd8fxlccu4f"
+            },
+            {
+              "count": 169,
+              "value": "73ulm8ow5ghud5xw8alehsdyh"
+            },
+            {
+              "count": 163,
+              "value": "07b1xigu2yazkn0ohu0v44d3y"
+            },
+            {
+              "count": 162,
+              "value": "ca33u7zvbbnt64edqggwp2a1x"
+            }
+          ],
+          "unique": 96,
+          "values_occurring_more_than_once": 95
+        },
+        {
+          "duplicate_rows": 8052,
+          "formats": {
+            "TEXT": 8148
+          },
+          "header": null,
+          "index": 16,
+          "inferred_type": "string",
+          "letter": "Q",
+          "non_null": 8148,
+          "null_pct": 3.48,
+          "rows": 8442,
+          "top_values": [
+            {
+              "count": 243,
+              "value": "Aldehydes, Ketones and Carboxylic Acids"
+            },
+            {
+              "count": 230,
+              "value": "Thermodynamics"
+            },
+            {
+              "count": 196,
+              "value": "Organic Chemistry: Some Basic Principles and Techniques"
+            },
+            {
+              "count": 173,
+              "value": "Rotational Motion"
+            },
+            {
+              "count": 163,
+              "value": "Equilibrium"
+            },
+            {
+              "count": 163,
+              "value": "Quadratic Equations"
+            },
+            {
+              "count": 162,
+              "value": "Relations and Functions"
+            },
+            {
+              "count": 161,
+              "value": "Laws of Motion"
+            }
+          ],
+          "unique": 96,
+          "values_occurring_more_than_once": 95
+        },
+        {
+          "duplicate_rows": 7401,
+          "formats": {
+            "QBG_CUID25": 8238
+          },
+          "header": null,
+          "index": 17,
+          "inferred_type": "string",
+          "letter": "R",
+          "non_null": 8238,
+          "null_pct": 2.42,
+          "rows": 8442,
+          "top_values": [
+            {
+              "count": 126,
+              "value": "bpgjvq5jkfgy0qjan9x0v8r5u"
+            },
+            {
+              "count": 91,
+              "value": "7bxv5n4kh3gityr4edjl3py4c"
+            },
+            {
+              "count": 87,
+              "value": "39324dn1mmkigf6ibx6io3k7x"
+            },
+            {
+              "count": 86,
+              "value": "forc6a9qtvds21iopunpemigg"
+            },
+            {
+              "count": 82,
+              "value": "zn18yw66stz5mm3qyu857dbhe"
+            },
+            {
+              "count": 80,
+              "value": "oprz3gpyyysqcaflomith22cf"
+            },
+            {
+              "count": 72,
+              "value": "8j5vqo1i4cpvns61glq5k2u8n"
+            },
+            {
+              "count": 71,
+              "value": "trdha9n2f94334y21osqximpb"
+            }
+          ],
+          "unique": 837,
+          "values_occurring_more_than_once": 726
+        },
+        {
+          "duplicate_rows": 7305,
+          "formats": {
+            "TEXT": 8148
+          },
+          "header": null,
+          "index": 18,
+          "inferred_type": "string",
+          "letter": "S",
+          "non_null": 8148,
+          "null_pct": 3.48,
+          "rows": 8442,
+          "top_values": [
+            {
+              "count": 126,
+              "value": "Chemical Reactions of Aldehydes and Ketones"
+            },
+            {
+              "count": 91,
+              "value": "Methods of Solution of Ordinary Differential Equation of First Order and First Degree"
+            },
+            {
+              "count": 87,
+              "value": "Functions"
+            },
+            {
+              "count": 86,
+              "value": "Definite Integration"
+            },
+            {
+              "count": 82,
+              "value": "Bonding in Coordination Compounds"
+            },
+            {
+              "count": 80,
+              "value": "Thermodynamic Processes"
+            },
+            {
+              "count": 71,
+              "value": "Colligative Properties"
+            },
+            {
+              "count": 71,
+              "value": "Trigonometric Functions"
+            }
+          ],
+          "unique": 843,
+          "values_occurring_more_than_once": 732
+        },
+        {
+          "duplicate_rows": 6709,
+          "formats": {
+            "QBG_CUID25": 8202
+          },
+          "header": null,
+          "index": 19,
+          "inferred_type": "string",
+          "letter": "T",
+          "non_null": 8202,
+          "null_pct": 2.84,
+          "rows": 8442,
+          "top_values": [
+            {
+              "count": 183,
+              "value": "15imm75mihwe0n44g05omyg1r"
+            },
+            {
+              "count": 62,
+              "value": "cj09mig961t4dwsdyb1iadhvu"
+            },
+            {
+              "count": 58,
+              "value": "b60shklyj7kzcqb9ytagaoe5t"
+            },
+            {
+              "count": 55,
+              "value": "otaf6h26lvcgfzcebd034zgoj"
+            },
+            {
+              "count": 48,
+              "value": "som9xnj6rzl9maohal1itmyup"
+            },
+            {
+              "count": 42,
+              "value": "rc2c9dackq7hbqf5g9bvl9k2i"
+            },
+            {
+              "count": 41,
+              "value": "1kc04sk0loz3k9zg0aexuoa5z"
+            },
+            {
+              "count": 41,
+              "value": "ry0d1hi6qfez0vnaa17mrl57h"
+            }
+          ],
+          "unique": 1493,
+          "values_occurring_more_than_once": 1195
+        },
+        {
+          "duplicate_rows": 6643,
+          "formats": {
+            "TEXT": 8148
+          },
+          "header": null,
+          "index": 20,
+          "inferred_type": "string",
+          "letter": "U",
+          "non_null": 8148,
+          "null_pct": 3.48,
+          "rows": 8442,
+          "top_values": [
+            {
+              "count": 183,
+              "value": "Chemical Properties"
+            },
+            {
+              "count": 62,
+              "value": "Solving Definite Integral Via Indefinite Integral"
+            },
+            {
+              "count": 58,
+              "value": "Miscellaneous"
+            },
+            {
+              "count": 55,
+              "value": "Area Bounded Between Two Curves"
+            },
+            {
+              "count": 42,
+              "value": "Miscellaneous/Mixed"
+            },
+            {
+              "count": 41,
+              "value": "Differentiability at a Point"
+            },
+            {
+              "count": 41,
+              "value": "Stereoisomerism"
+            },
+            {
+              "count": 40,
+              "value": "Motion of Charged Particle in a Magnetic Field"
+            }
+          ],
+          "unique": 1505,
+          "values_occurring_more_than_once": 1203
+        },
+        {
+          "duplicate_rows": 8235,
+          "formats": {
+            "INTEGER": 8047,
+            "INTEGER_STRING": 191
+          },
+          "header": null,
+          "index": 21,
+          "inferred_type": "MIXED(number+string)",
+          "letter": "V",
+          "non_null": 8238,
+          "null_pct": 2.42,
+          "rows": 8442,
+          "top_values": [
+            {
+              "count": 5428,
+              "value": "2"
+            },
+            {
+              "count": 1589,
+              "value": "3"
+            },
+            {
+              "count": 1221,
+              "value": "1"
+            }
+          ],
+          "unique": 3,
+          "values_occurring_more_than_once": 3
+        },
+        {
+          "duplicate_rows": 8115,
+          "formats": {
+            "TEXT": 8118
+          },
+          "header": null,
+          "index": 22,
+          "inferred_type": "string",
+          "letter": "W",
+          "non_null": 8118,
+          "null_pct": 3.84,
+          "rows": 8442,
+          "top_values": [
+            {
+              "count": 5354,
+              "value": "Medium"
+            },
+            {
+              "count": 1561,
+              "value": "Hard"
+            },
+            {
+              "count": 1203,
+              "value": "Easy"
+            }
+          ],
+          "unique": 3,
+          "values_occurring_more_than_once": 3
+        }
+      ],
+      "data_rows": 8442,
+      "header_row_1based": 1,
+      "name": "Copy of AITS",
+      "repeated_header_names": [],
+      "tabular": true
+    }
+  ]
+}

@@ -14,6 +14,7 @@
  * user's saved "qbg" key, or the x-dev-qbg header for a dev-auth session), so the
  * verdict is about the token the run would actually use.
  */
+import { hasDevAuthCookie } from "@/lib/auth/devAuth";
 import { NextRequest, NextResponse } from "next/server";
 import { checkPermission } from "@/lib/auth/serverAuth";
 import { createClient } from "@/lib/supabase/server";
@@ -34,7 +35,7 @@ async function resolveCreds(req: NextRequest): Promise<QbgProviderConfig> {
     if (user) {
         return parseQbgProviderConfig(sanitizeUserApiKeys(user.user_metadata?.api_keys).qbg);
     }
-    if (req.cookies.get("qbg_dev_auth")?.value === "1") {
+    if (hasDevAuthCookie(req.cookies)) {
         return parseQbgProviderConfig(req.headers.get("x-dev-qbg")?.trim() || "");
     }
     return parseQbgProviderConfig("");

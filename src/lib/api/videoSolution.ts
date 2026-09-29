@@ -22,6 +22,7 @@ import { spawn } from "node:child_process";
 import crypto from "node:crypto";
 import { createClient as createSupabaseClient } from "@supabase/supabase-js";
 import { resolvePythonBin } from "@/lib/pythonBin";
+import { getSupabaseUrl, getSupabasePublishableKey } from "@/lib/supabase/env";
 
 const ARTIFACT_BUCKET = "ai-video-artifacts";
 
@@ -56,8 +57,8 @@ interface PersistArgs {
  *  storage hiccup never kills the user's render (they can still download
  *  the in-memory ZIP). */
 async function persistArtifact(p: PersistArgs): Promise<string | null> {
-    const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
-    const anon = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+    const url = getSupabaseUrl();
+    const anon = getSupabasePublishableKey();
     if (!url || !anon) return null;
     const supabase = createSupabaseClient(url, anon, {
         auth: { persistSession: false, autoRefreshToken: false },

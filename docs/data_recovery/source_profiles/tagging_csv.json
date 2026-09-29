@@ -1,0 +1,520 @@
+{
+  "kind": "csv",
+  "path": "python/qbg_modification/tagging_data/qbg_tagging_table.csv",
+  "sha256": "e03d3c9929ed9f5e8876b4d9ef649c5a68f8a6674aaf90eaf39785d53e0828c9",
+  "sheets": [
+    {
+      "column_count": 11,
+      "columns": [
+        {
+          "duplicate_rows": 39609,
+          "formats": {
+            "TEXT": 39616
+          },
+          "header": "category",
+          "index": 0,
+          "inferred_type": "string",
+          "letter": "A",
+          "non_null": 39616,
+          "null_pct": 0,
+          "rows": 39616,
+          "top_values": [
+            {
+              "count": 10083,
+              "value": "Foundation"
+            },
+            {
+              "count": 5560,
+              "value": "NEET-JEE"
+            },
+            {
+              "count": 5384,
+              "value": "Real Test"
+            },
+            {
+              "count": 5187,
+              "value": "RankUp Test Series"
+            },
+            {
+              "count": 4886,
+              "value": "Boards"
+            },
+            {
+              "count": 4404,
+              "value": "JEE"
+            },
+            {
+              "count": 4112,
+              "value": "NEET"
+            }
+          ],
+          "unique": 7,
+          "values_occurring_more_than_once": 7
+        },
+        {
+          "duplicate_rows": 39612,
+          "formats": {
+            "INTEGER_STRING": 39616
+          },
+          "header": "class",
+          "index": 1,
+          "inferred_type": "string",
+          "letter": "B",
+          "non_null": 39616,
+          "null_pct": 0,
+          "rows": 39616,
+          "top_values": [
+            {
+              "count": 15915,
+              "value": "11"
+            },
+            {
+              "count": 13510,
+              "value": "12"
+            },
+            {
+              "count": 5422,
+              "value": "10"
+            },
+            {
+              "count": 4769,
+              "value": "9"
+            }
+          ],
+          "unique": 4,
+          "values_occurring_more_than_once": 4
+        },
+        {
+          "duplicate_rows": 39612,
+          "formats": {
+            "QBG_CUID25": 39616
+          },
+          "header": "class_id",
+          "index": 2,
+          "inferred_type": "string",
+          "letter": "C",
+          "non_null": 39616,
+          "null_pct": 0,
+          "rows": 39616,
+          "top_values": [
+            {
+              "count": 15915,
+              "value": "nasza1gowlgs8vhih1zkhapdz"
+            },
+            {
+              "count": 13510,
+              "value": "oyhh7ve8217so92jw81tefbyp"
+            },
+            {
+              "count": 5422,
+              "value": "yv8zsbl7fb0jdtwzq5mkgqtg9"
+            },
+            {
+              "count": 4769,
+              "value": "7yhv6erafbv7q6mrobrldexnq"
+            }
+          ],
+          "unique": 4,
+          "values_occurring_more_than_once": 4
+        },
+        {
+          "duplicate_rows": 39597,
+          "formats": {
+            "TEXT": 39616
+          },
+          "header": "subject",
+          "index": 3,
+          "inferred_type": "string",
+          "letter": "D",
+          "non_null": 39616,
+          "null_pct": 0,
+          "rows": 39616,
+          "top_values": [
+            {
+              "count": 10258,
+              "value": "Chemistry"
+            },
+            {
+              "count": 9215,
+              "value": "Physics"
+            },
+            {
+              "count": 6195,
+              "value": "Maths"
+            },
+            {
+              "count": 3809,
+              "value": "Social Studies"
+            },
+            {
+              "count": 2960,
+              "value": "Botany"
+            },
+            {
+              "count": 2619,
+              "value": "Zoology"
+            },
+            {
+              "count": 973,
+              "value": "Biology"
+            },
+            {
+              "count": 880,
+              "value": "English"
+            }
+          ],
+          "unique": 19,
+          "values_occurring_more_than_once": 19
+        },
+        {
+          "duplicate_rows": 39597,
+          "formats": {
+            "QBG_CUID25": 39616
+          },
+          "header": "subject_id",
+          "index": 4,
+          "inferred_type": "string",
+          "letter": "E",
+          "non_null": 39616,
+          "null_pct": 0,
+          "rows": 39616,
+          "top_values": [
+            {
+              "count": 10258,
+              "value": "7rgg2rb3rbirmrkpguofa7sor"
+            },
+            {
+              "count": 9215,
+              "value": "iydv16vvyph4i0hajzqbqxk2t"
+            },
+            {
+              "count": 6195,
+              "value": "19c8p297y48dy01537cxzinys"
+            },
+            {
+              "count": 3809,
+              "value": "y085sgvm4pwv2rdjjogb278io"
+            },
+            {
+              "count": 2960,
+              "value": "734chcfe1nhx5ay0lh0n5d4qj"
+            },
+            {
+              "count": 2619,
+              "value": "fpx64zbsdhwyc2a6vu0tnebga"
+            },
+            {
+              "count": 973,
+              "value": "2tzgmg3pq30fcncg3tgdqqanc"
+            },
+            {
+              "count": 880,
+              "value": "wx51vc7odqj781rjuf5sno6x7"
+            }
+          ],
+          "unique": 19,
+          "values_occurring_more_than_once": 19
+        },
+        {
+          "duplicate_rows": 37875,
+          "formats": {
+            "TEXT": 39616
+          },
+          "header": "chapter",
+          "index": 5,
+          "inferred_type": "string",
+          "letter": "F",
+          "non_null": 39616,
+          "null_pct": 0,
+          "rows": 39616,
+          "top_values": [
+            {
+              "count": 792,
+              "value": "The P-Block Elements (XII)"
+            },
+            {
+              "count": 644,
+              "value": "Thermodynamics"
+            },
+            {
+              "count": 584,
+              "value": "Biomolecules"
+            },
+            {
+              "count": 568,
+              "value": "Ray Optics and Optical Instruments"
+            },
+            {
+              "count": 558,
+              "value": "Equilibrium"
+            },
+            {
+              "count": 546,
+              "value": "Organic Chemistry: Some Basic Principles and Techniques"
+            },
+            {
+              "count": 531,
+              "value": "Relations and Functions"
+            },
+            {
+              "count": 498,
+              "value": "Current Electricity"
+            }
+          ],
+          "unique": 1741,
+          "values_occurring_more_than_once": 1065
+        },
+        {
+          "duplicate_rows": 37876,
+          "formats": {
+            "QBG_CUID25": 39616
+          },
+          "header": "chapter_id",
+          "index": 6,
+          "inferred_type": "string",
+          "letter": "G",
+          "non_null": 39616,
+          "null_pct": 0,
+          "rows": 39616,
+          "top_values": [
+            {
+              "count": 792,
+              "value": "zq1sp9ehybtbx28j8g2mqm2hi"
+            },
+            {
+              "count": 644,
+              "value": "7kx7aknod2psthzyz0hxpqllr"
+            },
+            {
+              "count": 584,
+              "value": "22vn37kidiyka5a7rh08vu3t1"
+            },
+            {
+              "count": 568,
+              "value": "6vvmtbqliw4f0lvwq2hg7lrx2"
+            },
+            {
+              "count": 558,
+              "value": "07b1xigu2yazkn0ohu0v44d3y"
+            },
+            {
+              "count": 546,
+              "value": "tz4907islds6g7agzogsbkw95"
+            },
+            {
+              "count": 531,
+              "value": "ca33u7zvbbnt64edqggwp2a1x"
+            },
+            {
+              "count": 498,
+              "value": "wut90nwznjcwq8s8uq9ldw02b"
+            }
+          ],
+          "unique": 1740,
+          "values_occurring_more_than_once": 1064
+        },
+        {
+          "duplicate_rows": 32725,
+          "formats": {
+            "TEXT": 39543
+          },
+          "header": "topic",
+          "index": 7,
+          "inferred_type": "string",
+          "letter": "H",
+          "non_null": 39543,
+          "null_pct": 0.18,
+          "rows": 39616,
+          "top_values": [
+            {
+              "count": 370,
+              "value": "Introduction"
+            },
+            {
+              "count": 226,
+              "value": "Limits"
+            },
+            {
+              "count": 138,
+              "value": "Reflection by Mirror"
+            },
+            {
+              "count": 133,
+              "value": "Functions"
+            },
+            {
+              "count": 127,
+              "value": "Relations"
+            },
+            {
+              "count": 120,
+              "value": "Eukaryotic Cells"
+            },
+            {
+              "count": 120,
+              "value": "Heat Transfer"
+            },
+            {
+              "count": 114,
+              "value": "Parabola"
+            }
+          ],
+          "unique": 6818,
+          "values_occurring_more_than_once": 3913
+        },
+        {
+          "duplicate_rows": 32725,
+          "formats": {
+            "QBG_CUID25": 39543
+          },
+          "header": "topic_id",
+          "index": 8,
+          "inferred_type": "string",
+          "letter": "I",
+          "non_null": 39543,
+          "null_pct": 0.18,
+          "rows": 39616,
+          "top_values": [
+            {
+              "count": 370,
+              "value": "2rjl9nvpiwwapgj1gb7oeq58i"
+            },
+            {
+              "count": 226,
+              "value": "xwfabk62zhvh1b70zzh404zxh"
+            },
+            {
+              "count": 138,
+              "value": "0zysr4co2lmsex9axuq9v0rln"
+            },
+            {
+              "count": 133,
+              "value": "39324dn1mmkigf6ibx6io3k7x"
+            },
+            {
+              "count": 127,
+              "value": "mdcsvw4exa9ru80o9hlzk8pn6"
+            },
+            {
+              "count": 120,
+              "value": "g1vlc3y6mmdq8e5rnhkdlh36q"
+            },
+            {
+              "count": 120,
+              "value": "syk7iue9d5836g2yd2hw8zxr9"
+            },
+            {
+              "count": 114,
+              "value": "1rbihhp2mvnthzoc8izma43ei"
+            }
+          ],
+          "unique": 6818,
+          "values_occurring_more_than_once": 3913
+        },
+        {
+          "duplicate_rows": 25882,
+          "formats": {
+            "TEXT": 38910
+          },
+          "header": "subtopic",
+          "index": 9,
+          "inferred_type": "string",
+          "letter": "J",
+          "non_null": 38910,
+          "null_pct": 1.78,
+          "rows": 39616,
+          "top_values": [
+            {
+              "count": 569,
+              "value": "Introduction"
+            },
+            {
+              "count": 184,
+              "value": "Chemical Properties"
+            },
+            {
+              "count": 162,
+              "value": "Physical Properties"
+            },
+            {
+              "count": 152,
+              "value": "Preparation"
+            },
+            {
+              "count": 114,
+              "value": "Uses"
+            },
+            {
+              "count": 95,
+              "value": "Miscellaneous"
+            },
+            {
+              "count": 74,
+              "value": "Definition"
+            },
+            {
+              "count": 63,
+              "value": "Properties"
+            }
+          ],
+          "unique": 13028,
+          "values_occurring_more_than_once": 5963
+        },
+        {
+          "duplicate_rows": 25886,
+          "formats": {
+            "QBG_CUID25": 38910
+          },
+          "header": "subtopic_id",
+          "index": 10,
+          "inferred_type": "string",
+          "letter": "K",
+          "non_null": 38910,
+          "null_pct": 1.78,
+          "rows": 39616,
+          "top_values": [
+            {
+              "count": 569,
+              "value": "dc9ed0o6vxceruwmumf49sn0q"
+            },
+            {
+              "count": 184,
+              "value": "15imm75mihwe0n44g05omyg1r"
+            },
+            {
+              "count": 162,
+              "value": "2os2d06y85729ezbxao5t3xn2"
+            },
+            {
+              "count": 152,
+              "value": "mp9mbsanyhfl5atjk413r7cvs"
+            },
+            {
+              "count": 114,
+              "value": "34tom974ft1iejmf78qzf3mwk"
+            },
+            {
+              "count": 95,
+              "value": "b60shklyj7kzcqb9ytagaoe5t"
+            },
+            {
+              "count": 74,
+              "value": "ekt8uyur9kjjlszy9pg7c5fkz"
+            },
+            {
+              "count": 63,
+              "value": "2jca42vsnu374mctyyonouqhu"
+            }
+          ],
+          "unique": 13024,
+          "values_occurring_more_than_once": 5961
+        }
+      ],
+      "data_rows": 39616,
+      "header_row_1based": 1,
+      "name": "csv",
+      "repeated_header_names": [],
+      "tabular": true
+    }
+  ]
+}

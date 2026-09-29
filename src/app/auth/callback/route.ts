@@ -93,13 +93,14 @@ export async function GET(request: Request) {
         }
     }
 
+    // A real Supabase session now exists (exchangeCodeForSession set its
+    // cookies). Clear any leftover dev-auth cookie rather than setting one:
+    // the dev bypass must never stand in for, or outlive, a real session.
     const response = NextResponse.redirect(`${origin}${next}`);
-    response.cookies.set("qbg_dev_auth", "1", {
+    response.cookies.set("qbg_dev_auth", "", {
         path: "/",
-        maxAge: 60 * 60 * 24 * 7,
+        maxAge: 0,
         sameSite: "lax",
-        secure: origin.startsWith("https:"),
-        httpOnly: false,
     });
     return response;
 }

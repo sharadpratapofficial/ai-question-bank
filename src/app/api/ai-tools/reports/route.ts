@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient as createSupabaseClient } from "@supabase/supabase-js";
 import { createClient as createServerSupabaseClient } from "@/lib/supabase/server";
+import { getSupabaseUrl, getSupabasePublishableKey } from "@/lib/supabase/env";
 
 const TABLE = "ai_reports";
 const MAX_REPORTS = 100;
@@ -14,8 +15,8 @@ function getBearerToken(request: NextRequest): string | null {
 
 function createBearerSupabaseClient(accessToken: string) {
     return createSupabaseClient(
-        process.env.NEXT_PUBLIC_SUPABASE_URL!,
-        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+        getSupabaseUrl(),
+        getSupabasePublishableKey(),
         {
             auth: { persistSession: false, autoRefreshToken: false },
             global: { headers: { Authorization: `Bearer ${accessToken}` } },

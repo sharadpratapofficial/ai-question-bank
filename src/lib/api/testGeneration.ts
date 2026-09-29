@@ -1,5 +1,9 @@
-import { createClient } from "@supabase/supabase-js";
+import type { createClient } from "@supabase/supabase-js";
 import { TABLE_NAME, SUPABASE_MAX_ROWS } from "@/lib/constants";
+import { getSupabaseAdmin } from "@/lib/supabase/admin";
+import { registerServerTranslationsClient } from "@/lib/api/translations";
+
+registerServerTranslationsClient(getSupabaseAdmin);
 import {
     type CustomTestRowConfig,
     EXAM_PRESETS,
@@ -23,18 +27,11 @@ import {
     fetchQuestionIdsWithDefaultTranslation,
 } from "@/lib/api/translations";
 
-let supabaseInstance: ReturnType<typeof createClient> | null = null;
 const ADVANCE_PAPER_ORDER: JeeAdvancedPaper[] = ["Paper 1", "Paper 2"];
 const ADVANCE_SUBJECT_ORDER = ["Physics", "Chemistry", "Maths"];
 
 function getSupabase() {
-    if (!supabaseInstance) {
-        supabaseInstance = createClient(
-            process.env.NEXT_PUBLIC_SUPABASE_URL!,
-            process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-        );
-    }
-    return supabaseInstance;
+        return getSupabaseAdmin(); // itself a process-wide singleton
 }
 
 function clamp(n: number, min: number, max: number): number {

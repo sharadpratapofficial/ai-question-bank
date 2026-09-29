@@ -1,7 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
+import { checkAnyPermission } from "@/lib/auth/serverAuth";
 import { listFinalizedTestsHistory } from "@/lib/api/testHistory";
 
 export async function GET(req: NextRequest) {
+    // Reads through the server-only client, so this route is the access check.
+    const forbid = await checkAnyPermission(["generate_tests"]);
+    if (forbid) return forbid;
     try {
         const { searchParams } = new URL(req.url);
         const batchName = searchParams.get("batch") || undefined;

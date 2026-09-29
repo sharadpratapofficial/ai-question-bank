@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
-import { createClient } from "@supabase/supabase-js";
 import { SUPABASE_MAX_ROWS, TABLE_NAME } from "@/lib/constants";
 import { checkPermission } from "@/lib/auth/serverAuth";
+import { getSupabaseAdmin } from "@/lib/supabase/admin";
 
 const TESTS_TABLE = "qbg_generated_tests";
 const TEST_QUESTIONS_TABLE = "qbg_generated_test_questions";
@@ -44,10 +44,7 @@ type RecentTestItem = {
 };
 
 function getSupabase() {
-    return createClient(
-        process.env.NEXT_PUBLIC_SUPABASE_URL!,
-        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-    );
+    return getSupabaseAdmin();
 }
 
 function asErrorMessage(error: unknown): string {

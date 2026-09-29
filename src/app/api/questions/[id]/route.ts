@@ -15,6 +15,9 @@ export async function GET(
     _request: NextRequest,
     { params }: { params: Promise<{ id: string }> }
 ) {
+    // Reads through the server-only client, so this route is the access check.
+    const forbid = await checkAnyPermission(["view_questions", "generate_tests"]);
+    if (forbid) return forbid;
     try {
         const { id } = await params;
 

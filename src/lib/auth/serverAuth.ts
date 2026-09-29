@@ -4,11 +4,13 @@
  * Combines two paths the app supports:
  *   1) Real Supabase session (cookie-based)
  *   2) Dev-auth bypass (qbg_dev_auth=1 cookie) — synthesised as an admin so
- *      local development continues to work end-to-end.
+ *      local development continues to work end-to-end. Never honoured in a
+ *      production build (see src/lib/auth/devAuth.ts).
  *
  * Used by API routes and middleware to decide whether a request is allowed.
  */
 
+import { hasDevAuthCookie } from "@/lib/auth/devAuth";
 import { cookies } from "next/headers";
 import { createClient } from "@/lib/supabase/server";
 import { NextResponse } from "next/server";
@@ -41,7 +43,7 @@ export interface CurrentUserContext {
  */
 export async function getCurrentUserWithRole(): Promise<CurrentUserContext> {
     const cookieStore = await cookies();
-    const hasDevAuth = cookieStore.get("qbg_dev_auth")?.value === "1";
+    const hasDevAuth = hasDevAuthCookie(cookieStore);
 
     let supabaseUser: { id: string; email?: string | null } | null = null;
     try {

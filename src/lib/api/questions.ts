@@ -1,19 +1,13 @@
-import { createClient } from "@supabase/supabase-js";
+import type { createClient } from "@supabase/supabase-js";
 import type { Question, QuestionOption, FilterState, MetadataHierarchy } from "@/types";
 import { TABLE_NAME, DEFAULT_PAGE_SIZE, SUPABASE_MAX_ROWS } from "@/lib/constants";
 import { sortChaptersForSubject } from "@/lib/chapterOrder";
+import { getSupabaseAdmin } from "@/lib/supabase/admin";
 
 // Singleton client for API routes / server usage
-let supabaseInstance: ReturnType<typeof createClient> | null = null;
 
 function getSupabase(): any {
-    if (!supabaseInstance) {
-        supabaseInstance = createClient(
-            process.env.NEXT_PUBLIC_SUPABASE_URL!,
-            process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-        );
-    }
-    return supabaseInstance;
+        return getSupabaseAdmin(); // itself a process-wide singleton
 }
 
 // ==================== QUESTIONS ====================
@@ -145,6 +139,9 @@ export async function fetchChildQuestions(
         .from(TABLE_NAME)
         .select("*")
         .eq("parent_question_id", parentQuestionId)
+        // child_order: scripts/sql/003_new_question_bank_support.sql; question_id breaks ties
+        // and orders legacy children that have no position.
+        .order("child_order", { ascending: true, nullsFirst: false })
         .order("question_id");
 
     if (error) {

@@ -11,19 +11,16 @@
  * resolve them here, and every merge is written to chapter_merge_log.
  */
 import { NextRequest, NextResponse } from "next/server";
-import { createClient } from "@supabase/supabase-js";
 import { checkPermission, getCurrentUserWithRole } from "@/lib/auth/serverAuth";
 import { chapterKey } from "@/lib/chapterOrder";
+import { getSupabaseAdmin } from "@/lib/supabase/admin";
 
 export const runtime = "nodejs";
 
 const TABLES = ["qbg_question_pool", "qbg_questions"] as const;
 
 function db() {
-    return createClient(
-        process.env.NEXT_PUBLIC_SUPABASE_URL!,
-        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-    );
+    return getSupabaseAdmin();
 }
 
 export interface ChapterRow {
@@ -165,7 +162,10 @@ export async function POST(req: NextRequest) {
             for (const f of from) {
                 let q = db().from(table).update({ chapter: to }).eq("chapter", f);
                 if (body.subject) q = q.eq("subject", body.subject);
-                const { data, error } = await q.select("unique_id");
+                // Each table's own primary key — qbg_questions has no unique_id.
+                const { data, error } = await q.select(
+                    table === "qbg_question_pool" ? "unique_id" : "question_id"
+                );
                 if (error) {
                     return NextResponse.json(
                         { success: false, error: `Merge failed on ${table}: ${error.message}` },
